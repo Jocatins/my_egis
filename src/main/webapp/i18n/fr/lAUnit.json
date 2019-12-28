@@ -1,0 +1,31 @@
+{
+  "egisexternalApp": {
+    "lAUnit": {
+      "home": {
+        "title": "LAUnits",
+        "createLabel": "Créer un nouveau LA Unit",
+        "createOrEditLabel": "Créer ou éditer un LA Unit",
+        "search": "Recherche pour LA Unit",
+        "notFound": "Aucun LA Unit trouvé"
+      },
+      "created": "Un nouveau LA Unit a été créé avec l'identifiant {{ param }}",
+      "updated": "Le LA Unit avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le LA Unit avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le LA Unit {{ id }} ?"
+      },
+      "detail": {
+        "title": "LA Unit"
+      },
+      "unitNumber": "Unit Number",
+      "name": "Name",
+      "registerType": "Register Type",
+      "valuation": "Valuation",
+      "comments": "Comments",
+      "legalDescription": "Legal Description",
+      "meansOfAcq": "Means Of Acq",
+      "parcel": "Parcel",
+      "transaction": "Transaction"
+    }
+  }
+}

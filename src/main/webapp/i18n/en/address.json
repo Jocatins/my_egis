@@ -1,0 +1,45 @@
+{
+  "egisexternalApp": {
+    "address": {
+      "home": {
+        "title": "Addresses",
+        "createLabel": "Create a new Address",
+        "createOrEditLabel": "Create or edit a Address",
+        "search": "Search for Address",
+        "notFound": "No Addresses found"
+      },
+      "created": "A new Address is created with identifier {{ param }}",
+      "updated": "A Address is updated with identifier {{ param }}",
+      "deleted": "A Address is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Address {{ id }}?"
+      },
+      "detail": {
+        "title": "Address"
+      },
+      "addressAreaName": "Address Area Name",
+      "streetName": "Street Name",
+      "buildingName": "Building Name",
+      "buildingNumber": "Building Number",
+      "postalCode": "Postal Code",
+      "city": "City",
+      "country": "Country",
+      "region": "Region",
+      "district": "District",
+      "village": "Village",
+      "state": "State",
+      "estateName": "Estate Name",
+      "localGovernmentArea": "Local Government Area",
+      "localCouncilArea": "Local Council Area",
+      "streetNumber": "Street Number",
+      "streetType": "Street Type",
+      "town": "Town",
+      "ward": "Ward",
+      "category": "Category",
+      "stateOfOrigin": "State Of Origin",
+      "schemeName": "Scheme Name",
+      "blockNumber": "Block Number",
+      "plotNumber": "Plot Number"
+    }
+  }
+}

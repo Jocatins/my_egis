@@ -1,0 +1,54 @@
+<div>
+        <h2 id="page-heading">
+            Applications
+        </h2>
+        <jhi-alert-error></jhi-alert-error>
+        <jhi-alert></jhi-alert>
+
+        <br/>
+        <div class="alert alert-warning" *ngIf="batches?.length === 0">
+            <span jhiTranslate="egisexternalApp.batch.home.notFound">No batches found</span>
+        </div>
+        <div class="table-responsive" *ngIf="batches?.length > 0">
+            <table class="table table-striped" aria-describedby="page-heading">
+                <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+                <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th scope="col"  jhiSortBy="batchNumber"><span jhiTranslate="egisexternalApp.batch.batchNumber">Batch Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th scope="col"  jhiSortBy="batchStatus"><span jhiTranslate="egisexternalApp.batch.batchStatus">Batch Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th scope="col"  ><span>Application</span> </th>
+                <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                <tr *ngFor="let batch of batches ;trackBy: trackId">
+                    <td><a [routerLink]="['/batch', batch.id, 'view' ]">{{batch.id}}</a></td>
+                    <td>{{batch.batchNumber}} </td>
+                    <td>{{batch.batchStatus}}</td>
+                    <td>{{  batch.moreData  }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/application/translanding', batch.id]"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon [icon]="'eye'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['/batch', batch.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+                            <button type="submit" (click)="delete(batch)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

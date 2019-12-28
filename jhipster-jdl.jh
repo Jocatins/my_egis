@@ -1,0 +1,209 @@
+
+//
+entity Batch{
+	batchNumber Integer,
+    batchStatus Integer,
+    invoiceNumber String,
+    createDate LocalDate,
+    deliveryDate LocalDate,
+    officeId Integer
+}
+
+entity Transaction{
+    transactionNumber String,
+    transactionType Integer required,
+    transactionSubType Integer,
+    applicationDate LocalDate,
+    transactionStartDate LocalDate,
+    comments String,
+    ownershipType Integer,
+    createDate LocalDate,
+    startDate LocalDate,
+    completeDate LocalDate,
+    tenureType Integer,
+    batchId Integer,
+    transactionCode String
+}
+
+entity TransactionExt{
+    extensionKey String,
+    extensionValue String
+}
+
+entity SupportingDocument{
+    documentNumber String,
+    documentType Integer,
+    ownershipArea String,
+    documentSubType Integer,
+    issuedBy Integer,
+    pageCount Integer,
+    status Integer,
+    provided String,
+    status String,
+    type Integer,
+    name String,
+    fileSize Integer,
+    content String,
+    contentUrl String,
+    image String,
+    date LocalDate
+}
+
+
+entity Party{
+    partyType Integer required,
+    partyRoleType Integer required,
+    partySubRoleType Integer,
+    deliveryType Integer,
+    partyName String,
+    shareNominator String,
+    shareDenominator String,
+    taxExempt String,
+    primaryParty String,
+    otherName String,
+    personIdType Integer,
+    personType Integer,
+    fax String,
+    email String,
+    emailType Integer,
+    phoneNumber String,
+    payerId String,
+    taxPayerNumber String,
+    comments String,
+    personIdIssuedBy Integer,
+    personIdDate LocalDate,
+    personIdExpirationDate LocalDate,
+    rcNumber String ,
+    organization String ,
+    businessNature String ,
+    birthPlace String ,
+    birthDate LocalDate ,
+    personTitle Integer,
+    gender Integer,
+    firstName String,
+    middleName String,
+    lastName String,
+    gender Integer,
+    civilState Integer,
+    driverLicenseRegion Integer,
+    driverLicence String,
+    representativeId Integer,
+    professionRegNo String,
+    occupation String
+}
+
+entity Address{
+    addressAreaName String,
+    streetName String,
+    buildingName String,
+    buildingNumber String,
+    postalCode String,
+    city String,
+    country Integer,
+    region Integer,
+    district Integer,
+    village String,
+    state String,
+    estateName String,
+    localGovernmentArea Integer,
+    localCouncilArea Integer,
+    streetNumber String,
+    streetType Integer,
+    town String,
+    ward String,
+    category String,
+    stateOfOrigin Integer,
+    schemeName Integer,
+    blockNumber String,
+    plotNumber String
+}
+
+
+entity Parcel{
+	label String,
+    area  Double,
+    spatialUnitType Integer,
+    registrationOfficeDictionary String,
+    surveyType String,
+    surveyDate LocalDate,
+    propertyType Integer,
+    accommodation String,
+    tenureType Integer,
+    description String,
+    propertyArea Double,
+    location Integer,
+    builtUpAreaType Integer,
+    planNumber String,
+    measurementUnitType Integer,
+    premiumValue String,
+    landUseCategory Integer,
+    landUseType Integer,
+    developmentStatus Integer,
+    coordinateN Integer,
+    coordinateS Integer,
+    lagosSheetNumber String,
+    allocation String,
+	location1 Integer,
+	unitNumber String,
+    name String,
+    registerType Integer,
+    valuation String,
+    comments String,
+    legalDescription String,
+    meansOfAcq Integer,
+}
+
+entity UserExt{
+    payerId String,
+    phoneNumber String
+}
+
+entity Surveyor{
+    email String,
+    surconNumber String,
+    registrationNumber String,
+    phone String,
+    status String
+}
+
+entity SurveyTransaction{
+	transCode	String,
+    comment String
+}
+
+relationship ManyToMany{
+    Batch{transaction}  to Transaction{batch}, //batch can have many transactions
+    Batch{party}  to Party{batch},
+    Transaction{party}  to Party{transaction},
+    Transaction{parcel} to Parcel{transaction},
+	Transaction{docs} to SupportingDocument{transaction}
+}
+
+
+relationship OneToOne{
+    Party{address} to Address
+    Transaction{ext}  to TransactionExt,
+    Surveyor{address} to Address,
+    UserExt {user} to User,
+	Parcel{address} to Address
+}
+
+relationship ManyToOne{
+    Batch{user} to User
+}
+
+// Set pagination options
+//paginate Batch with infinite-scroll
+//paginate Party with pagination
+paginate Surveyor, SurveyTransaction with pagination
+
+
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl // except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

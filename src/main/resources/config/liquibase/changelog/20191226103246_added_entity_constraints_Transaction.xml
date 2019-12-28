@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Transaction.
+    -->
+    <changeSet id="20191226103246-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ext_id"
+                                 baseTableName="transaction"
+                                 constraintName="fk_transaction_ext_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transaction_ext"/>
+
+        <addForeignKeyConstraint baseColumnNames="transaction_id"
+                                 baseTableName="transaction_party"
+                                 constraintName="fk_transaction_party_transaction_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transaction"/>
+
+        <addForeignKeyConstraint baseColumnNames="party_id"
+                                 baseTableName="transaction_party"
+                                 constraintName="fk_transaction_party_party_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="party"/>
+        
+        <addForeignKeyConstraint baseColumnNames="transaction_id"
+                                 baseTableName="transaction_parcel"
+                                 constraintName="fk_transaction_parcel_transaction_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transaction"/>
+
+        <addForeignKeyConstraint baseColumnNames="parcel_id"
+                                 baseTableName="transaction_parcel"
+                                 constraintName="fk_transaction_parcel_parcel_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parcel"/>
+        
+        <addForeignKeyConstraint baseColumnNames="transaction_id"
+                                 baseTableName="transaction_docs"
+                                 constraintName="fk_transaction_docs_transaction_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transaction"/>
+
+        <addForeignKeyConstraint baseColumnNames="docs_id"
+                                 baseTableName="transaction_docs"
+                                 constraintName="fk_transaction_docs_docs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="supporting_document"/>
+        
+    </changeSet>
+</databaseChangeLog>

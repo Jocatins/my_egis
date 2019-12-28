@@ -1,0 +1,24 @@
+{
+  "egisexternalApp": {
+    "transactionExt": {
+      "home": {
+        "title": "TransactionExts",
+        "createLabel": "Créer un nouveau Transaction Ext",
+        "createOrEditLabel": "Créer ou éditer un Transaction Ext",
+        "search": "Recherche pour Transaction Ext",
+        "notFound": "Aucun Transaction Ext trouvé"
+      },
+      "created": "Un nouveau Transaction Ext a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Transaction Ext avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Transaction Ext avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Transaction Ext {{ id }} ?"
+      },
+      "detail": {
+        "title": "Transaction Ext"
+      },
+      "extensionKey": "Extension Key",
+      "extensionValue": "Extension Value"
+    }
+  }
+}

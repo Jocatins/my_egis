@@ -1,0 +1,118 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="egisexternalApp.transaction.home.title">Transactions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-transaction" [routerLink]="['/transaction/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="egisexternalApp.transaction.home.createLabel">
+            Create a new Transaction
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'egisexternalApp.transaction.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="transactions?.length === 0">
+        <span jhiTranslate="egisexternalApp.transaction.home.notFound">No transactions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="transactions?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.transactionNumber">Transaction Number</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.transactionType">Transaction Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.transactionSubType">Transaction Sub Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.applicationDate">Application Date</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.transactionStartDate">Transaction Start Date</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.comments">Comments</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.ownershipType">Ownership Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.createDate">Create Date</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.startDate">Start Date</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.completeDate">Complete Date</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.tenureType">Tenure Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.batchId">Batch Id</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.transactionCode">Transaction Code</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.ext">Ext</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.party">Party</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.parcel">Parcel</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.docs">Docs</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let transaction of transactions ;trackBy: trackId">
+                <td><a [routerLink]="['/transaction', transaction.id, 'view' ]">{{transaction.id}}</a></td>
+                <td>{{transaction.transactionNumber}}</td>
+                <td>{{transaction.transactionType}}</td>
+                <td>{{transaction.transactionSubType}}</td>
+                <td>{{transaction.applicationDate | date:'mediumDate'}}</td>
+                <td>{{transaction.transactionStartDate | date:'mediumDate'}}</td>
+                <td>{{transaction.comments}}</td>
+                <td>{{transaction.ownershipType}}</td>
+                <td>{{transaction.createDate | date:'mediumDate'}}</td>
+                <td>{{transaction.startDate | date:'mediumDate'}}</td>
+                <td>{{transaction.completeDate | date:'mediumDate'}}</td>
+                <td>{{transaction.tenureType}}</td>
+                <td>{{transaction.batchId}}</td>
+                <td>{{transaction.transactionCode}}</td>
+                <td>
+                    <div *ngIf="transaction.ext">
+                        <a [routerLink]="['/transaction-ext', transaction.ext?.id, 'view' ]" >{{transaction.ext?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let party of transaction.parties; let last = last">
+                            <a class="form-control-static" [routerLink]="['/party', party?.id, 'view' ]">{{party.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let parcel of transaction.parcels; let last = last">
+                            <a class="form-control-static" [routerLink]="['/parcel', parcel?.id, 'view' ]">{{parcel.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let docs of transaction.docs; let last = last">
+                            <a class="form-control-static" [routerLink]="['/supporting-document', docs?.id, 'view' ]">{{docs.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/transaction', transaction.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/transaction', transaction.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(transaction)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

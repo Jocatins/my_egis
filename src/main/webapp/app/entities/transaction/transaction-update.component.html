@@ -1,0 +1,144 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-transaction-heading" jhiTranslate="egisexternalApp.transaction.home.createOrEditLabel">Create or edit a Transaction</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.transactionNumber" for="field_transactionNumber">Transaction Number</label>
+                    <input type="text" class="form-control" name="transactionNumber" id="field_transactionNumber"
+                           formControlName="transactionNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.transactionType" for="field_transactionType">Transaction Type</label>
+                    <input type="number" class="form-control" name="transactionType" id="field_transactionType"
+                           formControlName="transactionType"/>
+                    <div *ngIf="editForm.get('transactionType').invalid && (editForm.get('transactionType').dirty || editForm.get('transactionType').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('transactionType').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('transactionType')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.transactionSubType" for="field_transactionSubType">Transaction Sub Type</label>
+                    <input type="number" class="form-control" name="transactionSubType" id="field_transactionSubType"
+                           formControlName="transactionSubType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.applicationDate" for="field_applicationDate">Application Date</label>
+                    <div class="input-group">
+                        <input id="field_applicationDate" type="text" class="form-control" name="applicationDate" ngbDatepicker  #applicationDateDp="ngbDatepicker" formControlName="applicationDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="applicationDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.transactionStartDate" for="field_transactionStartDate">Transaction Start Date</label>
+                    <div class="input-group">
+                        <input id="field_transactionStartDate" type="text" class="form-control" name="transactionStartDate" ngbDatepicker  #transactionStartDateDp="ngbDatepicker" formControlName="transactionStartDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="transactionStartDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.comments" for="field_comments">Comments</label>
+                    <input type="text" class="form-control" name="comments" id="field_comments"
+                           formControlName="comments"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.ownershipType" for="field_ownershipType">Ownership Type</label>
+                    <input type="number" class="form-control" name="ownershipType" id="field_ownershipType"
+                           formControlName="ownershipType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.createDate" for="field_createDate">Create Date</label>
+                    <div class="input-group">
+                        <input id="field_createDate" type="text" class="form-control" name="createDate" ngbDatepicker  #createDateDp="ngbDatepicker" formControlName="createDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.startDate" for="field_startDate">Start Date</label>
+                    <div class="input-group">
+                        <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" formControlName="startDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.completeDate" for="field_completeDate">Complete Date</label>
+                    <div class="input-group">
+                        <input id="field_completeDate" type="text" class="form-control" name="completeDate" ngbDatepicker  #completeDateDp="ngbDatepicker" formControlName="completeDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="completeDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.tenureType" for="field_tenureType">Tenure Type</label>
+                    <input type="number" class="form-control" name="tenureType" id="field_tenureType"
+                           formControlName="tenureType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.batchId" for="field_batchId">Batch Id</label>
+                    <input type="number" class="form-control" name="batchId" id="field_batchId"
+                           formControlName="batchId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.transactionCode" for="field_transactionCode">Transaction Code</label>
+                    <input type="text" class="form-control" name="transactionCode" id="field_transactionCode"
+                           formControlName="transactionCode"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.transaction.ext" for="field_ext">Ext</label>
+                    <select class="form-control" id="field_ext" name="ext" formControlName="ext">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="transactionExtOption.id === editForm.get('ext').value?.id ? editForm.get('ext').value : transactionExtOption" *ngFor="let transactionExtOption of exts; trackBy: trackTransactionExtById">{{transactionExtOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="egisexternalApp.transaction.party" for="field_parties">Party</label>
+                    <select class="form-control" id="field_parties" multiple name="parties" formControlName="parties">
+                        <option [ngValue]="getSelected(editForm.get('parties').value, partyOption)" *ngFor="let partyOption of parties; trackBy: trackPartyById">{{partyOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="egisexternalApp.transaction.parcel" for="field_parcels">Parcel</label>
+                    <select class="form-control" id="field_parcels" multiple name="parcels" formControlName="parcels">
+                        <option [ngValue]="getSelected(editForm.get('parcels').value, parcelOption)" *ngFor="let parcelOption of parcels; trackBy: trackParcelById">{{parcelOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="egisexternalApp.transaction.docs" for="field_docs">Docs</label>
+                    <select class="form-control" id="field_docs" multiple name="docs" formControlName="docs">
+                        <option [ngValue]="getSelected(editForm.get('docs').value, supportingDocumentOption)" *ngFor="let supportingDocumentOption of supportingdocuments; trackBy: trackSupportingDocumentById">{{supportingDocumentOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

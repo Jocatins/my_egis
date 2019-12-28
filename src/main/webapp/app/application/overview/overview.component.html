@@ -1,0 +1,128 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <h6 class="text-right">{{message}}</h6>
+    <h1 class="text-capitalize text-center" jhiTranslate="applicationtransdetail.title">Title</h1>
+    <h5 class="text-center" jhiTranslate="applicationtransdetail.subtitle">Subtitle</h5>
+    <hr/>
+    <ul class="list-group">
+        <!-- <li *ngFor="let post of posts" class="list-group-item">
+            {{post.title}}
+        </li> -->
+    </ul>
+    <p class="text-justify" jhiTranslate="/applicationtransdetail.content">
+        <div class="col-lg-12">
+            <!-- <h2 class="border-bottom">
+                {{transInfo.description}}
+            </h2> -->
+        </div>
+
+        <!-- <form name="editForm" role="form" novalidate (ngSubmit)="initiateTransaction()" >
+            <input class="form-control input-md" #transCodeText="ngModel" required id="transCode"
+               name="transCode" type="text" placeholder="Transaction Code" [(ngModel)]="transCode">
+            <p>
+                    <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                            Intiate A Transaction
+                        </button>
+            </p>
+        </form> -->
+
+        <div class="input-group w-100 mt-3">
+            <button type="submit" id="jh-create-entity" class="btn btn-primary float-right
+            jh-create-entity create-address" (click)="initiateTransaction(transCode)">
+
+                <span class="hidden-sm-down">
+                    Intiate A Transaction
+                </span>
+            </button>
+        </div>
+
+
+
+            <!-- Fetch value from .xlx config sheet -->
+            <blockquote class="blockquote">
+                <p class="mb-0">
+                    <h6><strong>Description:</strong></h6>
+                    <!-- Fetch value from .xlx config sheet -->
+                    <strong><p>{{transInfo.description}}hhh  </p></strong>
+                </p>
+            </blockquote>
+
+            <blockquote class="blockquote">
+                <p class="mb-0">
+                    <h6><strong>Application Name:</strong></h6>
+                    <!-- Fetch value from .xlx config sheet -->
+                    <strong><p>{{transInfo.applicationname}}</p></strong>
+                </p>
+
+            <blockquote class="blockquote">
+                <p class="mb-0">
+                    <h6><strong>Restrictions:</strong></h6>
+                    <!-- Fetch value from .xlx config sheet -->
+                    <strong><p>{{transInfo.restrictions}}</p></strong>
+                </p>
+            </blockquote>
+
+            <h6><strong>Expiration:</strong></h6>
+            <!-- Fetch value from .xlx config sheet -->
+            <p>
+                <strong><p>{{transInfo.expiration}}</p></strong>
+            </p>
+
+            <h6><strong>Documents Received:</strong></h6>
+            <!-- Fetch value from .xlx config sheet -->
+            <p>
+                <strong><p>{{transInfo.docsreceived}}</p></strong>
+            </p>
+
+            <h6><strong>Pre-Requisites:</strong></h6>
+            <!-- Fetch value from .xlx config sheet -->
+            <p>
+                <strong><p>{{transInfo.prerequisitetrans}}</p></strong>
+                <strong><p>{{transInfo.prerequisitedocs}}</p></strong>
+            </p>
+
+            <h6><strong>Procedure:</strong></h6>
+            <!-- Fetch value from .xlx config sheet -->
+            <p>
+                <strong><p>{{transInfo.procedure}}</p></strong>
+            </p>
+
+            <h6><strong>Associated Fees:</strong></h6>
+            <!-- Fetch value from .xlx config sheet -->
+            <p>
+                <strong><p>{{transInfo.associatedfees}}</p></strong>
+            </p>
+
+            <h6><strong>Application Form and Methods:</strong></h6>
+            <!-- Fetch value from .xlx config sheet -->
+            <p>
+                <strong><p>{{transInfo.expiration}}</p></strong>
+            </p>
+
+<!--
+
+            <ul class="nav nav-tabs" id="" role="tablist">
+                <li class="nav-item">
+                    <a routerLinkActive="active" class="nav-link" routerLink="/application/trans-detail/docreceived" >Documents Received</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLinkActive="active" class="nav-link" routerLink="/application/trans-detail/prerequisite">Pre-Requisites</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLinkActive="active" class="nav-link" routerLink="/application/trans-detail/procedure">Procedure</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLinkActive="active" class="nav-link" routerLink="/application/trans-detail/associatedfee">Associated Fees</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLinkActive="active" class="nav-link" routerLink="/application/trans-detail/methods" >Application Forms & Methods</a>
+                </li>
+            </ul> -->
+
+    </p>
+
+
+  </div>
+  <div class="col-md-1"></div>
+</div>

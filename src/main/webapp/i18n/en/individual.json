@@ -1,0 +1,35 @@
+{
+  "egisexternalApp": {
+    "individual": {
+      "home": {
+        "title": "Individuals",
+        "createLabel": "Create a new Individual",
+        "createOrEditLabel": "Create or edit a Individual",
+        "search": "Search for Individual",
+        "notFound": "No Individuals found"
+      },
+      "created": "A new Individual is created with identifier {{ param }}",
+      "updated": "A Individual is updated with identifier {{ param }}",
+      "deleted": "A Individual is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Individual {{ id }}?"
+      },
+      "detail": {
+        "title": "Individual"
+      },
+      "birthPlace": "Birth Place",
+      "birthDate": "Birth Date",
+      "personTitle": "Person Title",
+      "gender": "Gender",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "civilState": "Civil State",
+      "driverLicenseRegion": "Driver License Region",
+      "driverLicence": "Driver Licence",
+      "representativeId": "Representative Id",
+      "professionRegNo": "Profession Reg No",
+      "occupation": "Occupation"
+    }
+  }
+}

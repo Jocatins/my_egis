@@ -1,0 +1,35 @@
+{
+  "egisexternalApp": {
+    "individual": {
+      "home": {
+        "title": "Individuals",
+        "createLabel": "Créer un nouveau Individual",
+        "createOrEditLabel": "Créer ou éditer un Individual",
+        "search": "Recherche pour Individual",
+        "notFound": "Aucun Individual trouvé"
+      },
+      "created": "Un nouveau Individual a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Individual avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Individual avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Individual {{ id }} ?"
+      },
+      "detail": {
+        "title": "Individual"
+      },
+      "birthPlace": "Birth Place",
+      "birthDate": "Birth Date",
+      "personTitle": "Person Title",
+      "gender": "Gender",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "civilState": "Civil State",
+      "driverLicenseRegion": "Driver License Region",
+      "driverLicence": "Driver Licence",
+      "representativeId": "Representative Id",
+      "professionRegNo": "Profession Reg No",
+      "occupation": "Occupation"
+    }
+  }
+}

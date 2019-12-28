@@ -1,0 +1,108 @@
+{
+    "name": "Address",
+    "fields": [
+        {
+            "fieldName": "addressAreaName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "streetName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "buildingName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "buildingNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "postalCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "country",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "region",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "district",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "village",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "estateName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "localGovernmentArea",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "localCouncilArea",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "streetNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "streetType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "town",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ward",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "category",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "stateOfOrigin",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "schemeName",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "blockNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "plotNumber",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191226103250",
+    "entityTableName": "address",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

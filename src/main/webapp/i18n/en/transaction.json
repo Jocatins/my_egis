@@ -1,0 +1,40 @@
+{
+  "egisexternalApp": {
+    "transaction": {
+      "home": {
+        "title": "Transactions",
+        "createLabel": "Create a new Transaction",
+        "createOrEditLabel": "Create or edit a Transaction",
+        "search": "Search for Transaction",
+        "notFound": "No Transactions found"
+      },
+      "created": "A new Transaction is created with identifier {{ param }}",
+      "updated": "A Transaction is updated with identifier {{ param }}",
+      "deleted": "A Transaction is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Transaction {{ id }}?"
+      },
+      "detail": {
+        "title": "Transaction"
+      },
+      "transactionNumber": "Transaction Number",
+      "transactionType": "Transaction Type",
+      "transactionSubType": "Transaction Sub Type",
+      "applicationDate": "Application Date",
+      "transactionStartDate": "Transaction Start Date",
+      "comments": "Comments",
+      "ownershipType": "Ownership Type",
+      "createDate": "Create Date",
+      "startDate": "Start Date",
+      "completeDate": "Complete Date",
+      "tenureType": "Tenure Type",
+      "batchId": "Batch Id",
+      "transactionCode": "Transaction Code",
+      "ext": "Ext",
+      "party": "Party",
+      "launit": "Launit",
+      "document": "Document",
+      "batch": "Batch"
+    }
+  }
+}

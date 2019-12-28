@@ -1,0 +1,40 @@
+{
+  "egisexternalApp": {
+    "supportingDocument": {
+      "home": {
+        "title": "Supporting Documents",
+        "createLabel": "Create a new Supporting Document",
+        "createOrEditLabel": "Create or edit a Supporting Document",
+        "search": "Search for Supporting Document",
+        "notFound": "No Supporting Documents found"
+      },
+      "created": "A new Supporting Document is created with identifier {{ param }}",
+      "updated": "A Supporting Document is updated with identifier {{ param }}",
+      "deleted": "A Supporting Document is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Supporting Document {{ id }}?"
+      },
+      "detail": {
+        "title": "Supporting Document"
+      },
+      "documentNumber": "Document Number",
+      "documentType": "Document Type",
+      "ownershipArea": "Ownership Area",
+      "documentSubType": "Document Sub Type",
+      "issuedBy": "Issued By",
+      "pageCount": "Page Count",
+      "status": "Status",
+      "provided": "Provided",
+      "page": "Page",
+      "transaction": "Transaction",
+      "status": "Status",
+      "type": "Type",
+      "name": "Name",
+      "fileSize": "File Size",
+      "content": "Content",
+      "contentUrl": "Content Url",
+      "image": "Image",
+      "date": "Date"
+    }
+  }
+}

@@ -1,0 +1,190 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-parcel-heading" jhiTranslate="egisexternalApp.parcel.home.createOrEditLabel">Create or edit a Parcel</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.label" for="field_label">Label</label>
+                    <input type="text" class="form-control" name="label" id="field_label"
+                           formControlName="label"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.area" for="field_area">Area</label>
+                    <input type="number" class="form-control" name="area" id="field_area"
+                           formControlName="area"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.spatialUnitType" for="field_spatialUnitType">Spatial Unit Type</label>
+                    <input type="number" class="form-control" name="spatialUnitType" id="field_spatialUnitType"
+                           formControlName="spatialUnitType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.registrationOfficeDictionary" for="field_registrationOfficeDictionary">Registration Office Dictionary</label>
+                    <input type="text" class="form-control" name="registrationOfficeDictionary" id="field_registrationOfficeDictionary"
+                           formControlName="registrationOfficeDictionary"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.surveyType" for="field_surveyType">Survey Type</label>
+                    <input type="text" class="form-control" name="surveyType" id="field_surveyType"
+                           formControlName="surveyType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.surveyDate" for="field_surveyDate">Survey Date</label>
+                    <div class="input-group">
+                        <input id="field_surveyDate" type="text" class="form-control" name="surveyDate" ngbDatepicker  #surveyDateDp="ngbDatepicker" formControlName="surveyDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="surveyDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.propertyType" for="field_propertyType">Property Type</label>
+                    <input type="number" class="form-control" name="propertyType" id="field_propertyType"
+                           formControlName="propertyType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.accommodation" for="field_accommodation">Accommodation</label>
+                    <input type="text" class="form-control" name="accommodation" id="field_accommodation"
+                           formControlName="accommodation"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.tenureType" for="field_tenureType">Tenure Type</label>
+                    <input type="number" class="form-control" name="tenureType" id="field_tenureType"
+                           formControlName="tenureType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.propertyArea" for="field_propertyArea">Property Area</label>
+                    <input type="number" class="form-control" name="propertyArea" id="field_propertyArea"
+                           formControlName="propertyArea"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.location" for="field_location">Location</label>
+                    <input type="number" class="form-control" name="location" id="field_location"
+                           formControlName="location"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.builtUpAreaType" for="field_builtUpAreaType">Built Up Area Type</label>
+                    <input type="number" class="form-control" name="builtUpAreaType" id="field_builtUpAreaType"
+                           formControlName="builtUpAreaType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.planNumber" for="field_planNumber">Plan Number</label>
+                    <input type="text" class="form-control" name="planNumber" id="field_planNumber"
+                           formControlName="planNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.measurementUnitType" for="field_measurementUnitType">Measurement Unit Type</label>
+                    <input type="number" class="form-control" name="measurementUnitType" id="field_measurementUnitType"
+                           formControlName="measurementUnitType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.premiumValue" for="field_premiumValue">Premium Value</label>
+                    <input type="text" class="form-control" name="premiumValue" id="field_premiumValue"
+                           formControlName="premiumValue"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.landUseCategory" for="field_landUseCategory">Land Use Category</label>
+                    <input type="number" class="form-control" name="landUseCategory" id="field_landUseCategory"
+                           formControlName="landUseCategory"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.landUseType" for="field_landUseType">Land Use Type</label>
+                    <input type="number" class="form-control" name="landUseType" id="field_landUseType"
+                           formControlName="landUseType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.developmentStatus" for="field_developmentStatus">Development Status</label>
+                    <input type="number" class="form-control" name="developmentStatus" id="field_developmentStatus"
+                           formControlName="developmentStatus"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.coordinateN" for="field_coordinateN">Coordinate N</label>
+                    <input type="number" class="form-control" name="coordinateN" id="field_coordinateN"
+                           formControlName="coordinateN"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.coordinateS" for="field_coordinateS">Coordinate S</label>
+                    <input type="number" class="form-control" name="coordinateS" id="field_coordinateS"
+                           formControlName="coordinateS"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.lagosSheetNumber" for="field_lagosSheetNumber">Lagos Sheet Number</label>
+                    <input type="text" class="form-control" name="lagosSheetNumber" id="field_lagosSheetNumber"
+                           formControlName="lagosSheetNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.allocation" for="field_allocation">Allocation</label>
+                    <input type="text" class="form-control" name="allocation" id="field_allocation"
+                           formControlName="allocation"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.location1" for="field_location1">Location 1</label>
+                    <input type="number" class="form-control" name="location1" id="field_location1"
+                           formControlName="location1"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.unitNumber" for="field_unitNumber">Unit Number</label>
+                    <input type="text" class="form-control" name="unitNumber" id="field_unitNumber"
+                           formControlName="unitNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.registerType" for="field_registerType">Register Type</label>
+                    <input type="number" class="form-control" name="registerType" id="field_registerType"
+                           formControlName="registerType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.valuation" for="field_valuation">Valuation</label>
+                    <input type="text" class="form-control" name="valuation" id="field_valuation"
+                           formControlName="valuation"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.comments" for="field_comments">Comments</label>
+                    <input type="text" class="form-control" name="comments" id="field_comments"
+                           formControlName="comments"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.legalDescription" for="field_legalDescription">Legal Description</label>
+                    <input type="text" class="form-control" name="legalDescription" id="field_legalDescription"
+                           formControlName="legalDescription"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.meansOfAcq" for="field_meansOfAcq">Means Of Acq</label>
+                    <input type="number" class="form-control" name="meansOfAcq" id="field_meansOfAcq"
+                           formControlName="meansOfAcq"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.address" for="field_address">Address</label>
+                    <select class="form-control" id="field_address" name="address" formControlName="address">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="addressOption.id === editForm.get('address').value?.id ? editForm.get('address').value : addressOption" *ngFor="let addressOption of addresses; trackBy: trackAddressById">{{addressOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+{
+    "name": "Batch",
+    "fields": [
+        {
+            "fieldName": "batchNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "batchStatus",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "invoiceNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "deliveryDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "officeId",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "batch",
+            "relationshipName": "user",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "transaction",
+            "otherEntityRelationshipName": "batch",
+            "relationshipName": "transaction",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "party",
+            "otherEntityRelationshipName": "batch",
+            "relationshipName": "party",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20191226103245",
+    "entityTableName": "batch",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

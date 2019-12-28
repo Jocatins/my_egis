@@ -1,0 +1,24 @@
+{
+  "egisexternalApp": {
+    "surveyTransaction": {
+      "home": {
+        "title": "SurveyTransactions",
+        "createLabel": "Créer un nouveau Survey Transaction",
+        "createOrEditLabel": "Créer ou éditer un Survey Transaction",
+        "search": "Recherche pour Survey Transaction",
+        "notFound": "Aucun Survey Transaction trouvé"
+      },
+      "created": "Un nouveau Survey Transaction a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Survey Transaction avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Survey Transaction avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Survey Transaction {{ id }} ?"
+      },
+      "detail": {
+        "title": "Survey Transaction"
+      },
+      "transCode": "Trans Code",
+      "comment": "Comment"
+    }
+  }
+}

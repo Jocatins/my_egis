@@ -1,0 +1,112 @@
+{
+    "name": "Transaction",
+    "fields": [
+        {
+            "fieldName": "transactionNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "transactionType",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "transactionSubType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "applicationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "transactionStartDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "comments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ownershipType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "completeDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "tenureType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "batchId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "transactionCode",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "transactionExt",
+            "otherEntityRelationshipName": "transaction",
+            "relationshipName": "ext",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "party",
+            "otherEntityRelationshipName": "transaction",
+            "relationshipName": "party",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "parcel",
+            "otherEntityRelationshipName": "transaction",
+            "relationshipName": "parcel",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "supportingDocument",
+            "otherEntityRelationshipName": "transaction",
+            "relationshipName": "docs",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "batch",
+            "otherEntityRelationshipName": "transaction",
+            "relationshipName": "batch",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191226103246",
+    "entityTableName": "transaction",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

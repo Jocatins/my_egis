@@ -1,0 +1,199 @@
+{
+    "name": "Party",
+    "fields": [
+        {
+            "fieldName": "partyType",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "partyRoleType",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "partySubRoleType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "deliveryType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "partyName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shareNominator",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shareDenominator",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "taxExempt",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "primaryParty",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "otherName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "personIdType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "personType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "fax",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "emailType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "payerId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "taxPayerNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "personIdIssuedBy",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "personIdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "personIdExpirationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "rcNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "organization",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "businessNature",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "birthPlace",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "birthDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "personTitle",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "middleName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "civilState",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "driverLicenseRegion",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "driverLicence",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "representativeId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "professionRegNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "occupation",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "address",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "address",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "batch",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "batch",
+            "otherEntityField": "id",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "transaction",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "transaction",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191226103249",
+    "entityTableName": "party",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

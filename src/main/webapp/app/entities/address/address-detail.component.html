@@ -1,0 +1,115 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="address">
+            <h2><span jhiTranslate="egisexternalApp.address.detail.title">Address</span> {{address.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.address.addressAreaName">Address Area Name</span></dt>
+                <dd>
+                    <span>{{address.addressAreaName}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.streetName">Street Name</span></dt>
+                <dd>
+                    <span>{{address.streetName}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.buildingName">Building Name</span></dt>
+                <dd>
+                    <span>{{address.buildingName}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.buildingNumber">Building Number</span></dt>
+                <dd>
+                    <span>{{address.buildingNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.postalCode">Postal Code</span></dt>
+                <dd>
+                    <span>{{address.postalCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.city">City</span></dt>
+                <dd>
+                    <span>{{address.city}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.country">Country</span></dt>
+                <dd>
+                    <span>{{address.country}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.region">Region</span></dt>
+                <dd>
+                    <span>{{address.region}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.district">District</span></dt>
+                <dd>
+                    <span>{{address.district}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.village">Village</span></dt>
+                <dd>
+                    <span>{{address.village}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.state">State</span></dt>
+                <dd>
+                    <span>{{address.state}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.estateName">Estate Name</span></dt>
+                <dd>
+                    <span>{{address.estateName}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.localGovernmentArea">Local Government Area</span></dt>
+                <dd>
+                    <span>{{address.localGovernmentArea}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.localCouncilArea">Local Council Area</span></dt>
+                <dd>
+                    <span>{{address.localCouncilArea}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.streetNumber">Street Number</span></dt>
+                <dd>
+                    <span>{{address.streetNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.streetType">Street Type</span></dt>
+                <dd>
+                    <span>{{address.streetType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.town">Town</span></dt>
+                <dd>
+                    <span>{{address.town}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.ward">Ward</span></dt>
+                <dd>
+                    <span>{{address.ward}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.category">Category</span></dt>
+                <dd>
+                    <span>{{address.category}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.stateOfOrigin">State Of Origin</span></dt>
+                <dd>
+                    <span>{{address.stateOfOrigin}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.schemeName">Scheme Name</span></dt>
+                <dd>
+                    <span>{{address.schemeName}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.blockNumber">Block Number</span></dt>
+                <dd>
+                    <span>{{address.blockNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.address.plotNumber">Plot Number</span></dt>
+                <dd>
+                    <span>{{address.plotNumber}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/address', address.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

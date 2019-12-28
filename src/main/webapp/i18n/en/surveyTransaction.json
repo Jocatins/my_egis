@@ -1,0 +1,24 @@
+{
+  "egisexternalApp": {
+    "surveyTransaction": {
+      "home": {
+        "title": "Survey Transactions",
+        "createLabel": "Create a new Survey Transaction",
+        "createOrEditLabel": "Create or edit a Survey Transaction",
+        "search": "Search for Survey Transaction",
+        "notFound": "No Survey Transactions found"
+      },
+      "created": "A new Survey Transaction is created with identifier {{ param }}",
+      "updated": "A Survey Transaction is updated with identifier {{ param }}",
+      "deleted": "A Survey Transaction is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Survey Transaction {{ id }}?"
+      },
+      "detail": {
+        "title": "Survey Transaction"
+      },
+      "transCode": "Trans Code",
+      "comment": "Comment"
+    }
+  }
+}

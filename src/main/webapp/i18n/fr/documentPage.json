@@ -1,0 +1,30 @@
+{
+  "egisexternalApp": {
+    "documentPage": {
+      "home": {
+        "title": "DocumentPages",
+        "createLabel": "Créer un nouveau Document Page",
+        "createOrEditLabel": "Créer ou éditer un Document Page",
+        "search": "Recherche pour Document Page",
+        "notFound": "Aucun Document Page trouvé"
+      },
+      "created": "Un nouveau Document Page a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Document Page avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Document Page avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Document Page {{ id }} ?"
+      },
+      "detail": {
+        "title": "Document Page"
+      },
+      "status": "Status",
+      "type": "Type",
+      "name": "Name",
+      "fileSize": "File Size",
+      "content": "Content",
+      "contentUrl": "Content Url",
+      "image": "Image",
+      "date": "Date"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "egisexternalApp": {
+    "organization": {
+      "home": {
+        "title": "Organizations",
+        "createLabel": "Create a new Organization",
+        "createOrEditLabel": "Create or edit a Organization",
+        "search": "Search for Organization",
+        "notFound": "No Organizations found"
+      },
+      "created": "A new Organization is created with identifier {{ param }}",
+      "updated": "A Organization is updated with identifier {{ param }}",
+      "deleted": "A Organization is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Organization {{ id }}?"
+      },
+      "detail": {
+        "title": "Organization"
+      },
+      "rcNumber": "Rc Number",
+      "organization": "Organization",
+      "businessNature": "Business Nature"
+    }
+  }
+}

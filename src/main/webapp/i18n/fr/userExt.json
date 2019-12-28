@@ -1,0 +1,25 @@
+{
+  "egisexternalApp": {
+    "userExt": {
+      "home": {
+        "title": "UserExts",
+        "createLabel": "Créer un nouveau User Ext",
+        "createOrEditLabel": "Créer ou éditer un User Ext",
+        "search": "Recherche pour User Ext",
+        "notFound": "Aucun User Ext trouvé"
+      },
+      "created": "Un nouveau User Ext a été créé avec l'identifiant {{ param }}",
+      "updated": "Le User Ext avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le User Ext avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le User Ext {{ id }} ?"
+      },
+      "detail": {
+        "title": "User Ext"
+      },
+      "payerId": "Payer Id",
+      "phoneNumber": "Phone Number",
+      "user": "User"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "egisexternalApp": {
+    "documentPage": {
+      "home": {
+        "title": "Document Pages",
+        "createLabel": "Create a new Document Page",
+        "createOrEditLabel": "Create or edit a Document Page",
+        "search": "Search for Document Page",
+        "notFound": "No Document Pages found"
+      },
+      "created": "A new Document Page is created with identifier {{ param }}",
+      "updated": "A Document Page is updated with identifier {{ param }}",
+      "deleted": "A Document Page is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Document Page {{ id }}?"
+      },
+      "detail": {
+        "title": "Document Page"
+      },
+      "status": "Status",
+      "type": "Type",
+      "name": "Name",
+      "fileSize": "File Size",
+      "content": "Content",
+      "contentUrl": "Content Url",
+      "image": "Image",
+      "date": "Date"
+    }
+  }
+}

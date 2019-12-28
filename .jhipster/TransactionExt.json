@@ -1,0 +1,24 @@
+{
+    "name": "TransactionExt",
+    "fields": [
+        {
+            "fieldName": "extensionKey",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "extensionValue",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191226103247",
+    "entityTableName": "transaction_ext",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

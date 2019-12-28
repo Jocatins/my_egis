@@ -1,0 +1,150 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="egisexternalApp.party.home.title">Parties</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-party" [routerLink]="['/party/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="egisexternalApp.party.home.createLabel">
+            Create a new Party
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'egisexternalApp.party.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="parties?.length === 0">
+        <span jhiTranslate="egisexternalApp.party.home.notFound">No parties found</span>
+    </div>
+    <div class="table-responsive" *ngIf="parties?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.partyType">Party Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.partyRoleType">Party Role Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.partySubRoleType">Party Sub Role Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.deliveryType">Delivery Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.partyName">Party Name</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.shareNominator">Share Nominator</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.shareDenominator">Share Denominator</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.taxExempt">Tax Exempt</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.primaryParty">Primary Party</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.otherName">Other Name</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.personIdType">Person Id Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.personType">Person Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.fax">Fax</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.email">Email</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.emailType">Email Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.phoneNumber">Phone Number</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.payerId">Payer Id</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.taxPayerNumber">Tax Payer Number</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.comments">Comments</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.personIdIssuedBy">Person Id Issued By</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.personIdDate">Person Id Date</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.personIdExpirationDate">Person Id Expiration Date</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.rcNumber">Rc Number</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.organization">Organization</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.businessNature">Business Nature</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.birthPlace">Birth Place</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.birthDate">Birth Date</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.personTitle">Person Title</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.gender">Gender</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.firstName">First Name</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.middleName">Middle Name</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.lastName">Last Name</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.civilState">Civil State</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.driverLicenseRegion">Driver License Region</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.driverLicence">Driver Licence</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.representativeId">Representative Id</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.professionRegNo">Profession Reg No</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.occupation">Occupation</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.address">Address</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let party of parties ;trackBy: trackId">
+                <td><a [routerLink]="['/party', party.id, 'view' ]">{{party.id}}</a></td>
+                <td>{{party.partyType}}</td>
+                <td>{{party.partyRoleType}}</td>
+                <td>{{party.partySubRoleType}}</td>
+                <td>{{party.deliveryType}}</td>
+                <td>{{party.partyName}}</td>
+                <td>{{party.shareNominator}}</td>
+                <td>{{party.shareDenominator}}</td>
+                <td>{{party.taxExempt}}</td>
+                <td>{{party.primaryParty}}</td>
+                <td>{{party.otherName}}</td>
+                <td>{{party.personIdType}}</td>
+                <td>{{party.personType}}</td>
+                <td>{{party.fax}}</td>
+                <td>{{party.email}}</td>
+                <td>{{party.emailType}}</td>
+                <td>{{party.phoneNumber}}</td>
+                <td>{{party.payerId}}</td>
+                <td>{{party.taxPayerNumber}}</td>
+                <td>{{party.comments}}</td>
+                <td>{{party.personIdIssuedBy}}</td>
+                <td>{{party.personIdDate | date:'mediumDate'}}</td>
+                <td>{{party.personIdExpirationDate | date:'mediumDate'}}</td>
+                <td>{{party.rcNumber}}</td>
+                <td>{{party.organization}}</td>
+                <td>{{party.businessNature}}</td>
+                <td>{{party.birthPlace}}</td>
+                <td>{{party.birthDate | date:'mediumDate'}}</td>
+                <td>{{party.personTitle}}</td>
+                <td>{{party.gender}}</td>
+                <td>{{party.firstName}}</td>
+                <td>{{party.middleName}}</td>
+                <td>{{party.lastName}}</td>
+                <td>{{party.civilState}}</td>
+                <td>{{party.driverLicenseRegion}}</td>
+                <td>{{party.driverLicence}}</td>
+                <td>{{party.representativeId}}</td>
+                <td>{{party.professionRegNo}}</td>
+                <td>{{party.occupation}}</td>
+                <td>
+                    <div *ngIf="party.address">
+                        <a [routerLink]="['/address', party.address?.id, 'view' ]" >{{party.address?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/party', party.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/party', party.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(party)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="transactionExt">
+            <h2><span jhiTranslate="egisexternalApp.transactionExt.detail.title">Transaction Ext</span> {{transactionExt.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.transactionExt.extensionKey">Extension Key</span></dt>
+                <dd>
+                    <span>{{transactionExt.extensionKey}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transactionExt.extensionValue">Extension Value</span></dt>
+                <dd>
+                    <span>{{transactionExt.extensionValue}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/transaction-ext', transactionExt.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

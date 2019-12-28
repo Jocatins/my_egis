@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <h6 class="text-right">{{message}}</h6>
+    <h1 class="text-capitalize text-center" jhiTranslate="application.title">Title</h1>
+    <h5 class="text-center" jhiTranslate="application.subtitle">Subtitle</h5>
+    <hr/>
+
+    <div>
+        <div class="board-inner" id="status-buttons">
+            <ul class="nav nav-tabs" id="myTab">
+
+
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a routerLinkActive="active" class="nav-link" routerLink="/application/landing" jhiTranslate="global.menu.landing">Page One</a>
+      </li>
+      <li class="nav-item">
+        <a routerLinkActive="active" class="nav-link" [routerLink]="['/application/overview','SRSL']" jhiTranslate="global.menu.overview">Page Two</a>
+      </li>
+      <li class="nav-item">
+        <a routerLinkActive="active" class="nav-link" [routerLink]="['/application/applicants']" jhiTranslate="global.menu.applicants">Page Two</a>
+      </li>
+      <li class="nav-item">
+        <a routerLinkActive="active" class="nav-link" [routerLink]="['/application/property']" jhiTranslate="global.menu.property">Page Two</a>
+      </li>
+      <li class="nav-item">
+        <a routerLinkActive="active" class="nav-link" [routerLink]="['/application/supporting-docs']" jhiTranslate="global.menu.supporting-docs">Page Two</a>
+      </li>
+      <li class="nav-item">
+        <a routerLinkActive="active" class="nav-link" [routerLink]="['/application/application-summary']" jhiTranslate="global.menu.application-summary">Page Two</a>
+      </li>
+    </ul>
+    <router-outlet></router-outlet>
+  </div>
+  <div class="col-md-1"></div>
+</div>

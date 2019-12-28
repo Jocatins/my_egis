@@ -1,0 +1,99 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="transaction">
+            <h2><span jhiTranslate="egisexternalApp.transaction.detail.title">Transaction</span> {{transaction.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.transaction.transactionNumber">Transaction Number</span></dt>
+                <dd>
+                    <span>{{transaction.transactionNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.transactionType">Transaction Type</span></dt>
+                <dd>
+                    <span>{{transaction.transactionType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.transactionSubType">Transaction Sub Type</span></dt>
+                <dd>
+                    <span>{{transaction.transactionSubType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.applicationDate">Application Date</span></dt>
+                <dd>
+                    <span>{{transaction.applicationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.transactionStartDate">Transaction Start Date</span></dt>
+                <dd>
+                    <span>{{transaction.transactionStartDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.comments">Comments</span></dt>
+                <dd>
+                    <span>{{transaction.comments}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.ownershipType">Ownership Type</span></dt>
+                <dd>
+                    <span>{{transaction.ownershipType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.createDate">Create Date</span></dt>
+                <dd>
+                    <span>{{transaction.createDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{transaction.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.completeDate">Complete Date</span></dt>
+                <dd>
+                    <span>{{transaction.completeDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.tenureType">Tenure Type</span></dt>
+                <dd>
+                    <span>{{transaction.tenureType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.batchId">Batch Id</span></dt>
+                <dd>
+                    <span>{{transaction.batchId}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.transactionCode">Transaction Code</span></dt>
+                <dd>
+                    <span>{{transaction.transactionCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.ext">Ext</span></dt>
+                <dd>
+                    <div *ngIf="transaction.ext">
+                        <a [routerLink]="['/transaction-ext', transaction.ext?.id, 'view']">{{transaction.ext?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.party">Party</span></dt>
+                <dd>
+                    <span *ngFor="let party of transaction.parties; let last = last">
+                        <a [routerLink]="['/party', party?.id, 'view' ]">{{party.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.parcel">Parcel</span></dt>
+                <dd>
+                    <span *ngFor="let parcel of transaction.parcels; let last = last">
+                        <a [routerLink]="['/parcel', parcel?.id, 'view' ]">{{parcel.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.transaction.docs">Docs</span></dt>
+                <dd>
+                    <span *ngFor="let docs of transaction.docs; let last = last">
+                        <a [routerLink]="['/supporting-document', docs?.id, 'view' ]">{{docs.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/transaction', transaction.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "egisexternalApp": {
+    "surveyor": {
+      "home": {
+        "title": "Surveyors",
+        "createLabel": "Créer un nouveau Surveyor",
+        "createOrEditLabel": "Créer ou éditer un Surveyor",
+        "search": "Recherche pour Surveyor",
+        "notFound": "Aucun Surveyor trouvé"
+      },
+      "created": "Un nouveau Surveyor a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Surveyor avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Surveyor avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Surveyor {{ id }} ?"
+      },
+      "detail": {
+        "title": "Surveyor"
+      },
+      "email": "Email",
+      "surconNumber": "Surcon Number",
+      "registrationNumber": "Registration Number",
+      "phone": "Phone",
+      "status": "Status",
+      "address": "Address"
+    }
+  }
+}

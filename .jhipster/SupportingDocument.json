@@ -1,0 +1,85 @@
+{
+    "name": "SupportingDocument",
+    "fields": [
+        {
+            "fieldName": "documentNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "documentType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "ownershipArea",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "documentSubType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "issuedBy",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "pageCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "provided",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fileSize",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "content",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contentUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "transaction",
+            "otherEntityRelationshipName": "docs",
+            "relationshipName": "transaction",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191226103248",
+    "entityTableName": "supporting_document",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

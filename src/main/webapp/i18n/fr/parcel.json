@@ -1,0 +1,57 @@
+{
+  "egisexternalApp": {
+    "parcel": {
+      "home": {
+        "title": "Parcels",
+        "createLabel": "Créer un nouveau Parcel",
+        "createOrEditLabel": "Créer ou éditer un Parcel",
+        "search": "Recherche pour Parcel",
+        "notFound": "Aucun Parcel trouvé"
+      },
+      "created": "Un nouveau Parcel a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Parcel avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Parcel avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Parcel {{ id }} ?"
+      },
+      "detail": {
+        "title": "Parcel"
+      },
+      "label": "Label",
+      "area": "Area",
+      "spatialUnitType": "Spatial Unit Type",
+      "registrationOfficeDictionary": "Registration Office Dictionary",
+      "surveyType": "Survey Type",
+      "surveyDate": "Survey Date",
+      "propertyType": "Property Type",
+      "accommodation": "Accommodation",
+      "tenureType": "Tenure Type",
+      "description": "Description",
+      "propertyArea": "Property Area",
+      "location": "Location",
+      "builtUpAreaType": "Built Up Area Type",
+      "planNumber": "Plan Number",
+      "measurementUnitType": "Measurement Unit Type",
+      "premiumValue": "Premium Value",
+      "landUseCategory": "Land Use Category",
+      "landUseType": "Land Use Type",
+      "developmentStatus": "Development Status",
+      "coordinateN": "Coordinate N",
+      "coordinateS": "Coordinate S",
+      "lagosSheetNumber": "Lagos Sheet Number",
+      "allocation": "Allocation",
+      "location1": "Location 1",
+      "address": "Address",
+      "launit": "Launit",
+      "unitNumber": "Unit Number",
+      "name": "Name",
+      "registerType": "Register Type",
+      "valuation": "Valuation",
+      "comments": "Comments",
+      "legalDescription": "Legal Description",
+      "meansOfAcq": "Means Of Acq",
+      "parcel": "Parcel",
+      "transaction": "Transaction"
+    }
+  }
+}

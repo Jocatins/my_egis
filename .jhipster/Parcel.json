@@ -1,0 +1,157 @@
+{
+    "name": "Parcel",
+    "fields": [
+        {
+            "fieldName": "label",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "area",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "spatialUnitType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "registrationOfficeDictionary",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "surveyType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "surveyDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "propertyType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "accommodation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tenureType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "propertyArea",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "location",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "builtUpAreaType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "planNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "measurementUnitType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "premiumValue",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "landUseCategory",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "landUseType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "developmentStatus",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "coordinateN",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "coordinateS",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "lagosSheetNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "allocation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "location1",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "unitNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "registerType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "valuation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "legalDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "meansOfAcq",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "address",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "address",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "transaction",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "transaction",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191226103251",
+    "entityTableName": "parcel",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

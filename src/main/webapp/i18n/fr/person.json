@@ -1,0 +1,38 @@
+{
+  "egisexternalApp": {
+    "person": {
+      "home": {
+        "title": "People",
+        "createLabel": "Créer un nouveau Person",
+        "createOrEditLabel": "Créer ou éditer un Person",
+        "search": "Recherche pour Person",
+        "notFound": "Aucun Person trouvé"
+      },
+      "created": "Un nouveau Person a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Person avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Person avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Person {{ id }} ?"
+      },
+      "detail": {
+        "title": "Person"
+      },
+      "name": "Name",
+      "personIdType": "Person Id Type",
+      "personType": "Person Type",
+      "fax": "Fax",
+      "email": "Email",
+      "emailType": "Email Type",
+      "phoneNumber": "Phone Number",
+      "payerId": "Payer Id",
+      "taxPayerNumber": "Tax Payer Number",
+      "comments": "Comments",
+      "personIdIssuedBy": "Person Id Issued By",
+      "personIdDate": "Person Id Date",
+      "personIdExpirationDate": "Person Id Expiration Date",
+      "address": "Address",
+      "individual": "Individual",
+      "organization": "Organization"
+    }
+  }
+}

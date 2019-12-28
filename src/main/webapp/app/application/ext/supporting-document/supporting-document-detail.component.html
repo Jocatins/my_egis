@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="supportingDocument">
+            <h2><span jhiTranslate="egisexternalApp.supportingDocument.detail.title">Supporting Document</span> {{supportingDocument.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.documentNumber">Document Number</span></dt>
+                <dd>
+                    <span>{{supportingDocument.documentNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.documentType">Document Type</span></dt>
+                <dd>
+                    <span>{{supportingDocument.documentType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.ownershipArea">Ownership Area</span></dt>
+                <dd>
+                    <span>{{supportingDocument.ownershipArea}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.documentSubType">Document Sub Type</span></dt>
+                <dd>
+                    <span>{{supportingDocument.documentSubType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.issuedBy">Issued By</span></dt>
+                <dd>
+                    <span>{{supportingDocument.issuedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.pageCount">Page Count</span></dt>
+                <dd>
+                    <span>{{supportingDocument.pageCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.status">Status</span></dt>
+                <dd>
+                    <span>{{supportingDocument.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.provided">Provided</span></dt>
+                <dd>
+                    <span>{{supportingDocument.provided}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.type">Type</span></dt>
+                <dd>
+                    <span>{{supportingDocument.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.name">Name</span></dt>
+                <dd>
+                    <span>{{supportingDocument.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.fileSize">File Size</span></dt>
+                <dd>
+                    <span>{{supportingDocument.fileSize}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.content">Content</span></dt>
+                <dd>
+                    <span>{{supportingDocument.content}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.contentUrl">Content Url</span></dt>
+                <dd>
+                    <span>{{supportingDocument.contentUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.image">Image</span></dt>
+                <dd>
+                    <span>{{supportingDocument.image}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.date">Date</span></dt>
+                <dd>
+                    <span>{{supportingDocument.date}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/supporting-document', supportingDocument.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
