@@ -1,0 +1,27 @@
+Changing the port number-
+https://stackoverflow.com/questions/46777881/change-port-8080-for-jhipster-app
+
+
+npm -g install eslint
+console.log giving error  - fix for that
+https://stackoverflow.com/questions/34215526/eslint-how-to-disable-unexpected-console-statement-in-node-js
+https://www.soinside.com/question/j2zJSV9HhPfN44rWXn9UZH
+
+
+
+Make A page
+https://www.npmjs.com/package/generator-jhipster-nav-element
+yo jhipster-nav-element
+
+
+Install ElasicSearch elasticsearch-6.4.3
+
+Spinners
+https://loading.io/
+
+https://stackoverflow.com/questions/34215526/eslint-how-to-disable-unexpected-console-statement-in-node-js -
+console log
+If you install eslint under your local project, you should have a directory /node_modules/eslint/conf/ and under that directory a file eslint.json. You could edit the file and modify "no-console" entry with the value "off" (although 0 value is supported too):
+
+
+

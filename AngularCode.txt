@@ -1,0 +1,42 @@
+protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
+    if (res.body) {
+      res.body.forEach((batch: IBatch) => {
+        batch.createDate = batch.createDate != null ? moment(batch.createDate) : null;
+        batch.deliveryDate = batch.deliveryDate != null ? moment(batch.deliveryDate) : null;
+
+        const callResp = this.http.get<IBatch>(`${this.resourceUrl}/${batch.id}`);
+        if ( callResp != null ){
+          callResp
+          .pipe( timeout(2000),
+              catchError (e => {
+              // alert("Request time out" + e);
+                return null;
+              })
+          )
+          .subscribe((data : Batch)=>{
+            this.retBatch = data;
+            const code = data.transactions[0].id;
+
+            const simpleresourceUrl = SERVER_API_URL + 'api/backoffice/transmeatada?code='+ code;
+            const callMetadata = this.http.get<any>(`${simpleresourceUrl}`);
+            if(callMetadata !== null){
+              callMetadata.pipe(timeout(2000), catchError(ee => {
+                alert('Error')
+                alert(ee.json())
+                return null
+              }))
+                .subscribe((dataMeta: any) => {
+                  batch.moreData = JSON.parse(dataMeta.metadata).descr ;
+
+                }
+
+                )
+
+            }
+
+          } );
+        }
+      });
+    }
+    return res;
+  }
