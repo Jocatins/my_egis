@@ -8,7 +8,7 @@ import { createRequestOption } from 'app/shared/util/request-util';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { catchError, map, timeout } from 'rxjs/operators';
-import { IBOTranInfo } from 'app/application/model/= botraninfo.model';
+import { IBOTranInfo } from 'app/application/model/botraninfo.model';
 
 
 type EntityResponseType = HttpResponse<IBatch>;
@@ -35,6 +35,11 @@ export class DashboardService {
       .get<any>(`${this.serverApiURL + 'transmetadata'}/?code=${code}`, { observe: 'response' })
   }
 
+  public fetchDictionaryValuesObj(category: string)  {
+    this.serverApiURL ='/api/backoffice/';
+    return this.http
+      .get<any>(`${this.serverApiURL + 'fetchDictionaryValuesObj'}?category=${category}`, { observe: 'response' })
+  }
 
 
 }

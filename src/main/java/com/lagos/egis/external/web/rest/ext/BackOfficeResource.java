@@ -149,4 +149,35 @@ public class BackOfficeResource {
 
         return result.toString();
     }
+
+
+    @GetMapping("/fetchDictionaryValuesObj")
+    public String fetchDictionaryValuesObj(@RequestParam String category) throws IOException {
+
+        String backoffice_service_url = ""; //PropsUtil.get("backoffice-service-url");
+
+        StringBuilder sb = new StringBuilder();
+
+        StringBuffer result = new StringBuffer();
+
+        URL url = new URL("http://localhost:8060/api/jsonws/AumentumServices-portlet.calls/fetch-dictionary-values-obj/category/"+ category );
+
+        URLConnection conn = url.openConnection();
+
+        String backoffice_account = "test@liferay.com";//PropsUtil.get("backoffice-account");
+        String backoffice_secret = "test"; //PropsUtil.get("backoffice-secret");
+
+        String userpass = backoffice_account.trim() + ":" +backoffice_secret;
+        String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
+        conn.setRequestProperty ("Authorization", basicAuth);
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+            conn.getInputStream()));
+
+        String inputLine;
+        while ((inputLine = in.readLine()) != null) {
+            result.append(inputLine);
+        }
+        return result.toString();
+    }
 }

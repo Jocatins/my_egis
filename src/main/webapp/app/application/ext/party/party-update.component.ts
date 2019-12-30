@@ -15,6 +15,8 @@ import { IBatch } from 'app/shared/model/batch.model';
 import { BatchService } from 'app/entities/batch/batch.service';
 import { ITransaction } from 'app/shared/model/transaction.model';
 import { TransactionService } from 'app/entities/transaction/transaction.service';
+import { IEGISDIctionary } from 'app/application/model/egisdictionary.model';
+import { DashboardService } from 'app/dashboard/dashboard.service';
 
 @Component({
   selector: 'jhi-party-update',
@@ -33,6 +35,8 @@ export class PartyExtUpdateComponent implements OnInit {
   personIdDateDp: any;
   personIdExpirationDateDp: any;
   birthDateDp: any;
+
+  states: IEGISDIctionary[];
 
   editForm = this.fb.group({
     id: [],
@@ -84,6 +88,7 @@ export class PartyExtUpdateComponent implements OnInit {
     protected batchService: BatchService,
     protected transactionService: TransactionService,
     protected activatedRoute: ActivatedRoute,
+    protected dashboardService: DashboardService,
     private fb: FormBuilder
   ) {
     this.batchId = activatedRoute.snapshot.params["batchId"];
@@ -92,7 +97,7 @@ export class PartyExtUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.isSaving = false;
-    alert(this.batchId)
+    // alert(this.batchId)
     this.activatedRoute.data.subscribe(({ party }) => {
       this.updateForm(party);
     });
@@ -120,6 +125,16 @@ export class PartyExtUpdateComponent implements OnInit {
         (res: HttpResponse<ITransaction[]>) => (this.transactions = res.body),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
+
+      this.dashboardService.fetchDictionaryValuesObj('state').subscribe(
+        (data) =>{
+          this.states = JSON.parse(data.body.category);
+          // alert(JSON.stringify(this.states))
+        },
+        (err)=>{
+          //  alert(JSON.stringify(err));
+        }
+      )
   }
 
   updateForm(party: IParty) {

@@ -80,7 +80,7 @@ public class Transaction implements Serializable {
                inverseJoinColumns = @JoinColumn(name = "party_id", referencedColumnName = "id"))
     private Set<Party> parties = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "transaction_parcel",
                joinColumns = @JoinColumn(name = "transaction_id", referencedColumnName = "id"),
