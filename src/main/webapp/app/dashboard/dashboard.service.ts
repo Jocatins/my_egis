@@ -1,15 +1,8 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpUrlEncodingCodec } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SERVER_API_URL } from 'app/app.constants';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { IBatch } from 'app/shared/model/batch.model';
-import { createRequestOption } from 'app/shared/util/request-util';
-import * as moment from 'moment';
-import { Observable } from 'rxjs';
-import { catchError, map, timeout } from 'rxjs/operators';
-import { IBOTranInfo } from 'app/application/model/botraninfo.model';
-
 
 type EntityResponseType = HttpResponse<IBatch>;
 type EntityArrayResponseType = HttpResponse<IBatch[]>;
@@ -40,6 +33,52 @@ export class DashboardService {
     return this.http
       .get<any>(`${this.serverApiURL + 'fetchDictionaryValuesObj'}?category=${category}`, { observe: 'response' })
   }
+
+  public transinfoWithGroup(group: string)  {
+    this.serverApiURL ='/api/backoffice/';
+    return this.http
+      .get<any>(`${this.serverApiURL + 'transinfoWithGroup'}?group=${group}`, { observe: 'response' })
+  }
+
+  // c.l.e.e.aop.logging.LoggingAspect
+  //
+  public downloadWithMore(transCode: string,
+    laApplication: string,
+        laAgent: string,
+        usrMultiInd: number,
+       usrMutliOrg: number
+    )  {
+
+    const strUrl =`/api/backoffice/downloadWithMore?laAgent=${laAgent}&laApplication=${laApplication}&transCode=${transCode}&usrMultiInd=${usrMultiInd}&usrMutliOrg=${usrMutliOrg}`;
+   // alert(strUrl)
+    return this.http
+      .get<any>(strUrl, { observe: 'response' })
+  }
+
+
+
+  public downloadForm(transCode: string, complexParam: string)  {
+    this.serverApiURL ='/api/backoffice/';
+
+    const strUrl = `${this.serverApiURL + 'download'}?param=${complexParam}&transCode=${transCode}`;
+    //const strUrl =`/api/backoffice/download?param=LA_APPLICATION_TYPE%255EIndividual%257CLA_AGENT%255Etrue%257CUSR_MULTIPARTY_INDIVIDUAL_COUNT%255E2%257CUSR_MULTIPARTY_ORGANISATION_COUNT%255E2&transCode=AOSL`;
+    //const strUrl =`/api/backoffice/download?transCode=AOSL&param=LA_APPLICATION_TYPE%5EIndividual%7CLA_AGENT%5Etrue%7CUSR_MULTIPARTY_INDIVIDUAL_COUNT%5E2%7CUSR_MULTIPARTY_ORGANISATION_COUNT%5E2`;
+
+    //alert(strUrl)
+    return this.http
+      .get<any>(strUrl, { observe: 'response' })
+  }
+
+
+  // public filedownloadForm(transCode: string, complexParam: string)  {
+  //   this.serverApiURL ='/api/backoffice/';
+
+  //   //alert(`${this.serverApiURL + 'download'}?param=${complexParam}&transCode=${transCode}`);
+  // const strUrl =`/api/backoffice/filedownload?param=LA_APPLICATION_TYPE%255EIndividual%257CLA_AGENT%255Etrue%257CUSR_MULTIPARTY_INDIVIDUAL_COUNT%255E2%257CUSR_MULTIPARTY_ORGANISATION_COUNT%255E2&transCode=AOSL`;
+  //   //const strUrl =`http://localhost:7777/forms/filedownload?sheetName=AOSL&complexParams=LA_APPLICATION_TYPE%5EIndividual%7CLA_AGENT%5Etrue%7CUSR_MULTIPARTY_INDIVIDUAL_COUNT%5E2%7CUSR_MULTIPARTY_ORGANISATION_COUNT%5E2`
+  //   return this.http
+  //     .get<any>(strUrl, { observe: 'response' })
+  // }
 
 
 }

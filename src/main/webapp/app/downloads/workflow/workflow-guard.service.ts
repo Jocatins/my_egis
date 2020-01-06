@@ -13,19 +13,19 @@ export class WorkflowGuard implements CanActivate {
     constructor(private router: Router, private workflowService: WorkflowService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        let path: string = route.routeConfig.path;
+        const path: string = route.routeConfig.path;
         const verified = this.verifyWorkFlow(path);
         return verified;
     }
 
     verifyWorkFlow(path) : boolean {
-        console.log("Entered '" + path + "' path.");
+        //console.log("Entered '" + path + "' path.");
 
         // If any of the previous steps is invalid, go back to the first invalid step
-        let firstPath = this.workflowService.getFirstInvalidStep(path);
+        const firstPath = this.workflowService.getFirstInvalidStep(path);
         if (firstPath.length > 0) {
-            console.log("Redirected to '" + firstPath + "' path which it is the first invalid step.");
-            let url = `/${firstPath}`;
+            //console.log("Redirected to '" + firstPath + "' path which it is the first invalid step.");
+            const url = 'downloads' + `/${firstPath}`;
             this.router.navigate([url]);
             return false;
         };

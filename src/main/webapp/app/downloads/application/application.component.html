@@ -1,0 +1,13 @@
+<form #f="ngForm" class="editForm" novalidate></form>
+    <div class="form-group required">
+          <label>Select the transaction who's application form you would want to download.</label>
+          <select class="form-control input-md" #pplication.code_="ngModel" required id="code_" name="code_"  [(ngModel)]="application.code_">
+              <option [ngValue]="null"></option>
+              <option [ngValue]="tranOption.code_ === application.code_ ? application.code_ : tranOption.code_"
+                    *ngFor="let tranOption of trans; trackBy: trackTranByCode_">{{tranOption.param_value}}</option>
+        </select>
+    </div>
+    <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="getApplication(f)">
+        &nbsp;Continue
+    </button>
+</form>

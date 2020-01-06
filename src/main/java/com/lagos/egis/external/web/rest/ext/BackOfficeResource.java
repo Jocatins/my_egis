@@ -10,6 +10,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -41,31 +42,72 @@ public class BackOfficeResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
+    @GetMapping("/filedownload")
+    public ResponseEntity  filedownloadForm(
+        @RequestParam String transCode, @RequestParam String param) throws IOException
+    {
+        String resourceUrl = "http://localhost:7777/forms/filedownload?sheetName=" + transCode +"&complexParams=" + param;
+        StringBuffer result = new StringBuffer();
+        URL url = new URL (resourceUrl );
+        URLConnection conn = url.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/pdf").body(in);
+//        String inputLine;
+//        while ((inputLine = in.readLine()) != null) {
+//            result.append(inputLine);
+//        }
+//        return result.toString();
+    }
 
+    //http://localhost:7777/forms/download?sheetName=AOSL&complexParams=LA_APPLICATION_TYPE^Individual|LA_AGENT^true|USR_MULTIPARTY_INDIVIDUAL_COUNT^2|USR_MULTIPARTY_ORGANISATION_COUNT^2
+    @GetMapping("/download")
+    public String downloadForm(
+        @RequestParam String transCode, @RequestParam String param) throws IOException
+    {
+        String resourceUrl = "http://localhost:7777/forms/download?sheetName=" + transCode +"&complexParams=" + param;
+        StringBuffer result = new StringBuffer();
+        URL url = new URL (resourceUrl );
+        URLConnection conn = url.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String inputLine;
+        while ((inputLine = in.readLine()) != null) {
+            result.append(inputLine);
+        }
+        return result.toString();
+    }
+
+    @GetMapping("/downloadWithMore")
+    public String downloadWithMore(
+        @RequestParam String transCode,
+        @RequestParam String laApplication,
+        @RequestParam String laAgent,
+        @RequestParam Integer usrMultiInd,
+        @RequestParam Integer usrMutliOrg
+        ) throws IOException
+    {
+        //?sheetName=AOSL&laApplication=Individual&laAgent=true&usrMultiInd=2&usrMutliOrg=2
+        String resourceUrl = "http://localhost:7777/forms/downloadWithMore?sheetName=" + transCode +
+            "&laApplication=" + laApplication +
+            "&laAgent=" + laAgent +"&usrMultiInd=" + usrMultiInd +
+            "&usrMutliOrg=" + usrMutliOrg;
+        StringBuffer result = new StringBuffer();
+        URL url = new URL (resourceUrl );
+        URLConnection conn = url.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String inputLine;
+        while ((inputLine = in.readLine()) != null) {
+            result.append(inputLine);
+        }
+        return result.toString();
+    }
     //transinfo
     @GetMapping("/transinfo")
     public String transinfo(@RequestParam String transCode, @RequestParam String param) throws IOException {
 
         String resourceUrl = "http://localhost:7777/transinfo/" + transCode +"/" + param;
-
-        StringBuilder sb = new StringBuilder();
-
         StringBuffer result = new StringBuffer();
-
-
         URL url = new URL (resourceUrl );
-
         URLConnection conn = url.openConnection();
-
-        /*
-		String backoffice_account = "test@liferay.com";//PropsUtil.get("backoffice-account");
-        String backoffice_secret = "test"; //PropsUtil.get("backoffice-secret");
-
-        String userpass = backoffice_account.trim() + ":" +backoffice_secret;
-        String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
-        conn.setRequestProperty ("Authorization", basicAuth);
-		*/
-
         BufferedReader in = new BufferedReader(new InputStreamReader(
             conn.getInputStream()));
 
@@ -81,9 +123,9 @@ public class BackOfficeResource {
 
 
     @GetMapping("/transinfoWithGroup")
-    public String transinfoWithGroup(@RequestParam String code) throws IOException {
+    public String transinfoWithGroup(@RequestParam String group) throws IOException {
 		
-		String resourceUrl = "http://localhost:7777/transinfoWithGroup/" + code.toUpperCase();
+		String resourceUrl = "http://localhost:7777/transinfoWithGroup/" + group.toUpperCase();
 		
 		StringBuilder sb = new StringBuilder();
 
@@ -93,16 +135,6 @@ public class BackOfficeResource {
         URL url = new URL (resourceUrl );
 
         URLConnection conn = url.openConnection();
-
-        /*
-		String backoffice_account = "test@liferay.com";//PropsUtil.get("backoffice-account");
-        String backoffice_secret = "test"; //PropsUtil.get("backoffice-secret");
-
-        String userpass = backoffice_account.trim() + ":" +backoffice_secret;
-        String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
-        conn.setRequestProperty ("Authorization", basicAuth);
-		*/
-
         BufferedReader in = new BufferedReader(new InputStreamReader(
             conn.getInputStream()));
 

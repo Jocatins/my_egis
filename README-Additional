@@ -11,12 +11,13 @@ https://www.soinside.com/question/j2zJSV9HhPfN44rWXn9UZH
 
 Make A page
 https://www.npmjs.com/package/generator-jhipster-nav-element
+npm install -g generator-jhipster-nav-element
 yo jhipster-nav-element
 
 
 Install ElasicSearch elasticsearch-6.4.3
 
-Spinners
+Spinners, Async Validator
 https://loading.io/
 
 https://stackoverflow.com/questions/34215526/eslint-how-to-disable-unexpected-console-statement-in-node-js -

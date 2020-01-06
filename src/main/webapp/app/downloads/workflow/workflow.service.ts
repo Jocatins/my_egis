@@ -5,16 +5,15 @@ import { STEPS }              from './workflow.model';
 @Injectable()
 export class WorkflowService {
     private workflow = [
-        { step: STEPS.personal, valid: false },
-        { step: STEPS.work, valid: false },
-        { step: STEPS.address, valid: false },
-        { step: STEPS.result, valid: false }
+        { step: STEPS.appname, valid: false },
+        { step: STEPS.parameters, valid: false },
+        { step: STEPS.complete, valid: false }
     ];
-    
+
     validateStep(step: string) {
-        // If the state is found, set the valid field to true 
-        var found = false;
-        for (var i = 0; i < this.workflow.length && !found; i++) {
+        // If the state is found, set the valid field to true
+        let found = false;
+        for (let i = 0; i < this.workflow.length && !found; i++) {
             if (this.workflow[i].step === step) {
                 found = this.workflow[i].valid = true;
             }
@@ -31,11 +30,11 @@ export class WorkflowService {
     getFirstInvalidStep(step: string) : string {
         // If all the previous steps are validated, return blank
         // Otherwise, return the first invalid step
-        var found = false;
-        var valid = true;
-        var redirectToStep = '';
-        for (var i = 0; i < this.workflow.length && !found && valid; i++) {
-            let item = this.workflow[i];
+        let found = false;
+        let valid = true;
+        let redirectToStep = '';
+        for (let i = 0; i < this.workflow.length && !found && valid; i++) {
+            const item = this.workflow[i];
             if (item.step === step) {
                 found = true;
                 redirectToStep = '';
