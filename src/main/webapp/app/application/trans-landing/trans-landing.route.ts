@@ -81,7 +81,7 @@ export class SupportingDocExtResolve implements Resolve<ISupportingDocument> {
 
     // const batchId = route.params['batchId'];
     const newOrEdit = route.params['newOrEdit'];
-    const supportingDocumentId = route.params['supportingDocumentId'];
+    const supportingDocumentId = route.params['documentId'];
 
     if (newOrEdit === 'edit') {
        return this.sdService.find(supportingDocumentId).pipe(map((party: HttpResponse<ISupportingDocument>) => {
