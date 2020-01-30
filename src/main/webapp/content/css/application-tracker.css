@@ -1,0 +1,10 @@
+.application-tracker {
+	border-top: solid thin #eee;
+/* 	border-bottom: solid thin #eee; */
+}
+
+@media (min-width: 576px) {
+	.application-tracker-frm .input-group {
+		width: 50%;
+	}
+}

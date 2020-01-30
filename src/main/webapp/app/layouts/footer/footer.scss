@@ -1,0 +1,86 @@
+.footer {
+  padding-top: 2%;
+  padding-bottom: 1%;
+  border-top: solid thin #eee;
+}
+
+.footer .logo {
+  height: 44px;
+  display: block;
+}
+
+/*.footer .logo {
+  height: 44px;
+  display: block;
+  background: url('../../../content/images/custom/main/LG_0005.png') no-repeat left top;
+}*/
+
+@media (max-width: 575.98px) {
+  .footer .col-md-4 {
+    margin: 0 20px 20px;
+  }
+}
+
+.footer h2 {
+  font-weight: bold;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+.footer ul.list-resources {
+  padding-left: 0px;
+  font-size: 12px;
+}
+
+.footer ul.list-resources li {
+  list-style: none;
+  margin: 8px 0;
+  border-bottom: solid thin #EEE;
+  padding-bottom: 4px;
+}
+
+.footer ul.list-resources li:last-child {
+  margin-bottom: 0px
+}
+
+.footer .social-links {
+  text-align: right;
+  border-bottom: solid thin #EEE;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.sub-footer {
+  border-top: solid thin #eee;
+  border-bottom: solid thin #eee;
+}
+
+.footer-text {
+  font-size: 9px;
+  text-align: right;
+  line-height: 10px;
+}
+
+.sub-footer .social-links a,
+.social-links a {
+  margin-right: 6px
+}
+
+.sub-footer .social-links a:last-child,
+.social-links a:last-child {
+  margin-right: 0px
+}
+
+.sub-footer .social-links a:hover,
+.social-links a:hover {
+  text-decoration: none
+}
+
+/*.social-links a span.facebook {
+  height: 28px;
+  display: block;
+  background: url('../../../content/images/custom/main/iconfinder_facebook_square_107117.svg') no-repeat left top;
+}*/
+
+.sub-footer .signature a {
+}

@@ -24,5 +24,7 @@ https://stackoverflow.com/questions/34215526/eslint-how-to-disable-unexpected-co
 console log
 If you install eslint under your local project, you should have a directory /node_modules/eslint/conf/ and under that directory a file eslint.json. You could edit the file and modify "no-console" entry with the value "off" (although 0 value is supported too):
 
-
+###
+Finding out what packages are installed locally and without their dependencies is to use:
+npm list --depth=0
 

@@ -1,4 +1,41 @@
-<div class="modal-header">
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">-->
+      		<div class="modal-body">
+        		<div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="alert alert-danger" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication">
+                            <strong>Failed to sign in!</strong> Please check your credentials and try again.
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                         <form class="form-signin" role="form" (ngSubmit)="login()" [formGroup]="loginForm">
+					        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+			      	        <h1 class="h3 mb-3 font-weight-normal"><img src="../../../content/images/custom/main/LG_0005.png" class="img-fluid"> Please sign in</h1>
+
+                            <label class="sr-only username-label" for="username" jhiTranslate="global.form.username.label">Login</label>
+			      	        <input type="text" class="form-control" name="username" id="username" placeholder="{{'global.form.username.placeholder' | translate}}" formControlName="username" required autofocus>
+
+                            <label for="password" jhiTranslate="login.form.password" class="sr-only">Password</label>
+			      	        <input type="password" class="form-control" name="password" id="password" placeholder="{{'login.form.password.placeholder' | translate}}" formControlName="password">
+
+                            <div class="form-check">
+                                <label class="form-check-label" for="rememberMe">
+                                    <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" formControlName="rememberMe">
+                                    <span jhiTranslate="login.form.rememberme">Remember me</span>
+                                </label>
+                            </div>
+                            <div class="mt-4 mb-3"><strong>Don't have an account? <a href="register-user.php">Click here to register.</a></strong></div>
+                            <button type="submit" class="btn btn-lg btn-primary btn-block" jhiTranslate="login.form.button">Sign in</button>
+			            </form>
+                    </div>
+                </div>
+      		</div>
+    	<!--</div>
+  	</div>
+</div>-->
+
+<!--<div class="modal-header">
     <h4 class="modal-title" jhiTranslate="login.title">Sign in</h4>
     <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="activeModal.dismiss('closed')"><span aria-hidden="true">x</span>
     </button>
@@ -40,4 +77,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->

@@ -24,7 +24,7 @@
     "enableSwaggerCodegen": false,
     "jwtSecretKey": "YzkzNTY1N2E3OGU3YTQ3MjY0YzEyNzgzOGIzMzc0MDY2ZGJkZmQxY2E5NzM3ZmVjMzk1NWRhZTkwZDE5MTUwMzdjNjZhOWJiMzA5NWNmMGFhODJlMzMxNThhMWY4NjE5NDM1OTAzYzE3NmFmNmM4OGZlNWU3YjE3ZjE0MzY4NjQ=",
     "embeddableLaunchScript": false,
-    "useSass": true,
+    "useSass": false,
     "clientPackageManager": "npm",
     "clientFramework": "angularX",
     "clientTheme": "none",
