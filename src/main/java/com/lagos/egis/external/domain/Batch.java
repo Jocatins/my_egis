@@ -57,7 +57,7 @@ public class Batch implements Serializable {
                inverseJoinColumns = @JoinColumn(name = "transaction_id", referencedColumnName = "id"))
     private Set<Transaction> transactions = new HashSet<>();
 
-    @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany ( fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "batch_party",
                joinColumns = @JoinColumn(name = "batch_id", referencedColumnName = "id"),

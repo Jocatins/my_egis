@@ -87,9 +87,16 @@
                             <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                         </span>
                     </div>
+                    {{editForm.get('id').value}}
+                    <div class="input-group"  [hidden]="!editForm.get(['id']).value"  >
+                        {{editForm.get('id').value}}
+                        <label for="frontImage">Document Upload </label>
+                        <input (change)="onFileSelected1($event)" type="file" id="frontImage">
+                      </div>
                 </div>
 
             </div>
+
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>

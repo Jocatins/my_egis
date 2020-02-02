@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
-import { JhiAlertService } from 'ng-jhipster';
+import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
 import { IParty, Party } from 'app/shared/model/party.model';
 import { PartyService } from './party.service';
-import { IAddress } from 'app/shared/model/address.model';
+import { IAddress, Address } from 'app/shared/model/address.model';
 import { AddressService } from 'app/entities/address/address.service';
 import { IBatch } from 'app/shared/model/batch.model';
 import { BatchService } from 'app/entities/batch/batch.service';
@@ -78,7 +78,32 @@ export class PartyExtUpdateComponent implements OnInit {
     representativeId: [],
     professionRegNo: [],
     occupation: [],
-    address: []
+
+    address: [],
+    addressId: [],
+    addressAreaName: [],
+    streetName: [],
+    buildingName: [],
+    buildingNumber: [],
+    postalCode: [],
+    city: [],
+    country: [],
+    region: [],
+    district: [],
+    village: [],
+    state: [],
+    estateName: [],
+    localGovernmentArea: [],
+    localCouncilArea: [],
+    streetNumber: [],
+    streetType: [],
+    town: [],
+    ward: [],
+    category: [],
+    stateOfOrigin: [],
+    schemeName: [],
+    blockNumber: [],
+    plotNumber: []
   });
 
   constructor(
@@ -89,10 +114,12 @@ export class PartyExtUpdateComponent implements OnInit {
     protected transactionService: TransactionService,
     protected activatedRoute: ActivatedRoute,
     protected dashboardService: DashboardService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    protected eventManager: JhiEventManager,
+    private router: Router
   ) {
-    this.batchId = activatedRoute.snapshot.params["batchId"];
-    this.newOrEdit = activatedRoute.snapshot.params["newOrEdit"];
+    this.batchId = activatedRoute.snapshot.params['batchId'];
+    this.newOrEdit = activatedRoute.snapshot.params['newOrEdit'];
   }
 
   ngOnInit() {
@@ -100,6 +127,7 @@ export class PartyExtUpdateComponent implements OnInit {
     // alert(this.batchId)
     this.activatedRoute.data.subscribe(({ party }) => {
       this.updateForm(party);
+      this.updateAddressForm(party.address);
     });
     this.addressService.query({ filter: 'party-is-null' }).subscribe(
       (res: HttpResponse<IAddress[]>) => {
@@ -126,15 +154,15 @@ export class PartyExtUpdateComponent implements OnInit {
         (res: HttpErrorResponse) => this.onError(res.message)
       );
 
-      this.dashboardService.fetchDictionaryValuesObj('state').subscribe(
-        (data) =>{
-          this.states = JSON.parse(data.body.category);
-          // alert(JSON.stringify(this.states))
-        },
-        (err)=>{
-          //  alert(JSON.stringify(err));
-        }
-      )
+    this.dashboardService.fetchDictionaryValuesObj('state').subscribe(
+      data => {
+        this.states = JSON.parse(data.body.category);
+        // alert(JSON.stringify(this.states))
+      },
+      err => {
+        //  alert(JSON.stringify(err));
+      }
+    );
   }
 
   updateForm(party: IParty) {
@@ -182,8 +210,68 @@ export class PartyExtUpdateComponent implements OnInit {
     });
   }
 
+  updateAddressForm(address: IAddress) {
+    this.editForm.patchValue({
+      addressId: address.id,
+      addressAreaName: address.addressAreaName,
+      streetName: address.streetName,
+      buildingName: address.buildingName,
+      buildingNumber: address.buildingNumber,
+      postalCode: address.postalCode,
+      city: address.city,
+      country: address.country,
+      region: address.region,
+      district: address.district,
+      village: address.village,
+      state: address.state,
+      estateName: address.estateName,
+      localGovernmentArea: address.localGovernmentArea,
+      localCouncilArea: address.localCouncilArea,
+      streetNumber: address.streetNumber,
+      streetType: address.streetType,
+      town: address.town,
+      ward: address.ward,
+      category: address.category,
+      stateOfOrigin: address.stateOfOrigin,
+      schemeName: address.schemeName,
+      blockNumber: address.blockNumber,
+      plotNumber: address.plotNumber
+    });
+  }
+
+  private createAddressFromForm(): IAddress {
+    return {
+      ...new Address(),
+      id: this.editForm.get(['addressId']).value,
+      addressAreaName: this.editForm.get(['addressAreaName']).value,
+      streetName: this.editForm.get(['streetName']).value,
+      buildingName: this.editForm.get(['buildingName']).value,
+      buildingNumber: this.editForm.get(['buildingNumber']).value,
+      postalCode: this.editForm.get(['postalCode']).value,
+      city: this.editForm.get(['city']).value,
+      country: this.editForm.get(['country']).value,
+      region: this.editForm.get(['region']).value,
+      district: this.editForm.get(['district']).value,
+      village: this.editForm.get(['village']).value,
+      state: this.editForm.get(['state']).value,
+      estateName: this.editForm.get(['estateName']).value,
+      localGovernmentArea: this.editForm.get(['localGovernmentArea']).value,
+      localCouncilArea: this.editForm.get(['localCouncilArea']).value,
+      streetNumber: this.editForm.get(['streetNumber']).value,
+      streetType: this.editForm.get(['streetType']).value,
+      town: this.editForm.get(['town']).value,
+      ward: this.editForm.get(['ward']).value,
+      category: this.editForm.get(['category']).value,
+      stateOfOrigin: this.editForm.get(['stateOfOrigin']).value,
+      schemeName: this.editForm.get(['schemeName']).value,
+      blockNumber: this.editForm.get(['blockNumber']).value,
+      plotNumber: this.editForm.get(['plotNumber']).value
+    };
+  }
+
   previousState() {
-    window.history.back();
+    // window.history.back();
+    this.router.navigate(['/application/translanding', this.batchId]);
   }
 
   save() {
@@ -243,35 +331,37 @@ export class PartyExtUpdateComponent implements OnInit {
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IParty>>) {
-    if (this.newOrEdit === 'new'){
+    if (this.newOrEdit === 'new') {
       result.subscribe(
-        (party) => {
-          this.batchService.find(this.batchId).subscribe(
-            (dBatch) =>{
-              const ddBatch = dBatch.body;
-              const parties = ddBatch.parties;
-              if (parties === null ) {
-                ddBatch.parties = []
-              }
-              ddBatch.parties.push(party.body);
-              this.batchService.update(ddBatch).subscribe(
-                ()=>{
-                  // alert('new party successfully updated ...')
-                },
-                () => {
-                  // alert('new party update failed ...')
-                }
-              );
-              this.onSaveSuccess()
+        party => {
+          this.batchService.find(this.batchId).subscribe(dBatch => {
+            const ddBatch = dBatch.body;
+            const parties = ddBatch.parties;
+            if (parties === null) {
+              ddBatch.parties = [];
             }
-          )
+            ddBatch.parties.push(party.body);
+            this.batchService.update(ddBatch).subscribe(
+              () => {
+                this.eventManager.broadcast({
+                  name: 'partyListModification',
+                  content: 'Updated/Created an party'
+                });
+
+                // alert('new party successfully updated ...')
+              },
+              () => {
+                // alert('new party update failed ...')
+              }
+            );
+            this.onSaveSuccess();
+          });
         },
         () => this.onSaveError()
       );
-    }else{
+    } else {
       result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
     }
-
   }
 
   protected onSaveSuccess() {

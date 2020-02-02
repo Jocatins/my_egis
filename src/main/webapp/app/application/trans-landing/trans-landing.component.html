@@ -8,7 +8,6 @@
 
         </p>
         <div>
-
         </div>
 
         <!-- Party-->
@@ -71,7 +70,9 @@
                                         <fa-icon [icon]="'pencil-alt'"></fa-icon>
                                         <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                                     </button>
-                                    <button type="submit" (click)="delete(party)" class="btn btn-danger btn-sm">
+
+                                    <button type="submit" (click)="deleteParty(party, batch.id)"
+                                        class="btn btn-danger btn-sm">
                                         <fa-icon [icon]="'times'"></fa-icon>
                                         <span class="d-none d-md-inline"
                                             jhiTranslate="entity.action.delete">Delete</span>
@@ -159,12 +160,26 @@
                             </td>
                             <td class="text-right">
                                 <div class="btn-group">
+                                    <div *ngIf="supportingDocument.content === undefined ||
+                                    supportingDocument.content === '' || supportingDocument.content === null   else canDownload"></div>
+
+                                    </div>
+                                    <ng-template #canDownload>
+                                        <div>
+                                            <button type="submit" (click)="getFile(supportingDocument.id,
+                                            supportingDocument.content, supportingDocument.name  )"
+                                                    class="btn btn-info btn-sm">
+                                                <fa-icon [icon]="'eye'"></fa-icon>
+                                                <span class="d-none d-md-inline">Download</span>
+                                            </button>
+                                        </div>
+                                    </ng-template>
                                     <button type="submit" (click)="editNewDocument('edit',batch.id, supportingDocument.id)"
                                         class="btn btn-primary btn-sm">
                                         <fa-icon [icon]="'pencil-alt'"></fa-icon>
                                         <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                                     </button>
-                                    <button type="submit" (click)="delete(supportingDocument)"
+                                    <button type="submit" (click)="deleteDoc(supportingDocument, batch.id)"
                                         class="btn btn-danger btn-sm">
                                         <fa-icon [icon]="'times'"></fa-icon>
                                         <span class="d-none d-md-inline"
@@ -184,7 +199,6 @@
                     <form name="formeditNewProperty" class="form-inline">
                         <input type="hidden" name="batch_id" id="batch_id">
                         <div class="input-group w-100 mt-3">
-                            {{parcels.length}}
                             <div *ngIf="parcels === undefined  else notActive">
                                 <button type="submit" id="jh-create-entity" class="btn btn-primary float-right
                     jh-create-entity create-address" (click)="editNewProperty('new',0, batch.id)">

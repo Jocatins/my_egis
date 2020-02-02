@@ -15,7 +15,9 @@ import { PartyExtUpdateComponent } from './ext/party/party-update.component';
 import { SupportingExtDocumentUpdateComponent } from './ext/supporting-document/supporting-document-update.component';
 import { BatchUpdateComponent } from './ext/batch/batch-update.component';
 import { TranslandingComponent } from './trans-landing/trans-landing.component';
-import { ParcelExtUpdateComponent } from './ext/parcel/parcel-update.component'
+import { ParcelExtUpdateComponent } from './ext/parcel/parcel-update.component';
+import { SupportingDocumentDeleteDialogComponent } from './ext/supporting-document/supporting-document-delete-dialog.component';
+import { PartyDeleteDialogComponent } from './ext/party/party-delete-dialog.component';
 // import { ParcelExtResolve } from './trans-landing/trans-landing.route'
 
 @NgModule({
@@ -35,9 +37,11 @@ import { ParcelExtUpdateComponent } from './ext/parcel/parcel-update.component'
     PartyExtUpdateComponent,
     SupportingExtDocumentUpdateComponent,
     TranslandingComponent,
-    ParcelExtUpdateComponent
+    ParcelExtUpdateComponent,
+    SupportingDocumentDeleteDialogComponent,
+    PartyDeleteDialogComponent
   ],
-  entryComponents: [],
+  entryComponents: [SupportingDocumentDeleteDialogComponent, PartyDeleteDialogComponent],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

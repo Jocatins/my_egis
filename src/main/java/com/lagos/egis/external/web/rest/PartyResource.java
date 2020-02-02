@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional; 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -125,7 +125,7 @@ public class PartyResource {
     @DeleteMapping("/parties/{id}")
     public ResponseEntity<Void> deleteParty(@PathVariable Long id) {
         log.debug("REST request to delete Party : {}", id);
-        partyRepository.deleteById(id);
+        partyRepository.deleteByPartyId(id);
         partySearchRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
