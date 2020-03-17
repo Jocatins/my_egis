@@ -9,18 +9,16 @@ import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { catchError, map, timeout } from 'rxjs/operators';
 
-
 type EntityResponseType = HttpResponse<IBatch>;
 type EntityArrayResponseType = HttpResponse<IBatch[]>;
 
 @Injectable({ providedIn: 'root' })
 export class BatchService {
-  public static  serverApiURL = SERVER_API_URL;
+  public static serverApiURL = SERVER_API_URL;
   public resourceUrl = SERVER_API_URL + 'api/batches';
   public resourceSearchUrl = SERVER_API_URL + 'api/_search/batches';
 
-
-  constructor(protected http: HttpClient) { }
+  constructor(protected http: HttpClient) {}
 
   create(batch: IBatch): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(batch);
@@ -28,9 +26,6 @@ export class BatchService {
       .post<IBatch>(this.resourceUrl, copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
-
-
-
 
   update(batch: IBatch): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(batch);
@@ -100,14 +95,16 @@ export class BatchService {
         const simpleresourceUrl = SERVER_API_URL + 'api/backoffice/transmeatada?code=' + code;
         const callMetadata = this.http.get<any>(`${simpleresourceUrl}`);
         if (callMetadata !== null) {
-          callMetadata.pipe(timeout(2000), catchError(ee => {
-            alert('Error')
-            alert(ee.json())
-            return null
-          }))
+          callMetadata
+            .pipe(
+              timeout(2000),
+              catchError(ee => {
+                return null;
+              })
+            )
             .subscribe((dataMeta: any) => {
-              batch.moreData = code +' - ' + JSON.parse(dataMeta.metadata).descr;
-            })
+              batch.moreData = code + ' - ' + JSON.parse(dataMeta.metadata).descr;
+            });
         }
       });
     }

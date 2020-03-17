@@ -10,6 +10,7 @@ import { EgisexternalEntityModule } from './entities/entity.module';
 import { EgisexternalAppApplicationModule } from './application/application.module';
 import { EgisexternalAppDashboardModule } from './dashboard/dashboard.module';
 import { EgisexternalAppDownloadsModule } from './downloads/downloads.module';
+import { EgisexternalAppCreateAccountModule } from './create-account/create-account.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -27,6 +28,7 @@ import { ErrorComponent } from './layouts/error/error.component';
     EgisexternalAppApplicationModule,
     EgisexternalAppDashboardModule,
     EgisexternalAppDownloadsModule,
+    EgisexternalAppCreateAccountModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EgisexternalEntityModule,
     EgisexternalAppRoutingModule

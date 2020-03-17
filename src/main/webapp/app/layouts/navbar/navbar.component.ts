@@ -10,6 +10,7 @@ import { AccountService } from 'app/core/auth/account.service';
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { LoginService } from 'app/core/login/login.service';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
+import { Account } from 'app/core/user/account.model';
 
 @Component({
   selector: 'jhi-navbar',
@@ -40,6 +41,14 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.languages = this.languageHelper.getAll();
+    this.accountService.identity().subscribe((account: Account) => {
+      // alert(JSON.stringify(account))
+    });
+    // if(this.accountService.isAuthenticated()){
+
+    // }else{
+    //   alert('Seems not authenticated ...')
+    // }
 
     this.profileService.getProfileInfo().subscribe(profileInfo => {
       this.inProduction = profileInfo.inProduction;

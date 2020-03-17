@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Injectable } from '@angular/core';
-import {  HttpResponse, HttpClient } from '@angular/common/http';
+import { HttpResponse, HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { JhiEventManager, JhiParseLinks } from 'ng-jhipster';
@@ -52,7 +52,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.activatedRoute.snapshot && this.activatedRoute.snapshot.queryParams['search']
         ? this.activatedRoute.snapshot.queryParams['search']
         : '';
-
   }
 
   loadAll() {
@@ -79,24 +78,25 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.batches = res.body;
         this.batches.forEach((batch: IBatch) => {
           const code = batch.transactions[0].transactionCode;
-         // const simpleresourceUrl = BatchService.serverApiURL + 'api/backoffice/transmeatada?code=' + code;
+          // const simpleresourceUrl = BatchService.serverApiURL + 'api/backoffice/transmeatada?code=' + code;
           this.dashboardService.getTransMetadata(code);
 
           const callMetadata = this.dashboardService.getTransMetadata(code);
           if (callMetadata !== null) {
-            callMetadata.pipe(timeout(2000), catchError(ee => {
-              alert(JSON.stringify(ee))
-              return null
-            }))
+            callMetadata
+              .pipe(
+                timeout(2000),
+                catchError(ee => {
+                  //  alert(JSON.stringify(ee))
+                  return null;
+                })
+              )
               .subscribe((dataMeta: any) => {
-                batch.moreData = code +' - ' + JSON.parse(dataMeta.body.metadata).descr;
-              })
+                batch.moreData = code + ' - ' + JSON.parse(dataMeta.body.metadata).descr;
+              });
           }
         });
       });
-
-
-
   }
 
   reset() {
