@@ -10,9 +10,28 @@
                         readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.partyType" for="field_partyType">Party Type</label>
-                    <input type="number" class="form-control" name="partyType" id="field_partyType" formControlName="partyType"/>
 
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="egisexternalApp.party.civilState" for="field_civilState">Civil State</label>
+                        <!-- <input type="number" class="form-control" name="civilState" id="field_civilState"
+                               formControlName="civilState"/> -->
+
+                        <select class="form-control" id="field_civilState" name="civilState" formControlName="civilState">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="stateOption.id === editForm.get('civilState').value ? editForm.get('civilState').value : stateOption.id"
+                                *ngFor="let stateOption of states; trackBy: trackStateById">{{stateOption.label}}</option>
+                        </select>
+
+                    </div>
+
+
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.partyType" for="field_partyType">Party Type</label>
+                    <!-- <input type="number" class="form-control" name="partyType" id="field_partyType" formControlName="partyType"/> -->
+                    <select class="form-control" id="field_partyType" name="partyType" formControlName="partyType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="partyTypeOption.id === editForm.get('partyType').value ? editForm.get('partyType').value : partyTypeOption.id"
+                            *ngFor="let partyTypeOption of partyTypes; trackBy: trackStateById">{{partyTypeOption.label}}</option>
+                    </select>
 
                     <div *ngIf="editForm.get('partyType').invalid && (editForm.get('partyType').dirty || editForm.get('partyType').touched)">
                         <small class="form-text text-danger"
@@ -27,8 +46,15 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.partyRoleType" for="field_partyRoleType">Party Role Type</label>
-                    <input type="number" class="form-control" name="partyRoleType" id="field_partyRoleType"
+                    <!-- <input type="number" class="form-control" name="partyRoleType" id="field_partyRoleType"
                            formControlName="partyRoleType"/>
+                            -->
+
+                        <select class="form-control" id="field_partyRoleType" name="partyRoleType" formControlName="partyRoleType">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="partyRoleTypeOption.id === editForm.get('partyRoleType').value ? editForm.get('partyRoleType').value : partyRoleTypeOption.id"
+                                *ngFor="let partyRoleTypeOption of partyRoleTypes; trackBy: trackStateById">{{partyRoleTypeOption.label}}</option>
+                        </select>
                     <div *ngIf="editForm.get('partyRoleType').invalid && (editForm.get('partyRoleType').dirty || editForm.get('partyRoleType').touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('partyRoleType').errors.required" jhiTranslate="entity.validation.required">
@@ -42,13 +68,23 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.partySubRoleType" for="field_partySubRoleType">Party Sub Role Type</label>
-                    <input type="number" class="form-control" name="partySubRoleType" id="field_partySubRoleType"
-                           formControlName="partySubRoleType"/>
+                    <!-- <input type="number" class="form-control" name="partySubRoleType" id="field_partySubRoleType"
+                           formControlName="partySubRoleType"/> -->
+                    <select class="form-control" id="field_partySubRoleType" name="partyRoleType" formControlName="partySubRoleType">
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="partySubRoleTypeOption.id === editForm.get('partySubRoleType').value ? editForm.get('partySubRoleType').value : partySubRoleTypeOption.id"
+                        *ngFor="let partySubRoleTypeOption of partySubRoleTypes; trackBy: trackStateById">{{partySubRoleTypeOption.label}}</option>
+                    </select>
+
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.deliveryType" for="field_deliveryType">Delivery Type</label>
-                    <input type="number" class="form-control" name="deliveryType" id="field_deliveryType"
-                           formControlName="deliveryType"/>
+                    <select class="form-control" id="field_deliveryType" name="deliveryType" formControlName="deliveryType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="deliveryTypeOption.id === editForm.get('deliveryType').value ? editForm.get('deliveryType').value : deliveryTypeOption.id"
+                            *ngFor="let deliveryTypeOption of deliveryTypes; trackBy: trackStateById">{{deliveryTypeOption.label}}</option>
+                        </select>
+
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.partyName" for="field_partyName">Party Name</label>
@@ -82,13 +118,19 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.personIdType" for="field_personIdType">Person Id Type</label>
-                    <input type="number" class="form-control" name="personIdType" id="field_personIdType"
-                           formControlName="personIdType"/>
+                    <select class="form-control" id="field_personIdType" name="personIdType" formControlName="personIdType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personIdTypeOption.id === editForm.get('personIdType').value ? editForm.get('personIdType').value : personIdTypeOption.id"
+                            *ngFor="let personIdTypeOption of personIdTypes; trackBy: trackStateById">{{personIdTypeOption.label}}</option>
+                        </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.personType" for="field_personType">Person Type</label>
-                    <input type="number" class="form-control" name="personType" id="field_personType"
-                           formControlName="personType"/>
+                    <select class="form-control" id="field_personType" name="personType" formControlName="personType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personTypeOption.id === editForm.get('personType').value ? editForm.get('personType').value : personTypeOption.id"
+                            *ngFor="let personTypeOption of personTypes; trackBy: trackStateById">{{personTypeOption.label}}</option>
+                        </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.fax" for="field_fax">Fax</label>
@@ -102,8 +144,13 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.emailType" for="field_emailType">Email Type</label>
-                    <input type="number" class="form-control" name="emailType" id="field_emailType"
-                           formControlName="emailType"/>
+                    <!-- <input type="number" class="form-control" name="emailType" id="field_emailType"
+                           formControlName="emailType"/> -->
+                    <select class="form-control" id="field_emailType" name="emailType" formControlName="emailType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="emailTypeOption.id === editForm.get('emailType').value ? editForm.get('emailType').value : emailTypeOption.id"
+                            *ngFor="let emailTypeOption of emailTypes; trackBy: trackStateById">{{emailTypeOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.phoneNumber" for="field_phoneNumber">Phone Number</label>
@@ -127,8 +174,15 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.personIdIssuedBy" for="field_personIdIssuedBy">Person Id Issued By</label>
-                    <input type="number" class="form-control" name="personIdIssuedBy" id="field_personIdIssuedBy"
-                           formControlName="personIdIssuedBy"/>
+                    <!-- <input type="number" class="form-control" name="personIdIssuedBy" id="field_personIdIssuedBy"
+                           formControlName="personIdIssuedBy"/> -->
+                        <select class="form-control" id="field_personIdIssuedBy" name="personIdIssuedBy" formControlName="personIdIssuedBy">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="personIdIssuedByOption.id === editForm.get('personIdIssuedBy').value ? editForm.get('personIdIssuedBy').value : personIdIssuedByOption.id"
+                                *ngFor="let personIdIssuedByOption of issuedBys; trackBy: trackStateById">{{personIdIssuedByOption.label}}</option>
+                        </select>
+
+
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.personIdDate" for="field_personIdDate">Person Id Date</label>
@@ -160,8 +214,19 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.businessNature" for="field_businessNature">Business Nature</label>
-                    <input type="text" class="form-control" name="businessNature" id="field_businessNature"
+                       <input type="text" class="form-control" name="businessNature" id="field_businessNature"
                            formControlName="businessNature"/>
+
+                    <!-- <select class="form-control" id="field_businessNature" name="businessNature" formControlName="businessNature">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="nobOption.id === editForm.get('businessNature').value ? editForm.get('businessNature').value : nobOption.id"
+                            *ngFor="let nobOption of natureOfBuss; trackBy: trackStateById">{{nobOption.label}} - {{nobOption.id}}</option>
+                    </select> -->
+                    <select class="form-control" id="field_businessNature" name="businessNature" formControlName="businessNature">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="natureOfBusOption.id === editForm.get('businessNature').value ? editForm.get('businessNature').value : natureOfBusOption.id"
+                            *ngFor="let natureOfBusOption of natureOfBuss; trackBy: trackStateById">{{natureOfBusOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.birthPlace" for="field_birthPlace">Birth Place</label>
@@ -179,13 +244,24 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.personTitle" for="field_personTitle">Person Title</label>
-                    <input type="number" class="form-control" name="personTitle" id="field_personTitle"
-                           formControlName="personTitle"/>
+                    <!-- <input type="number" class="form-control" name="personTitle" id="field_personTitle"
+                           formControlName="personTitle"/> -->
+
+                    <select class="form-control" id="field_personIdIssuedBy" name="personTitle" formControlName="personTitle">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personTitleOption.id === editForm.get('personTitle').value ? editForm.get('personTitle').value : personTitleOption.id"
+                            *ngFor="let personTitleOption of personTitles; trackBy: trackStateById">{{personTitleOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.gender" for="field_gender">Gender</label>
-                    <input type="number" class="form-control" name="gender" id="field_gender"
-                           formControlName="gender"/>
+                    <!-- <input type="number" class="form-control" name="gender" id="field_gender"
+                           formControlName="gender"/> -->
+                    <select class="form-control" id="field_gender" name="gender" formControlName="gender">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="genderOption.id === editForm.get('gender').value ? editForm.get('gender').value : genderOption.id"
+                            *ngFor="let genderOption of genders; trackBy: trackStateById">{{genderOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.firstName" for="field_firstName">First Name</label>
@@ -203,18 +279,6 @@
                            formControlName="lastName"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.civilState" for="field_civilState">Civil State</label>
-                    <!-- <input type="number" class="form-control" name="civilState" id="field_civilState"
-                           formControlName="civilState"/> -->
-
-                    <select class="form-control" id="field_civilState" name="civilState" formControlName="civilState">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="stateOption.id === editForm.get('civilState').value ? editForm.get('civilState').value : stateOption.id"
-                            *ngFor="let stateOption of states; trackBy: trackStateById">{{stateOption.label}}</option>
-                    </select>
-
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.driverLicenseRegion" for="field_driverLicenseRegion">Driver License Region</label>
                     <input type="number" class="form-control" name="driverLicenseRegion" id="field_driverLicenseRegion"
                            formControlName="driverLicenseRegion"/>
@@ -226,8 +290,13 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.representativeId" for="field_representativeId">Representative Id</label>
-                    <input type="number" class="form-control" name="representativeId" id="field_representativeId"
-                           formControlName="representativeId"/>
+                    <!-- <input type="number" class="form-control" name="representativeId" id="field_representativeId"
+                           formControlName="representativeId"/> -->
+                    <select class="form-control" id="field_representativeId" name="representativeId" formControlName="representativeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="lrOption.id === editForm.get('representativeId').value ? editForm.get('representativeId').value : lrOption.id"
+                            *ngFor="let lrOption of legalRoles; trackBy: trackStateById">{{lrOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.professionRegNo" for="field_professionRegNo">Profession Reg No</label>

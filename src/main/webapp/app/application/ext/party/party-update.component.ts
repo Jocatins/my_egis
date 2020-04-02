@@ -37,6 +37,21 @@ export class PartyExtUpdateComponent implements OnInit {
   birthDateDp: any;
 
   states: IEGISDIctionary[];
+  partyTypes: IEGISDIctionary[];
+  partyRoleTypes: IEGISDIctionary[];
+  partySubRoleTypes: IEGISDIctionary[];
+  deliveryTypes: IEGISDIctionary[];
+  personIdTypes: IEGISDIctionary[];
+  personTypes: IEGISDIctionary[];
+  emailTypes: IEGISDIctionary[];
+  issued_bys: IEGISDIctionary[];
+  issuedBys: IEGISDIctionary[];
+  personTitles: IEGISDIctionary[];
+  genders: IEGISDIctionary[];
+  natureOfBuss: IEGISDIctionary[];
+  legalRoles: IEGISDIctionary[];
+  d: IEGISDIctionary[];
+  e: IEGISDIctionary[];
 
   editForm = this.fb.group({
     id: [],
@@ -157,11 +172,92 @@ export class PartyExtUpdateComponent implements OnInit {
     this.dashboardService.fetchDictionaryValuesObj('state').subscribe(
       data => {
         this.states = JSON.parse(data.body.category);
-        // alert(JSON.stringify(this.states))
       },
-      err => {
-        //  alert(JSON.stringify(err));
-      }
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('party_type').subscribe(
+      data => {
+        this.partyTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('party_role_type').subscribe(
+      data => {
+        this.partyRoleTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('party_sub_role_type').subscribe(
+      data => {
+        this.partySubRoleTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('delivery_type').subscribe(
+      data => {
+        this.deliveryTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('person_id_type').subscribe(
+      data => {
+        this.personIdTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('person_type').subscribe(
+      data => {
+        this.personTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('email_category').subscribe(
+      data => {
+        this.emailTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('issued_by').subscribe(
+      data => {
+        this.issuedBys = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('person_title').subscribe(
+      data => {
+        this.personTitles = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('gender').subscribe(
+      data => {
+        this.genders = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('nature_of_business').subscribe(
+      data => {
+        this.natureOfBuss = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('legal_role').subscribe(
+      data => {
+        this.legalRoles = JSON.parse(data.body.category);
+      },
+      err => {}
     );
   }
 
@@ -277,6 +373,7 @@ export class PartyExtUpdateComponent implements OnInit {
   save() {
     this.isSaving = true;
     const party = this.createFromForm();
+    alert(party.businessNature);
     if (party.id !== undefined) {
       this.subscribeToSaveResponse(this.partyService.update(party));
     } else {
