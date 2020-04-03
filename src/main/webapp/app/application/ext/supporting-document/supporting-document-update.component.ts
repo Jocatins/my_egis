@@ -12,6 +12,8 @@ import { SupportingDocumentService } from './supporting-document.service';
 import { ITransaction } from 'app/shared/model/transaction.model';
 import { TransactionService } from 'app/entities/transaction/transaction.service';
 import { BatchService } from 'app/entities/batch/batch.service';
+import { DashboardService } from 'app/dashboard/dashboard.service';
+import { IEGISDIctionary } from 'app/application/model/egisdictionary.model';
 
 @Component({
   selector: 'jhi-supporting-document-update',
@@ -24,6 +26,11 @@ export class SupportingExtDocumentUpdateComponent implements OnInit {
   dateDp: any;
   selectedFile: File;
   fileName: string;
+  documentTypes: IEGISDIctionary[];
+  documentSubtypes: IEGISDIctionary[];
+  issuedBys: IEGISDIctionary[];
+  e: IEGISDIctionary[];
+  f: IEGISDIctionary[];
 
   editForm = this.fb.group({
     id: [],
@@ -56,6 +63,7 @@ export class SupportingExtDocumentUpdateComponent implements OnInit {
     protected batchServcice: BatchService,
     private fb: FormBuilder,
     protected eventManager: JhiEventManager,
+    protected dashboardService: DashboardService,
     private router: Router
   ) {
     this.batchId = activatedRoute.snapshot.params['batchId'];
@@ -73,6 +81,27 @@ export class SupportingExtDocumentUpdateComponent implements OnInit {
         (res: HttpResponse<ITransaction[]>) => (this.transactions = res.body),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
+
+    this.dashboardService.fetchDictionaryValuesObj('document_type').subscribe(
+      data => {
+        this.documentTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('document_subtype').subscribe(
+      data => {
+        this.documentSubtypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('issued_by').subscribe(
+      data => {
+        this.issuedBys = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
   }
 
   updateForm(supportingDocument: ISupportingDocument) {

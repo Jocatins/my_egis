@@ -21,8 +21,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.spatialUnitType" for="field_spatialUnitType">Spatial Unit Type</label>
-                    <input type="number" class="form-control" name="spatialUnitType" id="field_spatialUnitType"
-                           formControlName="spatialUnitType"/>
+                    <select class="form-control" id="field_spatialUnitType" name="spatialUnitType" formControlName="spatialUnitType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="spatialUnitLinkTypeOption.id === editForm.get('spatialUnitType').value ? editForm.get('spatialUnitType').value : spatialUnitLinkTypeOption.id"
+                            *ngFor="let spatialUnitLinkTypeOption of spatialUnitLinkTypes; trackBy: trackStateById">{{spatialUnitLinkTypeOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.registrationOfficeDictionary" for="field_registrationOfficeDictionary">Registration Office Dictionary</label>
@@ -45,18 +48,33 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.propertyType" for="field_propertyType">Property Type</label>
-                    <input type="number" class="form-control" name="propertyType" id="field_propertyType"
-                           formControlName="propertyType"/>
+                    <select class="form-control" id="field_propertyType" name="propertyType" formControlName="propertyType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="propertyTypeOption.id === editForm.get('propertyType').value?.id ? editForm.get('propertyType').value : propertyTypeOption.id"
+                            *ngFor="let propertyTypeOption of propertyTypes; trackBy: trackAddressById">{{propertyTypeOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.accommodation" for="field_accommodation">Accommodation</label>
-                    <input type="text" class="form-control" name="accommodation" id="field_accommodation"
-                           formControlName="accommodation"/>
+                    <!-- <input type="text" class="form-control" name="accommodation" id="field_accommodation"
+                           formControlName="accommodation"/> -->
+
+                    <select class="form-control" id="field_accommodation" name="accommodation" formControlName="accommodation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="accomm.id === editForm.get('accommodation').value?.id ? editForm.get('accommodation').value : accomm.id"
+                            *ngFor="let accomm of typeOfAccomodations; trackBy: trackAddressById">{{accomm.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.tenureType" for="field_tenureType">Tenure Type</label>
-                    <input type="number" class="form-control" name="tenureType" id="field_tenureType"
-                           formControlName="tenureType"/>
+                    <!-- <input type="number" class="form-control" name="tenureType" id="field_tenureType"
+                           formControlName="tenureType"/> -->
+                    <select class="form-control" id="field_tenureType" name="tenureType" formControlName="tenureType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tenureTypeOption.id === editForm.get('tenureType').value?.id ? editForm.get('tenureType').value : tenureTypeOption.id"
+                            *ngFor="let tenureTypeOption of tenureTypes; trackBy: trackAddressById">{{tenureTypeOption.label}}</option>
+                    </select>
+
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.description" for="field_description">Description</label>
@@ -70,13 +88,19 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.location" for="field_location">Location</label>
-                    <input type="number" class="form-control" name="location" id="field_location"
-                           formControlName="location"/>
+                    <select class="form-control" id="field_location" name="location" formControlName="location">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="locationOfLandOption.id === editForm.get('landUseCategory').value ? editForm.get('landUseCategory').value : locationOfLandOption.id"
+                            *ngFor="let locationOfLandOption of locationOfLands; trackBy: trackStateById">{{locationOfLandOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.builtUpAreaType" for="field_builtUpAreaType">Built Up Area Type</label>
-                    <input type="number" class="form-control" name="builtUpAreaType" id="field_builtUpAreaType"
-                           formControlName="builtUpAreaType"/>
+                       <select class="form-control" id="field_builtUpAreaType" name="builtUpAreaType" formControlName="builtUpAreaType">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="builtUpAreaTypeOption.id === editForm.get('builtUpAreaType').value ? editForm.get('builtUpAreaType').value : builtUpAreaTypeOption.id"
+                                *ngFor="let builtUpAreaTypeOption of builtUpAreaTypes; trackBy: trackStateById">{{builtUpAreaTypeOption.label}}</option>
+                        </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.planNumber" for="field_planNumber">Plan Number</label>
@@ -85,8 +109,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.measurementUnitType" for="field_measurementUnitType">Measurement Unit Type</label>
-                    <input type="number" class="form-control" name="measurementUnitType" id="field_measurementUnitType"
-                           formControlName="measurementUnitType"/>
+                    <select class="form-control" id="field_measurementUnitType" name="measurementUnitType" formControlName="measurementUnitType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="measurementTypeOption.id === editForm.get('measurementUnitType').value ? editForm.get('measurementUnitType').value : measurementTypeOption.id"
+                            *ngFor="let measurementTypeOption of measurementTypes; trackBy: trackStateById">{{measurementTypeOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.premiumValue" for="field_premiumValue">Premium Value</label>
@@ -95,18 +122,30 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.landUseCategory" for="field_landUseCategory">Land Use Category</label>
-                    <input type="number" class="form-control" name="landUseCategory" id="field_landUseCategory"
-                           formControlName="landUseCategory"/>
+                    <select class="form-control" id="field_landUseCategory" name="landUseCategory" formControlName="landUseCategory">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="landUseCategoryOption.id === editForm.get('landUseCategory').value ? editForm.get('landUseCategory').value : landUseCategoryOption.id"
+                            *ngFor="let landUseCategoryOption of landUseCategorys; trackBy: trackStateById">{{landUseCategoryOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.landUseType" for="field_landUseType">Land Use Type</label>
-                    <input type="number" class="form-control" name="landUseType" id="field_landUseType"
-                           formControlName="landUseType"/>
+                    <select class="form-control" id="field_landUseType" name="landUseType" formControlName="landUseType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="landUseTypeOption.id === editForm.get('landUseType').value ? editForm.get('landUseType').value : landUseTypeOption.id"
+                            *ngFor="let landUseTypeOption of landUseTypes; trackBy: trackStateById">{{landUseTypeOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.developmentStatus" for="field_developmentStatus">Development Status</label>
-                    <input type="number" class="form-control" name="developmentStatus" id="field_developmentStatus"
-                           formControlName="developmentStatus"/>
+                    <!-- <input type="number" class="form-control" name="developmentStatus" id="field_developmentStatus"
+                           formControlName="developmentStatus"/> -->
+
+                    <select class="form-control" id="field_developmentStatus" name="developmentStatus" formControlName="developmentStatus">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="developmentStatuOption.id === editForm.get('developmentStatus').value ? editForm.get('developmentStatus').value : developmentStatuOption.id"
+                            *ngFor="let developmentStatuOption of developmentStatus; trackBy: trackStateById">{{developmentStatuOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.coordinateN" for="field_coordinateN">Coordinate N</label>
@@ -173,7 +212,8 @@
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.address" for="field_address">Address</label>
                     <select class="form-control" id="field_address" name="address" formControlName="address">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="addressOption.id === editForm.get('address').value?.id ? editForm.get('address').value : addressOption" *ngFor="let addressOption of addresses; trackBy: trackAddressById">{{addressOption.id}}</option>
+                        <option [ngValue]="addressOption.id === editForm.get('address').value?.id ? editForm.get('address').value : addressOption"
+                         *ngFor="let addressOption of addresses; trackBy: trackAddressById">{{addressOption.id}}</option>
                     </select>
                 </div>
             </div>

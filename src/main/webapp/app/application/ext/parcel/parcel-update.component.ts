@@ -14,7 +14,8 @@ import { AddressService } from 'app/entities/address/address.service';
 import { ITransaction } from 'app/shared/model/transaction.model';
 import { TransactionService } from 'app/entities/transaction/transaction.service';
 import { BatchService } from 'app/entities/batch/batch.service';
-
+import { DashboardService } from 'app/dashboard/dashboard.service';
+import { IEGISDIctionary } from 'app/application/model/egisdictionary.model';
 
 @Component({
   selector: 'jhi-parcel-update',
@@ -27,6 +28,18 @@ export class ParcelExtUpdateComponent implements OnInit {
 
   transactions: ITransaction[];
   surveyDateDp: any;
+
+  spatialUnitLinkTypes: IEGISDIctionary[];
+  landUseCategorys: IEGISDIctionary[];
+  propertyTypes: IEGISDIctionary[];
+  locationOfLands: IEGISDIctionary[];
+  builtUpAreaTypes: IEGISDIctionary[];
+  measurementTypes: IEGISDIctionary[];
+  landUseTypes: IEGISDIctionary[];
+  developmentStatus: IEGISDIctionary[];
+  tenureTypes: IEGISDIctionary[];
+  typeOfAccomodations: IEGISDIctionary[];
+  c: IEGISDIctionary[];
 
   editForm = this.fb.group({
     id: [],
@@ -66,7 +79,7 @@ export class ParcelExtUpdateComponent implements OnInit {
 
   batchId: number;
   parcelId: number;
-  newOrEdit: string
+  newOrEdit: string;
 
   constructor(
     protected jhiAlertService: JhiAlertService,
@@ -75,11 +88,12 @@ export class ParcelExtUpdateComponent implements OnInit {
     protected transactionService: TransactionService,
     protected activatedRoute: ActivatedRoute,
     protected batchService: BatchService,
+    protected dashboardService: DashboardService,
     private fb: FormBuilder
   ) {
-    this.batchId = activatedRoute.snapshot.params["batchId"];
-    this.parcelId = activatedRoute.snapshot.params["parcelId"];
-    this.newOrEdit =  activatedRoute.snapshot.params["newOrEdit"];
+    this.batchId = activatedRoute.snapshot.params['batchId'];
+    this.parcelId = activatedRoute.snapshot.params['parcelId'];
+    this.newOrEdit = activatedRoute.snapshot.params['newOrEdit'];
   }
 
   ngOnInit() {
@@ -108,6 +122,76 @@ export class ParcelExtUpdateComponent implements OnInit {
         (res: HttpResponse<ITransaction[]>) => (this.transactions = res.body),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
+
+    this.dashboardService.fetchDictionaryValuesObj('spatial_unit_link_type').subscribe(
+      data => {
+        this.spatialUnitLinkTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('land_use_category').subscribe(
+      data => {
+        this.landUseCategorys = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('property_type').subscribe(
+      data => {
+        this.propertyTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('location_of_land').subscribe(
+      data => {
+        this.locationOfLands = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('built_up_area_type').subscribe(
+      data => {
+        this.builtUpAreaTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('measurement_type').subscribe(
+      data => {
+        this.measurementTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('land_use_type').subscribe(
+      data => {
+        this.landUseTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('development_status').subscribe(
+      data => {
+        this.developmentStatus = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('tenure_type').subscribe(
+      data => {
+        this.tenureTypes = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
+
+    this.dashboardService.fetchDictionaryValuesObj('type_of_accomodation').subscribe(
+      data => {
+        this.typeOfAccomodations = JSON.parse(data.body.category);
+      },
+      err => {}
+    );
   }
 
   updateForm(parcel: IParcel) {
@@ -203,34 +287,38 @@ export class ParcelExtUpdateComponent implements OnInit {
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IParcel>>) {
     // update the transsaction if this is new
-    if (this.newOrEdit === 'new'){
-      result.subscribe((data) => {
-        const parcel = data.body;
-        this.batchService.find(this.batchId).subscribe((dBatch) =>{
-          if (dBatch.body.transactions[0].parcels == null){
-            dBatch.body.transactions[0].parcels=[]
-          }
-          dBatch.body.transactions[0].parcels.push(parcel);
-          this.transactionService.update(dBatch.body.transactions[0]).subscribe(
-            ()=> {
-              alert('update to transaction successfull')
-              this.onSaveSuccess()
-            },
-            () => {
-              alert('update to transaction failed')
-              this.onSaveError()}
-            )
-        })
-      }, () => this.onSaveError());
-    }else{
+    if (this.newOrEdit === 'new') {
       result.subscribe(
-      ()=> {
-        alert('No transaction update required')
-        this.onSaveSuccess()
-      },
-      () => this.onSaveError())
+        data => {
+          const parcel = data.body;
+          this.batchService.find(this.batchId).subscribe(dBatch => {
+            if (dBatch.body.transactions[0].parcels == null) {
+              dBatch.body.transactions[0].parcels = [];
+            }
+            dBatch.body.transactions[0].parcels.push(parcel);
+            this.transactionService.update(dBatch.body.transactions[0]).subscribe(
+              () => {
+                alert('update to transaction successfull');
+                this.onSaveSuccess();
+              },
+              () => {
+                alert('update to transaction failed');
+                this.onSaveError();
+              }
+            );
+          });
+        },
+        () => this.onSaveError()
+      );
+    } else {
+      result.subscribe(
+        () => {
+          alert('No transaction update required');
+          this.onSaveSuccess();
+        },
+        () => this.onSaveError()
+      );
     }
-
   }
 
   protected onSaveSuccess() {

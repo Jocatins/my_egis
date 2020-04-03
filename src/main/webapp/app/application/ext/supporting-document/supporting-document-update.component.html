@@ -16,8 +16,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.supportingDocument.documentType" for="field_documentType">Document Type</label>
-                    <input type="number" class="form-control" name="documentType" id="field_documentType"
-                           formControlName="documentType"/>
+
+                    <select class="form-control" id="field_documentType" name="documentType" formControlName="documentType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dOption.id === editForm.get('documentType').value ? editForm.get('documentType').value : dOption.id"
+                            *ngFor="let dOption of documentTypes; trackBy: trackStateById">{{dOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.supportingDocument.ownershipArea" for="field_ownershipArea">Ownership Area</label>
@@ -26,13 +30,20 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.supportingDocument.documentSubType" for="field_documentSubType">Document Sub Type</label>
-                    <input type="number" class="form-control" name="documentSubType" id="field_documentSubType"
-                           formControlName="documentSubType"/>
+
+                    <select class="form-control" id="field_documentSubType" name="documentSubType" formControlName="documentSubType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dOption.id === editForm.get('documentSubType').value ? editForm.get('documentSubType').value : dOption.id"
+                            *ngFor="let dOption of documentSubtypes; trackBy: trackStateById">{{dOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.supportingDocument.issuedBy" for="field_issuedBy">Issued By</label>
-                    <input type="number" class="form-control" name="issuedBy" id="field_issuedBy"
-                           formControlName="issuedBy"/>
+                    <select class="form-control" id="field_issuedBy" name="issuedBy" formControlName="issuedBy">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personIdIssuedByOption.id === editForm.get('issuedBy').value ? editForm.get('issuedBy').value : personIdIssuedByOption.id"
+                            *ngFor="let personIdIssuedByOption of issuedBys; trackBy: trackStateById">{{personIdIssuedByOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.supportingDocument.pageCount" for="field_pageCount">Page Count</label>

@@ -174,13 +174,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.personIdIssuedBy" for="field_personIdIssuedBy">Person Id Issued By</label>
-                    <!-- <input type="number" class="form-control" name="personIdIssuedBy" id="field_personIdIssuedBy"
-                           formControlName="personIdIssuedBy"/> -->
-                        <select class="form-control" id="field_personIdIssuedBy" name="personIdIssuedBy" formControlName="personIdIssuedBy">
-                            <option [ngValue]="null"></option>
-                            <option [ngValue]="personIdIssuedByOption.id === editForm.get('personIdIssuedBy').value ? editForm.get('personIdIssuedBy').value : personIdIssuedByOption.id"
-                                *ngFor="let personIdIssuedByOption of issuedBys; trackBy: trackStateById">{{personIdIssuedByOption.label}}</option>
-                        </select>
+
+                    <select class="form-control" id="field_personIdIssuedBy" name="personIdIssuedBy" formControlName="personIdIssuedBy">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personIdIssuedByOption.id === editForm.get('personIdIssuedBy').value ? editForm.get('personIdIssuedBy').value : personIdIssuedByOption.id"
+                            *ngFor="let personIdIssuedByOption of issuedBys; trackBy: trackStateById">{{personIdIssuedByOption.label}}</option>
+                    </select>
 
 
                 </div>
