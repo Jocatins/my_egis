@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
 import { JhiAlertService } from 'ng-jhipster';
@@ -16,6 +16,7 @@ import { TransactionService } from 'app/entities/transaction/transaction.service
 import { BatchService } from 'app/entities/batch/batch.service';
 import { DashboardService } from 'app/dashboard/dashboard.service';
 import { IEGISDIctionary } from 'app/application/model/egisdictionary.model';
+import { IBatch } from 'app/shared/model/batch.model';
 
 @Component({
   selector: 'jhi-parcel-update',
@@ -23,6 +24,8 @@ import { IEGISDIctionary } from 'app/application/model/egisdictionary.model';
 })
 export class ParcelExtUpdateComponent implements OnInit {
   isSaving: boolean;
+
+  bSaveContinue: boolean;
 
   addresses: IAddress[];
 
@@ -82,6 +85,7 @@ export class ParcelExtUpdateComponent implements OnInit {
   newOrEdit: string;
 
   constructor(
+    private router: Router,
     protected jhiAlertService: JhiAlertService,
     protected parcelService: ParcelService,
     protected addressService: AddressService,
@@ -98,6 +102,7 @@ export class ParcelExtUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.isSaving = false;
+    this.bSaveContinue = false;
     this.activatedRoute.data.subscribe(({ parcel }) => {
       this.updateForm(parcel);
     });
@@ -232,8 +237,15 @@ export class ParcelExtUpdateComponent implements OnInit {
     });
   }
 
+  proceedToDocuments() {
+    this.router.navigate(['/application/supporting-docs', this.batchId]);
+  }
   previousState() {
     window.history.back();
+  }
+
+  saveAndContinue(batch: IBatch) {
+    this.bSaveContinue = true;
   }
 
   save() {
@@ -323,7 +335,7 @@ export class ParcelExtUpdateComponent implements OnInit {
 
   protected onSaveSuccess() {
     this.isSaving = false;
-    this.previousState();
+    this.proceedToDocuments();
   }
 
   protected onSaveError() {

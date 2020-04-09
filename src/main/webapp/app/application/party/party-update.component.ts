@@ -366,8 +366,7 @@ export class PartyExtUpdateComponent implements OnInit {
   }
 
   previousState() {
-    // window.history.back();
-    this.router.navigate(['/application/translanding', this.batchId]);
+    this.router.navigate(['/application/applicants', this.batchId]);
   }
 
   save() {

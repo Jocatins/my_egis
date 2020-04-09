@@ -5,7 +5,6 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import * as moment from 'moment';
 import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
 import { ISupportingDocument, SupportingDocument } from 'app/shared/model/supporting-document.model';
 import { SupportingDocumentService } from './supporting-document.service';
@@ -128,8 +127,7 @@ export class SupportingExtDocumentUpdateComponent implements OnInit {
   }
 
   previousState() {
-    this.router.navigate(['/application/translanding', this.batchId]);
-    //window.history.back();
+    this.router.navigate(['/application/supporting-docs', this.batchId]);
   }
 
   save() {
@@ -178,7 +176,6 @@ export class SupportingExtDocumentUpdateComponent implements OnInit {
             }
             batch.transactions[0].docs.push(supDOc);
             this.transactionService.update(batch.transactions[0]).subscribe(() => {
-              //alert('Transaction successfully updated ...')
               this.eventManager.broadcast({
                 name: 'supportingDocumentListModification',
                 content: 'Deleted an supportingDocument'
@@ -224,7 +221,6 @@ export class SupportingExtDocumentUpdateComponent implements OnInit {
   private onUpload(imageFor) {
     const fd = new FormData();
     fd.append('imageFile', this.selectedFile, this.selectedFile.name);
-    alert(JSON.stringify(fd));
     // this.http.post('https://localhost:3443/products/upload', fd)
     //   .subscribe(res => imageFor === 'FRONT' ? this.imgFront = res : this.imgBack = res);
   }

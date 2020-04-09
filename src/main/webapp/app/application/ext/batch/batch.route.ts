@@ -10,10 +10,6 @@ import { BatchComponent } from './batch.component';
 import { BatchDetailComponent } from './batch-detail.component';
 import { BatchUpdateComponent } from './batch-update.component';
 import { IBatch } from 'app/shared/model/batch.model';
-import { PartyExtUpdateComponent } from '../party/party-update.component';
-import { Transaction } from 'app/shared/model/transaction.model';
-import { TransactionService } from 'app/entities/transaction/transaction.service';
-import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({ providedIn: 'root' })
 export class BatchResolve implements Resolve<IBatch> {

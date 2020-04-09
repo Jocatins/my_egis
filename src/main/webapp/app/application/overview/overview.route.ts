@@ -15,8 +15,6 @@ export class BatchExtResolve implements Resolve<IBatch> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<IBatch> {
     const id = route.params['id'];
-    alert(id);
-
     if (id) {
       return this.service.find(id).pipe(map((batch: HttpResponse<Batch>) => batch.body));
     }
@@ -27,6 +25,19 @@ export class BatchExtResolve implements Resolve<IBatch> {
 export const OVERVIEW: Route = {
   path: 'overview/:transCode',
   component: OverviewComponent,
+  data: {
+    authorities: [],
+    pageTitle: 'overview.title'
+  },
+  canActivate: [UserRouteAccessService]
+};
+
+export const OVERVIEW_BATCH: Route = {
+  path: 'overview/:transCode/:id',
+  component: OverviewComponent,
+  resolve: {
+    batch: BatchExtResolve
+  },
   data: {
     authorities: [],
     pageTitle: 'overview.title'

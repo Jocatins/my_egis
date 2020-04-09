@@ -7,7 +7,7 @@ import { BatchService } from 'app/entities/batch/batch.service';
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { TranslandingComponent } from './trans-landing.component';
-import { PartyExtUpdateComponent } from '../ext/party/party-update.component';
+import { PartyExtUpdateComponent } from '../party/party-update.component';
 import { SupportingExtDocumentUpdateComponent } from '../ext/supporting-document/supporting-document-update.component';
 import { ParcelExtUpdateComponent } from '../ext/parcel/parcel-update.component';
 
@@ -18,6 +18,7 @@ import { IParty, Party } from 'app/shared/model/party.model';
 import { PartyService } from 'app/entities/party/party.service';
 import { ISupportingDocument, SupportingDocument } from 'app/shared/model/supporting-document.model';
 import { SupportingDocumentService } from 'app/entities/supporting-document/supporting-document.service';
+import { SupportingDocsComponent } from '../supporting-docs/supporting-docs.component';
 
 @Injectable({ providedIn: 'root' })
 export class BatchExtResolve implements Resolve<IBatch> {
@@ -98,6 +99,26 @@ export class SupportingDocExtResolve implements Resolve<ISupportingDocument> {
   }
 }
 
+@Injectable({ providedIn: 'root' })
+export class SupportingDocResolve implements Resolve<ISupportingDocument> {
+  constructor(private sdService: SupportingDocumentService) {}
+  resolve(route: ActivatedRouteSnapshot): Observable<ISupportingDocument> {
+    // const batchId = route.params['batchId'];
+    const newOrEdit = route.params['newOrEdit'];
+    const supportingDocumentId = route.params['documentId'];
+
+    if (newOrEdit === 'edit') {
+      return this.sdService.find(supportingDocumentId).pipe(
+        map((doc: HttpResponse<ISupportingDocument>) => {
+          return doc.body;
+        })
+      );
+    }
+    const doc = new SupportingDocument();
+    return of(doc);
+  }
+}
+
 export const TRANS_LANDING: Route = {
   path: 'translanding',
   component: TranslandingComponent,
@@ -156,6 +177,19 @@ export const NEW_EDIT_DOCUMENT: Route = {
   resolve: {
     supportingDoc: SupportingDocExtResolve
   },
+  data: {
+    authorities: ['ROLE_USER'],
+    pageTitle: 'egisexternalApp.batch.home.title'
+  },
+  canActivate: [UserRouteAccessService]
+};
+
+// @SuppDocList
+// this is the path that will be used for rendering the SupportingDocsComponent component
+export const SUPP_DOCUMENTS: Route = {
+  path: 'supporting-docs/:batchId',
+  component: SupportingDocsComponent,
+
   data: {
     authorities: ['ROLE_USER'],
     pageTitle: 'egisexternalApp.batch.home.title'

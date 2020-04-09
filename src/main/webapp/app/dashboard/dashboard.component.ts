@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Injectable } from '@angular/core';
 import { HttpResponse, HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { JhiEventManager, JhiParseLinks } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -30,8 +30,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   reverse: any;
   totalItems: number;
   currentSearch: string;
+  batch: IBatch;
 
   constructor(
+    private router: Router,
     protected batchService: BatchService,
     protected eventManager: JhiEventManager,
     protected modalService: NgbModal,
@@ -140,6 +142,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loadAll();
     this.registerChangeInBatches();
+  }
+
+  editBatch(batchId: number) {
+    this.batchService.find(batchId).subscribe(
+      (data: HttpResponse<IBatch>) => {
+        this.batch = data.body;
+        this.router.navigate(['/application/overview', this.batch.transactions[0].transactionCode, batchId]);
+      },
+      () => alert('Error creating batch')
+    );
   }
 
   ngOnDestroy() {

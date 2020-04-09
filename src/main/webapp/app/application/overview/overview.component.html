@@ -28,11 +28,20 @@
         </form> -->
 
         <div class="input-group w-100 mt-3">
-            <button type="submit" id="jh-create-entity" class="btn btn-primary float-right
+
+            <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-primary float-right
             jh-create-entity create-address" (click)="initiateTransaction(transCode)">
 
                 <span class="hidden-sm-down">
                     Intiate A Transaction
+                </span>
+            </button>
+
+            <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-primary float-right
+            jh-create-entity create-address" (click)="continueTransaction(batch.id)">
+
+                <span class="hidden-sm-down">
+                    Continue A Transaction
                 </span>
             </button>
         </div>

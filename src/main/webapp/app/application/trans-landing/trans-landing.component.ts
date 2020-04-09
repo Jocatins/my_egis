@@ -9,7 +9,7 @@ import { SupportingDocumentService } from '../ext/supporting-document/supporting
 import { SupportingDocumentDeleteDialogComponent } from '../ext/supporting-document/supporting-document-delete-dialog.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
-import { PartyDeleteDialogComponent } from '../ext/party/party-delete-dialog.component';
+import { PartyDeleteDialogComponent } from '../party/party-delete-dialog.component';
 import { BatchService } from '../ext/batch/batch.service';
 import { Subscription } from 'rxjs';
 
