@@ -19,6 +19,7 @@ import { PartyService } from 'app/entities/party/party.service';
 import { ISupportingDocument, SupportingDocument } from 'app/shared/model/supporting-document.model';
 import { SupportingDocumentService } from 'app/entities/supporting-document/supporting-document.service';
 import { SupportingDocsComponent } from '../supporting-docs/supporting-docs.component';
+import { PropertyComponent } from '../property/property.component';
 
 @Injectable({ providedIn: 'root' })
 export class BatchExtResolve implements Resolve<IBatch> {
@@ -164,6 +165,16 @@ export const EDIT_APPLICANT: Route = {
   resolve: {
     party: PartyExtResolve
   },
+  data: {
+    authorities: ['ROLE_USER'],
+    pageTitle: 'egisexternalApp.batch.home.title'
+  },
+  canActivate: [UserRouteAccessService]
+};
+
+export const EDIT_APPLICANT_NEW: Route = {
+  path: 'applicant-new/new/',
+  component: PropertyComponent,
   data: {
     authorities: ['ROLE_USER'],
     pageTitle: 'egisexternalApp.batch.home.title'

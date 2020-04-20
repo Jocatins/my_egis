@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'app/core/auth/account.service';
+import { Account } from 'app/core/user/account.model';
 
 @Component({
   selector: 'jhi-application',
@@ -17,6 +18,7 @@ export class ApplicationComponent implements OnInit {
   ngOnInit() {
     this.accountService.identity().subscribe(account => {
       //  alert(JSON.stringify(account));
+      this.account = account;
     });
   }
 }

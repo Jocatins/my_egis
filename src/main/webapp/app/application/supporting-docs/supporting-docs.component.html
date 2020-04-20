@@ -5,10 +5,40 @@
         <h1 class="text-capitalize text-center" jhiTranslate="supporting-docs.title">Title</h1>
         <h5 class="text-center" jhiTranslate="supporting-docs.subtitle">Subtitle</h5>
         <hr />
-        Supporting documents here
+        Mandatory Supporting documents here
         </p>
+        <div>
+            <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                    <tr>
+                        <td>
+                            <select class="form-control" id="field_documentType" (change)="onChange($event)"
+                             name="documentType" formControlName="documentType">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="dOption.id === editForm.get('documentType').value ? editForm.get('documentType').value : dOption.id"
+                                    *ngFor="let dOption of madatorySupportingDocuments; trackBy: trackStateById">{{dOption.label}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="input-group"  [hidden]="!editForm.get(['documentType']).value">
+                                <label for="fileUploader"></label>
+                                <input (change)="onFileSelected1($event)" type="file" id="fileUploader" #fileUploader>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <div>
+
+
+        </div>
+
 
         <!-- Suppuorting Document-->
+        Other Supporting documents here
+        </p>
         <div>
             <div class="row">
                 <div class="col-sm-12">

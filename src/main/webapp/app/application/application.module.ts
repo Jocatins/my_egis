@@ -18,7 +18,7 @@ import { TranslandingComponent } from './trans-landing/trans-landing.component';
 import { ParcelExtUpdateComponent } from './ext/parcel/parcel-update.component';
 import { SupportingDocumentDeleteDialogComponent } from './ext/supporting-document/supporting-document-delete-dialog.component';
 import { PartyDeleteDialogComponent } from './party/party-delete-dialog.component';
-// import { ParcelExtResolve } from './trans-landing/trans-landing.route'
+import { Property1Component } from './property1/property1.component';
 
 @NgModule({
   imports: [EgisexternalSharedModule, RouterModule.forRoot([APPLICATION_ROUTE], { useHash: true })],
@@ -31,6 +31,8 @@ import { PartyDeleteDialogComponent } from './party/party-delete-dialog.componen
     SupportingDocsComponent,
     ApplicationSummaryComponent,
     PropertyComponent,
+
+    Property1Component, // New one
 
     PartyComponent,
     BatchUpdateComponent,

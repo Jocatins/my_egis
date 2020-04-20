@@ -8,6 +8,7 @@ import { Batch, IBatch } from 'app/shared/model/batch.model';
 import { AccountService } from 'app/core/auth/account.service';
 import { UserService } from 'app/core/user/user.service';
 import { Transaction } from 'app/shared/model/transaction.model';
+import { IUser } from 'app/core/user/user.model';
 
 @Component({
   selector: 'jhi-overview',
@@ -145,8 +146,11 @@ export class OverviewComponent implements OnInit {
 
   getTransactionInfo(param: string) {
     const resourceUrl = 'http://localhost:7777' + '/transinfo/';
-    const callResp = this.httpClient.get<TransInfo>(`${resourceUrl //this.httpClient.get('http://jsonplaceholder.typicode.com/posts');
-      }/${this.transCode}/${param}`);
+    const callResp = this.httpClient.get<TransInfo>(
+      `${
+        resourceUrl //this.httpClient.get('http://jsonplaceholder.typicode.com/posts');
+      }/${this.transCode}/${param}`
+    );
 
     if (callResp != null) {
       callResp

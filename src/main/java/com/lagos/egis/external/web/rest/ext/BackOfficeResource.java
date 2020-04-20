@@ -124,9 +124,9 @@ public class BackOfficeResource {
 
     @GetMapping("/transinfoWithGroup")
     public String transinfoWithGroup(@RequestParam String group) throws IOException {
-		
+
 		String resourceUrl = "http://localhost:7777/transinfoWithGroup/" + group.toUpperCase();
-		
+
 		StringBuilder sb = new StringBuilder();
 
         StringBuffer result = new StringBuffer();
@@ -144,8 +144,35 @@ public class BackOfficeResource {
         }
 
         return result.toString();
-        
+
     }
+
+
+    @GetMapping("/getMandatorySupportDocs")
+    public String getMandatorySupportDocs(@RequestParam String code) throws IOException {
+
+		String resourceUrl = "http://localhost:7777/trans_document/" + code.toUpperCase();
+
+		StringBuilder sb = new StringBuilder();
+
+        StringBuffer result = new StringBuffer();
+
+
+        URL url = new URL (resourceUrl );
+
+        URLConnection conn = url.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+            conn.getInputStream()));
+
+        String inputLine;
+        while ((inputLine = in.readLine()) != null) {
+            result.append(inputLine);
+        }
+
+        return result.toString();
+
+    }
+
 
 
     @GetMapping("/transmetadata")
