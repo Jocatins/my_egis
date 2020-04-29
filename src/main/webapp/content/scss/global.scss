@@ -2,11 +2,11 @@
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 
-@import url("../css/nav.css");
-@import url("../css/form-signin.modal.css");
-@import url("../css/carousel.css");
-@import url("../css/application-tracker.css");
-
+@import url('../css/nav.css');
+@import url('../css/form-signin.modal.css');
+@import url('../css/carousel.css');
+@import url('../css/application-tracker.css');
+@import url('../css/accordion.css');
 
 /* ==============================================================
 Custom CSS
@@ -22,42 +22,42 @@ Custom CSS
 }
 
 body {
-  	font-size: 14px;
-  	line-height: 1.375;
-  	/*line-height: 20px;*/
-    color: #1c1c1c;
-  	/*padding-top: 120px;*/
-  	font-family: Titillium_Web, 'Roboto', Quicksand_Regular, "Helvetica Neue", Helvetica, Arial, sans-serif; 
-    background: none;
+  font-size: 14px;
+  line-height: 1.375;
+  /*line-height: 20px;*/
+  color: #1c1c1c;
+  /*padding-top: 120px;*/
+  font-family: Titillium_Web, 'Roboto', Quicksand_Regular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: none;
 }
 
 html {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
-	html {
-    	font-size: 14px;
-	}
+  html {
+    font-size: 14px;
+  }
 }
 
 a {
-    color: #2d699e;
+  color: #2d699e;
 }
 
-.form-group.required label:after, 
+.form-group.required label:after,
 .checkbox.required .col-form-label:after {
-    content: " *";
-    color: red;
-    font-weight: bold;
+  content: ' *';
+  color: red;
+  font-weight: bold;
 }
 
 select.form-control-lg:not([size]):not([multiple]) {
-    height: calc(40px + 2px);
+  height: calc(40px + 2px);
 }
 
 .btn-xs {
-  padding: .10rem .5rem;
+  padding: 0.1rem 0.5rem;
 }
 
 .dataTables_length select {
@@ -77,91 +77,114 @@ select.form-control-lg:not([size]):not([multiple]) {
 }
 
 .form-control-lg {
-    padding: 9px 18px;
-    font-size: 14px;
+  padding: 9px 18px;
+  font-size: 14px;
 }
 
 .input-group-text {
-    border-radius: 1rem;
+  border-radius: 1rem;
 }
 
 .container {
-/*   	max-width: 960px; */
+  /*   	max-width: 960px; */
 }
 
 .pricing-header {
-  	max-width: 700px;
+  max-width: 700px;
 }
 
 .card-deck .card {
   min-width: 220px;
 }
 
-.border-top { border-top: 1px solid #e5e5e5; }
-.border-bottom { border-bottom: 1px solid #e5e5e5; }
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
 
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
 
 .form-control,
 .btn {
-    border-radius: 1rem;
+  border-radius: 1rem;
 }
 
 .card-title img {
-/* 	height: 120px */
+  /* 	height: 120px */
 }
 
 .grade {
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4f5fc+0,bfe8f9+32,9fd8ef+67,2ab0ed+100 */
-	background: #e4f5fc; /* Old browsers */
-background: -moz-linear-gradient(-45deg, #e4f5fc 0%, #bfe8f9 33%, #9fd8ef 66%, #77c8ea 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg, #e4f5fc 0%,#bfe8f9 33%,#9fd8ef 66%,#77c8ea 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(135deg, #e4f5fc 0%,#bfe8f9 33%,#9fd8ef 66%,#77c8ea 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f5fc', endColorstr='#77c8ea',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4f5fc+0,bfe8f9+32,9fd8ef+67,2ab0ed+100 */
+  background: #e4f5fc; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #e4f5fc 0%, #bfe8f9 33%, #9fd8ef 66%, #77c8ea 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #e4f5fc 0%, #bfe8f9 33%, #9fd8ef 66%, #77c8ea 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    135deg,
+    #e4f5fc 0%,
+    #bfe8f9 33%,
+    #9fd8ef 66%,
+    #77c8ea 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f5fc', endColorstr='#77c8ea',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 .grad2 {
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#596a72+0,cedce7+33,cedce7+33,cedce7+100,cedce7+100 */
-background: #596a72; /* Old browsers */
-background: -moz-linear-gradient(-45deg, #596a72 0%, #cedce7 33%, #cedce7 33%, #cedce7 100%, #cedce7 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg, #596a72 0%,#cedce7 33%,#cedce7 33%,#cedce7 100%,#cedce7 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(135deg, #596a72 0%,#cedce7 33%,#cedce7 33%,#cedce7 100%,#cedce7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#596a72', endColorstr='#cedce7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#596a72+0,cedce7+33,cedce7+33,cedce7+100,cedce7+100 */
+  background: #596a72; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #596a72 0%, #cedce7 33%, #cedce7 33%, #cedce7 100%, #cedce7 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    -45deg,
+    #596a72 0%,
+    #cedce7 33%,
+    #cedce7 33%,
+    #cedce7 100%,
+    #cedce7 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    135deg,
+    #596a72 0%,
+    #cedce7 33%,
+    #cedce7 33%,
+    #cedce7 100%,
+    #cedce7 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#596a72', endColorstr='#cedce7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-   	
 }
 
 /*Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) { 
-  	
+@media (min-width: 992px) {
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { 
-	
+@media (min-width: 1200px) {
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
-	.card-deck .card .card-header h5 {
-		font-size: 18px;
-	}
-	
-	.card-deck .card .card-body button.btn-lg {
-		font-size: 14px;
-	}
+  .card-deck .card .card-header h5 {
+    font-size: 18px;
+  }
+
+  .card-deck .card .card-body button.btn-lg {
+    font-size: 14px;
+  }
 }
 
 .page-header {
-	margin-top: 26px;
-	margin-bottom: 30px;
+  margin-top: 26px;
+  margin-bottom: 30px;
 }
 
 .page-header h2 {
-    font-weight: bold;
-    padding-bottom: 10px;
+  font-weight: bold;
+  padding-bottom: 10px;
 }
 
 .sub-header {
@@ -172,51 +195,50 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#596a72', end
 }
 
 .main {
-	min-height: 280px;
-    margin-bottom: 60px;
+  min-height: 280px;
+  margin-bottom: 60px;
 }
 
 .blockquote {
-	font-size: 1.125em;
-    border-left: 5px solid #F48024;
-    padding: 10px 20px;
-    background-color: beige;
+  font-size: 1.125em;
+  border-left: 5px solid #f48024;
+  padding: 10px 20px;
+  background-color: beige;
 }
 
 .frm_1,
 .computed-fees,
 .print-computed-fees {
-	width: 60%;
-    margin: 0 auto;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .computed-fees .total-fees {
-	text-align: center;
-    margin-bottom: 80px;
+  text-align: center;
+  margin-bottom: 80px;
 }
 
 .computed-fees .total-fees h2 {
-	font-weight: bold;
-    font-size: 50px;
-    color: brown;
+  font-weight: bold;
+  font-size: 50px;
+  color: brown;
 }
 
 .computed-fees .total-fees h6 {
-	font-size: 11px;
-    line-height: 10px;
+  font-size: 11px;
+  line-height: 10px;
 }
 
 #sidebar {
-	
 }
 
 #sidebar h4 {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 #sidebar .list-group-item {
-	padding: 10px 0;
-    font-weight: bold;
+  padding: 10px 0;
+  font-weight: bold;
 }
 
 .center-image {
@@ -232,7 +254,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#596a72', end
 
 .form-download-link:hover {
   text-decoration: none;
-  color: red
+  color: red;
 }
 
 .form-download-link-footnote {
@@ -242,10 +264,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#596a72', end
   padding-top: 10px;
 }
 
-.tab-content>.tab-pane {
-    padding: 20px 0;
+.tab-content > .tab-pane {
+  padding: 20px 0;
 }
-
 
 .application-breadcrumb {
   background-color: transparent;
@@ -268,20 +289,22 @@ h6.form-subtitle {
 }
 
 .form-check {
-  margin-bottom: 20px
+  margin-bottom: 20px;
 }
 
 .ui-widget,
-.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
-    font-family: inherit;
-    font-size: inherit;
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+  font-family: inherit;
+  font-size: inherit;
 }
 
-.input-group>.input-group-prepend:not(:first-child)>.input-group-text {
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+.input-group > .input-group-prepend:not(:first-child) > .input-group-text {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
-
 
 .table td,
 .table th {
@@ -293,12 +316,12 @@ Custom jHipster tweaks
 ===============================================================*/
 
 strong {
-  font-weight: bold
+  font-weight: bold;
 }
 
 .jh-card {
-    padding: 0;
-    margin-top: 0;
+  padding: 0;
+  margin-top: 0;
 }
 
 /* ==============================================================

@@ -18,6 +18,12 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
+import { ResourcesComponent } from './resources/resources.component';
+import { PrivacypolicyComponent } from './resources/privacypolicy/privacypolicy.component';
+import { CopyrightinformationComponent } from './resources/copyrightinformation/copyrightinformation.component';
+import { DisclaimerComponent } from './resources/disclaimer/disclaimer.component';
+import { ContactusComponent } from './resources/contactus/contactus.component';
+import { RelatedinformationComponent } from './resources/subs/relatedinformation/relatedinformation.component';
 
 @NgModule({
   imports: [
@@ -33,7 +39,20 @@ import { ErrorComponent } from './layouts/error/error.component';
     EgisexternalEntityModule,
     EgisexternalAppRoutingModule
   ],
-  declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+  declarations: [
+    JhiMainComponent,
+    NavbarComponent,
+    ErrorComponent,
+    PageRibbonComponent,
+    ActiveMenuDirective,
+    FooterComponent,
+    ResourcesComponent,
+    PrivacypolicyComponent,
+    CopyrightinformationComponent,
+    DisclaimerComponent,
+    ContactusComponent,
+    RelatedinformationComponent
+  ],
   bootstrap: [JhiMainComponent]
 })
 export class EgisexternalAppModule {}

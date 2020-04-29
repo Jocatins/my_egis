@@ -1,133 +1,69 @@
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-   <hr/>
+<h5 class="sub-header mt-4 mb-4">Applicant/Party Information</h5><!--oojekwe. Display application name here dynamically-->
+<blockquote class="blockquote">
+    <p class="mb-0">
+        <!-- An individual is a citizen of the country with a valid identification document while an organisation refers to a group of persons under a name or a business, duly registered under the Corporate Affairs Commission established by the Companies and Alied Matters Act (1990). -->
+        A party is any person(s) who is(are) directly involved or interested in any act, affair, contract, transaction, or legal proceeding; opposing litigants; in this context is involved in the above selected transaction. You can add multiple parties to your transaction, please note that <strong>there MUST be a primary applicant</strong> for this application.
+    </p>
+</blockquote>
 
-    <div class="container page-header">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="border-bottom">Application for State Land - Applicant/Party Information</h2>
-            </div>
-        </div>
-    </div>
-    <div class="container main">
-        <div class="row">
-            <div class="col-lg-12">
-                <blockquote class="blockquote">
-                    <p class="mb-0">
-                        <!-- An individual is a citizen of the country with a valid identification document while an organisation refers to a group of persons under a name or a business, duly registered under the Corporate Affairs Commission established by the Companies and Alied Matters Act (1990). -->
-                        A party is any person(s) who is(are) directly involved or interested in any act, affair, contract, transaction, or legal proceeding; opposing litigants; in this context is involved in the above selected transaction. You can add multiple parties to your transaction, please note that <strong>there MUST be a primary applicant</strong> for this application.
-                    </p>
-                </blockquote>
+<ngb-alert [dismissible]="false" [type]="alert.info" class="alert alert-info" *ngIf="parties?.length === 0">
+    <span jhiTranslate="egisexternalApp.party.home.notFound">No parties found</span>
+</ngb-alert>
 
+<!-- <h6>Length of the array for parties = {{parties?.length}}</h6> -->
 
-                <div>
-
-                    <br />
-                    <div class="alert alert-warning" *ngIf="parties?.length === 0">
-                        <span jhiTranslate="egisexternalApp.party.home.notFound">No parties found</span>
+<div class="table-responsive" *ngIf="parties?.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+            <tr>
+                <th scope="col"><span jhiTranslate="global.field.id">ID</span><fa-icon [icon]="'sort'"></fa-icon></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.party.partyType">Party Type</span><fa-icon [icon]="'sort'"></fa-icon></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.party.name">Name</span><fa-icon [icon]="'sort'"></fa-icon></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let party of parties ;trackBy: trackId">
+                <td><a [routerLink]="['/party', party.id, 'view' ]">{{party.id}}</a></td>
+                <td>{{party.partyType}}</td>
+                <td>{{party.partyRoleType}}</td>
+                <td>{{party.name}}</td>
+                <td>
+                    <div *ngIf="party.person">
+                        <a [routerLink]="['/person', party.person?.id, 'view' ]">{{party.person?.id}}</a>
                     </div>
-                    <div>
-                        Length of the array for parties = {{parties?.length}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit" (click)="editNewApplicant1('edit',batch.id, 1556)" class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon> <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <!--
+                            <button type="submit" (click)="editNewApplicant('edit','batch.id', party.id)"
+                            class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        -->
+                        <button type="submit" (click)="deleteParty(party, batch.id)" class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon> <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
                     </div>
-                    <div class="table-responsive" *ngIf="parties?.length > 0">
-                        <table class="table table-striped" aria-describedby="page-heading">
-                            <thead>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-                                <tr>
-                                    <th scope="col"><span jhiTranslate="global.field.id">ID</span>
-                                        <fa-icon [icon]="'sort'"></fa-icon>
-                                    </th>
-                                    <th scope="col"><span jhiTranslate="egisexternalApp.party.partyType">Party Type</span>
-                                        <fa-icon [icon]="'sort'"></fa-icon>
-                                    </th>
-                                    <th scope="col"><span jhiTranslate="egisexternalApp.party.name">Name</span>
-                                        <fa-icon [icon]="'sort'"></fa-icon>
-                                    </th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let party of parties ;trackBy: trackId">
-                                    <td><a [routerLink]="['/party', party.id, 'view' ]">{{party.id}}</a></td>
-                                    <td>{{party.partyType}}</td>
-                                    <td>{{party.partyRoleType}}</td>
-                                    <td>{{party.name}}</td>
-                                    <td>
-                                        <div *ngIf="party.person">
-                                            <a [routerLink]="['/person', party.person?.id, 'view' ]">{{party.person?.id}}</a>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group">
-                                            <button type="submit" (click)="editNewApplicant1('edit',batch.id, 1556)"
-                                                class="btn btn-primary btn-sm">
-                                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                                            </button>
-                                            <!--
-                                                <button type="submit" (click)="editNewApplicant('edit','batch.id', party.id)"
-                                                class="btn btn-primary btn-sm">
-                                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                                            </button>
-                                            -->
-
-                                            <button type="submit" (click)="deleteParty(party, batch.id)"
-                                                class="btn btn-danger btn-sm">
-                                                <fa-icon [icon]="'times'"></fa-icon>
-                                                <span class="d-none d-md-inline"
-                                                    jhiTranslate="entity.action.delete">Delete</span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <!-- <form name="createNewParty" class="form-inline">
-                                <input type="hidden" name="batch_id" id="batch_id">
-                            </form> -->
-                            <div class="input-group w-100 mt-3">
-                                <button type="submit" id="jh-create-entity" class="btn btn-primary float-right
-                                jh-create-entity create-address" (click)="goBack('new',batch.id, 0)">
-                                    <fa-icon [icon]="'plus'"></fa-icon>
-                                    <span class="hidden-sm-down">
-                                        GoBack
-                                    </span>
-                                </button>
-                                <button type="submit" id="jh-create-entity" class="btn btn-primary float-right
-                                jh-create-entity create-address" (click)="editNewApplicant1('new',batch.id, 0)">
-                                    <fa-icon [icon]="'plus'"></fa-icon>
-                                    <span class="hidden-sm-down">
-                                        Create a new Party
-                                    </span>
-                                </button>
-                                <button type="submit" id="jh-create-entity" class="btn btn-primary float-right
-                                jh-create-entity create-address" (click)="goToParcel( batch.id )">
-                                    <fa-icon [icon]="'plus'"></fa-icon>
-                                    <span class="hidden-sm-down">
-                                       Continue
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-       <!-- Party-->
-
-
-
-
-  </div>
-  <div class="col-md-1"></div>
+<div class="btn-group" role="group" aria-label="">
+    <button type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="goBack('new',batch.id, 0)">
+        <fa-icon icon="chevron-left"></fa-icon> Back
+    </button>
+    <button type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="editNewApplicant1('new',batch.id, 0)">
+        <!-- <fa-icon [icon]="'plus'"></fa-icon>  -->
+        Add Party <fa-icon icon="plus"></fa-icon>
+    </button>
+    <button type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="goToParcel( batch.id )">
+        Continue <fa-icon icon="chevron-right"></fa-icon>
+    </button>
 </div>

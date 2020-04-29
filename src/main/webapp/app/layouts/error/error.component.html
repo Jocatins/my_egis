@@ -1,19 +1,34 @@
-<div>
+<div class="container page-header">
     <div class="row">
-        <div class="col-md-4">
-            <span class="hipster img-fluid rounded"></span>
+        <div class="col-lg-12">
+            <h2 class="border-bottom" jhiTranslate="error.title">Error Page!</h2>
         </div>
-        <div class="col-md-8">
-            <h1 jhiTranslate="error.title">Error Page!</h1>
-
+    </div>
+</div>
+<div class="container main">
+    <div class="row">
+        <div class="col-lg-9">
             <div [hidden]="!errorMessage">
-                <div class="alert alert-danger">{{errorMessage}}
-                </div>
+                <div class="alert alert-danger">{{errorMessage}}</div>
             </div>
             <div [hidden]="!error403" class="alert alert-danger" jhiTranslate="error.http.403">You are not authorized to access this page.
             </div>
             <div [hidden]="!error404" class="alert alert-danger" jhiTranslate="error.http.404">The page does not exist.
             </div>
         </div>
+        <div class="col-lg-3">
+            <div id="sidebar">
+                <h4>Related Information</h4>
+                <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><a href="#">Create Surveyor Account</a></li>
+                      <li class="list-group-item"><a href="#">Lost my Password</a></li>
+                      <li class="list-group-item"><a href="#">How can i process my property Valuation?</a></li>
+                      <li class="list-group-item"><a href="#">I want to make an online application</a></li>
+                      <li class="list-group-item"><a href="#">How much would is cost me to process a specific land transaction?</a></li>
+                      <li class="list-group-item"><a href="#">How do I track an on-going application at the Lagos State Lands' Bureau?</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
+

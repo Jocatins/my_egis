@@ -1,4 +1,50 @@
-<div class="row">
+<nav id="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/"><fa-icon icon="home"></fa-icon> Lagos eGIS Project</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Online Application</li>
+  </ol>
+</nav>
+<div class="container page-header">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="border-bottom"jhiTranslate="application.title">Title</h2>
+    </div>
+  </div>
+</div>
+<div class="container main">
+  <div class="row">
+    <div class="col-lg-12">    					
+      <blockquote class="blockquote">
+        <p class="mb-0">
+         Citizens can initiate any of the land transactions online, make payments of fees and charges of associated fees, monitor progresses, upload any supporting documents, view and download available reports and registry generated documents.
+        </p>
+      </blockquote>
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" routerLink="/application/landing" jhiTranslate="global.menu.landing">Page One</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/application/overview','SRSL']" jhiTranslate="global.menu.overview">Page Two</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/application/applicants']" jhiTranslate="global.menu.applicants">Page Two</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/application/property']" jhiTranslate="global.menu.property">Page Two</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/application/supporting-docs']" jhiTranslate="global.menu.supporting-docs">Page Two</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['/application/application-summary']" jhiTranslate="global.menu.application-summary">Page Two</a>
+        </li>
+      </ul>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10">
     <h6 class="text-right">{{message}}</h6>
@@ -42,4 +88,4 @@
     <router-outlet></router-outlet>
   </div>
   <div class="col-md-1"></div>
-</div>
+</div> -->

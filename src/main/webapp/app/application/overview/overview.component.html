@@ -1,137 +1,80 @@
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-    <h6 class="text-right">{{message}}</h6>
-    <h1 class="text-capitalize text-center" jhiTranslate="applicationtransdetail.title">Title</h1>
-    <h5 class="text-center" jhiTranslate="applicationtransdetail.subtitle">Subtitle</h5>
-    <hr/>
-    <ul class="list-group">
-        <!-- <li *ngFor="let post of posts" class="list-group-item">
-            {{post.title}}
-        </li> -->
-    </ul>
-    <p class="text-justify" jhiTranslate="/applicationtransdetail.content">
-        <div class="col-lg-12">
-            <!-- <h2 class="border-bottom">
-                {{transInfo.description}}
-            </h2> -->
-        </div>
+<!-- {{message}} -->
+<!-- <h1 class="text-capitalize text-center" jhiTranslate="applicationtransdetail.title">Title</h1> -->
+<!-- <h5 class="text-center" jhiTranslate="applicationtransdetail.subtitle">Subtitle</h5> -->
+<!-- <p class="text-justify" jhiTranslate="/applicationtransdetail.content"></p> -->
 
-        <!-- <form name="editForm" role="form" novalidate (ngSubmit)="initiateTransaction()" >
-            <input class="form-control input-md" #transCodeText="ngModel" required id="transCode"
-               name="transCode" type="text" placeholder="Transaction Code" [(ngModel)]="transCode">
-            <p>
-                    <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                            Intiate A Transaction
-                        </button>
-            </p>
-        </form> -->
+<h5 class="sub-header mt-4 mb-4">{{transInfo.applicationname}}</h5>
 
-        <div class="input-group w-100 mt-3">
+<!-- @oojekwe
+if not signed in, hide. display if signed in -->
+<p>
+    <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="initiateTransaction(transCode)">Click here to Initiate Transaction <fa-icon icon="chevron-right"></fa-icon></button>
 
-            <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-primary float-right
-            jh-create-entity create-address" (click)="initiateTransaction(transCode)">
+    <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batch.id)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
+</p>
 
-                <span class="hidden-sm-down">
-                    Intiate A Transaction
-                </span>
-            </button>
+<!-- Fetch value from .xlx config sheet -->
+<!-- {{transInfo.description}}  -->
+<div [innerHTML]="transInfo.description"></div>
 
-            <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-primary float-right
-            jh-create-entity create-address" (click)="continueTransaction(batch.id)">
-
-                <span class="hidden-sm-down">
-                    Continue A Transaction
-                </span>
-            </button>
-        </div>
-
-
-
-            <!-- Fetch value from .xlx config sheet -->
-            <blockquote class="blockquote">
-                <p class="mb-0">
-                    <h6><strong>Description:</strong></h6>
-                    <!-- Fetch value from .xlx config sheet -->
-                    <strong><p>{{transInfo.description}}hhh  </p></strong>
-                </p>
-            </blockquote>
-
-            <blockquote class="blockquote">
-                <p class="mb-0">
-                    <h6><strong>Application Name:</strong></h6>
-                    <!-- Fetch value from .xlx config sheet -->
-                    <strong><p>{{transInfo.applicationname}}</p></strong>
-                </p>
-
-            <blockquote class="blockquote">
-                <p class="mb-0">
-                    <h6><strong>Restrictions:</strong></h6>
-                    <!-- Fetch value from .xlx config sheet -->
-                    <strong><p>{{transInfo.restrictions}}</p></strong>
-                </p>
-            </blockquote>
-
-            <h6><strong>Expiration:</strong></h6>
-            <!-- Fetch value from .xlx config sheet -->
-            <p>
-                <strong><p>{{transInfo.expiration}}</p></strong>
-            </p>
-
-            <h6><strong>Documents Received:</strong></h6>
-            <!-- Fetch value from .xlx config sheet -->
-            <p>
-                <strong><p>{{transInfo.docsreceived}}</p></strong>
-            </p>
-
-            <h6><strong>Pre-Requisites:</strong></h6>
-            <!-- Fetch value from .xlx config sheet -->
-            <p>
-                <strong><p>{{transInfo.prerequisitetrans}}</p></strong>
-                <strong><p>{{transInfo.prerequisitedocs}}</p></strong>
-            </p>
-
-            <h6><strong>Procedure:</strong></h6>
-            <!-- Fetch value from .xlx config sheet -->
-            <p>
-                <strong><p>{{transInfo.procedure}}</p></strong>
-            </p>
-
-            <h6><strong>Associated Fees:</strong></h6>
-            <!-- Fetch value from .xlx config sheet -->
-            <p>
-                <strong><p>{{transInfo.associatedfees}}</p></strong>
-            </p>
-
-            <h6><strong>Application Form and Methods:</strong></h6>
-            <!-- Fetch value from .xlx config sheet -->
-            <p>
-                <strong><p>{{transInfo.expiration}}</p></strong>
-            </p>
-
-<!--
-
-            <ul class="nav nav-tabs" id="" role="tablist">
-                <li class="nav-item">
-                    <a routerLinkActive="active" class="nav-link" routerLink="/application/trans-detail/docreceived" >Documents Received</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLinkActive="active" class="nav-link" routerLink="/application/trans-detail/prerequisite">Pre-Requisites</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLinkActive="active" class="nav-link" routerLink="/application/trans-detail/procedure">Procedure</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLinkActive="active" class="nav-link" routerLink="/application/trans-detail/associatedfee">Associated Fees</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLinkActive="active" class="nav-link" routerLink="/application/trans-detail/methods" >Application Forms & Methods</a>
-                </li>
-            </ul> -->
-
+<blockquote class="blockquote mt-3">
+    <p class="mb-0">
+        <h6><strong>Restrictions:</strong></h6>
+        <!-- {{transInfo.restrictions}} -->
+        <div [innerHTML]="transInfo.restrictions"></div>
     </p>
+</blockquote>
 
+<h6><strong>Expiration:</strong></h6>
+<!-- {{transInfo.expiration}} -->
+<div [innerHTML]="transInfo.expiration"></div>
 
-  </div>
-  <div class="col-md-1"></div>
+<p>
+    <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="initiateTransaction(transCode)">Click here to Initiate Transaction <fa-icon icon="chevron-right"></fa-icon></button>
+
+    <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batch.id)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
+</p>
+
+<ul class="nav nav-tabs" id="" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="document-received-tab" data-toggle="tab" href="" role="tab" aria-controls="document-received" aria-selected="true">Documents Received</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pre-requisite-tab" data-toggle="tab" href="#pre-requisite" role="tab" aria-controls="pre-requisite" aria-selected="false">Pre-Requisites</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="procedure-tab" data-toggle="tab" href="#procedure" role="tab" aria-controls="procedure" aria-selected="false">Procedure</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="associated-fees-tab" data-toggle="tab" href="#associated-fees" role="tab" aria-controls="associated-fees-tab" aria-selected="false">Associated Fees</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="general-info-tab" data-toggle="tab" href="#general-info" role="tab" aria-controls="general-info" aria-selected="false">Application Forms & Methods</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="document-received" role="tabpanel" aria-labelledby="document-received-tab">
+        <!-- {{transInfo.docsreceived}} -->
+        <div [innerHTML]="transInfo.docsreceived"></div>
+    </div>
+    <div class="tab-pane fade" id="pre-requisite" role="tabpanel" aria-labelledby="pre-requisite-tab">
+        <h6><strong>Documents</strong></h6>
+        <!-- {{transInfo.prerequisitedocs}} -->
+        <div [innerHTML]="transInfo.prerequisitedocs"></div>
+        <h6><strong>Pre-requisite Transactions:</strong></h6>
+        <!-- {{transInfo.prerequisitetrans}} -->
+        <div [innerHTML]="transInfo.prerequisitetrans"></div>
+    </div>
+    <div class="tab-pane fade" id="procedure" role="tabpanel" aria-labelledby="procedure-tab">
+        <!-- {{transInfo.procedure}} -->
+        <div [innerHTML]="transInfo.procedure"></div>
+    </div>
+    <div class="tab-pane fade" id="associated-fees" role="tabpanel" aria-labelledby="associated-fees">
+        <!-- {{transInfo.associatedfees}} -->
+        <div [innerHTML]="transInfo.associatedfees"></div>
+    </div>
+    <div class="tab-pane fade" id="general-info" role="tabpanel" aria-labelledby="general-info-tab">
+        <!-- {{transInfo.expiration}} -->
+        <div [innerHTML]="transInfo.expiration"></div>
+    </div>
 </div>
