@@ -19,6 +19,7 @@ export interface ISupportingDocument {
   image?: string;
   date?: Moment;
   transactions?: ITransaction[];
+  description?: string;
 }
 
 export class SupportingDocument implements ISupportingDocument {
@@ -39,6 +40,7 @@ export class SupportingDocument implements ISupportingDocument {
     public contentUrl?: string,
     public image?: string,
     public date?: Moment,
-    public transactions?: ITransaction[]
+    public transactions?: ITransaction[],
+    public description?: string
   ) {}
 }
