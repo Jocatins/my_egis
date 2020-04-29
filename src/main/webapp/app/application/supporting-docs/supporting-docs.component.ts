@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SupportingDocumentDeleteDialogComponent } from '../ext/supporting-document/supporting-document-delete-dialog.component';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'jhi-trans-detail',
@@ -33,6 +34,7 @@ export class SupportingDocsComponent implements OnInit {
   associated: boolean;
   form: boolean;
   supportingDocuments: ISupportingDocument[];
+  supportingDocumentsOthers: ISupportingDocument[];
   batchId: number;
   mandatoryDocs: MandatoryDocument[];
   documentTypes: IEGISDIctionary[];
@@ -40,17 +42,31 @@ export class SupportingDocsComponent implements OnInit {
   otherSupportingDocuments: IEGISDIctionary[];
   selectedFile: File;
   fileName: string;
+  fileNameOthers: string;
   supportingDocument: ISupportingDocument;
   content: any;
+  map = new Map();
+  typeOfDoc: string;
 
   @ViewChild('fileUploader', { static: false }) fileUploader: ElementRef;
+  @ViewChild('fileUploaderOthers', { static: false }) fileUploaderOthers: ElementRef;
 
   editForm = this.fb.group({
     documentType: [],
     content: [],
     type: [],
     name: [],
-    fileSize: []
+    fileSize: [],
+    provided: []
+  });
+
+  editFormOthers = this.fb.group({
+    documentType: [],
+    content: [],
+    type: [],
+    name: [],
+    fileSize: [],
+    provided: []
   });
 
   constructor(
@@ -71,14 +87,27 @@ export class SupportingDocsComponent implements OnInit {
   linkClick() {}
 
   private createFromForm(): ISupportingDocument {
-    return {
-      ...new SupportingDocument(),
-      documentType: this.editForm.get(['documentType']).value,
-      // type: this.editForm.get(['type']).value,
-      name: this.editForm.get(['name']).value,
-      fileSize: this.editForm.get(['fileSize']).value,
-      content: this.editForm.get(['content']).value
-    };
+    if (this.typeOfDoc === 'mandatory') {
+      return {
+        ...new SupportingDocument(),
+        documentType: this.editForm.get(['documentType']).value,
+        // type: this.editForm.get(['type']).value,
+        name: this.editForm.get(['name']).value,
+        fileSize: this.editForm.get(['fileSize']).value,
+        content: this.editForm.get(['content']).value,
+        provided: this.editForm.get(['provided']).value
+      };
+    } else {
+      return {
+        ...new SupportingDocument(),
+        documentType: this.editFormOthers.get(['documentType']).value,
+        // type: this.editForm.get(['type']).value,
+        name: this.editFormOthers.get(['name']).value,
+        fileSize: this.editFormOthers.get(['fileSize']).value,
+        content: this.editFormOthers.get(['content']).value,
+        provided: this.editFormOthers.get(['provided']).value
+      };
+    }
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ISupportingDocument>>) {
@@ -96,10 +125,12 @@ export class SupportingDocsComponent implements OnInit {
           this.transactionService.update(batch.transactions[0]).subscribe(() => {
             this.eventManager.broadcast({
               name: 'supportingDocumentListModification',
-              content: 'Deleted an supportingDocument'
+              content: 'Added an supportingDocument'
             });
+            this.refreshDocument(this.batch);
           });
         });
+
         this.onSaveSuccess();
       },
       () => this.onSaveError()
@@ -107,16 +138,23 @@ export class SupportingDocsComponent implements OnInit {
   }
 
   resetForm() {
-    this.editForm.patchValue({
-      content: [],
-      documentType: []
-    });
-    this.fileUploader.nativeElement.value = null;
+    if (this.typeOfDoc === 'mandatory') {
+      this.editForm.patchValue({
+        content: null,
+        documentType: null
+      });
+      this.fileUploader.nativeElement.value = null;
+    } else {
+      this.editFormOthers.patchValue({
+        content: null,
+        documentType: null
+      });
+      this.fileUploaderOthers.nativeElement.value = null;
+    }
   }
 
   protected onSaveSuccess() {
     this.resetForm();
-    alert('document successfully uploaded');
   }
 
   protected onSaveError() {
@@ -125,7 +163,11 @@ export class SupportingDocsComponent implements OnInit {
 
   save() {
     const supportingDocument = this.createFromForm();
-    alert(JSON.stringify(supportingDocument));
+    this.subscribeToSaveResponse(this.supportingDocumentService.create(supportingDocument));
+  }
+
+  saveOthers() {
+    const supportingDocument = this.createFromForm();
     this.subscribeToSaveResponse(this.supportingDocumentService.create(supportingDocument));
   }
 
@@ -140,16 +182,19 @@ export class SupportingDocsComponent implements OnInit {
     this.batchService.find(this.batchId).subscribe(
       data => {
         this.batch = data.body;
-        this.refreshDocument(this.batch);
 
         this.code_ = this.batch.transactions[0].transactionCode;
         this.dashboardService.getMandatorySupportDocs(this.code_).subscribe(data1 => {
           this.mandatoryDocs = data1.body;
 
+          // Get the list of all the support docs
           this.dashboardService.fetchDictionaryValuesObj('document_type').subscribe(
             dataDocs => {
               this.documentTypes = JSON.parse(dataDocs.body.category);
 
+              this.documentTypes.forEach(x => {
+                this.map.set(x.id, x);
+              });
               this.mandatoryDocs.forEach(mandatoryDoc => {
                 this.documentTypes.forEach(documentType => {
                   if (mandatoryDoc.document_code === documentType.code) {
@@ -158,6 +203,7 @@ export class SupportingDocsComponent implements OnInit {
                 });
               });
               this.otherSupportingDocuments = this.documentTypes.filter(x => !this.madatorySupportingDocuments.includes(x));
+              this.refreshDocument(this.batch);
             },
             err => {}
           );
@@ -167,21 +213,14 @@ export class SupportingDocsComponent implements OnInit {
     );
   }
 
-  // private createFromForm(): ISupportingDocument {
-  //   return {
-  //     ...new SupportingDocument(),
-  //     id: 2222,
-  //     documentType: 333,
-  //     type: 222,
-  //     name: 'test.pdf',
-  //     content: null
-  //   };
-  // }
-
   refreshDocument(batch: Batch) {
-    this.transactionService.find(batch.transactions[0].id).subscribe(
+    this.batchService.find(batch.id).subscribe(
       data => {
-        this.supportingDocuments = data.body.docs;
+        const allDocs = data.body.transactions[0].docs;
+        this.supportingDocuments = allDocs.filter(x => x.provided === 'Y');
+        this.supportingDocumentsOthers = allDocs.filter(x => x.provided !== 'Y');
+
+        this.addMoreDetailDocument();
       },
       () => {
         // alert()
@@ -194,10 +233,35 @@ export class SupportingDocsComponent implements OnInit {
     this.router.navigate([path, batchId, documentId, newOrEdit]);
   }
 
-  onFileSelected1(event) {
-    // alert(this.editForm.get(['documentType']).value)
+  onFileSelectedOthers(event) {
+    this.typeOfDoc = 'others';
 
-    // this.supportingDocument = this.createFromForm()
+    this.selectedFile = event.target.files[0] as File;
+
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      this.fileNameOthers = event.target.files[0].name;
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        // this.content = reader.result
+        this.editFormOthers.patchValue({
+          content: reader.result,
+          type: this.selectedFile.type,
+          name: this.fileNameOthers,
+          fileSize: this.selectedFile.size,
+          provided: 'N'
+        });
+
+        this.save();
+      };
+    }
+  }
+
+  onFileSelected(event) {
+    this.typeOfDoc = 'mandatory';
     this.selectedFile = event.target.files[0] as File;
 
     const reader = new FileReader();
@@ -213,7 +277,8 @@ export class SupportingDocsComponent implements OnInit {
           content: reader.result,
           type: this.selectedFile.type,
           name: this.fileName,
-          fileSize: this.selectedFile.size
+          fileSize: this.selectedFile.size,
+          provided: 'Y'
         });
 
         this.save();
@@ -222,6 +287,10 @@ export class SupportingDocsComponent implements OnInit {
   }
 
   onChange(event) {
+    this.fileUploader.nativeElement.value = null;
+  }
+
+  onChangeOthers() {
     this.fileUploader.nativeElement.value = null;
   }
 
@@ -234,10 +303,58 @@ export class SupportingDocsComponent implements OnInit {
           this.supportingDocuments = data.body.docs;
 
           // this.refreshParty(this.batch.id);
+          this.refreshDocument(this.batch);
         },
         () => alert()
       );
     });
+  }
+
+  addMoreDetailDocument() {
+    this.supportingDocuments.forEach(value => {
+      const dict = this.map.get(value.documentType) as IEGISDIctionary;
+      value.description = dict.label;
+    });
+
+    this.supportingDocumentsOthers.forEach(value => {
+      const dict = this.map.get(value.documentType) as IEGISDIctionary;
+      value.description = dict.label;
+    });
+  }
+
+  b64toBlob(b64Data: string, contentType: string, sliceSize: number) {
+    const byteCharacters = atob(b64Data);
+    const byteArrays = [];
+
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+    }
+
+    const blob = new Blob(byteArrays, { type: contentType });
+    return blob;
+  }
+
+  getFile(documentId: number, content: string, filename: string) {
+    const index = content.indexOf('base64') + 7;
+
+    const blob = this.b64toBlob(content.substring(index), content.substr(0, index - 8), 512);
+    const downloadURL = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = downloadURL;
+    link.download = filename;
+    link.click();
+  }
+
+  goToSummary(batchId: number) {
+    this.router.navigate(['/application/application-summary', batchId]);
   }
 }
 

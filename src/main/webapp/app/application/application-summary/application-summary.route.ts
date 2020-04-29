@@ -4,7 +4,7 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access-service'
 import { ApplicationSummaryComponent } from './application-summary.component';
 
 export const APPLICATION_SUMMARY: Route = {
-  path: 'application-summary',
+  path: 'application-summary/:batchId',
   component: ApplicationSummaryComponent,
   data: {
     authorities: [],
