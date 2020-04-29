@@ -1,150 +1,100 @@
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-        <h6 class="text-right">{{message}}</h6>
-        <h1 class="text-capitalize text-center" jhiTranslate="supporting-docs.title">Title</h1>
-        <h5 class="text-center" jhiTranslate="supporting-docs.subtitle">Subtitle</h5>
-        <hr />
-        Mandatory Supporting documents here
-        </p>
-        <div>
-            <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-                    <tr>
-                        <td>
-                            <select class="form-control" id="field_documentType" (change)="onChange($event)"
-                             name="documentType" formControlName="documentType">
-                                <option [ngValue]="null"></option>
-                                <option [ngValue]="dOption.id === editForm.get('documentType').value ? editForm.get('documentType').value : dOption.id"
-                                    *ngFor="let dOption of madatorySupportingDocuments; trackBy: trackStateById">{{dOption.label}}</option>
-                            </select>
-                        </td>
-                        <td>
-                            <div class="input-group"  [hidden]="!editForm.get(['documentType']).value">
-                                <label for="fileUploader"></label>
-                                <input (change)="onFileSelected1($event)" type="file" id="fileUploader" #fileUploader>
-                            </div>
-                        </td>
-                        <td></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+<h5 class="sub-header mt-4 mb-4">Supporting Document(s)</h5><!--oojekwe. Display application name here dynamically-->
 
-        <div>
+<!-- <h6 class="text-right">{{message}}</h6> -->
+<!-- <h1 class="text-capitalize text-center" jhiTranslate="supporting-docs.title">Title</h1> -->
+<!-- <h5 class="text-center" jhiTranslate="supporting-docs.subtitle">Subtitle</h5> -->
 
-
-        </div>
-
-
-        <!-- Suppuorting Document-->
-        Other Supporting documents here
-        </p>
-        <div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <form name="createNewSupportDoc" class="form-inline">
-                        <input type="hidden" name="batch_id" id="batch_id">
-                        <div class="input-group w-100 mt-3">
-                            <button type="submit" id="jh-create-entity" class="btn btn-primary float-right
-                        jh-create-entity create-address" (click)="editNewDocument('new',batch.id, 0)">
-                                <fa-icon [icon]="'plus'"></fa-icon>
-                                <span class="hidden-sm-down">
-                                    Add Supporting Document
-                                </span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="form-control-label">Mandatory Supporting documents here</label>
+            <select class="form-control" id="field_documentType" (change)="onChange($event)" name="documentType" formControlName="documentType">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="dOption.id === editForm.get('documentType').value ? editForm.get('documentType').value : dOption.id"
+                    *ngFor="let dOption of madatorySupportingDocuments; trackBy: trackStateById">{{dOption.label}}</option>
+            </select>
+            <div class="input-group"  [hidden]="!editForm.get(['documentType']).value">
+                <label for="fileUploader"></label>
+                <input (change)="onFileSelected1($event)" type="file" id="fileUploader" #fileUploader>
             </div>
-            <br />
-            <div class="alert alert-warning" *ngIf="supportingDocuments?.length === 0">
-                <span jhiTranslate="egisexternalApp.supportingDocument.home.notFound">No supportingDocuments
-                    found</span>
-            </div>
-            <div class="table-responsive" *ngIf="supportingDocuments?.length > 0">
-                <table class="table table-striped" aria-describedby="page-heading">
-                    <thead>
-                        <tr>
-                            <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
-                            <th scope="col"><span
-                                    jhiTranslate="egisexternalApp.supportingDocument.documentNumber">Document
-                                    Number</span></th>
-                            <th scope="col"><span
-                                    jhiTranslate="egisexternalApp.supportingDocument.documentType">Document Type</span>
-                            </th>
-                            <th scope="col"><span
-                                    jhiTranslate="egisexternalApp.supportingDocument.ownershipArea">Ownership
-                                    Area</span></th>
-                            <th scope="col"><span
-                                    jhiTranslate="egisexternalApp.supportingDocument.documentSubType">Document Sub
-                                    Type</span></th>
-                            <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.issuedBy">Issued
-                                    By</span></th>
-                            <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.pageCount">Page
-                                    Count</span></th>
-                            <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.status">Status</span>
-                            </th>
-                            <th scope="col"><span
-                                    jhiTranslate="egisexternalApp.supportingDocument.provided">Provided</span></th>
-                            <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.page">Page</span>
-                            </th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let supportingDocument of supportingDocuments ;trackBy: trackId">
-                            <td><a
-                                    [routerLink]="['/supporting-document', supportingDocument.id, 'view' ]">{{supportingDocument.id}}</a>
-                            </td>
-                            <td>{{supportingDocument.documentNumber}}</td>
-                            <td>{{supportingDocument.documentType}}</td>
-                            <td>{{supportingDocument.ownershipArea}}</td>
-                            <td>{{supportingDocument.documentSubType}}</td>
-                            <td>{{supportingDocument.issuedBy}}</td>
-                            <td>{{supportingDocument.pageCount}}</td>
-                            <td>{{supportingDocument.status}}</td>
-                            <td>{{supportingDocument.provided}}</td>
-                            <td>
-                                <span *ngFor="let page of supportingDocument.pages; let last = last">
-                                    <a class="form-control-static"
-                                        [routerLink]="['/document-page', page?.id, 'view' ]">{{page.id}}</a>{{last ? '' : ', '}}
-                                </span>
-                            </td>
-                            <td class="text-right">
-                                <div class="btn-group">
-                                    <div
-                                        *ngIf="supportingDocument.content === undefined ||
-                                supportingDocument.content === '' || supportingDocument.content === null   else canDownload">
-                                    </div>
-
-                                </div>
-                                <ng-template #canDownload>
-                                    <div>
-                                        <button type="submit" (click)="getFile(supportingDocument.id,
-                                        supportingDocument.content, supportingDocument.name  )"
-                                            class="btn btn-info btn-sm">
-                                            <fa-icon [icon]="'eye'"></fa-icon>
-                                            <span class="d-none d-md-inline">Download</span>
-                                        </button>
-                                    </div>
-                                </ng-template>
-                                <button type="submit" (click)="editNewDocument('edit',batch.id, supportingDocument.id)"
-                                    class="btn btn-primary btn-sm">
-                                    <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                                </button>
-                                <button type="submit" (click)="deleteDoc(supportingDocument, batch.id)"
-                                    class="btn btn-danger btn-sm">
-                                    <fa-icon [icon]="'times'"></fa-icon>
-                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                                </button>
-            </div>
-            </td>
-            </tr>
-            </tbody>
-            </table>
         </div>
     </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="form-control-label">Other Supporting documents here</label>
+        </div>
+    </div>
+</form>
+
+<form name="createNewSupportDoc" class="form-inline">
+    <input type="hidden" name="batch_id" id="batch_id">
+    <div class="input-group w-100 mt-3">
+        <button type="submit" id="jh-create-entity" class="btn btn-outline-secondary float-right jh-create-entity create-address" (click)="editNewDocument('new',batch.id, 0)">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down">Add Supporting Document </span>
+        </button>
+    </div>
+</form>
+
+<hr>
+<div class="alert alert-warning" *ngIf="supportingDocuments?.length === 0">
+    <span jhiTranslate="egisexternalApp.supportingDocument.home.notFound">No supportingDocuments found.</span>
 </div>
-<div class="col-md-1"></div>
+<div class="table-responsive" *ngIf="supportingDocuments?.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+            <tr>
+                <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.documentNumber">Document Number</span></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.documentType">Document Type</span></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.ownershipArea">Ownership Area</span></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.documentSubType">Document Sub Type</span></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.issuedBy">Issued By</span></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.pageCount">Page Count</span></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.status">Status</span></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.provided">Provided</span></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.supportingDocument.page">Page</span></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let supportingDocument of supportingDocuments ;trackBy: trackId">
+                <td><a [routerLink]="['/supporting-document', supportingDocument.id, 'view' ]">{{supportingDocument.id}}</a></td>
+                <td>{{supportingDocument.documentNumber}}</td>
+                <td>{{supportingDocument.documentType}}</td>
+                <td>{{supportingDocument.ownershipArea}}</td>
+                <td>{{supportingDocument.documentSubType}}</td>
+                <td>{{supportingDocument.issuedBy}}</td>
+                <td>{{supportingDocument.pageCount}}</td>
+                <td>{{supportingDocument.status}}</td>
+                <td>{{supportingDocument.provided}}</td>
+                <td>
+                    <span *ngFor="let page of supportingDocument.pages; let last = last">
+                        <a class="form-control-static" [routerLink]="['/document-page', page?.id, 'view' ]">{{page.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <div *ngIf="supportingDocument.content === undefined || supportingDocument.content === '' || supportingDocument.content === null   else canDownload"></div>
+                    </div>
+                    <ng-template #canDownload>
+                        <div>
+                            <button type="submit" (click)="getFile(supportingDocument.id, supportingDocument.content, supportingDocument.name  )" class="btn btn-info btn-sm">
+                                <fa-icon [icon]="'eye'"></fa-icon>
+                                <span class="d-none d-md-inline">Download</span>
+                            </button>
+                        </div>
+                    </ng-template>
+                    <button type="submit" (click)="editNewDocument('edit',batch.id, supportingDocument.id)" class="btn btn-primary btn-sm">
+                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                    </button>
+                    <button type="submit" (click)="deleteDoc(supportingDocument, batch.id)" class="btn btn-danger btn-sm">
+                        <fa-icon [icon]="'times'"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

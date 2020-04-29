@@ -185,7 +185,7 @@ public class BackOfficeResource {
         StringBuffer result = new StringBuffer();
 
 
-        URL url = new URL("http://localhost:8060/api/jsonws/AumentumServices-portlet.calls/list-transaction-metada/code/"+ code.toUpperCase() );
+        URL url = new URL("http://localhost:8060/api/jsonws/aumentumservices-portlet.calls/list-transaction-metada/code/"+ code.toUpperCase() );
 
         URLConnection conn = url.openConnection();
 
@@ -219,7 +219,7 @@ public class BackOfficeResource {
 
         StringBuffer result = new StringBuffer();
 
-        URL url = new URL("http://localhost:8060/api/jsonws/AumentumServices-portlet.calls/fetch-dictionary-values-obj/category/"+ category );
+        URL url = new URL("http://localhost:8060/api/jsonws/aumentumservices-portlet.calls/fetch-dictionary-values-obj/category/"+ category );
 
         URLConnection conn = url.openConnection();
 
