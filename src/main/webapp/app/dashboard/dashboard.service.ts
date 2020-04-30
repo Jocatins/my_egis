@@ -32,7 +32,7 @@ export class DashboardService {
 
   public transinfoWithGroup(group: string) {
     this.serverApiURL = '/api/backoffice/';
-    return this.http.get<any>(`${this.serverApiURL + 'transinfoWithGrgetMandatorySupportDocsoup'}?group=${group}`, { observe: 'response' });
+    return this.http.get<any>(`${this.serverApiURL + 'transinfoWithGroup'}?group=${group}`, { observe: 'response' });
   }
 
   public getMandatorySupportDocs(code: string) {
