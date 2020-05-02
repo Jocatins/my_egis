@@ -1,69 +1,43 @@
-<div class="row">
-
-    <form #parametersForm="ngForm" class="editForm" novalidate></form>
-        <div class="form-group">
-              <label>Is the (primary) applicant for this transaction/application form an Individual or Organisation?</label>
-
-              <select class="form-control input-md" #indOrgs.value="ngModel" required id="individualOrganization" name="individualOrganization"  [(ngModel)]="parameters.indOrg">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="indOrgOption.value === download.indOrg ? download.indOrg : indOrgOption.value"
-                      *ngFor="let indOrgOption of indOrgs; trackBy: trackindOrgOptionByValue">
-                      {{indOrgOption.label}} </option>
-                </select>
-
+<img src="../../../content/images/custom/main/LG_0019.png" class="figure-img img-fluid mt-5 mb-5 center-image" alt="">
+<form #parametersForm="ngForm" class="editForm frm_1" novalidate>
+    <div class="form-group">
+        <label>Is the (primary) applicant for this transaction/application form an Individual or Organisation?</label>
+        <select class="form-control input-md" #indOrgs.value="ngModel" required id="individualOrganization" name="individualOrganization"  [(ngModel)]="parameters.indOrg">
+            <!-- <option [ngValue]="null">-- Select (Primary) Applicant --</option> -->
+            <option [ngValue]="indOrgOption.value === download.indOrg ? download.indOrg : indOrgOption.value" *ngFor="let indOrgOption of indOrgs; trackBy: trackindOrgOptionByValue">{{indOrgOption.label}} </option>
+        </select>
+    </div>
+    <div class="form-group" id="primaryApplicant">
+        <label>Are you going to be filling this form as an agent (or representative of the applicant)</label>
+        <select class="form-control input-md" #primaryApp.value="ngModel" required id="primary" name="primary" [(ngModel)]="parameters.primary">
+            <!-- <option [ngValue]="null"></option> -->
+            <option [ngValue]="primOption.value === download.primary ? download.primary : primOption.value" *ngFor="let primOption of primaryApp; trackBy: trackPrimByValue">{{primOption.value}} {{primOption.label}} </option>
+        </select>
+    </div>
+    <div *ngIf="parameters.primary === 'Yes'" class="mb-2">
+        <label>As an agent, are you acting as an Individual or an Orgnanization/firm?</label>
+        <select class="form-control input-md" #agentIndOrgs.value="ngModel" required id="agentIndividualOrganization" name="agentIndividualOrganization"  [(ngModel)]="parameters.agent">
+            <!-- <option [ngValue]="null"></option> -->
+            <option [ngValue]="agentIndOrgOption.value === download.agent ? download.agent : agentIndOrgOption.value" *ngFor="let agentIndOrgOption of agentIndOrgs; trackBy: trackagentIndOrgOptionOptionByValue">{{agentIndOrgOption.label}} </option>
+        </select>
+    </div>
+    <div class="form-group" id="multiParty">
+        <label>Are there multiple parties/property owners for the transaction and/or property in view?</label>
+        <select class="form-control input-md" #multiples.value="ngModel" required id="fieldMultipleParties" name="fieldMultipleParties"  [(ngModel)]="parameters.multipleParties">
+            <!-- <option [ngValue]="null"></option> -->
+            <option [ngValue]="multipleOption.value === download.agent ? download.multipleParties : multipleOption.value" *ngFor="let multipleOption of multiples; trackBy: trackagentmultipleOptionOptionByValue">{{multipleOption.value}} {{multipleOption.label}} </option>
+        </select>
+        <div *ngIf="parameters.multipleParties === 'Yes'" class="text-center">
+            <!-- <label>No of additional Individual parties</label> -->
+            <input class="form-control multiparty-form-control input-md" #download.noIndividual="ngModel" required id="fieldNoIndividual" name="fieldNoIndividual" type="text" placeholder="0" [(ngModel)]="parameters.noIndividual"> Individual(s)
+            <!-- <label>No of additional Organization parties</label> -->
+            <input class="form-control multiparty-form-control input-md" #download.noOrganization="ngModel" required id="fieldNoOrganization" name="fieldNoOrganization" type="text" placeholder="0" [(ngModel)]="parameters.noOrganization"> Organisation(s)
         </div>
-        <div class="form-group" id="primaryApplicant">
-              <label>Are you going to be filling this form as an agent (or representative of the applicant)</label>
-
-             <select class="form-control input-md" #primaryApp.value="ngModel" required id="primary" name="primary"  [(ngModel)]="parameters.primary">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="primOption.value === download.primary ? download.primary : primOption.value"
-                      *ngFor="let primOption of primaryApp; trackBy: trackPrimByValue">
-                      {{primOption.value}} {{primOption.label}} </option>
-            </select>
-
-
-
-        </div>
-        <div class="form-group hide" id="agentType">
-            <label>As an agent, are you acting as an Individual or an Orgnanization/firm?</label>
-
-            <select class="form-control input-md" #agentIndOrgs.value="ngModel" required id="agentIndividualOrganization" name="agentIndividualOrganization"  [(ngModel)]="parameters.agent">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="agentIndOrgOption.value === download.agent ? download.agent : agentIndOrgOption.value"
-                      *ngFor="let agentIndOrgOption of agentIndOrgs; trackBy: trackagentIndOrgOptionOptionByValue">
-                      {{agentIndOrgOption.label}} </option>
-            </select>
-
-
-        </div>
-        <div class="form-group " id="multiParty">
-            <label>Are there multiple parties/property owners for the transaction and/or property in view?</label>
-
-            <select class="form-control input-md" #multiples.value="ngModel" required id="fieldMultipleParties" name="fieldMultipleParties"  [(ngModel)]="parameters.multipleParties">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="multipleOption.value === download.agent ? download.multipleParties : multipleOption.value"
-                      *ngFor="let multipleOption of multiples; trackBy: trackagentmultipleOptionOptionByValue">
-                      {{multipleOption.value}} {{multipleOption.label}} </option>
-            </select>
-
-            <div class="hide text-center" id="multiPartyCount">
-                <label>No of additional Individual parties</label>
-                <input class="form-control input-md" #download.noIndividual="ngModel"
-                   required id="fieldNoIndividual" name="fieldNoIndividual" type="text" placeholder="0" [(ngModel)]="parameters.noIndividual">
-                <label>No of additional Organization parties</label>
-                <input class="form-control input-md" #download.noOrganization="ngModel"
-                   required id="fieldNoOrganization" name="fieldNoOrganization" type="text" placeholder="0" [(ngModel)]="parameters.noOrganization">
-            </div>
-        </div>
-        <p class="text-center">
-            <button class="btn btn-outline-secondary" type="button" (click)="restart()"><i class="fal fa-chevron-double-left"></i>Restart</button>
-            <button class="btn btn-outline-secondary" type="button" (click)="goBack()"><i class="fal fa-chevron-double-left"></i> Back</button>
-            <button class="btn btn-outline-secondary" type="reset"><i class="fal fa-redo"></i> Reset</button>
-            <!--<a class="btn btn-outline-secondary" href="download-complete.php">Continue <i class="fal fa-chevron-double-right"></i></a>-->
-            <button class="btn btn-outline-secondary" (click)="getParameters(parametersForm)"> Continue <i class="fal fa-chevron-double-right"></i></button>
-        </p>
-            <!--<a href="downloads.php" class="btn btn-outline-secondary"><i class="fas fa-times"></i> Cancel</a>
-            <a href="download-complete.php" class="btn btn-outline-secondary">Finish <i class="fas fa-chevron-right"></i></a>-->
-    </form>
-</div>
+    </div>
+    <p class="text-center">
+        <!-- <button class="btn btn-outline-secondary" type="button" (click)="restart()"><i class="fal fa-chevron-double-left"></i>Restart</button> -->
+        <button class="btn btn-outline-secondary" type="button" (click)="goBack()"><fa-icon icon="chevron-left"></fa-icon> Back</button>
+        <button class="btn btn-outline-secondary" type="reset"> <fa-icon icon="redo"></fa-icon> Reset</button>
+        <button class="btn btn-outline-secondary" (click)="getParameters(parametersForm)"> Continue <fa-icon icon="chevron-right"></fa-icon></button>
+    </p>
+</form>

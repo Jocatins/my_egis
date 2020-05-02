@@ -1,20 +1,16 @@
-<div class="row">
-    <form class="frm_1">
-        <div class="row">
-            <div class="col-lg-10" style="margin: 0 auto;">
-                <a class="form-download-link"  (click)="getFile()" >
-                    <h1 class="float-left mr-3"><i class="fal fa-download"></i></h1>
-                    <h5>Download {{downloadName}} Application Form </h5>
-                </a>
-            </div>
+<img src="../../../content/images/custom/main/LG_0020.png" class="figure-img img-fluid mt-5 mb-5 center-image" alt="">
+<form class="frm_1 text-center">
+    <div class="row">
+        <div class="col-lg-12 mb-4" style="margin: 0 auto;">
+            <a class="form-download-link"  (click)="getFile()" >
+                <h3><fa-icon icon="download"></fa-icon> Download {{downloadName}} Application Form </h3>
+            </a>
         </div>
-        <div>
-            <button class="btn btn-outline-secondary" type="button" (click)="goBack()"><i class="fal fa-chevron-double-left"></i>Back</button>
-            <button class="btn btn-outline-secondary" type="button" (click)="restart()"><i class="fal fa-chevron-double-left"></i>Restart</button>
-        </div>
-        <h6 class="form-download-link-footnote" >
-            For land registration forms it is important that you use the correct application form where one is prescribed, otherwise the application may be rejected.
-            All completed application form should be filled and submitted in person or by an agent at the LAGOS eGIS Project Office, MTN Building at Lands Bureau, Alausa, Lagos. :
-        </h6>
-    </form>
-</div>
+    </div>
+    <button class="btn btn-outline-secondary" type="button" (click)="goBack()"><fa-icon icon="chevron-left"></fa-icon> Back</button>
+    <button class="btn btn-outline-secondary" type="button" (click)="restart()"><fa-icon icon="chevron-right"></fa-icon> Restart</button>
+</form>
+<h6 class="form-download-link-footnote" >
+    For land registration forms it is important that you use the correct application form where one is prescribed, otherwise the application may be rejected.
+    All completed application form should be filled and submitted in person or by an agent at the LAGOS eGIS Project Office, MTN Building at Lands Bureau, Alausa, Lagos.
+</h6>

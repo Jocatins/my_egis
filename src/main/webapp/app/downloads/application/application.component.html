@@ -1,4 +1,5 @@
-<form #f="ngForm" class="editForm" novalidate></form>
+<img src="../../../content/images/custom/main/LG_0018.png" class="figure-img img-fluid mt-5 mb-5 center-image" alt="">
+<form #f="ngForm" class="editForm frm_1" novalidate>
     <div class="form-group required">
           <label>Select the transaction who's application form you would want to download.</label>
           <select class="form-control input-md" #pplication.code_="ngModel" required id="code_" name="code_"  [(ngModel)]="application.code_">
@@ -7,7 +8,7 @@
                     *ngFor="let tranOption of trans; trackBy: trackTranByCode_">{{tranOption.param_value}}</option>
         </select>
     </div>
-    <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="getApplication(f)">
-        &nbsp;Continue
+    <button type="button" id="cancel-save" class="btn btn-outline-secondary"  (click)="getApplication(f)">
+        Continue <fa-icon icon="chevron-right"></fa-icon>
     </button>
 </form>
