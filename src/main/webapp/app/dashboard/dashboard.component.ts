@@ -9,10 +9,10 @@ import { IBatch } from 'app/shared/model/batch.model';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { BatchService } from '../application/ext/batch/batch.service';
-import { BatchDeleteDialogComponent } from '../entities/batch/batch-delete-dialog.component';
 import { SERVER_API_URL } from 'app/app.constants';
 import { timeout, catchError } from 'rxjs/operators';
 import { DashboardService } from './dashboard.service';
+import { BatchDeleteDialogComponent } from '../application/ext/batch/batch-delete-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 @Component({
@@ -89,7 +89,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
               .pipe(
                 timeout(2000),
                 catchError(ee => {
-                  //  alert(JSON.stringify(ee))
                   return null;
                 })
               )

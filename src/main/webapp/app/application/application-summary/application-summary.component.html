@@ -7,6 +7,166 @@
     <hr/>
      Application Summary Here ...
 
+     Applicants ...
+     <div class="row justify-content-center">
+        <div class="col-8">
+            <div *ngIf="parcel">
+                <h2><span jhiTranslate="egisexternalApp.parcel.detail.title">Parcel</span> {{parcel.id}}</h2>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <dl class="row-md jh-entity-details">
+                    <dt><span jhiTranslate="egisexternalApp.parcel.label">Label</span></dt>
+                    <dd>
+                        <span>{{parcel.label}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.area">Area</span></dt>
+                    <dd>
+                        <span>{{parcel.area}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.spatialUnitType">Spatial Unit Type</span></dt>
+                    <dd>
+                        <span>{{parcel.spatialUnitType}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.registrationOfficeDictionary">Registration Office Dictionary</span></dt>
+                    <dd>
+                        <span>{{parcel.registrationOfficeDictionary}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.surveyType">Survey Type</span></dt>
+                    <dd>
+                        <span>{{parcel.surveyType}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.surveyDate">Survey Date</span></dt>
+                    <dd>
+                        <span>{{parcel.surveyDate}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.propertyType">Property Type</span></dt>
+                    <dd>
+                        <span>{{parcel.propertyType}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.accommodation">Accommodation</span></dt>
+                    <dd>
+                        <span>{{parcel.accommodation}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.tenureType">Tenure Type</span></dt>
+                    <dd>
+                        <span>{{parcel.tenureType}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.description">Description</span></dt>
+                    <dd>
+                        <span>{{parcel.description}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.propertyArea">Property Area</span></dt>
+                    <dd>
+                        <span>{{parcel.propertyArea}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.location">Location</span></dt>
+                    <dd>
+                        <span>{{locationOfLand.label}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.builtUpAreaType">Built Up Area Type</span></dt>
+                    <dd>
+                        <span>{{builtUpAreaType.label}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.planNumber">Plan Number</span></dt>
+                    <dd>
+                        <span>{{parcel.planNumber}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.measurementUnitType">Measurement Unit Type</span></dt>
+                    <dd>
+                        <span>{{measurementUnitType.label}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.premiumValue">Premium Value</span></dt>
+                    <dd>
+                        <span>{{parcel.premiumValue}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.landUseCategory">Land Use Category</span></dt>
+                    <dd>
+                        <span>{{landUseCategory.label}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.landUseType">Land Use Type</span></dt>
+                    <dd>
+                        <span>{{landUseType.label}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.developmentStatus">Development Status</span></dt>
+                    <dd>
+                        <span>{{parcel.developmentStatus}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.coordinateN">Coordinate N</span></dt>
+                    <dd>
+                        <span>{{parcel.coordinateN}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.coordinateS">Coordinate S</span></dt>
+                    <dd>
+                        <span>{{parcel.coordinateS}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.lagosSheetNumber">Lagos Sheet Number</span></dt>
+                    <dd>
+                        <span>{{parcel.lagosSheetNumber}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.allocation">Allocation</span></dt>
+                    <dd>
+                        <span>{{parcel.allocation}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.location1">Location 1</span></dt>
+                    <dd>
+                        <span>{{parcel.location1}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.unitNumber">Unit Number</span></dt>
+                    <dd>
+                        <span>{{parcel.unitNumber}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.name">Name</span></dt>
+                    <dd>
+                        <span>{{parcel.name}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.registerType">Register Type</span></dt>
+                    <dd>
+                        <span>{{parcel.registerType}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.valuation">Valuation</span></dt>
+                    <dd>
+                        <span>{{parcel.valuation}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.comments">Comments</span></dt>
+                    <dd>
+                        <span>{{parcel.comments}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.legalDescription">Legal Description</span></dt>
+                    <dd>
+                        <span>{{parcel.legalDescription}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.meansOfAcq">Means Of Acq</span></dt>
+                    <dd>
+                        <span>{{parcel.meansOfAcq}}</span>
+                    </dd>
+                    <dt><span jhiTranslate="egisexternalApp.parcel.address">Address</span></dt>
+                    <dd>
+                        <div *ngIf="parcel.address">
+                            <a [routerLink]="['/address', parcel.address?.id, 'view']">{{parcel.address?.id}}</a>
+                        </div>
+                    </dd>
+                </dl>
+
+                <button type="submit"
+                        (click)="previousState()"
+                        class="btn btn-info">
+                    <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+                </button>
+
+                <button type="button"
+                        [routerLink]="['/parcel', parcel.id, 'edit']"
+                        class="btn btn-primary">
+                    <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+     Property Information ...
+
+     Supporting Docs ...
+
+
   </div>
   <div class="col-md-1"></div>
 </div>

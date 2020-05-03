@@ -17,8 +17,9 @@ import { BatchUpdateComponent } from './ext/batch/batch-update.component';
 import { TranslandingComponent } from './trans-landing/trans-landing.component';
 import { ParcelExtUpdateComponent } from './ext/parcel/parcel-update.component';
 import { SupportingDocumentDeleteDialogComponent } from './ext/supporting-document/supporting-document-delete-dialog.component';
-import { PartyDeleteDialogComponent } from './party/party-delete-dialog.component';
 import { Property1Component } from './property1/property1.component';
+import { BatchDeleteDialogComponent } from './ext/batch/batch-delete-dialog.component';
+import { PartyDeleteDialogComponent } from './party/party-delete-dialog.component';
 
 @NgModule({
   imports: [EgisexternalSharedModule, RouterModule.forRoot([APPLICATION_ROUTE], { useHash: true })],
@@ -41,9 +42,10 @@ import { Property1Component } from './property1/property1.component';
     TranslandingComponent,
     ParcelExtUpdateComponent,
     SupportingDocumentDeleteDialogComponent,
-    PartyDeleteDialogComponent
+    PartyDeleteDialogComponent,
+    BatchDeleteDialogComponent
   ],
-  entryComponents: [SupportingDocumentDeleteDialogComponent, PartyDeleteDialogComponent],
+  entryComponents: [BatchDeleteDialogComponent, SupportingDocumentDeleteDialogComponent, PartyDeleteDialogComponent],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
