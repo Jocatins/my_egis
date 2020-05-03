@@ -194,6 +194,18 @@ select.form-control-lg:not([size]):not([multiple]) {
   margin: 10px 0;
 }
 
+.sub-header-style-2 {
+  padding: 0 0 10px 0;
+  margin: 10px 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.sub-header-style-2 span {
+  background-color: #e4e5e6;
+  padding: 6px 16px 8px 16px;
+  border-color: #dee2e6 #dee2e6 #e4e5e6;
+}
+
 .main {
   min-height: 280px;
   margin-bottom: 60px;

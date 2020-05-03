@@ -186,6 +186,9 @@ export class OverviewComponent implements OnInit {
           if ('SS_ASSOCIATED_FEES' === param) {
             this.transInfo.associatedfees = data.param_value;
           }
+          if ('SS_EXPIRATION' === param) {
+            this.transInfo.expiration = data.param_value;
+          }
         });
     } else {
       return;
