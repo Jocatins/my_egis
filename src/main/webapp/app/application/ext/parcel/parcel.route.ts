@@ -8,7 +8,7 @@ import { Parcel } from 'app/shared/model/parcel.model';
 import { ParcelService } from './parcel.service';
 import { ParcelComponent } from './parcel.component';
 import { ParcelDetailComponent } from './parcel-detail.component';
-import { ParcelExtUpdateComponent } from './parcel-update.component';
+import { ParcelUpdateComponent } from './parcel-update.component';
 import { IParcel } from 'app/shared/model/parcel.model';
 
 @Injectable({ providedIn: 'root' })
@@ -23,8 +23,6 @@ export class ParcelResolve implements Resolve<IParcel> {
     return of(new Parcel());
   }
 }
-
-
 
 export const parcelRoute: Routes = [
   {
@@ -50,7 +48,7 @@ export const parcelRoute: Routes = [
   },
   {
     path: 'new',
-    component: ParcelExtUpdateComponent,
+    component: ParcelUpdateComponent,
     resolve: {
       parcel: ParcelResolve
     },
@@ -62,7 +60,7 @@ export const parcelRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: ParcelExtUpdateComponent,
+    component: ParcelUpdateComponent,
     resolve: {
       parcel: ParcelResolve
     },

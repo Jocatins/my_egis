@@ -71,55 +71,6 @@ export class ApplicationSummaryComponent implements OnInit {
     this.route.data.subscribe(({ batch }) => {
       this.batch = batch;
       this.parcel = this.batch.transactions[0].parcels[0];
-
-      this.dashboardService.fetchDictionaryValuesObj('land_use_type').subscribe(
-        data => {
-          this.landUseType = JSON.parse(data.body.category).filter(x => this.parcel.landUseType === Number(x.id))[0];
-        },
-        err => {}
-      );
-
-      this.dashboardService.fetchDictionaryValuesObj('property_type').subscribe(
-        data => {
-          this.propertyType = JSON.parse(data.body.category).filter(x => this.parcel.propertyType === Number(x.id))[0];
-        },
-        err => {}
-      );
-
-      this.dashboardService.fetchDictionaryValuesObj('location_of_land').subscribe(
-        data => {
-          this.locationOfLand = JSON.parse(data.body.category).filter(x => this.parcel.location === Number(x.id))[0];
-        },
-        err => {}
-      );
-
-      this.dashboardService.fetchDictionaryValuesObj('measurement_type').subscribe(
-        data => {
-          this.measurementUnitType = JSON.parse(data.body.category).filter(x => this.parcel.measurementUnitType === Number(x.id))[0];
-        },
-        err => {}
-      );
-
-      this.dashboardService.fetchDictionaryValuesObj('built_up_area_type').subscribe(
-        data => {
-          this.builtUpAreaType = JSON.parse(data.body.category).filter(x => this.parcel.builtUpAreaType === Number(x.id))[0];
-        },
-        err => {}
-      );
-
-      this.dashboardService.fetchDictionaryValuesObj('location_of_land').subscribe(
-        data => {
-          this.locationOfLand = JSON.parse(data.body.category).filter(x => this.parcel.location === Number(x.id))[0];
-        },
-        err => {}
-      );
-
-      this.dashboardService.fetchDictionaryValuesObj('land_use_category').subscribe(
-        data => {
-          this.landUseCategory = JSON.parse(data.body.category).filter(x => this.parcel.landUseCategory === Number(x.id))[0];
-        },
-        err => {}
-      );
     });
   }
 }

@@ -27,10 +27,7 @@ describe('Service Tests', () => {
       elemDefault = new SupportingDocument(
         0,
         'AAAAAAA',
-        0,
         'AAAAAAA',
-        0,
-        0,
         0,
         'AAAAAAA',
         'AAAAAAA',
@@ -89,10 +86,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             documentNumber: 'BBBBBB',
-            documentType: 1,
             ownershipArea: 'BBBBBB',
-            documentSubType: 1,
-            issuedBy: 1,
             pageCount: 1,
             status: 'BBBBBB',
             provided: 'BBBBBB',
@@ -126,10 +120,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             documentNumber: 'BBBBBB',
-            documentType: 1,
             ownershipArea: 'BBBBBB',
-            documentSubType: 1,
-            issuedBy: 1,
             pageCount: 1,
             status: 'BBBBBB',
             provided: 'BBBBBB',

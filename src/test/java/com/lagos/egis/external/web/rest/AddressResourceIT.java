@@ -55,50 +55,17 @@ public class AddressResourceIT {
     private static final String DEFAULT_CITY = "AAAAAAAAAA";
     private static final String UPDATED_CITY = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_COUNTRY = 1;
-    private static final Integer UPDATED_COUNTRY = 2;
-
-    private static final Integer DEFAULT_REGION = 1;
-    private static final Integer UPDATED_REGION = 2;
-
-    private static final Integer DEFAULT_DISTRICT = 1;
-    private static final Integer UPDATED_DISTRICT = 2;
-
     private static final String DEFAULT_VILLAGE = "AAAAAAAAAA";
     private static final String UPDATED_VILLAGE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_STATE = "AAAAAAAAAA";
-    private static final String UPDATED_STATE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_ESTATE_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_ESTATE_NAME = "BBBBBBBBBB";
-
-    private static final Integer DEFAULT_LOCAL_GOVERNMENT_AREA = 1;
-    private static final Integer UPDATED_LOCAL_GOVERNMENT_AREA = 2;
-
-    private static final Integer DEFAULT_LOCAL_COUNCIL_AREA = 1;
-    private static final Integer UPDATED_LOCAL_COUNCIL_AREA = 2;
-
     private static final String DEFAULT_STREET_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_STREET_NUMBER = "BBBBBBBBBB";
-
-    private static final Integer DEFAULT_STREET_TYPE = 1;
-    private static final Integer UPDATED_STREET_TYPE = 2;
 
     private static final String DEFAULT_TOWN = "AAAAAAAAAA";
     private static final String UPDATED_TOWN = "BBBBBBBBBB";
 
     private static final String DEFAULT_WARD = "AAAAAAAAAA";
     private static final String UPDATED_WARD = "BBBBBBBBBB";
-
-    private static final String DEFAULT_CATEGORY = "AAAAAAAAAA";
-    private static final String UPDATED_CATEGORY = "BBBBBBBBBB";
-
-    private static final Integer DEFAULT_STATE_OF_ORIGIN = 1;
-    private static final Integer UPDATED_STATE_OF_ORIGIN = 2;
-
-    private static final Integer DEFAULT_SCHEME_NAME = 1;
-    private static final Integer UPDATED_SCHEME_NAME = 2;
 
     private static final String DEFAULT_BLOCK_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_BLOCK_NUMBER = "BBBBBBBBBB";
@@ -162,21 +129,10 @@ public class AddressResourceIT {
             .buildingNumber(DEFAULT_BUILDING_NUMBER)
             .postalCode(DEFAULT_POSTAL_CODE)
             .city(DEFAULT_CITY)
-            .country(DEFAULT_COUNTRY)
-            .region(DEFAULT_REGION)
-            .district(DEFAULT_DISTRICT)
             .village(DEFAULT_VILLAGE)
-            .state(DEFAULT_STATE)
-            .estateName(DEFAULT_ESTATE_NAME)
-            .localGovernmentArea(DEFAULT_LOCAL_GOVERNMENT_AREA)
-            .localCouncilArea(DEFAULT_LOCAL_COUNCIL_AREA)
             .streetNumber(DEFAULT_STREET_NUMBER)
-            .streetType(DEFAULT_STREET_TYPE)
             .town(DEFAULT_TOWN)
             .ward(DEFAULT_WARD)
-            .category(DEFAULT_CATEGORY)
-            .stateOfOrigin(DEFAULT_STATE_OF_ORIGIN)
-            .schemeName(DEFAULT_SCHEME_NAME)
             .blockNumber(DEFAULT_BLOCK_NUMBER)
             .plotNumber(DEFAULT_PLOT_NUMBER);
         return address;
@@ -195,21 +151,10 @@ public class AddressResourceIT {
             .buildingNumber(UPDATED_BUILDING_NUMBER)
             .postalCode(UPDATED_POSTAL_CODE)
             .city(UPDATED_CITY)
-            .country(UPDATED_COUNTRY)
-            .region(UPDATED_REGION)
-            .district(UPDATED_DISTRICT)
             .village(UPDATED_VILLAGE)
-            .state(UPDATED_STATE)
-            .estateName(UPDATED_ESTATE_NAME)
-            .localGovernmentArea(UPDATED_LOCAL_GOVERNMENT_AREA)
-            .localCouncilArea(UPDATED_LOCAL_COUNCIL_AREA)
             .streetNumber(UPDATED_STREET_NUMBER)
-            .streetType(UPDATED_STREET_TYPE)
             .town(UPDATED_TOWN)
             .ward(UPDATED_WARD)
-            .category(UPDATED_CATEGORY)
-            .stateOfOrigin(UPDATED_STATE_OF_ORIGIN)
-            .schemeName(UPDATED_SCHEME_NAME)
             .blockNumber(UPDATED_BLOCK_NUMBER)
             .plotNumber(UPDATED_PLOT_NUMBER);
         return address;
@@ -241,21 +186,10 @@ public class AddressResourceIT {
         assertThat(testAddress.getBuildingNumber()).isEqualTo(DEFAULT_BUILDING_NUMBER);
         assertThat(testAddress.getPostalCode()).isEqualTo(DEFAULT_POSTAL_CODE);
         assertThat(testAddress.getCity()).isEqualTo(DEFAULT_CITY);
-        assertThat(testAddress.getCountry()).isEqualTo(DEFAULT_COUNTRY);
-        assertThat(testAddress.getRegion()).isEqualTo(DEFAULT_REGION);
-        assertThat(testAddress.getDistrict()).isEqualTo(DEFAULT_DISTRICT);
         assertThat(testAddress.getVillage()).isEqualTo(DEFAULT_VILLAGE);
-        assertThat(testAddress.getState()).isEqualTo(DEFAULT_STATE);
-        assertThat(testAddress.getEstateName()).isEqualTo(DEFAULT_ESTATE_NAME);
-        assertThat(testAddress.getLocalGovernmentArea()).isEqualTo(DEFAULT_LOCAL_GOVERNMENT_AREA);
-        assertThat(testAddress.getLocalCouncilArea()).isEqualTo(DEFAULT_LOCAL_COUNCIL_AREA);
         assertThat(testAddress.getStreetNumber()).isEqualTo(DEFAULT_STREET_NUMBER);
-        assertThat(testAddress.getStreetType()).isEqualTo(DEFAULT_STREET_TYPE);
         assertThat(testAddress.getTown()).isEqualTo(DEFAULT_TOWN);
         assertThat(testAddress.getWard()).isEqualTo(DEFAULT_WARD);
-        assertThat(testAddress.getCategory()).isEqualTo(DEFAULT_CATEGORY);
-        assertThat(testAddress.getStateOfOrigin()).isEqualTo(DEFAULT_STATE_OF_ORIGIN);
-        assertThat(testAddress.getSchemeName()).isEqualTo(DEFAULT_SCHEME_NAME);
         assertThat(testAddress.getBlockNumber()).isEqualTo(DEFAULT_BLOCK_NUMBER);
         assertThat(testAddress.getPlotNumber()).isEqualTo(DEFAULT_PLOT_NUMBER);
 
@@ -303,21 +237,10 @@ public class AddressResourceIT {
             .andExpect(jsonPath("$.[*].buildingNumber").value(hasItem(DEFAULT_BUILDING_NUMBER)))
             .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE)))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
-            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
-            .andExpect(jsonPath("$.[*].region").value(hasItem(DEFAULT_REGION)))
-            .andExpect(jsonPath("$.[*].district").value(hasItem(DEFAULT_DISTRICT)))
             .andExpect(jsonPath("$.[*].village").value(hasItem(DEFAULT_VILLAGE)))
-            .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE)))
-            .andExpect(jsonPath("$.[*].estateName").value(hasItem(DEFAULT_ESTATE_NAME)))
-            .andExpect(jsonPath("$.[*].localGovernmentArea").value(hasItem(DEFAULT_LOCAL_GOVERNMENT_AREA)))
-            .andExpect(jsonPath("$.[*].localCouncilArea").value(hasItem(DEFAULT_LOCAL_COUNCIL_AREA)))
             .andExpect(jsonPath("$.[*].streetNumber").value(hasItem(DEFAULT_STREET_NUMBER)))
-            .andExpect(jsonPath("$.[*].streetType").value(hasItem(DEFAULT_STREET_TYPE)))
             .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN)))
             .andExpect(jsonPath("$.[*].ward").value(hasItem(DEFAULT_WARD)))
-            .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))
-            .andExpect(jsonPath("$.[*].stateOfOrigin").value(hasItem(DEFAULT_STATE_OF_ORIGIN)))
-            .andExpect(jsonPath("$.[*].schemeName").value(hasItem(DEFAULT_SCHEME_NAME)))
             .andExpect(jsonPath("$.[*].blockNumber").value(hasItem(DEFAULT_BLOCK_NUMBER)))
             .andExpect(jsonPath("$.[*].plotNumber").value(hasItem(DEFAULT_PLOT_NUMBER)));
     }
@@ -339,21 +262,10 @@ public class AddressResourceIT {
             .andExpect(jsonPath("$.buildingNumber").value(DEFAULT_BUILDING_NUMBER))
             .andExpect(jsonPath("$.postalCode").value(DEFAULT_POSTAL_CODE))
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY))
-            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY))
-            .andExpect(jsonPath("$.region").value(DEFAULT_REGION))
-            .andExpect(jsonPath("$.district").value(DEFAULT_DISTRICT))
             .andExpect(jsonPath("$.village").value(DEFAULT_VILLAGE))
-            .andExpect(jsonPath("$.state").value(DEFAULT_STATE))
-            .andExpect(jsonPath("$.estateName").value(DEFAULT_ESTATE_NAME))
-            .andExpect(jsonPath("$.localGovernmentArea").value(DEFAULT_LOCAL_GOVERNMENT_AREA))
-            .andExpect(jsonPath("$.localCouncilArea").value(DEFAULT_LOCAL_COUNCIL_AREA))
             .andExpect(jsonPath("$.streetNumber").value(DEFAULT_STREET_NUMBER))
-            .andExpect(jsonPath("$.streetType").value(DEFAULT_STREET_TYPE))
             .andExpect(jsonPath("$.town").value(DEFAULT_TOWN))
             .andExpect(jsonPath("$.ward").value(DEFAULT_WARD))
-            .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY))
-            .andExpect(jsonPath("$.stateOfOrigin").value(DEFAULT_STATE_OF_ORIGIN))
-            .andExpect(jsonPath("$.schemeName").value(DEFAULT_SCHEME_NAME))
             .andExpect(jsonPath("$.blockNumber").value(DEFAULT_BLOCK_NUMBER))
             .andExpect(jsonPath("$.plotNumber").value(DEFAULT_PLOT_NUMBER));
     }
@@ -385,21 +297,10 @@ public class AddressResourceIT {
             .buildingNumber(UPDATED_BUILDING_NUMBER)
             .postalCode(UPDATED_POSTAL_CODE)
             .city(UPDATED_CITY)
-            .country(UPDATED_COUNTRY)
-            .region(UPDATED_REGION)
-            .district(UPDATED_DISTRICT)
             .village(UPDATED_VILLAGE)
-            .state(UPDATED_STATE)
-            .estateName(UPDATED_ESTATE_NAME)
-            .localGovernmentArea(UPDATED_LOCAL_GOVERNMENT_AREA)
-            .localCouncilArea(UPDATED_LOCAL_COUNCIL_AREA)
             .streetNumber(UPDATED_STREET_NUMBER)
-            .streetType(UPDATED_STREET_TYPE)
             .town(UPDATED_TOWN)
             .ward(UPDATED_WARD)
-            .category(UPDATED_CATEGORY)
-            .stateOfOrigin(UPDATED_STATE_OF_ORIGIN)
-            .schemeName(UPDATED_SCHEME_NAME)
             .blockNumber(UPDATED_BLOCK_NUMBER)
             .plotNumber(UPDATED_PLOT_NUMBER);
 
@@ -418,21 +319,10 @@ public class AddressResourceIT {
         assertThat(testAddress.getBuildingNumber()).isEqualTo(UPDATED_BUILDING_NUMBER);
         assertThat(testAddress.getPostalCode()).isEqualTo(UPDATED_POSTAL_CODE);
         assertThat(testAddress.getCity()).isEqualTo(UPDATED_CITY);
-        assertThat(testAddress.getCountry()).isEqualTo(UPDATED_COUNTRY);
-        assertThat(testAddress.getRegion()).isEqualTo(UPDATED_REGION);
-        assertThat(testAddress.getDistrict()).isEqualTo(UPDATED_DISTRICT);
         assertThat(testAddress.getVillage()).isEqualTo(UPDATED_VILLAGE);
-        assertThat(testAddress.getState()).isEqualTo(UPDATED_STATE);
-        assertThat(testAddress.getEstateName()).isEqualTo(UPDATED_ESTATE_NAME);
-        assertThat(testAddress.getLocalGovernmentArea()).isEqualTo(UPDATED_LOCAL_GOVERNMENT_AREA);
-        assertThat(testAddress.getLocalCouncilArea()).isEqualTo(UPDATED_LOCAL_COUNCIL_AREA);
         assertThat(testAddress.getStreetNumber()).isEqualTo(UPDATED_STREET_NUMBER);
-        assertThat(testAddress.getStreetType()).isEqualTo(UPDATED_STREET_TYPE);
         assertThat(testAddress.getTown()).isEqualTo(UPDATED_TOWN);
         assertThat(testAddress.getWard()).isEqualTo(UPDATED_WARD);
-        assertThat(testAddress.getCategory()).isEqualTo(UPDATED_CATEGORY);
-        assertThat(testAddress.getStateOfOrigin()).isEqualTo(UPDATED_STATE_OF_ORIGIN);
-        assertThat(testAddress.getSchemeName()).isEqualTo(UPDATED_SCHEME_NAME);
         assertThat(testAddress.getBlockNumber()).isEqualTo(UPDATED_BLOCK_NUMBER);
         assertThat(testAddress.getPlotNumber()).isEqualTo(UPDATED_PLOT_NUMBER);
 
@@ -500,21 +390,10 @@ public class AddressResourceIT {
             .andExpect(jsonPath("$.[*].buildingNumber").value(hasItem(DEFAULT_BUILDING_NUMBER)))
             .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE)))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
-            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
-            .andExpect(jsonPath("$.[*].region").value(hasItem(DEFAULT_REGION)))
-            .andExpect(jsonPath("$.[*].district").value(hasItem(DEFAULT_DISTRICT)))
             .andExpect(jsonPath("$.[*].village").value(hasItem(DEFAULT_VILLAGE)))
-            .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE)))
-            .andExpect(jsonPath("$.[*].estateName").value(hasItem(DEFAULT_ESTATE_NAME)))
-            .andExpect(jsonPath("$.[*].localGovernmentArea").value(hasItem(DEFAULT_LOCAL_GOVERNMENT_AREA)))
-            .andExpect(jsonPath("$.[*].localCouncilArea").value(hasItem(DEFAULT_LOCAL_COUNCIL_AREA)))
             .andExpect(jsonPath("$.[*].streetNumber").value(hasItem(DEFAULT_STREET_NUMBER)))
-            .andExpect(jsonPath("$.[*].streetType").value(hasItem(DEFAULT_STREET_TYPE)))
             .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN)))
             .andExpect(jsonPath("$.[*].ward").value(hasItem(DEFAULT_WARD)))
-            .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))
-            .andExpect(jsonPath("$.[*].stateOfOrigin").value(hasItem(DEFAULT_STATE_OF_ORIGIN)))
-            .andExpect(jsonPath("$.[*].schemeName").value(hasItem(DEFAULT_SCHEME_NAME)))
             .andExpect(jsonPath("$.[*].blockNumber").value(hasItem(DEFAULT_BLOCK_NUMBER)))
             .andExpect(jsonPath("$.[*].plotNumber").value(hasItem(DEFAULT_PLOT_NUMBER)));
     }

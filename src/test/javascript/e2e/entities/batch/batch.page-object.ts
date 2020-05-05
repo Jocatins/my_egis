@@ -27,12 +27,12 @@ export class BatchUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
   batchNumberInput = element(by.id('field_batchNumber'));
-  batchStatusInput = element(by.id('field_batchStatus'));
   invoiceNumberInput = element(by.id('field_invoiceNumber'));
   createDateInput = element(by.id('field_createDate'));
   deliveryDateInput = element(by.id('field_deliveryDate'));
   officeIdInput = element(by.id('field_officeId'));
   userSelect = element(by.id('field_user'));
+  batchStatusSelect = element(by.id('field_batchStatus'));
   transactionSelect = element(by.id('field_transaction'));
   partySelect = element(by.id('field_party'));
 
@@ -46,14 +46,6 @@ export class BatchUpdatePage {
 
   async getBatchNumberInput() {
     return await this.batchNumberInput.getAttribute('value');
-  }
-
-  async setBatchStatusInput(batchStatus) {
-    await this.batchStatusInput.sendKeys(batchStatus);
-  }
-
-  async getBatchStatusInput() {
-    return await this.batchStatusInput.getAttribute('value');
   }
 
   async setInvoiceNumberInput(invoiceNumber) {
@@ -105,6 +97,25 @@ export class BatchUpdatePage {
 
   async getUserSelectedOption() {
     return await this.userSelect.element(by.css('option:checked')).getText();
+  }
+
+  async batchStatusSelectLastOption() {
+    await this.batchStatusSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async batchStatusSelectOption(option) {
+    await this.batchStatusSelect.sendKeys(option);
+  }
+
+  getBatchStatusSelect(): ElementFinder {
+    return this.batchStatusSelect;
+  }
+
+  async getBatchStatusSelectedOption() {
+    return await this.batchStatusSelect.element(by.css('option:checked')).getText();
   }
 
   async transactionSelectLastOption() {

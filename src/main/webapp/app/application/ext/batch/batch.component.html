@@ -11,7 +11,6 @@
     <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <div class="row">
-        ffff
         <div class="col-sm-12">
             <form name="searchForm" class="form-inline">
                 <div class="input-group w-100 mt-3">
@@ -33,29 +32,45 @@
     <div class="table-responsive" *ngIf="batches?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="batchNumber"><span jhiTranslate="egisexternalApp.batch.batchNumber">Batch Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="batchStatus"><span jhiTranslate="egisexternalApp.batch.batchStatus">Batch Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="invoiceNumber"><span jhiTranslate="egisexternalApp.batch.invoiceNumber">Invoice Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="createDate"><span jhiTranslate="egisexternalApp.batch.createDate">Create Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="deliveryDate"><span jhiTranslate="egisexternalApp.batch.deliveryDate">Delivery Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="officeId"><span jhiTranslate="egisexternalApp.batch.officeId">Office Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="user.id"><span jhiTranslate="egisexternalApp.batch.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.batch.batchNumber">Batch Number</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.batch.invoiceNumber">Invoice Number</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.batch.createDate">Create Date</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.batch.deliveryDate">Delivery Date</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.batch.officeId">Office Id</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.batch.user">User</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.batch.batchStatus">Batch Status</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.batch.transaction">Transaction</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.batch.party">Party</span></th>
             <th scope="col"></th>
             </tr>
             </thead>
-            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tbody>
             <tr *ngFor="let batch of batches ;trackBy: trackId">
                 <td><a [routerLink]="['/batch', batch.id, 'view' ]">{{batch.id}}</a></td>
                 <td>{{batch.batchNumber}}</td>
-                <td>{{batch.batchStatus}}</td>
                 <td>{{batch.invoiceNumber}}</td>
                 <td>{{batch.createDate | date:'mediumDate'}}</td>
                 <td>{{batch.deliveryDate | date:'mediumDate'}}</td>
                 <td>{{batch.officeId}}</td>
                 <td>
                     {{batch.user?.id}}
+                </td>
+                <td>
+                    <div *ngIf="batch.batchStatus">
+                        <a [routerLink]="['/dictionary', batch.batchStatus?.id, 'view' ]" >{{batch.batchStatus?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let transaction of batch.transactions; let last = last">
+                            <a class="form-control-static" [routerLink]="['/transaction', transaction?.id, 'view' ]">{{transaction.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let party of batch.parties; let last = last">
+                            <a class="form-control-static" [routerLink]="['/party', party?.id, 'view' ]">{{party.id}}</a>{{last ? '' : ', '}}
+                        </span>
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
@@ -66,7 +81,7 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/batch', batch.id, 'edit']"
+                                [routerLink]="['/application/overview',batch.transactions[0].transactionCode, batch.id]"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>

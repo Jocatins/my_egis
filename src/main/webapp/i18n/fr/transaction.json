@@ -18,22 +18,22 @@
         "title": "Transaction"
       },
       "transactionNumber": "Transaction Number",
-      "transactionType": "Transaction Type",
-      "transactionSubType": "Transaction Sub Type",
       "applicationDate": "Application Date",
       "transactionStartDate": "Transaction Start Date",
       "comments": "Comments",
-      "ownershipType": "Ownership Type",
       "createDate": "Create Date",
       "startDate": "Start Date",
       "completeDate": "Complete Date",
-      "tenureType": "Tenure Type",
       "batchId": "Batch Id",
       "transactionCode": "Transaction Code",
       "ext": "Ext",
+      "transactionType": "Transaction Type",
+      "transactionSubType": "Transaction Sub Type",
+      "ownershipType": "Ownership Type",
+      "tenureType": "Tenure Type",
       "party": "Party",
-      "launit": "Launit",
-      "document": "Document",
+      "parcel": "Parcel",
+      "docs": "Docs",
       "batch": "Batch"
     }
   }

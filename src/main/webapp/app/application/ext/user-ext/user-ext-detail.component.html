@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userExt">
+            <h2><span jhiTranslate="egisexternalApp.userExt.detail.title">User Ext</span> {{userExt.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.userExt.payerId">Payer Id</span></dt>
+                <dd>
+                    <span>{{userExt.payerId}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.userExt.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{userExt.phoneNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.userExt.user">User</span></dt>
+                <dd>
+                    {{userExt.user?.id}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-ext', userExt.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,28 +1,19 @@
 import { Moment } from 'moment';
 import { IAddress } from 'app/shared/model/address.model';
+import { IDictionary } from 'app/shared/model/dictionary.model';
 import { ITransaction } from 'app/shared/model/transaction.model';
 
 export interface IParcel {
   id?: number;
   label?: string;
   area?: number;
-  spatialUnitType?: number;
   registrationOfficeDictionary?: string;
-  surveyType?: string;
   surveyDate?: Moment;
-  propertyType?: number;
   accommodation?: string;
-  tenureType?: number;
   description?: string;
   propertyArea?: number;
-  location?: number;
-  builtUpAreaType?: number;
   planNumber?: string;
-  measurementUnitType?: number;
   premiumValue?: string;
-  landUseCategory?: number;
-  landUseType?: number;
-  developmentStatus?: number;
   coordinateN?: number;
   coordinateS?: number;
   lagosSheetNumber?: string;
@@ -30,12 +21,23 @@ export interface IParcel {
   location1?: number;
   unitNumber?: string;
   name?: string;
-  registerType?: number;
   valuation?: string;
   comments?: string;
   legalDescription?: string;
-  meansOfAcq?: number;
   address?: IAddress;
+  spatialUnitType?: IDictionary;
+  surveyType?: IDictionary;
+  propertyType?: IDictionary;
+  tenureType?: IDictionary;
+  location?: IDictionary;
+  builtUpAreaType?: IDictionary;
+  measurementUnitType?: IDictionary;
+  landUseCategory?: IDictionary;
+  landUseType?: IDictionary;
+  developmentStatus?: IDictionary;
+  registerType?: IDictionary;
+  meansOfAcq?: IDictionary;
+  region?: IDictionary;
   transactions?: ITransaction[];
 }
 
@@ -44,23 +46,13 @@ export class Parcel implements IParcel {
     public id?: number,
     public label?: string,
     public area?: number,
-    public spatialUnitType?: number,
     public registrationOfficeDictionary?: string,
-    public surveyType?: string,
     public surveyDate?: Moment,
-    public propertyType?: number,
     public accommodation?: string,
-    public tenureType?: number,
     public description?: string,
     public propertyArea?: number,
-    public location?: number,
-    public builtUpAreaType?: number,
     public planNumber?: string,
-    public measurementUnitType?: number,
     public premiumValue?: string,
-    public landUseCategory?: number,
-    public landUseType?: number,
-    public developmentStatus?: number,
     public coordinateN?: number,
     public coordinateS?: number,
     public lagosSheetNumber?: string,
@@ -68,12 +60,23 @@ export class Parcel implements IParcel {
     public location1?: number,
     public unitNumber?: string,
     public name?: string,
-    public registerType?: number,
     public valuation?: string,
     public comments?: string,
     public legalDescription?: string,
-    public meansOfAcq?: number,
     public address?: IAddress,
+    public spatialUnitType?: IDictionary,
+    public surveyType?: IDictionary,
+    public propertyType?: IDictionary,
+    public tenureType?: IDictionary,
+    public location?: IDictionary,
+    public builtUpAreaType?: IDictionary,
+    public measurementUnitType?: IDictionary,
+    public landUseCategory?: IDictionary,
+    public landUseType?: IDictionary,
+    public developmentStatus?: IDictionary,
+    public registerType?: IDictionary,
+    public meansOfAcq?: IDictionary,
+    public region?: IDictionary,
     public transactions?: ITransaction[]
   ) {}
 }

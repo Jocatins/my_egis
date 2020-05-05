@@ -1,0 +1,26 @@
+{
+  "egisexternalApp": {
+    "dictionary": {
+      "home": {
+        "title": "Dictionaries",
+        "createLabel": "Créer un nouveau Dictionary",
+        "createOrEditLabel": "Créer ou éditer un Dictionary",
+        "search": "Recherche pour Dictionary",
+        "notFound": "Aucun Dictionary trouvé"
+      },
+      "created": "Un nouveau Dictionary a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Dictionary avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Dictionary avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Dictionary {{ id }} ?"
+      },
+      "detail": {
+        "title": "Dictionary"
+      },
+      "code": "Code",
+      "label": "Label",
+      "descr": "Descr",
+      "category": "Category"
+    }
+  }
+}

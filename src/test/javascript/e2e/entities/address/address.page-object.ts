@@ -32,23 +32,23 @@ export class AddressUpdatePage {
   buildingNumberInput = element(by.id('field_buildingNumber'));
   postalCodeInput = element(by.id('field_postalCode'));
   cityInput = element(by.id('field_city'));
-  countryInput = element(by.id('field_country'));
-  regionInput = element(by.id('field_region'));
-  districtInput = element(by.id('field_district'));
   villageInput = element(by.id('field_village'));
-  stateInput = element(by.id('field_state'));
-  estateNameInput = element(by.id('field_estateName'));
-  localGovernmentAreaInput = element(by.id('field_localGovernmentArea'));
-  localCouncilAreaInput = element(by.id('field_localCouncilArea'));
   streetNumberInput = element(by.id('field_streetNumber'));
-  streetTypeInput = element(by.id('field_streetType'));
   townInput = element(by.id('field_town'));
   wardInput = element(by.id('field_ward'));
-  categoryInput = element(by.id('field_category'));
-  stateOfOriginInput = element(by.id('field_stateOfOrigin'));
-  schemeNameInput = element(by.id('field_schemeName'));
   blockNumberInput = element(by.id('field_blockNumber'));
   plotNumberInput = element(by.id('field_plotNumber'));
+  countrySelect = element(by.id('field_country'));
+  regionSelect = element(by.id('field_region'));
+  districtSelect = element(by.id('field_district'));
+  stateSelect = element(by.id('field_state'));
+  estateNameSelect = element(by.id('field_estateName'));
+  localGovernmentAreaSelect = element(by.id('field_localGovernmentArea'));
+  localCouncilAreaSelect = element(by.id('field_localCouncilArea'));
+  streetTypeSelect = element(by.id('field_streetType'));
+  stateOfOriginSelect = element(by.id('field_stateOfOrigin'));
+  schemeNameSelect = element(by.id('field_schemeName'));
+  categorySelect = element(by.id('field_category'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -102,30 +102,6 @@ export class AddressUpdatePage {
     return await this.cityInput.getAttribute('value');
   }
 
-  async setCountryInput(country) {
-    await this.countryInput.sendKeys(country);
-  }
-
-  async getCountryInput() {
-    return await this.countryInput.getAttribute('value');
-  }
-
-  async setRegionInput(region) {
-    await this.regionInput.sendKeys(region);
-  }
-
-  async getRegionInput() {
-    return await this.regionInput.getAttribute('value');
-  }
-
-  async setDistrictInput(district) {
-    await this.districtInput.sendKeys(district);
-  }
-
-  async getDistrictInput() {
-    return await this.districtInput.getAttribute('value');
-  }
-
   async setVillageInput(village) {
     await this.villageInput.sendKeys(village);
   }
@@ -134,52 +110,12 @@ export class AddressUpdatePage {
     return await this.villageInput.getAttribute('value');
   }
 
-  async setStateInput(state) {
-    await this.stateInput.sendKeys(state);
-  }
-
-  async getStateInput() {
-    return await this.stateInput.getAttribute('value');
-  }
-
-  async setEstateNameInput(estateName) {
-    await this.estateNameInput.sendKeys(estateName);
-  }
-
-  async getEstateNameInput() {
-    return await this.estateNameInput.getAttribute('value');
-  }
-
-  async setLocalGovernmentAreaInput(localGovernmentArea) {
-    await this.localGovernmentAreaInput.sendKeys(localGovernmentArea);
-  }
-
-  async getLocalGovernmentAreaInput() {
-    return await this.localGovernmentAreaInput.getAttribute('value');
-  }
-
-  async setLocalCouncilAreaInput(localCouncilArea) {
-    await this.localCouncilAreaInput.sendKeys(localCouncilArea);
-  }
-
-  async getLocalCouncilAreaInput() {
-    return await this.localCouncilAreaInput.getAttribute('value');
-  }
-
   async setStreetNumberInput(streetNumber) {
     await this.streetNumberInput.sendKeys(streetNumber);
   }
 
   async getStreetNumberInput() {
     return await this.streetNumberInput.getAttribute('value');
-  }
-
-  async setStreetTypeInput(streetType) {
-    await this.streetTypeInput.sendKeys(streetType);
-  }
-
-  async getStreetTypeInput() {
-    return await this.streetTypeInput.getAttribute('value');
   }
 
   async setTownInput(town) {
@@ -198,30 +134,6 @@ export class AddressUpdatePage {
     return await this.wardInput.getAttribute('value');
   }
 
-  async setCategoryInput(category) {
-    await this.categoryInput.sendKeys(category);
-  }
-
-  async getCategoryInput() {
-    return await this.categoryInput.getAttribute('value');
-  }
-
-  async setStateOfOriginInput(stateOfOrigin) {
-    await this.stateOfOriginInput.sendKeys(stateOfOrigin);
-  }
-
-  async getStateOfOriginInput() {
-    return await this.stateOfOriginInput.getAttribute('value');
-  }
-
-  async setSchemeNameInput(schemeName) {
-    await this.schemeNameInput.sendKeys(schemeName);
-  }
-
-  async getSchemeNameInput() {
-    return await this.schemeNameInput.getAttribute('value');
-  }
-
   async setBlockNumberInput(blockNumber) {
     await this.blockNumberInput.sendKeys(blockNumber);
   }
@@ -236,6 +148,215 @@ export class AddressUpdatePage {
 
   async getPlotNumberInput() {
     return await this.plotNumberInput.getAttribute('value');
+  }
+
+  async countrySelectLastOption() {
+    await this.countrySelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async countrySelectOption(option) {
+    await this.countrySelect.sendKeys(option);
+  }
+
+  getCountrySelect(): ElementFinder {
+    return this.countrySelect;
+  }
+
+  async getCountrySelectedOption() {
+    return await this.countrySelect.element(by.css('option:checked')).getText();
+  }
+
+  async regionSelectLastOption() {
+    await this.regionSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async regionSelectOption(option) {
+    await this.regionSelect.sendKeys(option);
+  }
+
+  getRegionSelect(): ElementFinder {
+    return this.regionSelect;
+  }
+
+  async getRegionSelectedOption() {
+    return await this.regionSelect.element(by.css('option:checked')).getText();
+  }
+
+  async districtSelectLastOption() {
+    await this.districtSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async districtSelectOption(option) {
+    await this.districtSelect.sendKeys(option);
+  }
+
+  getDistrictSelect(): ElementFinder {
+    return this.districtSelect;
+  }
+
+  async getDistrictSelectedOption() {
+    return await this.districtSelect.element(by.css('option:checked')).getText();
+  }
+
+  async stateSelectLastOption() {
+    await this.stateSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async stateSelectOption(option) {
+    await this.stateSelect.sendKeys(option);
+  }
+
+  getStateSelect(): ElementFinder {
+    return this.stateSelect;
+  }
+
+  async getStateSelectedOption() {
+    return await this.stateSelect.element(by.css('option:checked')).getText();
+  }
+
+  async estateNameSelectLastOption() {
+    await this.estateNameSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async estateNameSelectOption(option) {
+    await this.estateNameSelect.sendKeys(option);
+  }
+
+  getEstateNameSelect(): ElementFinder {
+    return this.estateNameSelect;
+  }
+
+  async getEstateNameSelectedOption() {
+    return await this.estateNameSelect.element(by.css('option:checked')).getText();
+  }
+
+  async localGovernmentAreaSelectLastOption() {
+    await this.localGovernmentAreaSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async localGovernmentAreaSelectOption(option) {
+    await this.localGovernmentAreaSelect.sendKeys(option);
+  }
+
+  getLocalGovernmentAreaSelect(): ElementFinder {
+    return this.localGovernmentAreaSelect;
+  }
+
+  async getLocalGovernmentAreaSelectedOption() {
+    return await this.localGovernmentAreaSelect.element(by.css('option:checked')).getText();
+  }
+
+  async localCouncilAreaSelectLastOption() {
+    await this.localCouncilAreaSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async localCouncilAreaSelectOption(option) {
+    await this.localCouncilAreaSelect.sendKeys(option);
+  }
+
+  getLocalCouncilAreaSelect(): ElementFinder {
+    return this.localCouncilAreaSelect;
+  }
+
+  async getLocalCouncilAreaSelectedOption() {
+    return await this.localCouncilAreaSelect.element(by.css('option:checked')).getText();
+  }
+
+  async streetTypeSelectLastOption() {
+    await this.streetTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async streetTypeSelectOption(option) {
+    await this.streetTypeSelect.sendKeys(option);
+  }
+
+  getStreetTypeSelect(): ElementFinder {
+    return this.streetTypeSelect;
+  }
+
+  async getStreetTypeSelectedOption() {
+    return await this.streetTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async stateOfOriginSelectLastOption() {
+    await this.stateOfOriginSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async stateOfOriginSelectOption(option) {
+    await this.stateOfOriginSelect.sendKeys(option);
+  }
+
+  getStateOfOriginSelect(): ElementFinder {
+    return this.stateOfOriginSelect;
+  }
+
+  async getStateOfOriginSelectedOption() {
+    return await this.stateOfOriginSelect.element(by.css('option:checked')).getText();
+  }
+
+  async schemeNameSelectLastOption() {
+    await this.schemeNameSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async schemeNameSelectOption(option) {
+    await this.schemeNameSelect.sendKeys(option);
+  }
+
+  getSchemeNameSelect(): ElementFinder {
+    return this.schemeNameSelect;
+  }
+
+  async getSchemeNameSelectedOption() {
+    return await this.schemeNameSelect.element(by.css('option:checked')).getText();
+  }
+
+  async categorySelectLastOption() {
+    await this.categorySelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async categorySelectOption(option) {
+    await this.categorySelect.sendKeys(option);
+  }
+
+  getCategorySelect(): ElementFinder {
+    return this.categorySelect;
+  }
+
+  async getCategorySelectedOption() {
+    return await this.categorySelect.element(by.css('option:checked')).getText();
   }
 
   async save() {

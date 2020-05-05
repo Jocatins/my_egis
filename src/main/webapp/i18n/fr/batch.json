@@ -18,12 +18,12 @@
         "title": "Batch"
       },
       "batchNumber": "Batch Number",
-      "batchStatus": "Batch Status",
       "invoiceNumber": "Invoice Number",
       "createDate": "Create Date",
       "deliveryDate": "Delivery Date",
       "officeId": "Office Id",
       "user": "User",
+      "batchStatus": "Batch Status",
       "transaction": "Transaction",
       "party": "Party"
     }

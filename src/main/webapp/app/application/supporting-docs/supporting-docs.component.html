@@ -43,7 +43,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let supportingDocument of supportingDocuments ;trackBy: trackId">
-                            <td>{{supportingDocument.description}} - {{supportingDocument.name}} </td>
+                            <td>{{supportingDocument.documentType.label}} - {{supportingDocument.name}} </td>
                             <td class="text-right">
                                 <div class="btn-group">
                                     <div
@@ -115,7 +115,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let supportingDocument of supportingDocumentsOthers ;trackBy: trackId">
-                            <td>{{supportingDocument.description}} - {{supportingDocument.name}} </td>
+                            <td>{{supportingDocument.documentType.label}} - {{supportingDocument.name}} </td>
                             <td class="text-right">
                                 <div class="btn-group">
                                     <div

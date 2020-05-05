@@ -18,23 +18,21 @@
         "title": "Supporting Document"
       },
       "documentNumber": "Document Number",
-      "documentType": "Document Type",
       "ownershipArea": "Ownership Area",
-      "documentSubType": "Document Sub Type",
-      "issuedBy": "Issued By",
       "pageCount": "Page Count",
       "status": "Status",
       "provided": "Provided",
-      "page": "Page",
-      "transaction": "Transaction",
-      "status": "Status",
       "type": "Type",
       "name": "Name",
       "fileSize": "File Size",
       "content": "Content",
       "contentUrl": "Content Url",
       "image": "Image",
-      "date": "Date"
+      "date": "Date",
+      "documentSubType": "Document Sub Type",
+      "documentType": "Document Type",
+      "issuedBy": "Issued By",
+      "transaction": "Transaction"
     }
   }
 }

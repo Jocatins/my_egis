@@ -15,18 +15,6 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="party_type" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="party_role_type" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="party_sub_role_type" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="delivery_type" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="party_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -39,25 +27,13 @@
             <column name="tax_exempt" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="primary_party" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="other_name" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="person_id_type" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="person_type" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="fax" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="email" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="email_type" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="phone_number" type="varchar(255)">
@@ -70,9 +46,6 @@
                 <constraints nullable="true" />
             </column>
             <column name="comments" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="person_id_issued_by" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="person_id_date" type="date">
@@ -96,12 +69,6 @@
             <column name="birth_date" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="person_title" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="gender" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="first_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -111,16 +78,7 @@
             <column name="last_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="civil_state" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="driver_license_region" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="driver_licence" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="representative_id" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="profession_reg_no" type="varchar(255)">
@@ -131,6 +89,48 @@
             </column>
             <column name="address_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_party_address_id" />
+            </column>
+            <column name="party_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="party_role_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="party_sub_role_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="delivery_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="primary_party_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="person_id_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="person_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="person_id_issued_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="person_title_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="gender_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="civil_state_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="driver_license_region_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="representative_id_id" type="bigint">
+                <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
@@ -155,26 +155,17 @@
                   separator=";"
                   tableName="party">
             <column name="id" type="numeric"/>
-            <column name="party_type" type="numeric"/>
-            <column name="party_role_type" type="numeric"/>
-            <column name="party_sub_role_type" type="numeric"/>
-            <column name="delivery_type" type="numeric"/>
             <column name="party_name" type="string"/>
             <column name="share_nominator" type="string"/>
             <column name="share_denominator" type="string"/>
             <column name="tax_exempt" type="string"/>
-            <column name="primary_party" type="string"/>
             <column name="other_name" type="string"/>
-            <column name="person_id_type" type="numeric"/>
-            <column name="person_type" type="numeric"/>
             <column name="fax" type="string"/>
             <column name="email" type="string"/>
-            <column name="email_type" type="numeric"/>
             <column name="phone_number" type="string"/>
             <column name="payer_id" type="string"/>
             <column name="tax_payer_number" type="string"/>
             <column name="comments" type="string"/>
-            <column name="person_id_issued_by" type="numeric"/>
             <column name="person_id_date" type="date"/>
             <column name="person_id_expiration_date" type="date"/>
             <column name="rc_number" type="string"/>
@@ -182,15 +173,10 @@
             <column name="business_nature" type="string"/>
             <column name="birth_place" type="string"/>
             <column name="birth_date" type="date"/>
-            <column name="person_title" type="numeric"/>
-            <column name="gender" type="numeric"/>
             <column name="first_name" type="string"/>
             <column name="middle_name" type="string"/>
             <column name="last_name" type="string"/>
-            <column name="civil_state" type="numeric"/>
-            <column name="driver_license_region" type="numeric"/>
             <column name="driver_licence" type="string"/>
-            <column name="representative_id" type="numeric"/>
             <column name="profession_reg_no" type="string"/>
             <column name="occupation" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->

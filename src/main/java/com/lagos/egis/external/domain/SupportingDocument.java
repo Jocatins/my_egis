@@ -1,5 +1,6 @@
 package com.lagos.egis.external.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -31,17 +32,8 @@ public class SupportingDocument implements Serializable {
     @Column(name = "document_number")
     private String documentNumber;
 
-    @Column(name = "document_type")
-    private Integer documentType;
-
     @Column(name = "ownership_area")
     private String ownershipArea;
-
-    @Column(name = "document_sub_type")
-    private Integer documentSubType;
-
-    @Column(name = "issued_by")
-    private Integer issuedBy;
 
     @Column(name = "page_count")
     private Integer pageCount;
@@ -73,6 +65,18 @@ public class SupportingDocument implements Serializable {
     @Column(name = "date")
     private LocalDate date;
 
+    @ManyToOne
+    @JsonIgnoreProperties("supportingDocuments")
+    private Dictionary documentSubType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("supportingDocuments")
+    private Dictionary documentType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("supportingDocuments")
+    private Dictionary issuedBy;
+
     @ManyToMany(mappedBy = "docs")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JsonIgnore
@@ -100,19 +104,6 @@ public class SupportingDocument implements Serializable {
         this.documentNumber = documentNumber;
     }
 
-    public Integer getDocumentType() {
-        return documentType;
-    }
-
-    public SupportingDocument documentType(Integer documentType) {
-        this.documentType = documentType;
-        return this;
-    }
-
-    public void setDocumentType(Integer documentType) {
-        this.documentType = documentType;
-    }
-
     public String getOwnershipArea() {
         return ownershipArea;
     }
@@ -124,32 +115,6 @@ public class SupportingDocument implements Serializable {
 
     public void setOwnershipArea(String ownershipArea) {
         this.ownershipArea = ownershipArea;
-    }
-
-    public Integer getDocumentSubType() {
-        return documentSubType;
-    }
-
-    public SupportingDocument documentSubType(Integer documentSubType) {
-        this.documentSubType = documentSubType;
-        return this;
-    }
-
-    public void setDocumentSubType(Integer documentSubType) {
-        this.documentSubType = documentSubType;
-    }
-
-    public Integer getIssuedBy() {
-        return issuedBy;
-    }
-
-    public SupportingDocument issuedBy(Integer issuedBy) {
-        this.issuedBy = issuedBy;
-        return this;
-    }
-
-    public void setIssuedBy(Integer issuedBy) {
-        this.issuedBy = issuedBy;
     }
 
     public Integer getPageCount() {
@@ -282,6 +247,45 @@ public class SupportingDocument implements Serializable {
         this.date = date;
     }
 
+    public Dictionary getDocumentSubType() {
+        return documentSubType;
+    }
+
+    public SupportingDocument documentSubType(Dictionary dictionary) {
+        this.documentSubType = dictionary;
+        return this;
+    }
+
+    public void setDocumentSubType(Dictionary dictionary) {
+        this.documentSubType = dictionary;
+    }
+
+    public Dictionary getDocumentType() {
+        return documentType;
+    }
+
+    public SupportingDocument documentType(Dictionary dictionary) {
+        this.documentType = dictionary;
+        return this;
+    }
+
+    public void setDocumentType(Dictionary dictionary) {
+        this.documentType = dictionary;
+    }
+
+    public Dictionary getIssuedBy() {
+        return issuedBy;
+    }
+
+    public SupportingDocument issuedBy(Dictionary dictionary) {
+        this.issuedBy = dictionary;
+        return this;
+    }
+
+    public void setIssuedBy(Dictionary dictionary) {
+        this.issuedBy = dictionary;
+    }
+
     public Set<Transaction> getTransactions() {
         return transactions;
     }
@@ -329,10 +333,7 @@ public class SupportingDocument implements Serializable {
         return "SupportingDocument{" +
             "id=" + getId() +
             ", documentNumber='" + getDocumentNumber() + "'" +
-            ", documentType=" + getDocumentType() +
             ", ownershipArea='" + getOwnershipArea() + "'" +
-            ", documentSubType=" + getDocumentSubType() +
-            ", issuedBy=" + getIssuedBy() +
             ", pageCount=" + getPageCount() +
             ", status='" + getStatus() + "'" +
             ", provided='" + getProvided() + "'" +

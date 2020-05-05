@@ -23,23 +23,23 @@
       "buildingNumber": "Building Number",
       "postalCode": "Postal Code",
       "city": "City",
+      "village": "Village",
+      "streetNumber": "Street Number",
+      "town": "Town",
+      "ward": "Ward",
+      "blockNumber": "Block Number",
+      "plotNumber": "Plot Number",
       "country": "Country",
       "region": "Region",
       "district": "District",
-      "village": "Village",
       "state": "State",
       "estateName": "Estate Name",
       "localGovernmentArea": "Local Government Area",
       "localCouncilArea": "Local Council Area",
-      "streetNumber": "Street Number",
       "streetType": "Street Type",
-      "town": "Town",
-      "ward": "Ward",
-      "category": "Category",
       "stateOfOrigin": "State Of Origin",
       "schemeName": "Scheme Name",
-      "blockNumber": "Block Number",
-      "plotNumber": "Plot Number"
+      "category": "Category"
     }
   }
 }

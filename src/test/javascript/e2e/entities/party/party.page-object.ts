@@ -26,26 +26,17 @@ export class PartyUpdatePage {
   pageTitle = element(by.id('jhi-party-heading'));
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
-  partyTypeInput = element(by.id('field_partyType'));
-  partyRoleTypeInput = element(by.id('field_partyRoleType'));
-  partySubRoleTypeInput = element(by.id('field_partySubRoleType'));
-  deliveryTypeInput = element(by.id('field_deliveryType'));
   partyNameInput = element(by.id('field_partyName'));
   shareNominatorInput = element(by.id('field_shareNominator'));
   shareDenominatorInput = element(by.id('field_shareDenominator'));
   taxExemptInput = element(by.id('field_taxExempt'));
-  primaryPartyInput = element(by.id('field_primaryParty'));
   otherNameInput = element(by.id('field_otherName'));
-  personIdTypeInput = element(by.id('field_personIdType'));
-  personTypeInput = element(by.id('field_personType'));
   faxInput = element(by.id('field_fax'));
   emailInput = element(by.id('field_email'));
-  emailTypeInput = element(by.id('field_emailType'));
   phoneNumberInput = element(by.id('field_phoneNumber'));
   payerIdInput = element(by.id('field_payerId'));
   taxPayerNumberInput = element(by.id('field_taxPayerNumber'));
   commentsInput = element(by.id('field_comments'));
-  personIdIssuedByInput = element(by.id('field_personIdIssuedBy'));
   personIdDateInput = element(by.id('field_personIdDate'));
   personIdExpirationDateInput = element(by.id('field_personIdExpirationDate'));
   rcNumberInput = element(by.id('field_rcNumber'));
@@ -53,53 +44,30 @@ export class PartyUpdatePage {
   businessNatureInput = element(by.id('field_businessNature'));
   birthPlaceInput = element(by.id('field_birthPlace'));
   birthDateInput = element(by.id('field_birthDate'));
-  personTitleInput = element(by.id('field_personTitle'));
-  genderInput = element(by.id('field_gender'));
   firstNameInput = element(by.id('field_firstName'));
   middleNameInput = element(by.id('field_middleName'));
   lastNameInput = element(by.id('field_lastName'));
-  civilStateInput = element(by.id('field_civilState'));
-  driverLicenseRegionInput = element(by.id('field_driverLicenseRegion'));
   driverLicenceInput = element(by.id('field_driverLicence'));
-  representativeIdInput = element(by.id('field_representativeId'));
   professionRegNoInput = element(by.id('field_professionRegNo'));
   occupationInput = element(by.id('field_occupation'));
   addressSelect = element(by.id('field_address'));
+  partyTypeSelect = element(by.id('field_partyType'));
+  partyRoleTypeSelect = element(by.id('field_partyRoleType'));
+  partySubRoleTypeSelect = element(by.id('field_partySubRoleType'));
+  deliveryTypeSelect = element(by.id('field_deliveryType'));
+  primaryPartySelect = element(by.id('field_primaryParty'));
+  personIdTypeSelect = element(by.id('field_personIdType'));
+  personTypeSelect = element(by.id('field_personType'));
+  emailTypeSelect = element(by.id('field_emailType'));
+  personIdIssuedBySelect = element(by.id('field_personIdIssuedBy'));
+  personTitleSelect = element(by.id('field_personTitle'));
+  genderSelect = element(by.id('field_gender'));
+  civilStateSelect = element(by.id('field_civilState'));
+  driverLicenseRegionSelect = element(by.id('field_driverLicenseRegion'));
+  representativeIdSelect = element(by.id('field_representativeId'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
-  }
-
-  async setPartyTypeInput(partyType) {
-    await this.partyTypeInput.sendKeys(partyType);
-  }
-
-  async getPartyTypeInput() {
-    return await this.partyTypeInput.getAttribute('value');
-  }
-
-  async setPartyRoleTypeInput(partyRoleType) {
-    await this.partyRoleTypeInput.sendKeys(partyRoleType);
-  }
-
-  async getPartyRoleTypeInput() {
-    return await this.partyRoleTypeInput.getAttribute('value');
-  }
-
-  async setPartySubRoleTypeInput(partySubRoleType) {
-    await this.partySubRoleTypeInput.sendKeys(partySubRoleType);
-  }
-
-  async getPartySubRoleTypeInput() {
-    return await this.partySubRoleTypeInput.getAttribute('value');
-  }
-
-  async setDeliveryTypeInput(deliveryType) {
-    await this.deliveryTypeInput.sendKeys(deliveryType);
-  }
-
-  async getDeliveryTypeInput() {
-    return await this.deliveryTypeInput.getAttribute('value');
   }
 
   async setPartyNameInput(partyName) {
@@ -134,36 +102,12 @@ export class PartyUpdatePage {
     return await this.taxExemptInput.getAttribute('value');
   }
 
-  async setPrimaryPartyInput(primaryParty) {
-    await this.primaryPartyInput.sendKeys(primaryParty);
-  }
-
-  async getPrimaryPartyInput() {
-    return await this.primaryPartyInput.getAttribute('value');
-  }
-
   async setOtherNameInput(otherName) {
     await this.otherNameInput.sendKeys(otherName);
   }
 
   async getOtherNameInput() {
     return await this.otherNameInput.getAttribute('value');
-  }
-
-  async setPersonIdTypeInput(personIdType) {
-    await this.personIdTypeInput.sendKeys(personIdType);
-  }
-
-  async getPersonIdTypeInput() {
-    return await this.personIdTypeInput.getAttribute('value');
-  }
-
-  async setPersonTypeInput(personType) {
-    await this.personTypeInput.sendKeys(personType);
-  }
-
-  async getPersonTypeInput() {
-    return await this.personTypeInput.getAttribute('value');
   }
 
   async setFaxInput(fax) {
@@ -180,14 +124,6 @@ export class PartyUpdatePage {
 
   async getEmailInput() {
     return await this.emailInput.getAttribute('value');
-  }
-
-  async setEmailTypeInput(emailType) {
-    await this.emailTypeInput.sendKeys(emailType);
-  }
-
-  async getEmailTypeInput() {
-    return await this.emailTypeInput.getAttribute('value');
   }
 
   async setPhoneNumberInput(phoneNumber) {
@@ -220,14 +156,6 @@ export class PartyUpdatePage {
 
   async getCommentsInput() {
     return await this.commentsInput.getAttribute('value');
-  }
-
-  async setPersonIdIssuedByInput(personIdIssuedBy) {
-    await this.personIdIssuedByInput.sendKeys(personIdIssuedBy);
-  }
-
-  async getPersonIdIssuedByInput() {
-    return await this.personIdIssuedByInput.getAttribute('value');
   }
 
   async setPersonIdDateInput(personIdDate) {
@@ -286,22 +214,6 @@ export class PartyUpdatePage {
     return await this.birthDateInput.getAttribute('value');
   }
 
-  async setPersonTitleInput(personTitle) {
-    await this.personTitleInput.sendKeys(personTitle);
-  }
-
-  async getPersonTitleInput() {
-    return await this.personTitleInput.getAttribute('value');
-  }
-
-  async setGenderInput(gender) {
-    await this.genderInput.sendKeys(gender);
-  }
-
-  async getGenderInput() {
-    return await this.genderInput.getAttribute('value');
-  }
-
   async setFirstNameInput(firstName) {
     await this.firstNameInput.sendKeys(firstName);
   }
@@ -326,36 +238,12 @@ export class PartyUpdatePage {
     return await this.lastNameInput.getAttribute('value');
   }
 
-  async setCivilStateInput(civilState) {
-    await this.civilStateInput.sendKeys(civilState);
-  }
-
-  async getCivilStateInput() {
-    return await this.civilStateInput.getAttribute('value');
-  }
-
-  async setDriverLicenseRegionInput(driverLicenseRegion) {
-    await this.driverLicenseRegionInput.sendKeys(driverLicenseRegion);
-  }
-
-  async getDriverLicenseRegionInput() {
-    return await this.driverLicenseRegionInput.getAttribute('value');
-  }
-
   async setDriverLicenceInput(driverLicence) {
     await this.driverLicenceInput.sendKeys(driverLicence);
   }
 
   async getDriverLicenceInput() {
     return await this.driverLicenceInput.getAttribute('value');
-  }
-
-  async setRepresentativeIdInput(representativeId) {
-    await this.representativeIdInput.sendKeys(representativeId);
-  }
-
-  async getRepresentativeIdInput() {
-    return await this.representativeIdInput.getAttribute('value');
   }
 
   async setProfessionRegNoInput(professionRegNo) {
@@ -391,6 +279,272 @@ export class PartyUpdatePage {
 
   async getAddressSelectedOption() {
     return await this.addressSelect.element(by.css('option:checked')).getText();
+  }
+
+  async partyTypeSelectLastOption() {
+    await this.partyTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async partyTypeSelectOption(option) {
+    await this.partyTypeSelect.sendKeys(option);
+  }
+
+  getPartyTypeSelect(): ElementFinder {
+    return this.partyTypeSelect;
+  }
+
+  async getPartyTypeSelectedOption() {
+    return await this.partyTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async partyRoleTypeSelectLastOption() {
+    await this.partyRoleTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async partyRoleTypeSelectOption(option) {
+    await this.partyRoleTypeSelect.sendKeys(option);
+  }
+
+  getPartyRoleTypeSelect(): ElementFinder {
+    return this.partyRoleTypeSelect;
+  }
+
+  async getPartyRoleTypeSelectedOption() {
+    return await this.partyRoleTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async partySubRoleTypeSelectLastOption() {
+    await this.partySubRoleTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async partySubRoleTypeSelectOption(option) {
+    await this.partySubRoleTypeSelect.sendKeys(option);
+  }
+
+  getPartySubRoleTypeSelect(): ElementFinder {
+    return this.partySubRoleTypeSelect;
+  }
+
+  async getPartySubRoleTypeSelectedOption() {
+    return await this.partySubRoleTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async deliveryTypeSelectLastOption() {
+    await this.deliveryTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async deliveryTypeSelectOption(option) {
+    await this.deliveryTypeSelect.sendKeys(option);
+  }
+
+  getDeliveryTypeSelect(): ElementFinder {
+    return this.deliveryTypeSelect;
+  }
+
+  async getDeliveryTypeSelectedOption() {
+    return await this.deliveryTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async primaryPartySelectLastOption() {
+    await this.primaryPartySelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async primaryPartySelectOption(option) {
+    await this.primaryPartySelect.sendKeys(option);
+  }
+
+  getPrimaryPartySelect(): ElementFinder {
+    return this.primaryPartySelect;
+  }
+
+  async getPrimaryPartySelectedOption() {
+    return await this.primaryPartySelect.element(by.css('option:checked')).getText();
+  }
+
+  async personIdTypeSelectLastOption() {
+    await this.personIdTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async personIdTypeSelectOption(option) {
+    await this.personIdTypeSelect.sendKeys(option);
+  }
+
+  getPersonIdTypeSelect(): ElementFinder {
+    return this.personIdTypeSelect;
+  }
+
+  async getPersonIdTypeSelectedOption() {
+    return await this.personIdTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async personTypeSelectLastOption() {
+    await this.personTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async personTypeSelectOption(option) {
+    await this.personTypeSelect.sendKeys(option);
+  }
+
+  getPersonTypeSelect(): ElementFinder {
+    return this.personTypeSelect;
+  }
+
+  async getPersonTypeSelectedOption() {
+    return await this.personTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async emailTypeSelectLastOption() {
+    await this.emailTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async emailTypeSelectOption(option) {
+    await this.emailTypeSelect.sendKeys(option);
+  }
+
+  getEmailTypeSelect(): ElementFinder {
+    return this.emailTypeSelect;
+  }
+
+  async getEmailTypeSelectedOption() {
+    return await this.emailTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async personIdIssuedBySelectLastOption() {
+    await this.personIdIssuedBySelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async personIdIssuedBySelectOption(option) {
+    await this.personIdIssuedBySelect.sendKeys(option);
+  }
+
+  getPersonIdIssuedBySelect(): ElementFinder {
+    return this.personIdIssuedBySelect;
+  }
+
+  async getPersonIdIssuedBySelectedOption() {
+    return await this.personIdIssuedBySelect.element(by.css('option:checked')).getText();
+  }
+
+  async personTitleSelectLastOption() {
+    await this.personTitleSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async personTitleSelectOption(option) {
+    await this.personTitleSelect.sendKeys(option);
+  }
+
+  getPersonTitleSelect(): ElementFinder {
+    return this.personTitleSelect;
+  }
+
+  async getPersonTitleSelectedOption() {
+    return await this.personTitleSelect.element(by.css('option:checked')).getText();
+  }
+
+  async genderSelectLastOption() {
+    await this.genderSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async genderSelectOption(option) {
+    await this.genderSelect.sendKeys(option);
+  }
+
+  getGenderSelect(): ElementFinder {
+    return this.genderSelect;
+  }
+
+  async getGenderSelectedOption() {
+    return await this.genderSelect.element(by.css('option:checked')).getText();
+  }
+
+  async civilStateSelectLastOption() {
+    await this.civilStateSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async civilStateSelectOption(option) {
+    await this.civilStateSelect.sendKeys(option);
+  }
+
+  getCivilStateSelect(): ElementFinder {
+    return this.civilStateSelect;
+  }
+
+  async getCivilStateSelectedOption() {
+    return await this.civilStateSelect.element(by.css('option:checked')).getText();
+  }
+
+  async driverLicenseRegionSelectLastOption() {
+    await this.driverLicenseRegionSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async driverLicenseRegionSelectOption(option) {
+    await this.driverLicenseRegionSelect.sendKeys(option);
+  }
+
+  getDriverLicenseRegionSelect(): ElementFinder {
+    return this.driverLicenseRegionSelect;
+  }
+
+  async getDriverLicenseRegionSelectedOption() {
+    return await this.driverLicenseRegionSelect.element(by.css('option:checked')).getText();
+  }
+
+  async representativeIdSelectLastOption() {
+    await this.representativeIdSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async representativeIdSelectOption(option) {
+    await this.representativeIdSelect.sendKeys(option);
+  }
+
+  getRepresentativeIdSelect(): ElementFinder {
+    return this.representativeIdSelect;
+  }
+
+  async getRepresentativeIdSelectedOption() {
+    return await this.representativeIdSelect.element(by.css('option:checked')).getText();
   }
 
   async save() {

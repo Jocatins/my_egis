@@ -9,10 +9,6 @@
                 <dd>
                     <span>{{batch.batchNumber}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.batch.batchStatus">Batch Status</span></dt>
-                <dd>
-                    <span>{{batch.batchStatus}}</span>
-                </dd>
                 <dt><span jhiTranslate="egisexternalApp.batch.invoiceNumber">Invoice Number</span></dt>
                 <dd>
                     <span>{{batch.invoiceNumber}}</span>
@@ -32,6 +28,12 @@
                 <dt><span jhiTranslate="egisexternalApp.batch.user">User</span></dt>
                 <dd>
                     {{batch.user?.id}}
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.batch.batchStatus">Batch Status</span></dt>
+                <dd>
+                    <div *ngIf="batch.batchStatus">
+                        <a [routerLink]="['/dictionary', batch.batchStatus?.id, 'view']">{{batch.batchStatus?.id}}</a>
+                    </div>
                 </dd>
                 <dt><span jhiTranslate="egisexternalApp.batch.transaction">Transaction</span></dt>
                 <dd>

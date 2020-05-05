@@ -1,20 +1,20 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SERVER_API_URL } from 'app/app.constants';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import * as moment from 'moment';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { DATE_FORMAT } from 'app/shared/constants/input.constants';
-import { IBatch } from 'app/shared/model/batch.model';
+import { map } from 'rxjs/operators';
+
+import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
-import * as moment from 'moment';
-import { Observable } from 'rxjs';
-import { catchError, map, timeout } from 'rxjs/operators';
+import { IBatch } from 'app/shared/model/batch.model';
 
 type EntityResponseType = HttpResponse<IBatch>;
 type EntityArrayResponseType = HttpResponse<IBatch[]>;
 
 @Injectable({ providedIn: 'root' })
 export class BatchService {
-  public static serverApiURL = SERVER_API_URL;
   public resourceUrl = SERVER_API_URL + 'api/batches';
   public resourceSearchUrl = SERVER_API_URL + 'api/_search/batches';
 
@@ -79,33 +79,6 @@ export class BatchService {
       res.body.forEach((batch: IBatch) => {
         batch.createDate = batch.createDate != null ? moment(batch.createDate) : null;
         batch.deliveryDate = batch.deliveryDate != null ? moment(batch.deliveryDate) : null;
-      });
-    }
-    return res;
-  }
-
-  protected convertDateArrayFromServerOLD(res: EntityArrayResponseType): EntityArrayResponseType {
-    if (res.body) {
-      res.body.forEach((batch: IBatch) => {
-        batch.createDate = batch.createDate != null ? moment(batch.createDate) : null;
-        batch.deliveryDate = batch.deliveryDate != null ? moment(batch.deliveryDate) : null;
-
-        const code = batch.transactions[0].transactionCode;
-
-        const simpleresourceUrl = SERVER_API_URL + 'api/backoffice/transmeatada?code=' + code;
-        const callMetadata = this.http.get<any>(`${simpleresourceUrl}`);
-        if (callMetadata !== null) {
-          callMetadata
-            .pipe(
-              timeout(2000),
-              catchError(ee => {
-                return null;
-              })
-            )
-            .subscribe((dataMeta: any) => {
-              batch.moreData = code + ' - ' + JSON.parse(dataMeta.metadata).descr;
-            });
-        }
       });
     }
     return res;

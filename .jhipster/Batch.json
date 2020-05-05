@@ -6,10 +6,6 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "batchStatus",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "invoiceNumber",
             "fieldType": "String"
         },
@@ -32,6 +28,13 @@
             "otherEntityName": "user",
             "otherEntityRelationshipName": "batch",
             "relationshipName": "user",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "batch",
+            "relationshipName": "batchStatus",
             "otherEntityField": "id"
         },
         {

@@ -1,3 +1,5 @@
+import { IDictionary } from 'app/shared/model/dictionary.model';
+
 export interface IAddress {
   id?: number;
   addressAreaName?: string;
@@ -6,23 +8,23 @@ export interface IAddress {
   buildingNumber?: string;
   postalCode?: string;
   city?: string;
-  country?: number;
-  region?: number;
-  district?: number;
   village?: string;
-  state?: string;
-  estateName?: string;
-  localGovernmentArea?: number;
-  localCouncilArea?: number;
   streetNumber?: string;
-  streetType?: number;
   town?: string;
   ward?: string;
-  category?: string;
-  stateOfOrigin?: number;
-  schemeName?: number;
   blockNumber?: string;
   plotNumber?: string;
+  country?: IDictionary;
+  region?: IDictionary;
+  district?: IDictionary;
+  state?: IDictionary;
+  estateName?: IDictionary;
+  localGovernmentArea?: IDictionary;
+  localCouncilArea?: IDictionary;
+  streetType?: IDictionary;
+  stateOfOrigin?: IDictionary;
+  schemeName?: IDictionary;
+  category?: IDictionary;
 }
 
 export class Address implements IAddress {
@@ -34,22 +36,22 @@ export class Address implements IAddress {
     public buildingNumber?: string,
     public postalCode?: string,
     public city?: string,
-    public country?: number,
-    public region?: number,
-    public district?: number,
     public village?: string,
-    public state?: string,
-    public estateName?: string,
-    public localGovernmentArea?: number,
-    public localCouncilArea?: number,
     public streetNumber?: string,
-    public streetType?: number,
     public town?: string,
     public ward?: string,
-    public category?: string,
-    public stateOfOrigin?: number,
-    public schemeName?: number,
     public blockNumber?: string,
-    public plotNumber?: string
+    public plotNumber?: string,
+    public country?: IDictionary,
+    public region?: IDictionary,
+    public district?: IDictionary,
+    public state?: IDictionary,
+    public estateName?: IDictionary,
+    public localGovernmentArea?: IDictionary,
+    public localCouncilArea?: IDictionary,
+    public streetType?: IDictionary,
+    public stateOfOrigin?: IDictionary,
+    public schemeName?: IDictionary,
+    public category?: IDictionary
   ) {}
 }

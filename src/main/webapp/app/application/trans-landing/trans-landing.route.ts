@@ -7,9 +7,9 @@ import { BatchService } from 'app/entities/batch/batch.service';
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { TranslandingComponent } from './trans-landing.component';
-import { PartyExtUpdateComponent } from '../party/party-update.component';
-import { SupportingExtDocumentUpdateComponent } from '../ext/supporting-document/supporting-document-update.component';
-import { ParcelExtUpdateComponent } from '../ext/parcel/parcel-update.component';
+import { PartyUpdateComponent } from '../ext/party/party-update.component';
+import { SupportingDocumentUpdateComponent } from '../ext/supporting-document/supporting-document-update.component';
+import { ParcelUpdateComponent } from '../ext/parcel/parcel-update.component';
 
 import { map } from 'rxjs/operators';
 import { IParcel, Parcel } from 'app/shared/model/parcel.model';
@@ -148,7 +148,7 @@ export const TRANS_LANDING_VIEW: Route = {
 
 export const NEW_APPLICANT: Route = {
   path: 'applicant/:batchId/:partyId/:newOrEdit',
-  component: PartyExtUpdateComponent,
+  component: PartyUpdateComponent,
   resolve: {
     party: PartyExtResolve
   },
@@ -161,7 +161,7 @@ export const NEW_APPLICANT: Route = {
 
 export const EDIT_APPLICANT: Route = {
   path: 'applicant/new/:partyId/',
-  component: PartyExtUpdateComponent,
+  component: PartyUpdateComponent,
   resolve: {
     party: PartyExtResolve
   },
@@ -184,7 +184,7 @@ export const EDIT_APPLICANT_NEW: Route = {
 
 export const NEW_EDIT_DOCUMENT: Route = {
   path: 'document/:batchId/:documentId/:newOrEdit',
-  component: SupportingExtDocumentUpdateComponent,
+  component: SupportingDocumentUpdateComponent,
   resolve: {
     supportingDoc: SupportingDocExtResolve
   },
@@ -210,7 +210,7 @@ export const SUPP_DOCUMENTS: Route = {
 
 export const NEW_PARCEL: Route = {
   path: 'property/:batchId/:parcelId/:newOrEdit',
-  component: ParcelExtUpdateComponent,
+  component: ParcelUpdateComponent,
   resolve: {
     parcel: ParcelExtResolve
   },

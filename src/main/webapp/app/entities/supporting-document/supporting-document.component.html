@@ -35,10 +35,7 @@
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.documentNumber">Document Number</span></th>
-            <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.documentType">Document Type</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.ownershipArea">Ownership Area</span></th>
-            <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.documentSubType">Document Sub Type</span></th>
-            <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.issuedBy">Issued By</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.pageCount">Page Count</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.status">Status</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.provided">Provided</span></th>
@@ -49,6 +46,9 @@
             <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.contentUrl">Content Url</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.image">Image</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.date">Date</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.documentSubType">Document Sub Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.documentType">Document Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.supportingDocument.issuedBy">Issued By</span></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -56,10 +56,7 @@
             <tr *ngFor="let supportingDocument of supportingDocuments ;trackBy: trackId">
                 <td><a [routerLink]="['/supporting-document', supportingDocument.id, 'view' ]">{{supportingDocument.id}}</a></td>
                 <td>{{supportingDocument.documentNumber}}</td>
-                <td>{{supportingDocument.documentType}}</td>
                 <td>{{supportingDocument.ownershipArea}}</td>
-                <td>{{supportingDocument.documentSubType}}</td>
-                <td>{{supportingDocument.issuedBy}}</td>
                 <td>{{supportingDocument.pageCount}}</td>
                 <td>{{supportingDocument.status}}</td>
                 <td>{{supportingDocument.provided}}</td>
@@ -70,6 +67,21 @@
                 <td>{{supportingDocument.contentUrl}}</td>
                 <td>{{supportingDocument.image}}</td>
                 <td>{{supportingDocument.date | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="supportingDocument.documentSubType">
+                        <a [routerLink]="['/dictionary', supportingDocument.documentSubType?.id, 'view' ]" >{{supportingDocument.documentSubType?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="supportingDocument.documentType">
+                        <a [routerLink]="['/dictionary', supportingDocument.documentType?.id, 'view' ]" >{{supportingDocument.documentType?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="supportingDocument.issuedBy">
+                        <a [routerLink]="['/dictionary', supportingDocument.issuedBy?.id, 'view' ]" >{{supportingDocument.issuedBy?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

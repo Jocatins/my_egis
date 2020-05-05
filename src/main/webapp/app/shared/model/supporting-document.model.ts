@@ -1,13 +1,11 @@
 import { Moment } from 'moment';
+import { IDictionary } from 'app/shared/model/dictionary.model';
 import { ITransaction } from 'app/shared/model/transaction.model';
 
 export interface ISupportingDocument {
   id?: number;
   documentNumber?: string;
-  documentType?: number;
   ownershipArea?: string;
-  documentSubType?: number;
-  issuedBy?: number;
   pageCount?: number;
   status?: string;
   provided?: string;
@@ -18,6 +16,9 @@ export interface ISupportingDocument {
   contentUrl?: string;
   image?: string;
   date?: Moment;
+  documentSubType?: IDictionary;
+  documentType?: IDictionary;
+  issuedBy?: IDictionary;
   transactions?: ITransaction[];
   description?: string;
 }
@@ -26,10 +27,7 @@ export class SupportingDocument implements ISupportingDocument {
   constructor(
     public id?: number,
     public documentNumber?: string,
-    public documentType?: number,
     public ownershipArea?: string,
-    public documentSubType?: number,
-    public issuedBy?: number,
     public pageCount?: number,
     public status?: string,
     public provided?: string,
@@ -40,6 +38,9 @@ export class SupportingDocument implements ISupportingDocument {
     public contentUrl?: string,
     public image?: string,
     public date?: Moment,
+    public documentSubType?: IDictionary,
+    public documentType?: IDictionary,
+    public issuedBy?: IDictionary,
     public transactions?: ITransaction[],
     public description?: string
   ) {}

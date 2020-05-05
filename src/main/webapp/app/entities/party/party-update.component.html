@@ -10,46 +10,6 @@
                         readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.partyType" for="field_partyType">Party Type</label>
-                    <input type="number" class="form-control" name="partyType" id="field_partyType"
-                           formControlName="partyType"/>
-                    <div *ngIf="editForm.get('partyType').invalid && (editForm.get('partyType').dirty || editForm.get('partyType').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('partyType').errors.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('partyType')?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.partyRoleType" for="field_partyRoleType">Party Role Type</label>
-                    <input type="number" class="form-control" name="partyRoleType" id="field_partyRoleType"
-                           formControlName="partyRoleType"/>
-                    <div *ngIf="editForm.get('partyRoleType').invalid && (editForm.get('partyRoleType').dirty || editForm.get('partyRoleType').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('partyRoleType').errors.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('partyRoleType')?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.partySubRoleType" for="field_partySubRoleType">Party Sub Role Type</label>
-                    <input type="number" class="form-control" name="partySubRoleType" id="field_partySubRoleType"
-                           formControlName="partySubRoleType"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.deliveryType" for="field_deliveryType">Delivery Type</label>
-                    <input type="number" class="form-control" name="deliveryType" id="field_deliveryType"
-                           formControlName="deliveryType"/>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.partyName" for="field_partyName">Party Name</label>
                     <input type="text" class="form-control" name="partyName" id="field_partyName"
                            formControlName="partyName"/>
@@ -70,24 +30,9 @@
                            formControlName="taxExempt"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.primaryParty" for="field_primaryParty">Primary Party</label>
-                    <input type="text" class="form-control" name="primaryParty" id="field_primaryParty"
-                           formControlName="primaryParty"/>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.otherName" for="field_otherName">Other Name</label>
                     <input type="text" class="form-control" name="otherName" id="field_otherName"
                            formControlName="otherName"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.personIdType" for="field_personIdType">Person Id Type</label>
-                    <input type="number" class="form-control" name="personIdType" id="field_personIdType"
-                           formControlName="personIdType"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.personType" for="field_personType">Person Type</label>
-                    <input type="number" class="form-control" name="personType" id="field_personType"
-                           formControlName="personType"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.fax" for="field_fax">Fax</label>
@@ -98,11 +43,6 @@
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.email" for="field_email">Email</label>
                     <input type="text" class="form-control" name="email" id="field_email"
                            formControlName="email"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.emailType" for="field_emailType">Email Type</label>
-                    <input type="number" class="form-control" name="emailType" id="field_emailType"
-                           formControlName="emailType"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.phoneNumber" for="field_phoneNumber">Phone Number</label>
@@ -123,11 +63,6 @@
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.comments" for="field_comments">Comments</label>
                     <input type="text" class="form-control" name="comments" id="field_comments"
                            formControlName="comments"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.personIdIssuedBy" for="field_personIdIssuedBy">Person Id Issued By</label>
-                    <input type="number" class="form-control" name="personIdIssuedBy" id="field_personIdIssuedBy"
-                           formControlName="personIdIssuedBy"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.personIdDate" for="field_personIdDate">Person Id Date</label>
@@ -177,16 +112,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.personTitle" for="field_personTitle">Person Title</label>
-                    <input type="number" class="form-control" name="personTitle" id="field_personTitle"
-                           formControlName="personTitle"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.gender" for="field_gender">Gender</label>
-                    <input type="number" class="form-control" name="gender" id="field_gender"
-                           formControlName="gender"/>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.firstName" for="field_firstName">First Name</label>
                     <input type="text" class="form-control" name="firstName" id="field_firstName"
                            formControlName="firstName"/>
@@ -202,24 +127,9 @@
                            formControlName="lastName"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.civilState" for="field_civilState">Civil State</label>
-                    <input type="number" class="form-control" name="civilState" id="field_civilState"
-                           formControlName="civilState"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.driverLicenseRegion" for="field_driverLicenseRegion">Driver License Region</label>
-                    <input type="number" class="form-control" name="driverLicenseRegion" id="field_driverLicenseRegion"
-                           formControlName="driverLicenseRegion"/>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.driverLicence" for="field_driverLicence">Driver Licence</label>
                     <input type="text" class="form-control" name="driverLicence" id="field_driverLicence"
                            formControlName="driverLicence"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.representativeId" for="field_representativeId">Representative Id</label>
-                    <input type="number" class="form-control" name="representativeId" id="field_representativeId"
-                           formControlName="representativeId"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.professionRegNo" for="field_professionRegNo">Profession Reg No</label>
@@ -237,6 +147,104 @@
                     <select class="form-control" id="field_address" name="address" formControlName="address">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="addressOption.id === editForm.get('address').value?.id ? editForm.get('address').value : addressOption" *ngFor="let addressOption of addresses; trackBy: trackAddressById">{{addressOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.partyType" for="field_partyType">Party Type</label>
+                    <select class="form-control" id="field_partyType" name="partyType" formControlName="partyType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('partyType').value?.id ? editForm.get('partyType').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.partyRoleType" for="field_partyRoleType">Party Role Type</label>
+                    <select class="form-control" id="field_partyRoleType" name="partyRoleType" formControlName="partyRoleType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('partyRoleType').value?.id ? editForm.get('partyRoleType').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.partySubRoleType" for="field_partySubRoleType">Party Sub Role Type</label>
+                    <select class="form-control" id="field_partySubRoleType" name="partySubRoleType" formControlName="partySubRoleType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('partySubRoleType').value?.id ? editForm.get('partySubRoleType').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.deliveryType" for="field_deliveryType">Delivery Type</label>
+                    <select class="form-control" id="field_deliveryType" name="deliveryType" formControlName="deliveryType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('deliveryType').value?.id ? editForm.get('deliveryType').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.primaryParty" for="field_primaryParty">Primary Party</label>
+                    <select class="form-control" id="field_primaryParty" name="primaryParty" formControlName="primaryParty">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('primaryParty').value?.id ? editForm.get('primaryParty').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.personIdType" for="field_personIdType">Person Id Type</label>
+                    <select class="form-control" id="field_personIdType" name="personIdType" formControlName="personIdType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('personIdType').value?.id ? editForm.get('personIdType').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.personType" for="field_personType">Person Type</label>
+                    <select class="form-control" id="field_personType" name="personType" formControlName="personType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('personType').value?.id ? editForm.get('personType').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.emailType" for="field_emailType">Email Type</label>
+                    <select class="form-control" id="field_emailType" name="emailType" formControlName="emailType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('emailType').value?.id ? editForm.get('emailType').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.personIdIssuedBy" for="field_personIdIssuedBy">Person Id Issued By</label>
+                    <select class="form-control" id="field_personIdIssuedBy" name="personIdIssuedBy" formControlName="personIdIssuedBy">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('personIdIssuedBy').value?.id ? editForm.get('personIdIssuedBy').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.personTitle" for="field_personTitle">Person Title</label>
+                    <select class="form-control" id="field_personTitle" name="personTitle" formControlName="personTitle">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('personTitle').value?.id ? editForm.get('personTitle').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.gender" for="field_gender">Gender</label>
+                    <select class="form-control" id="field_gender" name="gender" formControlName="gender">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('gender').value?.id ? editForm.get('gender').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.civilState" for="field_civilState">Civil State</label>
+                    <select class="form-control" id="field_civilState" name="civilState" formControlName="civilState">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('civilState').value?.id ? editForm.get('civilState').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.driverLicenseRegion" for="field_driverLicenseRegion">Driver License Region</label>
+                    <select class="form-control" id="field_driverLicenseRegion" name="driverLicenseRegion" formControlName="driverLicenseRegion">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('driverLicenseRegion').value?.id ? editForm.get('driverLicenseRegion').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.representativeId" for="field_representativeId">Representative Id</label>
+                    <select class="form-control" id="field_representativeId" name="representativeId" formControlName="representativeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('representativeId').value?.id ? editForm.get('representativeId').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.id}}</option>
                     </select>
                 </div>
             </div>

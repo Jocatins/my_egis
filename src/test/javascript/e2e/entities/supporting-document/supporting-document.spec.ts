@@ -44,10 +44,7 @@ describe('SupportingDocument e2e test', () => {
     await supportingDocumentComponentsPage.clickOnCreateButton();
     await promise.all([
       supportingDocumentUpdatePage.setDocumentNumberInput('documentNumber'),
-      supportingDocumentUpdatePage.setDocumentTypeInput('5'),
       supportingDocumentUpdatePage.setOwnershipAreaInput('ownershipArea'),
-      supportingDocumentUpdatePage.setDocumentSubTypeInput('5'),
-      supportingDocumentUpdatePage.setIssuedByInput('5'),
       supportingDocumentUpdatePage.setPageCountInput('5'),
       supportingDocumentUpdatePage.setStatusInput('status'),
       supportingDocumentUpdatePage.setProvidedInput('provided'),
@@ -57,19 +54,19 @@ describe('SupportingDocument e2e test', () => {
       supportingDocumentUpdatePage.setContentInput('content'),
       supportingDocumentUpdatePage.setContentUrlInput('contentUrl'),
       supportingDocumentUpdatePage.setImageInput('image'),
-      supportingDocumentUpdatePage.setDateInput('2000-12-31')
+      supportingDocumentUpdatePage.setDateInput('2000-12-31'),
+      supportingDocumentUpdatePage.documentSubTypeSelectLastOption(),
+      supportingDocumentUpdatePage.documentTypeSelectLastOption(),
+      supportingDocumentUpdatePage.issuedBySelectLastOption()
     ]);
     expect(await supportingDocumentUpdatePage.getDocumentNumberInput()).to.eq(
       'documentNumber',
       'Expected DocumentNumber value to be equals to documentNumber'
     );
-    expect(await supportingDocumentUpdatePage.getDocumentTypeInput()).to.eq('5', 'Expected documentType value to be equals to 5');
     expect(await supportingDocumentUpdatePage.getOwnershipAreaInput()).to.eq(
       'ownershipArea',
       'Expected OwnershipArea value to be equals to ownershipArea'
     );
-    expect(await supportingDocumentUpdatePage.getDocumentSubTypeInput()).to.eq('5', 'Expected documentSubType value to be equals to 5');
-    expect(await supportingDocumentUpdatePage.getIssuedByInput()).to.eq('5', 'Expected issuedBy value to be equals to 5');
     expect(await supportingDocumentUpdatePage.getPageCountInput()).to.eq('5', 'Expected pageCount value to be equals to 5');
     expect(await supportingDocumentUpdatePage.getStatusInput()).to.eq('status', 'Expected Status value to be equals to status');
     expect(await supportingDocumentUpdatePage.getProvidedInput()).to.eq('provided', 'Expected Provided value to be equals to provided');

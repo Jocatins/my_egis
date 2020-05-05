@@ -73,10 +73,7 @@ class SupportingDocumentGatlingTest extends Simulation {
             .body(StringBody("""{
                 "id":null
                 , "documentNumber":"SAMPLE_TEXT"
-                , "documentType":"0"
                 , "ownershipArea":"SAMPLE_TEXT"
-                , "documentSubType":"0"
-                , "issuedBy":"0"
                 , "pageCount":"0"
                 , "status":"SAMPLE_TEXT"
                 , "provided":"SAMPLE_TEXT"

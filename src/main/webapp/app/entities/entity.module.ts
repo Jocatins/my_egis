@@ -43,6 +43,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'survey-transaction',
         loadChildren: () => import('./survey-transaction/survey-transaction.module').then(m => m.EgisexternalSurveyTransactionModule)
+      },
+      {
+        path: 'dictionary',
+        loadChildren: () => import('./dictionary/dictionary.module').then(m => m.EgisexternalDictionaryModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

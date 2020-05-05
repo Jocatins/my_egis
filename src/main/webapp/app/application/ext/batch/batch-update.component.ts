@@ -11,6 +11,8 @@ import { IBatch, Batch } from 'app/shared/model/batch.model';
 import { BatchService } from './batch.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
+import { IDictionary } from 'app/shared/model/dictionary.model';
+import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
 import { ITransaction } from 'app/shared/model/transaction.model';
 import { TransactionService } from 'app/entities/transaction/transaction.service';
 import { IParty } from 'app/shared/model/party.model';
@@ -25,6 +27,8 @@ export class BatchUpdateComponent implements OnInit {
 
   users: IUser[];
 
+  dictionaries: IDictionary[];
+
   transactions: ITransaction[];
 
   parties: IParty[];
@@ -34,12 +38,12 @@ export class BatchUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     batchNumber: [],
-    batchStatus: [],
     invoiceNumber: [],
     createDate: [],
     deliveryDate: [],
     officeId: [],
     user: [],
+    batchStatus: [],
     transactions: [],
     parties: []
   });
@@ -48,6 +52,7 @@ export class BatchUpdateComponent implements OnInit {
     protected jhiAlertService: JhiAlertService,
     protected batchService: BatchService,
     protected userService: UserService,
+    protected dictionaryService: DictionaryService,
     protected transactionService: TransactionService,
     protected partyService: PartyService,
     protected activatedRoute: ActivatedRoute,
@@ -62,6 +67,12 @@ export class BatchUpdateComponent implements OnInit {
     this.userService
       .query()
       .subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.dictionaryService
+      .query()
+      .subscribe(
+        (res: HttpResponse<IDictionary[]>) => (this.dictionaries = res.body),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
     this.transactionService
       .query()
       .subscribe(
@@ -77,12 +88,12 @@ export class BatchUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: batch.id,
       batchNumber: batch.batchNumber,
-      batchStatus: batch.batchStatus,
       invoiceNumber: batch.invoiceNumber,
       createDate: batch.createDate,
       deliveryDate: batch.deliveryDate,
       officeId: batch.officeId,
       user: batch.user,
+      batchStatus: batch.batchStatus,
       transactions: batch.transactions,
       parties: batch.parties
     });
@@ -107,12 +118,12 @@ export class BatchUpdateComponent implements OnInit {
       ...new Batch(),
       id: this.editForm.get(['id']).value,
       batchNumber: this.editForm.get(['batchNumber']).value,
-      batchStatus: this.editForm.get(['batchStatus']).value,
       invoiceNumber: this.editForm.get(['invoiceNumber']).value,
       createDate: this.editForm.get(['createDate']).value,
       deliveryDate: this.editForm.get(['deliveryDate']).value,
       officeId: this.editForm.get(['officeId']).value,
       user: this.editForm.get(['user']).value,
+      batchStatus: this.editForm.get(['batchStatus']).value,
       transactions: this.editForm.get(['transactions']).value,
       parties: this.editForm.get(['parties']).value
     };
@@ -135,6 +146,10 @@ export class BatchUpdateComponent implements OnInit {
   }
 
   trackUserById(index: number, item: IUser) {
+    return item.id;
+  }
+
+  trackDictionaryById(index: number, item: IDictionary) {
     return item.id;
   }
 

@@ -46,9 +46,6 @@ public class BatchResourceIT {
     private static final Integer DEFAULT_BATCH_NUMBER = 1;
     private static final Integer UPDATED_BATCH_NUMBER = 2;
 
-    private static final Integer DEFAULT_BATCH_STATUS = 1;
-    private static final Integer UPDATED_BATCH_STATUS = 2;
-
     private static final String DEFAULT_INVOICE_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_INVOICE_NUMBER = "BBBBBBBBBB";
 
@@ -115,7 +112,6 @@ public class BatchResourceIT {
     public static Batch createEntity(EntityManager em) {
         Batch batch = new Batch()
             .batchNumber(DEFAULT_BATCH_NUMBER)
-            .batchStatus(DEFAULT_BATCH_STATUS)
             .invoiceNumber(DEFAULT_INVOICE_NUMBER)
             .createDate(DEFAULT_CREATE_DATE)
             .deliveryDate(DEFAULT_DELIVERY_DATE)
@@ -131,7 +127,6 @@ public class BatchResourceIT {
     public static Batch createUpdatedEntity(EntityManager em) {
         Batch batch = new Batch()
             .batchNumber(UPDATED_BATCH_NUMBER)
-            .batchStatus(UPDATED_BATCH_STATUS)
             .invoiceNumber(UPDATED_INVOICE_NUMBER)
             .createDate(UPDATED_CREATE_DATE)
             .deliveryDate(UPDATED_DELIVERY_DATE)
@@ -160,7 +155,6 @@ public class BatchResourceIT {
         assertThat(batchList).hasSize(databaseSizeBeforeCreate + 1);
         Batch testBatch = batchList.get(batchList.size() - 1);
         assertThat(testBatch.getBatchNumber()).isEqualTo(DEFAULT_BATCH_NUMBER);
-        assertThat(testBatch.getBatchStatus()).isEqualTo(DEFAULT_BATCH_STATUS);
         assertThat(testBatch.getInvoiceNumber()).isEqualTo(DEFAULT_INVOICE_NUMBER);
         assertThat(testBatch.getCreateDate()).isEqualTo(DEFAULT_CREATE_DATE);
         assertThat(testBatch.getDeliveryDate()).isEqualTo(DEFAULT_DELIVERY_DATE);
@@ -205,7 +199,6 @@ public class BatchResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(batch.getId().intValue())))
             .andExpect(jsonPath("$.[*].batchNumber").value(hasItem(DEFAULT_BATCH_NUMBER)))
-            .andExpect(jsonPath("$.[*].batchStatus").value(hasItem(DEFAULT_BATCH_STATUS)))
             .andExpect(jsonPath("$.[*].invoiceNumber").value(hasItem(DEFAULT_INVOICE_NUMBER)))
             .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())))
             .andExpect(jsonPath("$.[*].deliveryDate").value(hasItem(DEFAULT_DELIVERY_DATE.toString())))
@@ -257,7 +250,6 @@ public class BatchResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(batch.getId().intValue()))
             .andExpect(jsonPath("$.batchNumber").value(DEFAULT_BATCH_NUMBER))
-            .andExpect(jsonPath("$.batchStatus").value(DEFAULT_BATCH_STATUS))
             .andExpect(jsonPath("$.invoiceNumber").value(DEFAULT_INVOICE_NUMBER))
             .andExpect(jsonPath("$.createDate").value(DEFAULT_CREATE_DATE.toString()))
             .andExpect(jsonPath("$.deliveryDate").value(DEFAULT_DELIVERY_DATE.toString()))
@@ -286,7 +278,6 @@ public class BatchResourceIT {
         em.detach(updatedBatch);
         updatedBatch
             .batchNumber(UPDATED_BATCH_NUMBER)
-            .batchStatus(UPDATED_BATCH_STATUS)
             .invoiceNumber(UPDATED_INVOICE_NUMBER)
             .createDate(UPDATED_CREATE_DATE)
             .deliveryDate(UPDATED_DELIVERY_DATE)
@@ -302,7 +293,6 @@ public class BatchResourceIT {
         assertThat(batchList).hasSize(databaseSizeBeforeUpdate);
         Batch testBatch = batchList.get(batchList.size() - 1);
         assertThat(testBatch.getBatchNumber()).isEqualTo(UPDATED_BATCH_NUMBER);
-        assertThat(testBatch.getBatchStatus()).isEqualTo(UPDATED_BATCH_STATUS);
         assertThat(testBatch.getInvoiceNumber()).isEqualTo(UPDATED_INVOICE_NUMBER);
         assertThat(testBatch.getCreateDate()).isEqualTo(UPDATED_CREATE_DATE);
         assertThat(testBatch.getDeliveryDate()).isEqualTo(UPDATED_DELIVERY_DATE);
@@ -367,7 +357,6 @@ public class BatchResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(batch.getId().intValue())))
             .andExpect(jsonPath("$.[*].batchNumber").value(hasItem(DEFAULT_BATCH_NUMBER)))
-            .andExpect(jsonPath("$.[*].batchStatus").value(hasItem(DEFAULT_BATCH_STATUS)))
             .andExpect(jsonPath("$.[*].invoiceNumber").value(hasItem(DEFAULT_INVOICE_NUMBER)))
             .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())))
             .andExpect(jsonPath("$.[*].deliveryDate").value(hasItem(DEFAULT_DELIVERY_DATE.toString())))

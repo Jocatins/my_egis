@@ -40,19 +40,19 @@ describe('Transaction e2e test', () => {
     await transactionComponentsPage.clickOnCreateButton();
     await promise.all([
       transactionUpdatePage.setTransactionNumberInput('transactionNumber'),
-      transactionUpdatePage.setTransactionTypeInput('5'),
-      transactionUpdatePage.setTransactionSubTypeInput('5'),
       transactionUpdatePage.setApplicationDateInput('2000-12-31'),
       transactionUpdatePage.setTransactionStartDateInput('2000-12-31'),
       transactionUpdatePage.setCommentsInput('comments'),
-      transactionUpdatePage.setOwnershipTypeInput('5'),
       transactionUpdatePage.setCreateDateInput('2000-12-31'),
       transactionUpdatePage.setStartDateInput('2000-12-31'),
       transactionUpdatePage.setCompleteDateInput('2000-12-31'),
-      transactionUpdatePage.setTenureTypeInput('5'),
       transactionUpdatePage.setBatchIdInput('5'),
       transactionUpdatePage.setTransactionCodeInput('transactionCode'),
-      transactionUpdatePage.extSelectLastOption()
+      transactionUpdatePage.extSelectLastOption(),
+      transactionUpdatePage.transactionTypeSelectLastOption(),
+      transactionUpdatePage.transactionSubTypeSelectLastOption(),
+      transactionUpdatePage.ownershipTypeSelectLastOption(),
+      transactionUpdatePage.tenureTypeSelectLastOption()
       // transactionUpdatePage.partySelectLastOption(),
       // transactionUpdatePage.parcelSelectLastOption(),
       // transactionUpdatePage.docsSelectLastOption(),
@@ -61,8 +61,6 @@ describe('Transaction e2e test', () => {
       'transactionNumber',
       'Expected TransactionNumber value to be equals to transactionNumber'
     );
-    expect(await transactionUpdatePage.getTransactionTypeInput()).to.eq('5', 'Expected transactionType value to be equals to 5');
-    expect(await transactionUpdatePage.getTransactionSubTypeInput()).to.eq('5', 'Expected transactionSubType value to be equals to 5');
     expect(await transactionUpdatePage.getApplicationDateInput()).to.eq(
       '2000-12-31',
       'Expected applicationDate value to be equals to 2000-12-31'
@@ -72,14 +70,12 @@ describe('Transaction e2e test', () => {
       'Expected transactionStartDate value to be equals to 2000-12-31'
     );
     expect(await transactionUpdatePage.getCommentsInput()).to.eq('comments', 'Expected Comments value to be equals to comments');
-    expect(await transactionUpdatePage.getOwnershipTypeInput()).to.eq('5', 'Expected ownershipType value to be equals to 5');
     expect(await transactionUpdatePage.getCreateDateInput()).to.eq('2000-12-31', 'Expected createDate value to be equals to 2000-12-31');
     expect(await transactionUpdatePage.getStartDateInput()).to.eq('2000-12-31', 'Expected startDate value to be equals to 2000-12-31');
     expect(await transactionUpdatePage.getCompleteDateInput()).to.eq(
       '2000-12-31',
       'Expected completeDate value to be equals to 2000-12-31'
     );
-    expect(await transactionUpdatePage.getTenureTypeInput()).to.eq('5', 'Expected tenureType value to be equals to 5');
     expect(await transactionUpdatePage.getBatchIdInput()).to.eq('5', 'Expected batchId value to be equals to 5');
     expect(await transactionUpdatePage.getTransactionCodeInput()).to.eq(
       'transactionCode',

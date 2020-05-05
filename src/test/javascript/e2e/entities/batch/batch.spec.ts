@@ -40,17 +40,16 @@ describe('Batch e2e test', () => {
     await batchComponentsPage.clickOnCreateButton();
     await promise.all([
       batchUpdatePage.setBatchNumberInput('5'),
-      batchUpdatePage.setBatchStatusInput('5'),
       batchUpdatePage.setInvoiceNumberInput('invoiceNumber'),
       batchUpdatePage.setCreateDateInput('2000-12-31'),
       batchUpdatePage.setDeliveryDateInput('2000-12-31'),
       batchUpdatePage.setOfficeIdInput('5'),
-      batchUpdatePage.userSelectLastOption()
+      batchUpdatePage.userSelectLastOption(),
+      batchUpdatePage.batchStatusSelectLastOption()
       // batchUpdatePage.transactionSelectLastOption(),
       // batchUpdatePage.partySelectLastOption(),
     ]);
     expect(await batchUpdatePage.getBatchNumberInput()).to.eq('5', 'Expected batchNumber value to be equals to 5');
-    expect(await batchUpdatePage.getBatchStatusInput()).to.eq('5', 'Expected batchStatus value to be equals to 5');
     expect(await batchUpdatePage.getInvoiceNumberInput()).to.eq(
       'invoiceNumber',
       'Expected InvoiceNumber value to be equals to invoiceNumber'

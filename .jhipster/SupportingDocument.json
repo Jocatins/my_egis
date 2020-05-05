@@ -6,20 +6,8 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "documentType",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "ownershipArea",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "documentSubType",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "issuedBy",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "pageCount",
@@ -63,6 +51,27 @@
         }
     ],
     "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "supportingDocument",
+            "relationshipName": "documentSubType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "supportingDocument",
+            "relationshipName": "documentType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "supportingDocument",
+            "relationshipName": "issuedBy",
+            "otherEntityField": "id"
+        },
         {
             "relationshipType": "many-to-many",
             "otherEntityName": "transaction",

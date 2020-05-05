@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { TransInfo } from '../model/transinfo.model';
-import { BatchService } from '../ext/batch/batch.service';
-import { IParty } from 'app/shared/model/party.model';
+import { BatchService } from '../ext/batch-old/batch.service';
+import { IParty, Party } from 'app/shared/model/party.model';
 import { IBatch } from 'app/shared/model/batch.model';
+import { PartyDeleteDialogComponent } from '../party/party-delete-dialog.component';
+import { JhiEventManager } from 'ng-jhipster';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'jhi-trans-detail',
@@ -30,27 +33,25 @@ export class ApplicantsComponent implements OnInit {
     private route: ActivatedRoute,
     private httpClient: HttpClient,
     private batchService: BatchService,
-    protected activatedRoute: ActivatedRoute
+    protected activatedRoute: ActivatedRoute,
+    protected eventManager: JhiEventManager,
+    protected modalService: NgbModal,
   ) {}
 
   ngOnInit() {
     const params = this.route.snapshot.paramMap;
     this.code_ = params.get('code_');
-
-    this.message = 'gdgdhdhdd d';
-    alert(params.get('batchId'));
-
+    this.eventManager.subscribe("partyListModification", () => {
+      this.refreshParty(Number(params.get('batchId')));
+    })
     this.refreshParty(Number(params.get('batchId')));
   }
 
-  editNewApplicant1(newOrEdit: string, batchId: number, partyId: number) {
+  editNewApplicant(newOrEdit: string, batchId: number, partyId: number) {
     this.router.navigate(['/application/applicant', batchId, partyId, newOrEdit]);
   }
 
   goToParcel(batchId: number) {
-    alert('parcel information');
-    alert(JSON.stringify(this.batch));
-
     let newOrEdit = 'new';
     let parcelId = 0;
 
@@ -79,5 +80,19 @@ export class ApplicantsComponent implements OnInit {
       },
       () => alert()
     );
+  }
+
+
+  deleteParty(party: Party, batchId: number) {
+    const modalRef = this.modalService.open(PartyDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.party = party;
+    this.eventManager.subscribe('partyListModification', () => {
+      this.batchService.find(batchId).subscribe(
+        data => {
+          this.parties = data.body.parties;
+        },
+        () => alert()
+      );
+    });
   }
 }

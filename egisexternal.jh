@@ -1,8 +1,14 @@
 
-//
+
+entity Dictionary{
+	code String ,
+    label String,
+    descr String,
+    category String
+}
+
 entity Batch{
 	batchNumber Integer,
-    batchStatus Integer,
     invoiceNumber String,
     createDate LocalDate,
     deliveryDate LocalDate,
@@ -11,16 +17,12 @@ entity Batch{
 
 entity Transaction{
     transactionNumber String,
-    transactionType Integer required,
-    transactionSubType Integer,
     applicationDate LocalDate,
     transactionStartDate LocalDate,
     comments String,
-    ownershipType Integer,
     createDate LocalDate,
     startDate LocalDate,
     completeDate LocalDate,
-    tenureType Integer,
     batchId Integer,
     transactionCode String
 }
@@ -32,10 +34,7 @@ entity TransactionExt{
 
 entity SupportingDocument{
     documentNumber String,
-    documentType Integer,
     ownershipArea String,
-    documentSubType Integer,
-    issuedBy Integer,
     pageCount Integer,
     status Integer,
     provided String,
@@ -51,26 +50,17 @@ entity SupportingDocument{
 
 
 entity Party{
-    partyType Integer required,
-    partyRoleType Integer required,
-    partySubRoleType Integer,
-    deliveryType Integer,
     partyName String,
     shareNominator String,
     shareDenominator String,
     taxExempt String,
-    primaryParty String,
     otherName String,
-    personIdType Integer,
-    personType Integer,
     fax String,
     email String,
-    emailType Integer,
     phoneNumber String,
     payerId String,
     taxPayerNumber String,
     comments String,
-    personIdIssuedBy Integer,
     personIdDate LocalDate,
     personIdExpirationDate LocalDate,
     rcNumber String ,
@@ -78,19 +68,14 @@ entity Party{
     businessNature String ,
     birthPlace String ,
     birthDate LocalDate ,
-    personTitle Integer,
-    gender Integer,
     firstName String,
     middleName String,
     lastName String,
-    gender Integer,
-    civilState Integer,
-    driverLicenseRegion Integer,
     driverLicence String,
-    representativeId Integer,
     professionRegNo String,
     occupation String
 }
+
 
 entity Address{
     addressAreaName String,
@@ -99,46 +84,24 @@ entity Address{
     buildingNumber String,
     postalCode String,
     city String,
-    country Integer,
-    region Integer,
-    district Integer,
     village String,
-    state String,
-    estateName String,
-    localGovernmentArea Integer,
-    localCouncilArea Integer,
     streetNumber String,
-    streetType Integer,
     town String,
     ward String,
-    category String,
-    stateOfOrigin Integer,
-    schemeName Integer,
     blockNumber String,
     plotNumber String
 }
 
-
 entity Parcel{
 	label String,
     area  Double,
-    spatialUnitType Integer,
     registrationOfficeDictionary String,
-    surveyType String,
     surveyDate LocalDate,
-    propertyType Integer,
     accommodation String,
-    tenureType Integer,
     description String,
     propertyArea Double,
-    location Integer,
-    builtUpAreaType Integer,
     planNumber String,
-    measurementUnitType Integer,
     premiumValue String,
-    landUseCategory Integer,
-    landUseType Integer,
-    developmentStatus Integer,
     coordinateN Integer,
     coordinateS Integer,
     lagosSheetNumber String,
@@ -146,12 +109,65 @@ entity Parcel{
 	location1 Integer,
 	unitNumber String,
     name String,
-    registerType Integer,
     valuation String,
     comments String,
-    legalDescription String,
-    meansOfAcq Integer,
+    legalDescription String
 }
+
+relationship ManyToOne{
+    Batch{user} to User
+	Batch{batchStatus} to Dictionary,
+    Transaction{transactionType} to Dictionary,
+    Transaction{transactionSubType} to Dictionary,
+    Transaction{ownershipType} to Dictionary,
+    Transaction{tenureType} to Dictionary,
+    SupportingDocument{documentSubType} to Dictionary,
+    SupportingDocument{documentType} to Dictionary,
+    SupportingDocument{issuedBy} to Dictionary,
+    Party{partyType} to Dictionary,
+    Party{partyRoleType} to Dictionary,
+    Party{partySubRoleType} to Dictionary,
+    Party{deliveryType} to Dictionary,
+    Party{primaryParty} to Dictionary,
+    Party{personIdType} to Dictionary,
+    Party{personType} to Dictionary,
+    Party{emailType} to Dictionary,
+    Party{personIdIssuedBy} to Dictionary,
+    Party{personTitle} to Dictionary,
+    Party{gender} to Dictionary,
+    Party{civilState} to Dictionary,
+    Party{driverLicenseRegion} to Dictionary,
+    Party{gender} to Dictionary,
+    Party{driverLicenseRegion} to Dictionary,
+    Party{representativeId} to Dictionary,
+    Address{country} to Dictionary,
+    Address{region} to Dictionary,
+    Address{district} to Dictionary,
+    Address{state} to Dictionary,
+    Address{estateName} to Dictionary,
+    Address{localGovernmentArea} to Dictionary,
+    Address{localCouncilArea} to Dictionary,
+    Address{streetType} to Dictionary,
+    Address{stateOfOrigin} to Dictionary,
+    Address{schemeName} to Dictionary,
+    Address{category} to Dictionary,
+    Parcel{spatialUnitType} to Dictionary,
+    Parcel{surveyType} to Dictionary,
+    Parcel{propertyType} to Dictionary,
+    Parcel{tenureType} to Dictionary,
+    Parcel{location} to Dictionary,
+    Parcel{builtUpAreaType} to Dictionary,
+    Parcel{measurementUnitType} to Dictionary,
+    Parcel{landUseCategory} to Dictionary,
+    Parcel{landUseType} to Dictionary,
+    Parcel{developmentStatus} to Dictionary,
+    Parcel{registerType} to Dictionary,
+    Parcel{meansOfAcq} to Dictionary,
+    Parcel{region} to Dictionary,
+}
+
+
+
 
 entity UserExt{
     payerId String,
@@ -188,9 +204,6 @@ relationship OneToOne{
 	Parcel{address} to Address
 }
 
-relationship ManyToOne{
-    Batch{user} to User
-}
 
 // Set pagination options
 //paginate Batch with infinite-scroll
@@ -207,3 +220,4 @@ paginate Surveyor, SurveyTransaction with pagination
 
 // Set an angular suffix
 // angularSuffix * with mySuffix
+

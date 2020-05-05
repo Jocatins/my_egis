@@ -3,41 +3,33 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
+import * as moment from 'moment';
+import { JhiAlertService } from 'ng-jhipster';
 import { ISupportingDocument, SupportingDocument } from 'app/shared/model/supporting-document.model';
 import { SupportingDocumentService } from './supporting-document.service';
+import { IDictionary } from 'app/shared/model/dictionary.model';
+import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
 import { ITransaction } from 'app/shared/model/transaction.model';
 import { TransactionService } from 'app/entities/transaction/transaction.service';
-import { BatchService } from 'app/entities/batch/batch.service';
-import { DashboardService } from 'app/dashboard/dashboard.service';
-import { IEGISDIctionary } from 'app/application/model/egisdictionary.model';
 
 @Component({
   selector: 'jhi-supporting-document-update',
   templateUrl: './supporting-document-update.component.html'
 })
-export class SupportingExtDocumentUpdateComponent implements OnInit {
+export class SupportingDocumentUpdateComponent implements OnInit {
   isSaving: boolean;
+
+  dictionaries: IDictionary[];
 
   transactions: ITransaction[];
   dateDp: any;
-  selectedFile: File;
-  fileName: string;
-  documentTypes: IEGISDIctionary[];
-  documentSubtypes: IEGISDIctionary[];
-  issuedBys: IEGISDIctionary[];
-  e: IEGISDIctionary[];
-  f: IEGISDIctionary[];
 
   editForm = this.fb.group({
     id: [],
     documentNumber: [],
-    documentType: [],
     ownershipArea: [],
-    documentSubType: [],
-    issuedBy: [],
     pageCount: [],
     status: [],
     provided: [],
@@ -47,93 +39,69 @@ export class SupportingExtDocumentUpdateComponent implements OnInit {
     content: [],
     contentUrl: [],
     image: [],
-    date: []
+    date: [],
+    documentSubType: [],
+    documentType: [],
+    issuedBy: []
   });
-
-  batchId: number;
-  supportingDocumentId: number;
-  newOrEdit: string;
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected supportingDocumentService: SupportingDocumentService,
+    protected dictionaryService: DictionaryService,
     protected transactionService: TransactionService,
     protected activatedRoute: ActivatedRoute,
-    protected batchServcice: BatchService,
-    private fb: FormBuilder,
-    protected eventManager: JhiEventManager,
-    protected dashboardService: DashboardService,
-    private router: Router
-  ) {
-    this.batchId = activatedRoute.snapshot.params['batchId'];
-    this.newOrEdit = activatedRoute.snapshot.params['newOrEdit'];
-  }
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.isSaving = false;
-    this.activatedRoute.data.subscribe(({ supportingDoc }) => {
-      this.updateForm(supportingDoc);
+    this.activatedRoute.data.subscribe(({ supportingDocument }) => {
+      this.updateForm(supportingDocument);
     });
+    this.dictionaryService
+      .query()
+      .subscribe(
+        (res: HttpResponse<IDictionary[]>) => (this.dictionaries = res.body),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
     this.transactionService
       .query()
       .subscribe(
         (res: HttpResponse<ITransaction[]>) => (this.transactions = res.body),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
-
-    this.dashboardService.fetchDictionaryValuesObj('document_type').subscribe(
-      data => {
-        this.documentTypes = JSON.parse(data.body.category);
-      },
-      err => {}
-    );
-
-    this.dashboardService.fetchDictionaryValuesObj('document_subtype').subscribe(
-      data => {
-        this.documentSubtypes = JSON.parse(data.body.category);
-      },
-      err => {}
-    );
-
-    this.dashboardService.fetchDictionaryValuesObj('issued_by').subscribe(
-      data => {
-        this.issuedBys = JSON.parse(data.body.category);
-      },
-      err => {}
-    );
   }
 
   updateForm(supportingDocument: ISupportingDocument) {
-    if (supportingDocument !== undefined) {
-      this.editForm.patchValue({
-        id: supportingDocument.id,
-        documentNumber: supportingDocument.documentNumber,
-        documentType: supportingDocument.documentType,
-        ownershipArea: supportingDocument.ownershipArea,
-        documentSubType: supportingDocument.documentSubType,
-        issuedBy: supportingDocument.issuedBy,
-        pageCount: supportingDocument.pageCount,
-        status: supportingDocument.status,
-        provided: supportingDocument.provided,
-        type: supportingDocument.type,
-        name: supportingDocument.name,
-        fileSize: supportingDocument.fileSize,
-        content: supportingDocument.content,
-        contentUrl: supportingDocument.contentUrl,
-        image: supportingDocument.image,
-        date: supportingDocument.date
-      });
-    }
+    this.editForm.patchValue({
+      id: supportingDocument.id,
+      documentNumber: supportingDocument.documentNumber,
+      ownershipArea: supportingDocument.ownershipArea,
+      pageCount: supportingDocument.pageCount,
+      status: supportingDocument.status,
+      provided: supportingDocument.provided,
+      type: supportingDocument.type,
+      name: supportingDocument.name,
+      fileSize: supportingDocument.fileSize,
+      content: supportingDocument.content,
+      contentUrl: supportingDocument.contentUrl,
+      image: supportingDocument.image,
+      date: supportingDocument.date,
+      documentSubType: supportingDocument.documentSubType,
+      documentType: supportingDocument.documentType,
+      issuedBy: supportingDocument.issuedBy
+    });
   }
 
   previousState() {
-    this.router.navigate(['/application/supporting-docs', this.batchId]);
+    window.history.back();
   }
 
   save() {
     this.isSaving = true;
     const supportingDocument = this.createFromForm();
-    if (supportingDocument.id !== undefined && supportingDocument.id !== null) {
+    if (supportingDocument.id !== undefined) {
       this.subscribeToSaveResponse(this.supportingDocumentService.update(supportingDocument));
     } else {
       this.subscribeToSaveResponse(this.supportingDocumentService.create(supportingDocument));
@@ -145,10 +113,7 @@ export class SupportingExtDocumentUpdateComponent implements OnInit {
       ...new SupportingDocument(),
       id: this.editForm.get(['id']).value,
       documentNumber: this.editForm.get(['documentNumber']).value,
-      documentType: this.editForm.get(['documentType']).value,
       ownershipArea: this.editForm.get(['ownershipArea']).value,
-      documentSubType: this.editForm.get(['documentSubType']).value,
-      issuedBy: this.editForm.get(['issuedBy']).value,
       pageCount: this.editForm.get(['pageCount']).value,
       status: this.editForm.get(['status']).value,
       provided: this.editForm.get(['provided']).value,
@@ -158,37 +123,15 @@ export class SupportingExtDocumentUpdateComponent implements OnInit {
       content: this.editForm.get(['content']).value,
       contentUrl: this.editForm.get(['contentUrl']).value,
       image: this.editForm.get(['image']).value,
-      date: this.editForm.get(['date']).value
+      date: this.editForm.get(['date']).value,
+      documentSubType: this.editForm.get(['documentSubType']).value,
+      documentType: this.editForm.get(['documentType']).value,
+      issuedBy: this.editForm.get(['issuedBy']).value
     };
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ISupportingDocument>>) {
-    if (this.newOrEdit === 'new') {
-      result.subscribe(
-        document => {
-          const supDOc = document.body;
-          this.batchServcice.find(this.batchId).subscribe(dBatch => {
-            const batch = dBatch.body;
-
-            const docs = batch.transactions[0].docs;
-            if (docs === null) {
-              batch.transactions[0].docs = [];
-            }
-            batch.transactions[0].docs.push(supDOc);
-            this.transactionService.update(batch.transactions[0]).subscribe(() => {
-              this.eventManager.broadcast({
-                name: 'supportingDocumentListModification',
-                content: 'Deleted an supportingDocument'
-              });
-            });
-          });
-          this.onSaveSuccess();
-        },
-        () => this.onSaveError()
-      );
-    } else {
-      result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
-    }
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {
@@ -201,6 +144,10 @@ export class SupportingExtDocumentUpdateComponent implements OnInit {
   }
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  trackDictionaryById(index: number, item: IDictionary) {
+    return item.id;
   }
 
   trackTransactionById(index: number, item: ITransaction) {
@@ -216,37 +163,5 @@ export class SupportingExtDocumentUpdateComponent implements OnInit {
       }
     }
     return option;
-  }
-
-  private onUpload(imageFor) {
-    const fd = new FormData();
-    fd.append('imageFile', this.selectedFile, this.selectedFile.name);
-    // this.http.post('https://localhost:3443/products/upload', fd)
-    //   .subscribe(res => imageFor === 'FRONT' ? this.imgFront = res : this.imgBack = res);
-  }
-
-  onFileSelected1(event) {
-    this.selectedFile = event.target.files[0] as File;
-
-    const reader = new FileReader();
-
-    if (event.target.files && event.target.files.length) {
-      this.fileName = event.target.files[0].name;
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        this.editForm.patchValue({
-          content: reader.result
-        });
-
-        //alert('done')
-      };
-    }
-  }
-
-  onFileSelected(event) {
-    this.selectedFile = event.target.files[0] as File;
-    this.onUpload('imageFor');
   }
 }

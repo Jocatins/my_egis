@@ -2,28 +2,6 @@
     "name": "Party",
     "fields": [
         {
-            "fieldName": "partyType",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "partyRoleType",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "partySubRoleType",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "deliveryType",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "partyName",
             "fieldType": "String"
         },
@@ -40,20 +18,8 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "primaryParty",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "otherName",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "personIdType",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "personType",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "fax",
@@ -62,10 +28,6 @@
         {
             "fieldName": "email",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "emailType",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "phoneNumber",
@@ -82,10 +44,6 @@
         {
             "fieldName": "comments",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "personIdIssuedBy",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "personIdDate",
@@ -116,14 +74,6 @@
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "personTitle",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "gender",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "firstName",
             "fieldType": "String"
         },
@@ -136,20 +86,8 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "civilState",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "driverLicenseRegion",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "driverLicence",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "representativeId",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "professionRegNo",
@@ -168,6 +106,104 @@
             "relationshipName": "address",
             "otherEntityField": "id",
             "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "partyType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "partyRoleType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "partySubRoleType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "deliveryType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "primaryParty",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "personIdType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "personType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "emailType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "personIdIssuedBy",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "personTitle",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "gender",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "civilState",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "driverLicenseRegion",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "representativeId",
+            "otherEntityField": "id"
         },
         {
             "relationshipType": "many-to-many",

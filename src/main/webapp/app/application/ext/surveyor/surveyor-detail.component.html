@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="surveyor">
+            <h2><span jhiTranslate="egisexternalApp.surveyor.detail.title">Surveyor</span> {{surveyor.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.surveyor.email">Email</span></dt>
+                <dd>
+                    <span>{{surveyor.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.surveyor.surconNumber">Surcon Number</span></dt>
+                <dd>
+                    <span>{{surveyor.surconNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.surveyor.registrationNumber">Registration Number</span></dt>
+                <dd>
+                    <span>{{surveyor.registrationNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.surveyor.phone">Phone</span></dt>
+                <dd>
+                    <span>{{surveyor.phone}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.surveyor.status">Status</span></dt>
+                <dd>
+                    <span>{{surveyor.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.surveyor.address">Address</span></dt>
+                <dd>
+                    <div *ngIf="surveyor.address">
+                        <a [routerLink]="['/address', surveyor.address?.id, 'view']">{{surveyor.address?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/surveyor', surveyor.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

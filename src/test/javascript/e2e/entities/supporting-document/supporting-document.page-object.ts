@@ -27,10 +27,7 @@ export class SupportingDocumentUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
   documentNumberInput = element(by.id('field_documentNumber'));
-  documentTypeInput = element(by.id('field_documentType'));
   ownershipAreaInput = element(by.id('field_ownershipArea'));
-  documentSubTypeInput = element(by.id('field_documentSubType'));
-  issuedByInput = element(by.id('field_issuedBy'));
   pageCountInput = element(by.id('field_pageCount'));
   statusInput = element(by.id('field_status'));
   providedInput = element(by.id('field_provided'));
@@ -41,6 +38,9 @@ export class SupportingDocumentUpdatePage {
   contentUrlInput = element(by.id('field_contentUrl'));
   imageInput = element(by.id('field_image'));
   dateInput = element(by.id('field_date'));
+  documentSubTypeSelect = element(by.id('field_documentSubType'));
+  documentTypeSelect = element(by.id('field_documentType'));
+  issuedBySelect = element(by.id('field_issuedBy'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -54,36 +54,12 @@ export class SupportingDocumentUpdatePage {
     return await this.documentNumberInput.getAttribute('value');
   }
 
-  async setDocumentTypeInput(documentType) {
-    await this.documentTypeInput.sendKeys(documentType);
-  }
-
-  async getDocumentTypeInput() {
-    return await this.documentTypeInput.getAttribute('value');
-  }
-
   async setOwnershipAreaInput(ownershipArea) {
     await this.ownershipAreaInput.sendKeys(ownershipArea);
   }
 
   async getOwnershipAreaInput() {
     return await this.ownershipAreaInput.getAttribute('value');
-  }
-
-  async setDocumentSubTypeInput(documentSubType) {
-    await this.documentSubTypeInput.sendKeys(documentSubType);
-  }
-
-  async getDocumentSubTypeInput() {
-    return await this.documentSubTypeInput.getAttribute('value');
-  }
-
-  async setIssuedByInput(issuedBy) {
-    await this.issuedByInput.sendKeys(issuedBy);
-  }
-
-  async getIssuedByInput() {
-    return await this.issuedByInput.getAttribute('value');
   }
 
   async setPageCountInput(pageCount) {
@@ -164,6 +140,63 @@ export class SupportingDocumentUpdatePage {
 
   async getDateInput() {
     return await this.dateInput.getAttribute('value');
+  }
+
+  async documentSubTypeSelectLastOption() {
+    await this.documentSubTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async documentSubTypeSelectOption(option) {
+    await this.documentSubTypeSelect.sendKeys(option);
+  }
+
+  getDocumentSubTypeSelect(): ElementFinder {
+    return this.documentSubTypeSelect;
+  }
+
+  async getDocumentSubTypeSelectedOption() {
+    return await this.documentSubTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async documentTypeSelectLastOption() {
+    await this.documentTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async documentTypeSelectOption(option) {
+    await this.documentTypeSelect.sendKeys(option);
+  }
+
+  getDocumentTypeSelect(): ElementFinder {
+    return this.documentTypeSelect;
+  }
+
+  async getDocumentTypeSelectedOption() {
+    return await this.documentTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async issuedBySelectLastOption() {
+    await this.issuedBySelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async issuedBySelectOption(option) {
+    await this.issuedBySelect.sendKeys(option);
+  }
+
+  getIssuedBySelect(): ElementFinder {
+    return this.issuedBySelect;
+  }
+
+  async getIssuedBySelectedOption() {
+    return await this.issuedBySelect.element(by.css('option:checked')).getText();
   }
 
   async save() {

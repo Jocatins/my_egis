@@ -40,7 +40,8 @@ export class DashboardService {
   public resourceSearchUrl = SERVER_API_URL + 'api/_search/batches';
   public serverApiURL = SERVER_API_URL + 'GET /api/backoffice/';
 
-  constructor(protected http: HttpClient) {
+  constructor(protected http: HttpClient
+    ) {
     this.fetchDictionaryValuesObj('spatial_unit_link_type').subscribe(
       data => {
         DashboardService.spatialUnitLinkTypes = JSON.parse(data.body.category);

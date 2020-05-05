@@ -25,8 +25,8 @@
         <tbody>
             <tr *ngFor="let party of parties ;trackBy: trackId">
                 <td><a [routerLink]="['/party', party.id, 'view' ]">{{party.id}}</a></td>
-                <td>{{party.partyType}}</td>
-                <td>{{party.partyRoleType}}</td>
+                <td>{{party.partyType.label}}</td>
+                <td>{{party.partyRoleType.label}}</td>
                 <td>{{party.name}}</td>
                 <td>
                     <div *ngIf="party.person">
@@ -35,16 +35,9 @@
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
-                        <button type="submit" (click)="editNewApplicant1('edit',batch.id, 1556)" class="btn btn-primary btn-sm">
+                        <button type="submit" (click)="editNewApplicant('edit',batch.id, party.id)" class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon> <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
-                        <!--
-                            <button type="submit" (click)="editNewApplicant('edit','batch.id', party.id)"
-                            class="btn btn-primary btn-sm">
-                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        -->
                         <button type="submit" (click)="deleteParty(party, batch.id)" class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon> <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                         </button>
@@ -59,7 +52,7 @@
     <button type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="goBack('new',batch.id, 0)">
         <fa-icon icon="chevron-left"></fa-icon> Back
     </button>
-    <button type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="editNewApplicant1('new',batch.id, 0)">
+    <button type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="editNewApplicant('new',batch.id, 0)">
         <!-- <fa-icon [icon]="'plus'"></fa-icon>  -->
         Add Party <fa-icon icon="plus"></fa-icon>
     </button>

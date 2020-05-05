@@ -11,6 +11,8 @@ import { IParcel, Parcel } from 'app/shared/model/parcel.model';
 import { ParcelService } from './parcel.service';
 import { IAddress } from 'app/shared/model/address.model';
 import { AddressService } from 'app/entities/address/address.service';
+import { IDictionary } from 'app/shared/model/dictionary.model';
+import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
 import { ITransaction } from 'app/shared/model/transaction.model';
 import { TransactionService } from 'app/entities/transaction/transaction.service';
 
@@ -23,6 +25,8 @@ export class ParcelUpdateComponent implements OnInit {
 
   addresses: IAddress[];
 
+  dictionaries: IDictionary[];
+
   transactions: ITransaction[];
   surveyDateDp: any;
 
@@ -30,23 +34,13 @@ export class ParcelUpdateComponent implements OnInit {
     id: [],
     label: [],
     area: [],
-    spatialUnitType: [],
     registrationOfficeDictionary: [],
-    surveyType: [],
     surveyDate: [],
-    propertyType: [],
     accommodation: [],
-    tenureType: [],
     description: [],
     propertyArea: [],
-    location: [],
-    builtUpAreaType: [],
     planNumber: [],
-    measurementUnitType: [],
     premiumValue: [],
-    landUseCategory: [],
-    landUseType: [],
-    developmentStatus: [],
     coordinateN: [],
     coordinateS: [],
     lagosSheetNumber: [],
@@ -54,18 +48,30 @@ export class ParcelUpdateComponent implements OnInit {
     location1: [],
     unitNumber: [],
     name: [],
-    registerType: [],
     valuation: [],
     comments: [],
     legalDescription: [],
+    address: [],
+    spatialUnitType: [],
+    surveyType: [],
+    propertyType: [],
+    tenureType: [],
+    location: [],
+    builtUpAreaType: [],
+    measurementUnitType: [],
+    landUseCategory: [],
+    landUseType: [],
+    developmentStatus: [],
+    registerType: [],
     meansOfAcq: [],
-    address: []
+    region: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected parcelService: ParcelService,
     protected addressService: AddressService,
+    protected dictionaryService: DictionaryService,
     protected transactionService: TransactionService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -91,6 +97,12 @@ export class ParcelUpdateComponent implements OnInit {
       },
       (res: HttpErrorResponse) => this.onError(res.message)
     );
+    this.dictionaryService
+      .query()
+      .subscribe(
+        (res: HttpResponse<IDictionary[]>) => (this.dictionaries = res.body),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
     this.transactionService
       .query()
       .subscribe(
@@ -104,23 +116,13 @@ export class ParcelUpdateComponent implements OnInit {
       id: parcel.id,
       label: parcel.label,
       area: parcel.area,
-      spatialUnitType: parcel.spatialUnitType,
       registrationOfficeDictionary: parcel.registrationOfficeDictionary,
-      surveyType: parcel.surveyType,
       surveyDate: parcel.surveyDate,
-      propertyType: parcel.propertyType,
       accommodation: parcel.accommodation,
-      tenureType: parcel.tenureType,
       description: parcel.description,
       propertyArea: parcel.propertyArea,
-      location: parcel.location,
-      builtUpAreaType: parcel.builtUpAreaType,
       planNumber: parcel.planNumber,
-      measurementUnitType: parcel.measurementUnitType,
       premiumValue: parcel.premiumValue,
-      landUseCategory: parcel.landUseCategory,
-      landUseType: parcel.landUseType,
-      developmentStatus: parcel.developmentStatus,
       coordinateN: parcel.coordinateN,
       coordinateS: parcel.coordinateS,
       lagosSheetNumber: parcel.lagosSheetNumber,
@@ -128,12 +130,23 @@ export class ParcelUpdateComponent implements OnInit {
       location1: parcel.location1,
       unitNumber: parcel.unitNumber,
       name: parcel.name,
-      registerType: parcel.registerType,
       valuation: parcel.valuation,
       comments: parcel.comments,
       legalDescription: parcel.legalDescription,
+      address: parcel.address,
+      spatialUnitType: parcel.spatialUnitType,
+      surveyType: parcel.surveyType,
+      propertyType: parcel.propertyType,
+      tenureType: parcel.tenureType,
+      location: parcel.location,
+      builtUpAreaType: parcel.builtUpAreaType,
+      measurementUnitType: parcel.measurementUnitType,
+      landUseCategory: parcel.landUseCategory,
+      landUseType: parcel.landUseType,
+      developmentStatus: parcel.developmentStatus,
+      registerType: parcel.registerType,
       meansOfAcq: parcel.meansOfAcq,
-      address: parcel.address
+      region: parcel.region
     });
   }
 
@@ -157,23 +170,13 @@ export class ParcelUpdateComponent implements OnInit {
       id: this.editForm.get(['id']).value,
       label: this.editForm.get(['label']).value,
       area: this.editForm.get(['area']).value,
-      spatialUnitType: this.editForm.get(['spatialUnitType']).value,
       registrationOfficeDictionary: this.editForm.get(['registrationOfficeDictionary']).value,
-      surveyType: this.editForm.get(['surveyType']).value,
       surveyDate: this.editForm.get(['surveyDate']).value,
-      propertyType: this.editForm.get(['propertyType']).value,
       accommodation: this.editForm.get(['accommodation']).value,
-      tenureType: this.editForm.get(['tenureType']).value,
       description: this.editForm.get(['description']).value,
       propertyArea: this.editForm.get(['propertyArea']).value,
-      location: this.editForm.get(['location']).value,
-      builtUpAreaType: this.editForm.get(['builtUpAreaType']).value,
       planNumber: this.editForm.get(['planNumber']).value,
-      measurementUnitType: this.editForm.get(['measurementUnitType']).value,
       premiumValue: this.editForm.get(['premiumValue']).value,
-      landUseCategory: this.editForm.get(['landUseCategory']).value,
-      landUseType: this.editForm.get(['landUseType']).value,
-      developmentStatus: this.editForm.get(['developmentStatus']).value,
       coordinateN: this.editForm.get(['coordinateN']).value,
       coordinateS: this.editForm.get(['coordinateS']).value,
       lagosSheetNumber: this.editForm.get(['lagosSheetNumber']).value,
@@ -181,12 +184,23 @@ export class ParcelUpdateComponent implements OnInit {
       location1: this.editForm.get(['location1']).value,
       unitNumber: this.editForm.get(['unitNumber']).value,
       name: this.editForm.get(['name']).value,
-      registerType: this.editForm.get(['registerType']).value,
       valuation: this.editForm.get(['valuation']).value,
       comments: this.editForm.get(['comments']).value,
       legalDescription: this.editForm.get(['legalDescription']).value,
+      address: this.editForm.get(['address']).value,
+      spatialUnitType: this.editForm.get(['spatialUnitType']).value,
+      surveyType: this.editForm.get(['surveyType']).value,
+      propertyType: this.editForm.get(['propertyType']).value,
+      tenureType: this.editForm.get(['tenureType']).value,
+      location: this.editForm.get(['location']).value,
+      builtUpAreaType: this.editForm.get(['builtUpAreaType']).value,
+      measurementUnitType: this.editForm.get(['measurementUnitType']).value,
+      landUseCategory: this.editForm.get(['landUseCategory']).value,
+      landUseType: this.editForm.get(['landUseType']).value,
+      developmentStatus: this.editForm.get(['developmentStatus']).value,
+      registerType: this.editForm.get(['registerType']).value,
       meansOfAcq: this.editForm.get(['meansOfAcq']).value,
-      address: this.editForm.get(['address']).value
+      region: this.editForm.get(['region']).value
     };
   }
 
@@ -207,6 +221,10 @@ export class ParcelUpdateComponent implements OnInit {
   }
 
   trackAddressById(index: number, item: IAddress) {
+    return item.id;
+  }
+
+  trackDictionaryById(index: number, item: IDictionary) {
     return item.id;
   }
 

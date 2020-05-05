@@ -18,12 +18,6 @@
             <column name="transaction_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="transaction_type" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="transaction_sub_type" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="application_date" type="date">
                 <constraints nullable="true" />
             </column>
@@ -31,9 +25,6 @@
                 <constraints nullable="true" />
             </column>
             <column name="comments" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="ownership_type" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="create_date" type="date">
@@ -45,9 +36,6 @@
             <column name="complete_date" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="tenure_type" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="batch_id" type="integer">
                 <constraints nullable="true" />
             </column>
@@ -56,6 +44,18 @@
             </column>
             <column name="ext_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_transaction_ext_id" />
+            </column>
+            <column name="transaction_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="transaction_sub_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="ownership_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="tenure_type_id" type="bigint">
+                <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
@@ -114,16 +114,12 @@
                   tableName="transaction">
             <column name="id" type="numeric"/>
             <column name="transaction_number" type="string"/>
-            <column name="transaction_type" type="numeric"/>
-            <column name="transaction_sub_type" type="numeric"/>
             <column name="application_date" type="date"/>
             <column name="transaction_start_date" type="date"/>
             <column name="comments" type="string"/>
-            <column name="ownership_type" type="numeric"/>
             <column name="create_date" type="date"/>
             <column name="start_date" type="date"/>
             <column name="complete_date" type="date"/>
-            <column name="tenure_type" type="numeric"/>
             <column name="batch_id" type="numeric"/>
             <column name="transaction_code" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->

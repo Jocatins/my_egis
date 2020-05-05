@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, Routes, Route } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot, Routes } from '@angular/router';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -37,6 +37,18 @@ export const batchRoute: Routes = [
   {
     path: ':id/view',
     component: BatchDetailComponent,
+    resolve: {
+      batch: BatchResolve
+    },
+    data: {
+      authorities: ['ROLE_USER'],
+      pageTitle: 'egisexternalApp.batch.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'new',
+    component: BatchUpdateComponent,
     resolve: {
       batch: BatchResolve
     },

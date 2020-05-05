@@ -18,9 +18,6 @@
             <column name="batch_number" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="batch_status" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="invoice_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -34,6 +31,9 @@
                 <constraints nullable="true" />
             </column>
             <column name="user_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="batch_status_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -82,7 +82,6 @@
                   tableName="batch">
             <column name="id" type="numeric"/>
             <column name="batch_number" type="numeric"/>
-            <column name="batch_status" type="numeric"/>
             <column name="invoice_number" type="string"/>
             <column name="create_date" type="date"/>
             <column name="delivery_date" type="date"/>

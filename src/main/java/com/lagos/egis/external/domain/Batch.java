@@ -31,9 +31,6 @@ public class Batch implements Serializable {
     @Column(name = "batch_number")
     private Integer batchNumber;
 
-    @Column(name = "batch_status")
-    private Integer batchStatus;
-
     @Column(name = "invoice_number")
     private String invoiceNumber;
 
@@ -49,6 +46,10 @@ public class Batch implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("batches")
     private User user;
+
+    @ManyToOne
+    @JsonIgnoreProperties("batches")
+    private Dictionary batchStatus;
 
     @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -84,19 +85,6 @@ public class Batch implements Serializable {
 
     public void setBatchNumber(Integer batchNumber) {
         this.batchNumber = batchNumber;
-    }
-
-    public Integer getBatchStatus() {
-        return batchStatus;
-    }
-
-    public Batch batchStatus(Integer batchStatus) {
-        this.batchStatus = batchStatus;
-        return this;
-    }
-
-    public void setBatchStatus(Integer batchStatus) {
-        this.batchStatus = batchStatus;
     }
 
     public String getInvoiceNumber() {
@@ -162,6 +150,19 @@ public class Batch implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Dictionary getBatchStatus() {
+        return batchStatus;
+    }
+
+    public Batch batchStatus(Dictionary dictionary) {
+        this.batchStatus = dictionary;
+        return this;
+    }
+
+    public void setBatchStatus(Dictionary dictionary) {
+        this.batchStatus = dictionary;
     }
 
     public Set<Transaction> getTransactions() {
@@ -236,7 +237,6 @@ public class Batch implements Serializable {
         return "Batch{" +
             "id=" + getId() +
             ", batchNumber=" + getBatchNumber() +
-            ", batchStatus=" + getBatchStatus() +
             ", invoiceNumber='" + getInvoiceNumber() + "'" +
             ", createDate='" + getCreateDate() + "'" +
             ", deliveryDate='" + getDeliveryDate() + "'" +

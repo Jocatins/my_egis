@@ -1,10 +1,10 @@
 package com.lagos.egis.external.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.io.Serializable;
@@ -32,13 +32,6 @@ public class Transaction implements Serializable {
     @Column(name = "transaction_number")
     private String transactionNumber;
 
-    @NotNull
-    @Column(name = "transaction_type", nullable = false)
-    private Integer transactionType;
-
-    @Column(name = "transaction_sub_type")
-    private Integer transactionSubType;
-
     @Column(name = "application_date")
     private LocalDate applicationDate;
 
@@ -48,9 +41,6 @@ public class Transaction implements Serializable {
     @Column(name = "comments")
     private String comments;
 
-    @Column(name = "ownership_type")
-    private Integer ownershipType;
-
     @Column(name = "create_date")
     private LocalDate createDate;
 
@@ -59,9 +49,6 @@ public class Transaction implements Serializable {
 
     @Column(name = "complete_date")
     private LocalDate completeDate;
-
-    @Column(name = "tenure_type")
-    private Integer tenureType;
 
     @Column(name = "batch_id")
     private Integer batchId;
@@ -73,7 +60,23 @@ public class Transaction implements Serializable {
     @JoinColumn(unique = true)
     private TransactionExt ext;
 
-    @ManyToMany
+    @ManyToOne
+    @JsonIgnoreProperties("transactions")
+    private Dictionary transactionType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("transactions")
+    private Dictionary transactionSubType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("transactions")
+    private Dictionary ownershipType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("transactions")
+    private Dictionary tenureType;
+
+    @ManyToMany ( fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "transaction_party",
                joinColumns = @JoinColumn(name = "transaction_id", referencedColumnName = "id"),
@@ -121,32 +124,6 @@ public class Transaction implements Serializable {
         this.transactionNumber = transactionNumber;
     }
 
-    public Integer getTransactionType() {
-        return transactionType;
-    }
-
-    public Transaction transactionType(Integer transactionType) {
-        this.transactionType = transactionType;
-        return this;
-    }
-
-    public void setTransactionType(Integer transactionType) {
-        this.transactionType = transactionType;
-    }
-
-    public Integer getTransactionSubType() {
-        return transactionSubType;
-    }
-
-    public Transaction transactionSubType(Integer transactionSubType) {
-        this.transactionSubType = transactionSubType;
-        return this;
-    }
-
-    public void setTransactionSubType(Integer transactionSubType) {
-        this.transactionSubType = transactionSubType;
-    }
-
     public LocalDate getApplicationDate() {
         return applicationDate;
     }
@@ -184,19 +161,6 @@ public class Transaction implements Serializable {
 
     public void setComments(String comments) {
         this.comments = comments;
-    }
-
-    public Integer getOwnershipType() {
-        return ownershipType;
-    }
-
-    public Transaction ownershipType(Integer ownershipType) {
-        this.ownershipType = ownershipType;
-        return this;
-    }
-
-    public void setOwnershipType(Integer ownershipType) {
-        this.ownershipType = ownershipType;
     }
 
     public LocalDate getCreateDate() {
@@ -238,19 +202,6 @@ public class Transaction implements Serializable {
         this.completeDate = completeDate;
     }
 
-    public Integer getTenureType() {
-        return tenureType;
-    }
-
-    public Transaction tenureType(Integer tenureType) {
-        this.tenureType = tenureType;
-        return this;
-    }
-
-    public void setTenureType(Integer tenureType) {
-        this.tenureType = tenureType;
-    }
-
     public Integer getBatchId() {
         return batchId;
     }
@@ -288,6 +239,58 @@ public class Transaction implements Serializable {
 
     public void setExt(TransactionExt transactionExt) {
         this.ext = transactionExt;
+    }
+
+    public Dictionary getTransactionType() {
+        return transactionType;
+    }
+
+    public Transaction transactionType(Dictionary dictionary) {
+        this.transactionType = dictionary;
+        return this;
+    }
+
+    public void setTransactionType(Dictionary dictionary) {
+        this.transactionType = dictionary;
+    }
+
+    public Dictionary getTransactionSubType() {
+        return transactionSubType;
+    }
+
+    public Transaction transactionSubType(Dictionary dictionary) {
+        this.transactionSubType = dictionary;
+        return this;
+    }
+
+    public void setTransactionSubType(Dictionary dictionary) {
+        this.transactionSubType = dictionary;
+    }
+
+    public Dictionary getOwnershipType() {
+        return ownershipType;
+    }
+
+    public Transaction ownershipType(Dictionary dictionary) {
+        this.ownershipType = dictionary;
+        return this;
+    }
+
+    public void setOwnershipType(Dictionary dictionary) {
+        this.ownershipType = dictionary;
+    }
+
+    public Dictionary getTenureType() {
+        return tenureType;
+    }
+
+    public Transaction tenureType(Dictionary dictionary) {
+        this.tenureType = dictionary;
+        return this;
+    }
+
+    public void setTenureType(Dictionary dictionary) {
+        this.tenureType = dictionary;
     }
 
     public Set<Party> getParties() {
@@ -412,16 +415,12 @@ public class Transaction implements Serializable {
         return "Transaction{" +
             "id=" + getId() +
             ", transactionNumber='" + getTransactionNumber() + "'" +
-            ", transactionType=" + getTransactionType() +
-            ", transactionSubType=" + getTransactionSubType() +
             ", applicationDate='" + getApplicationDate() + "'" +
             ", transactionStartDate='" + getTransactionStartDate() + "'" +
             ", comments='" + getComments() + "'" +
-            ", ownershipType=" + getOwnershipType() +
             ", createDate='" + getCreateDate() + "'" +
             ", startDate='" + getStartDate() + "'" +
             ", completeDate='" + getCompleteDate() + "'" +
-            ", tenureType=" + getTenureType() +
             ", batchId=" + getBatchId() +
             ", transactionCode='" + getTransactionCode() + "'" +
             "}";

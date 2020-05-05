@@ -34,6 +34,7 @@
         "surveyor": "Surveyor",
         "surveyTransaction": "Survey Transaction",
         "organization": "Organization",
+        "dictionary": "Dictionary",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

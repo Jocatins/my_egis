@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
 import { JhiAlertService } from 'ng-jhipster';
@@ -11,60 +11,54 @@ import { IParcel, Parcel } from 'app/shared/model/parcel.model';
 import { ParcelService } from './parcel.service';
 import { IAddress } from 'app/shared/model/address.model';
 import { AddressService } from 'app/entities/address/address.service';
+import { IDictionary } from 'app/shared/model/dictionary.model';
+import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
 import { ITransaction } from 'app/shared/model/transaction.model';
 import { TransactionService } from 'app/entities/transaction/transaction.service';
 import { BatchService } from 'app/entities/batch/batch.service';
-import { DashboardService } from 'app/dashboard/dashboard.service';
-import { IEGISDIctionary } from 'app/application/model/egisdictionary.model';
-import { IBatch } from 'app/shared/model/batch.model';
 
 @Component({
   selector: 'jhi-parcel-update',
   templateUrl: './parcel-update.component.html'
 })
-export class ParcelExtUpdateComponent implements OnInit {
+export class ParcelUpdateComponent implements OnInit {
   isSaving: boolean;
 
-  bSaveContinue: boolean;
-
   addresses: IAddress[];
+
+  dictionaries: IDictionary[];
 
   transactions: ITransaction[];
   surveyDateDp: any;
 
-  spatialUnitLinkTypes: IEGISDIctionary[];
-  landUseCategorys: IEGISDIctionary[];
-  propertyTypes: IEGISDIctionary[];
-  locationOfLands: IEGISDIctionary[];
-  builtUpAreaTypes: IEGISDIctionary[];
-  measurementTypes: IEGISDIctionary[];
-  landUseTypes: IEGISDIctionary[];
-  developmentStatus: IEGISDIctionary[];
-  tenureTypes: IEGISDIctionary[];
-  typeOfAccomodations: IEGISDIctionary[];
-  c: IEGISDIctionary[];
+  spatialUnitLinkTypes: IDictionary[];
+  landUseCategorys: IDictionary[];
+  propertyTypes: IDictionary[];
+  locationOfLands: IDictionary[];
+  builtUpAreaTypes: IDictionary[];
+  measurementTypes: IDictionary[];
+  landUseTypes: IDictionary[];
+  developmentStatus: IDictionary[];
+  tenureTypes: IDictionary[];
+  typeOfAccomodations: IDictionary[];
+  surveyPlanTypes: IDictionary[];
+
+  batchId: number;
+  parcelId: number;
+  newOrEdit: string;
+
 
   editForm = this.fb.group({
     id: [],
     label: [],
     area: [],
-    spatialUnitType: [],
     registrationOfficeDictionary: [],
-    surveyType: [],
     surveyDate: [],
-    propertyType: [],
     accommodation: [],
-    tenureType: [],
     description: [],
     propertyArea: [],
-    location: [],
-    builtUpAreaType: [],
     planNumber: [],
-    measurementUnitType: [],
     premiumValue: [],
-    landUseCategory: [],
-    landUseType: [],
-    developmentStatus: [],
     coordinateN: [],
     coordinateS: [],
     lagosSheetNumber: [],
@@ -72,29 +66,37 @@ export class ParcelExtUpdateComponent implements OnInit {
     location1: [],
     unitNumber: [],
     name: [],
-    registerType: [],
     valuation: [],
     comments: [],
     legalDescription: [],
+    address: [],
+    spatialUnitType: [],
+    surveyType: [],
+    propertyType: [],
+    tenureType: [],
+    location: [],
+    builtUpAreaType: [],
+    measurementUnitType: [],
+    landUseCategory: [],
+    landUseType: [],
+    developmentStatus: [],
+    registerType: [],
     meansOfAcq: [],
-    address: []
+    region: []
   });
-
-  batchId: number;
-  parcelId: number;
-  newOrEdit: string;
 
   constructor(
     private router: Router,
     protected jhiAlertService: JhiAlertService,
     protected parcelService: ParcelService,
     protected addressService: AddressService,
+    protected dictionaryService: DictionaryService,
     protected transactionService: TransactionService,
     protected activatedRoute: ActivatedRoute,
-    protected batchService: BatchService,
-    protected dashboardService: DashboardService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private batchService: BatchService
   ) {
+
     this.batchId = activatedRoute.snapshot.params['batchId'];
     this.parcelId = activatedRoute.snapshot.params['parcelId'];
     this.newOrEdit = activatedRoute.snapshot.params['newOrEdit'];
@@ -102,7 +104,6 @@ export class ParcelExtUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.isSaving = false;
-    this.bSaveContinue = false;
     this.activatedRoute.data.subscribe(({ parcel }) => {
       this.updateForm(parcel);
     });
@@ -121,22 +122,35 @@ export class ParcelExtUpdateComponent implements OnInit {
       },
       (res: HttpErrorResponse) => this.onError(res.message)
     );
+    this.dictionaryService
+      .query()
+      .subscribe(
+        (res: HttpResponse<IDictionary[]>) => {
+          this.dictionaries = res.body
+
+          this.spatialUnitLinkTypes = this.dictionaries.filter(x => x.category === 'spatial_unit_link_type')
+          this.landUseCategorys = this.dictionaries.filter(x => x.category === 'land_use_category')
+          this.propertyTypes = this.dictionaries.filter(x => x.category === 'property_type')
+          this.locationOfLands = this.dictionaries.filter(x => x.category === 'location_of_land')
+          this.builtUpAreaTypes = this.dictionaries.filter(x => x.category === 'built_up_area_type')
+          this.measurementTypes = this.dictionaries.filter(x => x.category === 'measurement_type')
+          this.landUseTypes = this.dictionaries.filter(x => x.category === 'land_use_type')
+          this.developmentStatus = this.dictionaries.filter(x => x.category === 'development_status')
+          this.tenureTypes = this.dictionaries.filter(x => x.category === 'tenure_type')
+          this.typeOfAccomodations = this.dictionaries.filter(x => x.category === 'type_of_accomodation')
+          this.surveyPlanTypes = this.dictionaries.filter(x => x.category === 'survey_plan_type')
+
+
+
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
     this.transactionService
       .query()
       .subscribe(
         (res: HttpResponse<ITransaction[]>) => (this.transactions = res.body),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
-
-    this.spatialUnitLinkTypes = DashboardService.spatialUnitLinkTypes;
-    this.landUseCategorys = DashboardService.landUseCategorys;
-    this.propertyTypes = DashboardService.propertyTypes;
-    this.locationOfLands = DashboardService.locationOfLands;
-    this.builtUpAreaTypes = DashboardService.builtUpAreaTypes;
-    this.measurementTypes = DashboardService.measurementTypes;
-    this.landUseTypes = DashboardService.landUseTypes;
-    this.tenureTypes = DashboardService.tenureTypes;
-    this.typeOfAccomodations = DashboardService.typeOfAccomodations;
   }
 
   updateForm(parcel: IParcel) {
@@ -144,23 +158,13 @@ export class ParcelExtUpdateComponent implements OnInit {
       id: parcel.id,
       label: parcel.label,
       area: parcel.area,
-      spatialUnitType: parcel.spatialUnitType,
       registrationOfficeDictionary: parcel.registrationOfficeDictionary,
-      surveyType: parcel.surveyType,
       surveyDate: parcel.surveyDate,
-      propertyType: parcel.propertyType,
       accommodation: parcel.accommodation,
-      tenureType: parcel.tenureType,
       description: parcel.description,
       propertyArea: parcel.propertyArea,
-      location: parcel.location,
-      builtUpAreaType: parcel.builtUpAreaType,
       planNumber: parcel.planNumber,
-      measurementUnitType: parcel.measurementUnitType,
       premiumValue: parcel.premiumValue,
-      landUseCategory: parcel.landUseCategory,
-      landUseType: parcel.landUseType,
-      developmentStatus: parcel.developmentStatus,
       coordinateN: parcel.coordinateN,
       coordinateS: parcel.coordinateS,
       lagosSheetNumber: parcel.lagosSheetNumber,
@@ -168,24 +172,28 @@ export class ParcelExtUpdateComponent implements OnInit {
       location1: parcel.location1,
       unitNumber: parcel.unitNumber,
       name: parcel.name,
-      registerType: parcel.registerType,
       valuation: parcel.valuation,
       comments: parcel.comments,
       legalDescription: parcel.legalDescription,
+      address: parcel.address,
+      spatialUnitType: parcel.spatialUnitType,
+      surveyType: parcel.surveyType,
+      propertyType: parcel.propertyType,
+      tenureType: parcel.tenureType,
+      location: parcel.location,
+      builtUpAreaType: parcel.builtUpAreaType,
+      measurementUnitType: parcel.measurementUnitType,
+      landUseCategory: parcel.landUseCategory,
+      landUseType: parcel.landUseType,
+      developmentStatus: parcel.developmentStatus,
+      registerType: parcel.registerType,
       meansOfAcq: parcel.meansOfAcq,
-      address: parcel.address
+      region: parcel.region
     });
   }
 
-  proceedToDocuments() {
-    this.router.navigate(['/application/supporting-docs', this.batchId]);
-  }
   previousState() {
     window.history.back();
-  }
-
-  saveAndContinue(batch: IBatch) {
-    this.bSaveContinue = true;
   }
 
   save() {
@@ -204,23 +212,13 @@ export class ParcelExtUpdateComponent implements OnInit {
       id: this.editForm.get(['id']).value,
       label: this.editForm.get(['label']).value,
       area: this.editForm.get(['area']).value,
-      spatialUnitType: this.editForm.get(['spatialUnitType']).value,
       registrationOfficeDictionary: this.editForm.get(['registrationOfficeDictionary']).value,
-      surveyType: this.editForm.get(['surveyType']).value,
       surveyDate: this.editForm.get(['surveyDate']).value,
-      propertyType: this.editForm.get(['propertyType']).value,
       accommodation: this.editForm.get(['accommodation']).value,
-      tenureType: this.editForm.get(['tenureType']).value,
       description: this.editForm.get(['description']).value,
       propertyArea: this.editForm.get(['propertyArea']).value,
-      location: this.editForm.get(['location']).value,
-      builtUpAreaType: this.editForm.get(['builtUpAreaType']).value,
       planNumber: this.editForm.get(['planNumber']).value,
-      measurementUnitType: this.editForm.get(['measurementUnitType']).value,
       premiumValue: this.editForm.get(['premiumValue']).value,
-      landUseCategory: this.editForm.get(['landUseCategory']).value,
-      landUseType: this.editForm.get(['landUseType']).value,
-      developmentStatus: this.editForm.get(['developmentStatus']).value,
       coordinateN: this.editForm.get(['coordinateN']).value,
       coordinateS: this.editForm.get(['coordinateS']).value,
       lagosSheetNumber: this.editForm.get(['lagosSheetNumber']).value,
@@ -228,17 +226,29 @@ export class ParcelExtUpdateComponent implements OnInit {
       location1: this.editForm.get(['location1']).value,
       unitNumber: this.editForm.get(['unitNumber']).value,
       name: this.editForm.get(['name']).value,
-      registerType: this.editForm.get(['registerType']).value,
       valuation: this.editForm.get(['valuation']).value,
       comments: this.editForm.get(['comments']).value,
       legalDescription: this.editForm.get(['legalDescription']).value,
+      address: this.editForm.get(['address']).value,
+      spatialUnitType: this.editForm.get(['spatialUnitType']).value,
+      surveyType: this.editForm.get(['surveyType']).value,
+      propertyType: this.editForm.get(['propertyType']).value,
+      tenureType: this.editForm.get(['tenureType']).value,
+      location: this.editForm.get(['location']).value,
+      builtUpAreaType: this.editForm.get(['builtUpAreaType']).value,
+      measurementUnitType: this.editForm.get(['measurementUnitType']).value,
+      landUseCategory: this.editForm.get(['landUseCategory']).value,
+      landUseType: this.editForm.get(['landUseType']).value,
+      developmentStatus: this.editForm.get(['developmentStatus']).value,
+      registerType: this.editForm.get(['registerType']).value,
       meansOfAcq: this.editForm.get(['meansOfAcq']).value,
-      address: this.editForm.get(['address']).value
+      region: this.editForm.get(['region']).value
     };
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IParcel>>) {
-    // update the transsaction if this is new
+    // result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
+
     if (this.newOrEdit === 'new') {
       result.subscribe(
         data => {
@@ -250,11 +260,9 @@ export class ParcelExtUpdateComponent implements OnInit {
             dBatch.body.transactions[0].parcels.push(parcel);
             this.transactionService.update(dBatch.body.transactions[0]).subscribe(
               () => {
-                alert('update to transaction successfull');
                 this.onSaveSuccess();
               },
               () => {
-                alert('update to transaction failed');
                 this.onSaveError();
               }
             );
@@ -265,7 +273,6 @@ export class ParcelExtUpdateComponent implements OnInit {
     } else {
       result.subscribe(
         () => {
-          alert('No transaction update required');
           this.onSaveSuccess();
         },
         () => this.onSaveError()
@@ -275,7 +282,7 @@ export class ParcelExtUpdateComponent implements OnInit {
 
   protected onSaveSuccess() {
     this.isSaving = false;
-    this.proceedToDocuments();
+    this.router.navigate(['/application/supporting-docs', this.batchId]);
   }
 
   protected onSaveError() {
@@ -286,6 +293,10 @@ export class ParcelExtUpdateComponent implements OnInit {
   }
 
   trackAddressById(index: number, item: IAddress) {
+    return item.id;
+  }
+
+  trackDictionaryById(index: number, item: IDictionary) {
     return item.id;
   }
 

@@ -14,5 +14,89 @@
                                  referencedColumnNames="id"
                                  referencedTableName="address"/>
 
+        <addForeignKeyConstraint baseColumnNames="party_type_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_party_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="party_role_type_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_party_role_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="party_sub_role_type_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_party_sub_role_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="delivery_type_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_delivery_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="primary_party_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_primary_party_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="person_id_type_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_person_id_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="person_type_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_person_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="email_type_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_email_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="person_id_issued_by_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_person_id_issued_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="person_title_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_person_title_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="gender_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_gender_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="civil_state_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_civil_state_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="driver_license_region_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_driver_license_region_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="representative_id_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_representative_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
     </changeSet>
 </databaseChangeLog>

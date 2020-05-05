@@ -11,6 +11,8 @@ import { IParty, Party } from 'app/shared/model/party.model';
 import { PartyService } from './party.service';
 import { IAddress } from 'app/shared/model/address.model';
 import { AddressService } from 'app/entities/address/address.service';
+import { IDictionary } from 'app/shared/model/dictionary.model';
+import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
 import { IBatch } from 'app/shared/model/batch.model';
 import { BatchService } from 'app/entities/batch/batch.service';
 import { ITransaction } from 'app/shared/model/transaction.model';
@@ -25,6 +27,8 @@ export class PartyUpdateComponent implements OnInit {
 
   addresses: IAddress[];
 
+  dictionaries: IDictionary[];
+
   batches: IBatch[];
 
   transactions: ITransaction[];
@@ -34,26 +38,17 @@ export class PartyUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    partyType: [null, [Validators.required]],
-    partyRoleType: [null, [Validators.required]],
-    partySubRoleType: [],
-    deliveryType: [],
     partyName: [],
     shareNominator: [],
     shareDenominator: [],
     taxExempt: [],
-    primaryParty: [],
     otherName: [],
-    personIdType: [],
-    personType: [],
     fax: [],
     email: [],
-    emailType: [],
     phoneNumber: [],
     payerId: [],
     taxPayerNumber: [],
     comments: [],
-    personIdIssuedBy: [],
     personIdDate: [],
     personIdExpirationDate: [],
     rcNumber: [],
@@ -61,24 +56,34 @@ export class PartyUpdateComponent implements OnInit {
     businessNature: [],
     birthPlace: [],
     birthDate: [],
-    personTitle: [],
-    gender: [],
     firstName: [],
     middleName: [],
     lastName: [],
-    civilState: [],
-    driverLicenseRegion: [],
     driverLicence: [],
-    representativeId: [],
     professionRegNo: [],
     occupation: [],
-    address: []
+    address: [],
+    partyType: [],
+    partyRoleType: [],
+    partySubRoleType: [],
+    deliveryType: [],
+    primaryParty: [],
+    personIdType: [],
+    personType: [],
+    emailType: [],
+    personIdIssuedBy: [],
+    personTitle: [],
+    gender: [],
+    civilState: [],
+    driverLicenseRegion: [],
+    representativeId: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected partyService: PartyService,
     protected addressService: AddressService,
+    protected dictionaryService: DictionaryService,
     protected batchService: BatchService,
     protected transactionService: TransactionService,
     protected activatedRoute: ActivatedRoute,
@@ -105,6 +110,12 @@ export class PartyUpdateComponent implements OnInit {
       },
       (res: HttpErrorResponse) => this.onError(res.message)
     );
+    this.dictionaryService
+      .query()
+      .subscribe(
+        (res: HttpResponse<IDictionary[]>) => (this.dictionaries = res.body),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
     this.batchService
       .query()
       .subscribe((res: HttpResponse<IBatch[]>) => (this.batches = res.body), (res: HttpErrorResponse) => this.onError(res.message));
@@ -119,26 +130,17 @@ export class PartyUpdateComponent implements OnInit {
   updateForm(party: IParty) {
     this.editForm.patchValue({
       id: party.id,
-      partyType: party.partyType,
-      partyRoleType: party.partyRoleType,
-      partySubRoleType: party.partySubRoleType,
-      deliveryType: party.deliveryType,
       partyName: party.partyName,
       shareNominator: party.shareNominator,
       shareDenominator: party.shareDenominator,
       taxExempt: party.taxExempt,
-      primaryParty: party.primaryParty,
       otherName: party.otherName,
-      personIdType: party.personIdType,
-      personType: party.personType,
       fax: party.fax,
       email: party.email,
-      emailType: party.emailType,
       phoneNumber: party.phoneNumber,
       payerId: party.payerId,
       taxPayerNumber: party.taxPayerNumber,
       comments: party.comments,
-      personIdIssuedBy: party.personIdIssuedBy,
       personIdDate: party.personIdDate,
       personIdExpirationDate: party.personIdExpirationDate,
       rcNumber: party.rcNumber,
@@ -146,18 +148,27 @@ export class PartyUpdateComponent implements OnInit {
       businessNature: party.businessNature,
       birthPlace: party.birthPlace,
       birthDate: party.birthDate,
-      personTitle: party.personTitle,
-      gender: party.gender,
       firstName: party.firstName,
       middleName: party.middleName,
       lastName: party.lastName,
-      civilState: party.civilState,
-      driverLicenseRegion: party.driverLicenseRegion,
       driverLicence: party.driverLicence,
-      representativeId: party.representativeId,
       professionRegNo: party.professionRegNo,
       occupation: party.occupation,
-      address: party.address
+      address: party.address,
+      partyType: party.partyType,
+      partyRoleType: party.partyRoleType,
+      partySubRoleType: party.partySubRoleType,
+      deliveryType: party.deliveryType,
+      primaryParty: party.primaryParty,
+      personIdType: party.personIdType,
+      personType: party.personType,
+      emailType: party.emailType,
+      personIdIssuedBy: party.personIdIssuedBy,
+      personTitle: party.personTitle,
+      gender: party.gender,
+      civilState: party.civilState,
+      driverLicenseRegion: party.driverLicenseRegion,
+      representativeId: party.representativeId
     });
   }
 
@@ -179,26 +190,17 @@ export class PartyUpdateComponent implements OnInit {
     return {
       ...new Party(),
       id: this.editForm.get(['id']).value,
-      partyType: this.editForm.get(['partyType']).value,
-      partyRoleType: this.editForm.get(['partyRoleType']).value,
-      partySubRoleType: this.editForm.get(['partySubRoleType']).value,
-      deliveryType: this.editForm.get(['deliveryType']).value,
       partyName: this.editForm.get(['partyName']).value,
       shareNominator: this.editForm.get(['shareNominator']).value,
       shareDenominator: this.editForm.get(['shareDenominator']).value,
       taxExempt: this.editForm.get(['taxExempt']).value,
-      primaryParty: this.editForm.get(['primaryParty']).value,
       otherName: this.editForm.get(['otherName']).value,
-      personIdType: this.editForm.get(['personIdType']).value,
-      personType: this.editForm.get(['personType']).value,
       fax: this.editForm.get(['fax']).value,
       email: this.editForm.get(['email']).value,
-      emailType: this.editForm.get(['emailType']).value,
       phoneNumber: this.editForm.get(['phoneNumber']).value,
       payerId: this.editForm.get(['payerId']).value,
       taxPayerNumber: this.editForm.get(['taxPayerNumber']).value,
       comments: this.editForm.get(['comments']).value,
-      personIdIssuedBy: this.editForm.get(['personIdIssuedBy']).value,
       personIdDate: this.editForm.get(['personIdDate']).value,
       personIdExpirationDate: this.editForm.get(['personIdExpirationDate']).value,
       rcNumber: this.editForm.get(['rcNumber']).value,
@@ -206,18 +208,27 @@ export class PartyUpdateComponent implements OnInit {
       businessNature: this.editForm.get(['businessNature']).value,
       birthPlace: this.editForm.get(['birthPlace']).value,
       birthDate: this.editForm.get(['birthDate']).value,
-      personTitle: this.editForm.get(['personTitle']).value,
-      gender: this.editForm.get(['gender']).value,
       firstName: this.editForm.get(['firstName']).value,
       middleName: this.editForm.get(['middleName']).value,
       lastName: this.editForm.get(['lastName']).value,
-      civilState: this.editForm.get(['civilState']).value,
-      driverLicenseRegion: this.editForm.get(['driverLicenseRegion']).value,
       driverLicence: this.editForm.get(['driverLicence']).value,
-      representativeId: this.editForm.get(['representativeId']).value,
       professionRegNo: this.editForm.get(['professionRegNo']).value,
       occupation: this.editForm.get(['occupation']).value,
-      address: this.editForm.get(['address']).value
+      address: this.editForm.get(['address']).value,
+      partyType: this.editForm.get(['partyType']).value,
+      partyRoleType: this.editForm.get(['partyRoleType']).value,
+      partySubRoleType: this.editForm.get(['partySubRoleType']).value,
+      deliveryType: this.editForm.get(['deliveryType']).value,
+      primaryParty: this.editForm.get(['primaryParty']).value,
+      personIdType: this.editForm.get(['personIdType']).value,
+      personType: this.editForm.get(['personType']).value,
+      emailType: this.editForm.get(['emailType']).value,
+      personIdIssuedBy: this.editForm.get(['personIdIssuedBy']).value,
+      personTitle: this.editForm.get(['personTitle']).value,
+      gender: this.editForm.get(['gender']).value,
+      civilState: this.editForm.get(['civilState']).value,
+      driverLicenseRegion: this.editForm.get(['driverLicenseRegion']).value,
+      representativeId: this.editForm.get(['representativeId']).value
     };
   }
 
@@ -238,6 +249,10 @@ export class PartyUpdateComponent implements OnInit {
   }
 
   trackAddressById(index: number, item: IAddress) {
+    return item.id;
+  }
+
+  trackDictionaryById(index: number, item: IDictionary) {
     return item.id;
   }
 

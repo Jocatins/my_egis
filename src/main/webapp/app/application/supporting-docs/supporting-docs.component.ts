@@ -5,7 +5,7 @@ import { TransInfo } from '../model/transinfo.model';
 import { IBatch, Batch } from 'app/shared/model/batch.model';
 import { TransactionService } from 'app/entities/transaction/transaction.service';
 import { ISupportingDocument, SupportingDocument } from 'app/shared/model/supporting-document.model';
-import { BatchService } from '../ext/batch/batch.service';
+import { BatchService } from '../ext/batch-old/batch.service';
 import { DashboardService } from 'app/dashboard/dashboard.service';
 import { MandatoryDocument } from 'app/shared/model/ext/document.model';
 import { IEGISDIctionary } from '../model/egisdictionary.model';
@@ -16,6 +16,8 @@ import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SupportingDocumentDeleteDialogComponent } from '../ext/supporting-document/supporting-document-delete-dialog.component';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
+import { IDictionary } from 'app/shared/model/dictionary.model';
 
 @Component({
   selector: 'jhi-trans-detail',
@@ -79,18 +81,19 @@ export class SupportingDocsComponent implements OnInit {
     private supportingDocumentService: SupportingDocumentService,
     private fb: FormBuilder,
     protected modalService: NgbModal,
-    protected eventManager: JhiEventManager
+    protected eventManager: JhiEventManager,
+    protected dictionaryService: DictionaryService
   ) {
     this.message = 'SupportingDocsComponent message';
   }
 
   linkClick() {}
 
-  private createFromForm(): ISupportingDocument {
+  private createFromForm(type: IDictionary): ISupportingDocument {
     if (this.typeOfDoc === 'mandatory') {
       return {
         ...new SupportingDocument(),
-        documentType: this.editForm.get(['documentType']).value,
+        documentType: type,
         // type: this.editForm.get(['type']).value,
         name: this.editForm.get(['name']).value,
         fileSize: this.editForm.get(['fileSize']).value,
@@ -100,7 +103,7 @@ export class SupportingDocsComponent implements OnInit {
     } else {
       return {
         ...new SupportingDocument(),
-        documentType: this.editFormOthers.get(['documentType']).value,
+        documentType: type,
         // type: this.editForm.get(['type']).value,
         name: this.editFormOthers.get(['name']).value,
         fileSize: this.editFormOthers.get(['fileSize']).value,
@@ -162,13 +165,23 @@ export class SupportingDocsComponent implements OnInit {
   }
 
   save() {
-    const supportingDocument = this.createFromForm();
-    this.subscribeToSaveResponse(this.supportingDocumentService.create(supportingDocument));
+    this.dictionaryService.find(this.editForm.get(['documentType']).value).subscribe(
+      data =>{
+        const supportingDocument = this.createFromForm(data.body);
+        this.subscribeToSaveResponse(this.supportingDocumentService.create(supportingDocument));
+      }
+    )
   }
 
   saveOthers() {
-    const supportingDocument = this.createFromForm();
-    this.subscribeToSaveResponse(this.supportingDocumentService.create(supportingDocument));
+    this.dictionaryService.find(this.editFormOthers.get(['documentType']).value).subscribe(
+      data =>{
+        const supportingDocument = this.createFromForm(data.body);
+        this.subscribeToSaveResponse(this.supportingDocumentService.create(supportingDocument));
+      }
+    )
+
+
   }
 
   // @SuppDocList
@@ -220,7 +233,7 @@ export class SupportingDocsComponent implements OnInit {
         this.supportingDocuments = allDocs.filter(x => x.provided === 'Y');
         this.supportingDocumentsOthers = allDocs.filter(x => x.provided !== 'Y');
 
-        this.addMoreDetailDocument();
+        //this.addMoreDetailDocument();
       },
       () => {
         // alert()
@@ -255,7 +268,7 @@ export class SupportingDocsComponent implements OnInit {
           provided: 'N'
         });
 
-        this.save();
+        this.saveOthers();
       };
     }
   }
@@ -310,17 +323,17 @@ export class SupportingDocsComponent implements OnInit {
     });
   }
 
-  addMoreDetailDocument() {
-    this.supportingDocuments.forEach(value => {
-      const dict = this.map.get(value.documentType) as IEGISDIctionary;
-      value.description = dict.label;
-    });
+  // addMoreDetailDocument() {
+  //   this.supportingDocuments.forEach(value => {
+  //     const dict = this.map.get(value.documentType) as IEGISDIctionary;
+  //     value.description = dict.label;
+  //   });
 
-    this.supportingDocumentsOthers.forEach(value => {
-      const dict = this.map.get(value.documentType) as IEGISDIctionary;
-      value.description = dict.label;
-    });
-  }
+  //   this.supportingDocumentsOthers.forEach(value => {
+  //     const dict = this.map.get(value.documentType) as IEGISDIctionary;
+  //     value.description = dict.label;
+  //   });
+  // }
 
   b64toBlob(b64Data: string, contentType: string, sliceSize: number) {
     const byteCharacters = atob(b64Data);

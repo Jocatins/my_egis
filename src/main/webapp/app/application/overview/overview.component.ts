@@ -9,6 +9,8 @@ import { AccountService } from 'app/core/auth/account.service';
 import { UserService } from 'app/core/user/user.service';
 import { Transaction } from 'app/shared/model/transaction.model';
 import { IUser } from 'app/core/user/user.model';
+import { Dictionary } from 'app/shared/model/dictionary.model';
+import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
 
 @Component({
   selector: 'jhi-overview',
@@ -35,6 +37,10 @@ export class OverviewComponent implements OnInit {
   showActivate: boolean;
   showContinue: boolean;
 
+  predicate: any;
+  reverse: any;
+
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -42,7 +48,8 @@ export class OverviewComponent implements OnInit {
     private batchService: BatchService,
     private transService: TransactionService,
     private accountService: AccountService,
-    private userService: UserService
+    private userService: UserService,
+    private dictionaryService: DictionaryService
   ) {
     this.message = 'TransDetailComponent message';
   }
@@ -94,32 +101,52 @@ export class OverviewComponent implements OnInit {
   }
 
   initiateTransaction(transCode: string) {
-    this.batch = new Batch();
-    this.batch.officeId = 1;
-    this.batch.batchStatus = 0;
-    this.batch.user = this.currentUser;
-    this.batch.transactions = [];
+    const criteria =    [
+    {key: 'category.equals', value: 'application_status'},
+    {key: 'code.equals', value: 'application_lodged'}
+    ];
 
-    const tran = new Transaction();
+   this.predicate = 'id';
+   this.reverse = true;
 
-    tran.transactionCode = transCode;
-    tran.transactionType = 1;
-    this.batch.transactions.push(tran);
+    let batchStatus = new Dictionary();
+    this.dictionaryService.query({
+      page: 1,
+      size: 2,
+      sort: this.sort(),
+      criteria
+    }).subscribe(
+      data =>{
+        batchStatus =  data.body.filter(x => x.category === 'application_status')
+        .filter(x1 =>x1.code === 'application_lodged')[0]
+        this.batch = new Batch();
+        this.batch.officeId = 1;
+        this.batch.batchStatus = batchStatus
+        this.batch.user = this.currentUser;
+        this.batch.transactions = [];
 
-    this.batchService.create(this.batch).subscribe(
-      (data: HttpResponse<IBatch>) => {
-        this.batch = data.body;
-        this.router.navigate(['/application/applicants', this.batch.id]);
-      },
-      () => alert('Error creating batch')
-    );
+        const tran = new Transaction();
+
+        tran.transactionCode = transCode;
+        this.batch.transactions.push(tran);
+
+        this.batchService.create(this.batch).subscribe(
+          (data1: HttpResponse<IBatch>) => {
+            this.batch = data1.body;
+            this.router.navigate(['/application/applicants', this.batch.id]);
+          },
+          () => alert('Error creating batch')
+        );
+      }
+    )
+
   }
 
   createTransaction(batch: IBatch, transCode: string) {
     const tran = new Transaction();
     tran.batches = [batch];
     tran.transactionCode = transCode;
-    tran.transactionType = 1;
+    // tran.transactionType = 1;
     this.transService.create(tran).subscribe(
       (data: HttpResponse<Transaction>) => {
         batch.transactions = [data.body];
@@ -129,20 +156,20 @@ export class OverviewComponent implements OnInit {
     );
   }
 
-  initiateTransactionOLD() {
-    this.batch = new Batch();
-    this.batch.officeId = 1;
-    this.batch.batchStatus = 0;
-    this.batch.user = this.currentUser;
-    this.batchService.create(this.batch).subscribe(
-      (data: HttpResponse<IBatch>) => {
-        this.createTransaction(data.body, this.transCode);
-        this.batch = data.body;
-        this.router.navigate(['/application/translanding', this.batch.id]);
-      },
-      () => alert('Error creating batch')
-    );
-  }
+  // initiateTransactionOLD() {
+  //   this.batch = new Batch();
+  //   this.batch.officeId = 1;
+  //   this.batch.batchStatus = 0;
+  //   this.batch.user = this.currentUser;
+  //   this.batchService.create(this.batch).subscribe(
+  //     (data: HttpResponse<IBatch>) => {
+  //       this.createTransaction(data.body, this.transCode);
+  //       this.batch = data.body;
+  //       this.router.navigate(['/application/translanding', this.batch.id]);
+  //     },
+  //     () => alert('Error creating batch')
+  //   );
+  // }
 
   getTransactionInfo(param: string) {
     const resourceUrl = 'http://localhost:7777' + '/transinfo/';
@@ -191,6 +218,14 @@ export class OverviewComponent implements OnInit {
       return;
     }
     return;
+  }
+
+  sort() {
+    const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
+    if (this.predicate !== 'id') {
+      result.push('id');
+    }
+    return result;
   }
 }
 

@@ -1,13 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { JhiEventManager, JhiParseLinks } from 'ng-jhipster';
+import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { IBatch } from 'app/shared/model/batch.model';
-
-import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { BatchService } from './batch.service';
 import { BatchDeleteDialogComponent } from './batch-delete-dialog.component';
 
@@ -18,29 +16,14 @@ import { BatchDeleteDialogComponent } from './batch-delete-dialog.component';
 export class BatchComponent implements OnInit, OnDestroy {
   batches: IBatch[];
   eventSubscriber: Subscription;
-  itemsPerPage: number;
-  links: any;
-  page: any;
-  predicate: any;
-  reverse: any;
-  totalItems: number;
   currentSearch: string;
 
   constructor(
     protected batchService: BatchService,
     protected eventManager: JhiEventManager,
     protected modalService: NgbModal,
-    protected parseLinks: JhiParseLinks,
     protected activatedRoute: ActivatedRoute
   ) {
-    this.batches = [];
-    this.itemsPerPage = ITEMS_PER_PAGE;
-    this.page = 0;
-    this.links = {
-      last: 0
-    };
-    this.predicate = 'id';
-    this.reverse = true;
     this.currentSearch =
       this.activatedRoute.snapshot && this.activatedRoute.snapshot.queryParams['search']
         ? this.activatedRoute.snapshot.queryParams['search']
@@ -51,58 +34,27 @@ export class BatchComponent implements OnInit, OnDestroy {
     if (this.currentSearch) {
       this.batchService
         .search({
-          query: this.currentSearch,
-          page: this.page,
-          size: this.itemsPerPage,
-          sort: this.sort()
+          query: this.currentSearch
         })
-        .subscribe((res: HttpResponse<IBatch[]>) => this.paginateBatches(res.body, res.headers));
+        .subscribe((res: HttpResponse<IBatch[]>) => (this.batches = res.body));
       return;
     }
-    this.batchService
-      .query({
-        page: this.page,
-        size: this.itemsPerPage,
-        sort: this.sort()
-      })
-      .subscribe((res: HttpResponse<IBatch[]>) => this.paginateBatches(res.body, res.headers));
-  }
-
-  reset() {
-    this.page = 0;
-    this.batches = [];
-    this.loadAll();
-  }
-
-  loadPage(page) {
-    this.page = page;
-    this.loadAll();
-  }
-
-  clear() {
-    this.batches = [];
-    this.links = {
-      last: 0
-    };
-    this.page = 0;
-    this.predicate = 'id';
-    this.reverse = true;
-    this.currentSearch = '';
-    this.loadAll();
+    this.batchService.query().subscribe((res: HttpResponse<IBatch[]>) => {
+      this.batches = res.body;
+      this.currentSearch = '';
+    });
   }
 
   search(query) {
     if (!query) {
       return this.clear();
     }
-    this.batches = [];
-    this.links = {
-      last: 0
-    };
-    this.page = 0;
-    this.predicate = '_score';
-    this.reverse = false;
     this.currentSearch = query;
+    this.loadAll();
+  }
+
+  clear() {
+    this.currentSearch = '';
     this.loadAll();
   }
 
@@ -120,7 +72,7 @@ export class BatchComponent implements OnInit, OnDestroy {
   }
 
   registerChangeInBatches() {
-    this.eventSubscriber = this.eventManager.subscribe('batchListModification', () => this.reset());
+    this.eventSubscriber = this.eventManager.subscribe('batchListModification', () => this.loadAll());
   }
 
   delete(batch: IBatch) {
@@ -128,19 +80,5 @@ export class BatchComponent implements OnInit, OnDestroy {
     modalRef.componentInstance.batch = batch;
   }
 
-  sort() {
-    const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-    if (this.predicate !== 'id') {
-      result.push('id');
-    }
-    return result;
-  }
 
-  protected paginateBatches(data: IBatch[], headers: HttpHeaders) {
-    this.links = this.parseLinks.parse(headers.get('link'));
-    this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
-    for (let i = 0; i < data.length; i++) {
-      this.batches.push(data[i]);
-    }
-  }
 }

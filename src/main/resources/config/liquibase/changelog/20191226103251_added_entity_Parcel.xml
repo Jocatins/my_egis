@@ -21,25 +21,13 @@
             <column name="area" type="double">
                 <constraints nullable="true" />
             </column>
-            <column name="spatial_unit_type" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="registration_office_dictionary" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="survey_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="survey_date" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="property_type" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="accommodation" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="tenure_type" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="description" type="varchar(255)">
@@ -48,28 +36,10 @@
             <column name="property_area" type="double">
                 <constraints nullable="true" />
             </column>
-            <column name="location" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="built_up_area_type" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="plan_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="measurement_unit_type" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="premium_value" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="land_use_category" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="land_use_type" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="development_status" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="coordinate_n" type="integer">
@@ -93,9 +63,6 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="register_type" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="valuation" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -105,11 +72,47 @@
             <column name="legal_description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="means_of_acq" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="address_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_parcel_address_id" />
+            </column>
+            <column name="spatial_unit_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="survey_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="property_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="tenure_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="location_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="built_up_area_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="measurement_unit_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="land_use_category_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="land_use_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="development_status_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="register_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="means_of_acq_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="region_id" type="bigint">
+                <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
@@ -136,23 +139,13 @@
             <column name="id" type="numeric"/>
             <column name="label" type="string"/>
             <column name="area" type="numeric"/>
-            <column name="spatial_unit_type" type="numeric"/>
             <column name="registration_office_dictionary" type="string"/>
-            <column name="survey_type" type="string"/>
             <column name="survey_date" type="date"/>
-            <column name="property_type" type="numeric"/>
             <column name="accommodation" type="string"/>
-            <column name="tenure_type" type="numeric"/>
             <column name="description" type="string"/>
             <column name="property_area" type="numeric"/>
-            <column name="location" type="numeric"/>
-            <column name="built_up_area_type" type="numeric"/>
             <column name="plan_number" type="string"/>
-            <column name="measurement_unit_type" type="numeric"/>
             <column name="premium_value" type="string"/>
-            <column name="land_use_category" type="numeric"/>
-            <column name="land_use_type" type="numeric"/>
-            <column name="development_status" type="numeric"/>
             <column name="coordinate_n" type="numeric"/>
             <column name="coordinate_s" type="numeric"/>
             <column name="lagos_sheet_number" type="string"/>
@@ -160,11 +153,9 @@
             <column name="location_1" type="numeric"/>
             <column name="unit_number" type="string"/>
             <column name="name" type="string"/>
-            <column name="register_type" type="numeric"/>
             <column name="valuation" type="string"/>
             <column name="comments" type="string"/>
             <column name="legal_description" type="string"/>
-            <column name="means_of_acq" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

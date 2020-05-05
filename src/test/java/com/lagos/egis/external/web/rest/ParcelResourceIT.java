@@ -45,26 +45,14 @@ public class ParcelResourceIT {
     private static final Double DEFAULT_AREA = 1D;
     private static final Double UPDATED_AREA = 2D;
 
-    private static final Integer DEFAULT_SPATIAL_UNIT_TYPE = 1;
-    private static final Integer UPDATED_SPATIAL_UNIT_TYPE = 2;
-
     private static final String DEFAULT_REGISTRATION_OFFICE_DICTIONARY = "AAAAAAAAAA";
     private static final String UPDATED_REGISTRATION_OFFICE_DICTIONARY = "BBBBBBBBBB";
-
-    private static final String DEFAULT_SURVEY_TYPE = "AAAAAAAAAA";
-    private static final String UPDATED_SURVEY_TYPE = "BBBBBBBBBB";
 
     private static final LocalDate DEFAULT_SURVEY_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_SURVEY_DATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Integer DEFAULT_PROPERTY_TYPE = 1;
-    private static final Integer UPDATED_PROPERTY_TYPE = 2;
-
     private static final String DEFAULT_ACCOMMODATION = "AAAAAAAAAA";
     private static final String UPDATED_ACCOMMODATION = "BBBBBBBBBB";
-
-    private static final Integer DEFAULT_TENURE_TYPE = 1;
-    private static final Integer UPDATED_TENURE_TYPE = 2;
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
@@ -72,29 +60,11 @@ public class ParcelResourceIT {
     private static final Double DEFAULT_PROPERTY_AREA = 1D;
     private static final Double UPDATED_PROPERTY_AREA = 2D;
 
-    private static final Integer DEFAULT_LOCATION = 1;
-    private static final Integer UPDATED_LOCATION = 2;
-
-    private static final Integer DEFAULT_BUILT_UP_AREA_TYPE = 1;
-    private static final Integer UPDATED_BUILT_UP_AREA_TYPE = 2;
-
     private static final String DEFAULT_PLAN_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_PLAN_NUMBER = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_MEASUREMENT_UNIT_TYPE = 1;
-    private static final Integer UPDATED_MEASUREMENT_UNIT_TYPE = 2;
-
     private static final String DEFAULT_PREMIUM_VALUE = "AAAAAAAAAA";
     private static final String UPDATED_PREMIUM_VALUE = "BBBBBBBBBB";
-
-    private static final Integer DEFAULT_LAND_USE_CATEGORY = 1;
-    private static final Integer UPDATED_LAND_USE_CATEGORY = 2;
-
-    private static final Integer DEFAULT_LAND_USE_TYPE = 1;
-    private static final Integer UPDATED_LAND_USE_TYPE = 2;
-
-    private static final Integer DEFAULT_DEVELOPMENT_STATUS = 1;
-    private static final Integer UPDATED_DEVELOPMENT_STATUS = 2;
 
     private static final Integer DEFAULT_COORDINATE_N = 1;
     private static final Integer UPDATED_COORDINATE_N = 2;
@@ -117,9 +87,6 @@ public class ParcelResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_REGISTER_TYPE = 1;
-    private static final Integer UPDATED_REGISTER_TYPE = 2;
-
     private static final String DEFAULT_VALUATION = "AAAAAAAAAA";
     private static final String UPDATED_VALUATION = "BBBBBBBBBB";
 
@@ -128,9 +95,6 @@ public class ParcelResourceIT {
 
     private static final String DEFAULT_LEGAL_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_LEGAL_DESCRIPTION = "BBBBBBBBBB";
-
-    private static final Integer DEFAULT_MEANS_OF_ACQ = 1;
-    private static final Integer UPDATED_MEANS_OF_ACQ = 2;
 
     @Autowired
     private ParcelRepository parcelRepository;
@@ -184,23 +148,13 @@ public class ParcelResourceIT {
         Parcel parcel = new Parcel()
             .label(DEFAULT_LABEL)
             .area(DEFAULT_AREA)
-            .spatialUnitType(DEFAULT_SPATIAL_UNIT_TYPE)
             .registrationOfficeDictionary(DEFAULT_REGISTRATION_OFFICE_DICTIONARY)
-            .surveyType(DEFAULT_SURVEY_TYPE)
             .surveyDate(DEFAULT_SURVEY_DATE)
-            .propertyType(DEFAULT_PROPERTY_TYPE)
             .accommodation(DEFAULT_ACCOMMODATION)
-            .tenureType(DEFAULT_TENURE_TYPE)
             .description(DEFAULT_DESCRIPTION)
             .propertyArea(DEFAULT_PROPERTY_AREA)
-            .location(DEFAULT_LOCATION)
-            .builtUpAreaType(DEFAULT_BUILT_UP_AREA_TYPE)
             .planNumber(DEFAULT_PLAN_NUMBER)
-            .measurementUnitType(DEFAULT_MEASUREMENT_UNIT_TYPE)
             .premiumValue(DEFAULT_PREMIUM_VALUE)
-            .landUseCategory(DEFAULT_LAND_USE_CATEGORY)
-            .landUseType(DEFAULT_LAND_USE_TYPE)
-            .developmentStatus(DEFAULT_DEVELOPMENT_STATUS)
             .coordinateN(DEFAULT_COORDINATE_N)
             .coordinateS(DEFAULT_COORDINATE_S)
             .lagosSheetNumber(DEFAULT_LAGOS_SHEET_NUMBER)
@@ -208,11 +162,9 @@ public class ParcelResourceIT {
             .location1(DEFAULT_LOCATION_1)
             .unitNumber(DEFAULT_UNIT_NUMBER)
             .name(DEFAULT_NAME)
-            .registerType(DEFAULT_REGISTER_TYPE)
             .valuation(DEFAULT_VALUATION)
             .comments(DEFAULT_COMMENTS)
-            .legalDescription(DEFAULT_LEGAL_DESCRIPTION)
-            .meansOfAcq(DEFAULT_MEANS_OF_ACQ);
+            .legalDescription(DEFAULT_LEGAL_DESCRIPTION);
         return parcel;
     }
     /**
@@ -225,23 +177,13 @@ public class ParcelResourceIT {
         Parcel parcel = new Parcel()
             .label(UPDATED_LABEL)
             .area(UPDATED_AREA)
-            .spatialUnitType(UPDATED_SPATIAL_UNIT_TYPE)
             .registrationOfficeDictionary(UPDATED_REGISTRATION_OFFICE_DICTIONARY)
-            .surveyType(UPDATED_SURVEY_TYPE)
             .surveyDate(UPDATED_SURVEY_DATE)
-            .propertyType(UPDATED_PROPERTY_TYPE)
             .accommodation(UPDATED_ACCOMMODATION)
-            .tenureType(UPDATED_TENURE_TYPE)
             .description(UPDATED_DESCRIPTION)
             .propertyArea(UPDATED_PROPERTY_AREA)
-            .location(UPDATED_LOCATION)
-            .builtUpAreaType(UPDATED_BUILT_UP_AREA_TYPE)
             .planNumber(UPDATED_PLAN_NUMBER)
-            .measurementUnitType(UPDATED_MEASUREMENT_UNIT_TYPE)
             .premiumValue(UPDATED_PREMIUM_VALUE)
-            .landUseCategory(UPDATED_LAND_USE_CATEGORY)
-            .landUseType(UPDATED_LAND_USE_TYPE)
-            .developmentStatus(UPDATED_DEVELOPMENT_STATUS)
             .coordinateN(UPDATED_COORDINATE_N)
             .coordinateS(UPDATED_COORDINATE_S)
             .lagosSheetNumber(UPDATED_LAGOS_SHEET_NUMBER)
@@ -249,11 +191,9 @@ public class ParcelResourceIT {
             .location1(UPDATED_LOCATION_1)
             .unitNumber(UPDATED_UNIT_NUMBER)
             .name(UPDATED_NAME)
-            .registerType(UPDATED_REGISTER_TYPE)
             .valuation(UPDATED_VALUATION)
             .comments(UPDATED_COMMENTS)
-            .legalDescription(UPDATED_LEGAL_DESCRIPTION)
-            .meansOfAcq(UPDATED_MEANS_OF_ACQ);
+            .legalDescription(UPDATED_LEGAL_DESCRIPTION);
         return parcel;
     }
 
@@ -279,23 +219,13 @@ public class ParcelResourceIT {
         Parcel testParcel = parcelList.get(parcelList.size() - 1);
         assertThat(testParcel.getLabel()).isEqualTo(DEFAULT_LABEL);
         assertThat(testParcel.getArea()).isEqualTo(DEFAULT_AREA);
-        assertThat(testParcel.getSpatialUnitType()).isEqualTo(DEFAULT_SPATIAL_UNIT_TYPE);
         assertThat(testParcel.getRegistrationOfficeDictionary()).isEqualTo(DEFAULT_REGISTRATION_OFFICE_DICTIONARY);
-        assertThat(testParcel.getSurveyType()).isEqualTo(DEFAULT_SURVEY_TYPE);
         assertThat(testParcel.getSurveyDate()).isEqualTo(DEFAULT_SURVEY_DATE);
-        assertThat(testParcel.getPropertyType()).isEqualTo(DEFAULT_PROPERTY_TYPE);
         assertThat(testParcel.getAccommodation()).isEqualTo(DEFAULT_ACCOMMODATION);
-        assertThat(testParcel.getTenureType()).isEqualTo(DEFAULT_TENURE_TYPE);
         assertThat(testParcel.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testParcel.getPropertyArea()).isEqualTo(DEFAULT_PROPERTY_AREA);
-        assertThat(testParcel.getLocation()).isEqualTo(DEFAULT_LOCATION);
-        assertThat(testParcel.getBuiltUpAreaType()).isEqualTo(DEFAULT_BUILT_UP_AREA_TYPE);
         assertThat(testParcel.getPlanNumber()).isEqualTo(DEFAULT_PLAN_NUMBER);
-        assertThat(testParcel.getMeasurementUnitType()).isEqualTo(DEFAULT_MEASUREMENT_UNIT_TYPE);
         assertThat(testParcel.getPremiumValue()).isEqualTo(DEFAULT_PREMIUM_VALUE);
-        assertThat(testParcel.getLandUseCategory()).isEqualTo(DEFAULT_LAND_USE_CATEGORY);
-        assertThat(testParcel.getLandUseType()).isEqualTo(DEFAULT_LAND_USE_TYPE);
-        assertThat(testParcel.getDevelopmentStatus()).isEqualTo(DEFAULT_DEVELOPMENT_STATUS);
         assertThat(testParcel.getCoordinateN()).isEqualTo(DEFAULT_COORDINATE_N);
         assertThat(testParcel.getCoordinateS()).isEqualTo(DEFAULT_COORDINATE_S);
         assertThat(testParcel.getLagosSheetNumber()).isEqualTo(DEFAULT_LAGOS_SHEET_NUMBER);
@@ -303,11 +233,9 @@ public class ParcelResourceIT {
         assertThat(testParcel.getLocation1()).isEqualTo(DEFAULT_LOCATION_1);
         assertThat(testParcel.getUnitNumber()).isEqualTo(DEFAULT_UNIT_NUMBER);
         assertThat(testParcel.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testParcel.getRegisterType()).isEqualTo(DEFAULT_REGISTER_TYPE);
         assertThat(testParcel.getValuation()).isEqualTo(DEFAULT_VALUATION);
         assertThat(testParcel.getComments()).isEqualTo(DEFAULT_COMMENTS);
         assertThat(testParcel.getLegalDescription()).isEqualTo(DEFAULT_LEGAL_DESCRIPTION);
-        assertThat(testParcel.getMeansOfAcq()).isEqualTo(DEFAULT_MEANS_OF_ACQ);
 
         // Validate the Parcel in Elasticsearch
         verify(mockParcelSearchRepository, times(1)).save(testParcel);
@@ -349,23 +277,13 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(parcel.getId().intValue())))
             .andExpect(jsonPath("$.[*].label").value(hasItem(DEFAULT_LABEL)))
             .andExpect(jsonPath("$.[*].area").value(hasItem(DEFAULT_AREA.doubleValue())))
-            .andExpect(jsonPath("$.[*].spatialUnitType").value(hasItem(DEFAULT_SPATIAL_UNIT_TYPE)))
             .andExpect(jsonPath("$.[*].registrationOfficeDictionary").value(hasItem(DEFAULT_REGISTRATION_OFFICE_DICTIONARY)))
-            .andExpect(jsonPath("$.[*].surveyType").value(hasItem(DEFAULT_SURVEY_TYPE)))
             .andExpect(jsonPath("$.[*].surveyDate").value(hasItem(DEFAULT_SURVEY_DATE.toString())))
-            .andExpect(jsonPath("$.[*].propertyType").value(hasItem(DEFAULT_PROPERTY_TYPE)))
             .andExpect(jsonPath("$.[*].accommodation").value(hasItem(DEFAULT_ACCOMMODATION)))
-            .andExpect(jsonPath("$.[*].tenureType").value(hasItem(DEFAULT_TENURE_TYPE)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].propertyArea").value(hasItem(DEFAULT_PROPERTY_AREA.doubleValue())))
-            .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION)))
-            .andExpect(jsonPath("$.[*].builtUpAreaType").value(hasItem(DEFAULT_BUILT_UP_AREA_TYPE)))
             .andExpect(jsonPath("$.[*].planNumber").value(hasItem(DEFAULT_PLAN_NUMBER)))
-            .andExpect(jsonPath("$.[*].measurementUnitType").value(hasItem(DEFAULT_MEASUREMENT_UNIT_TYPE)))
             .andExpect(jsonPath("$.[*].premiumValue").value(hasItem(DEFAULT_PREMIUM_VALUE)))
-            .andExpect(jsonPath("$.[*].landUseCategory").value(hasItem(DEFAULT_LAND_USE_CATEGORY)))
-            .andExpect(jsonPath("$.[*].landUseType").value(hasItem(DEFAULT_LAND_USE_TYPE)))
-            .andExpect(jsonPath("$.[*].developmentStatus").value(hasItem(DEFAULT_DEVELOPMENT_STATUS)))
             .andExpect(jsonPath("$.[*].coordinateN").value(hasItem(DEFAULT_COORDINATE_N)))
             .andExpect(jsonPath("$.[*].coordinateS").value(hasItem(DEFAULT_COORDINATE_S)))
             .andExpect(jsonPath("$.[*].lagosSheetNumber").value(hasItem(DEFAULT_LAGOS_SHEET_NUMBER)))
@@ -373,11 +291,9 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.[*].location1").value(hasItem(DEFAULT_LOCATION_1)))
             .andExpect(jsonPath("$.[*].unitNumber").value(hasItem(DEFAULT_UNIT_NUMBER)))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].registerType").value(hasItem(DEFAULT_REGISTER_TYPE)))
             .andExpect(jsonPath("$.[*].valuation").value(hasItem(DEFAULT_VALUATION)))
             .andExpect(jsonPath("$.[*].comments").value(hasItem(DEFAULT_COMMENTS)))
-            .andExpect(jsonPath("$.[*].legalDescription").value(hasItem(DEFAULT_LEGAL_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].meansOfAcq").value(hasItem(DEFAULT_MEANS_OF_ACQ)));
+            .andExpect(jsonPath("$.[*].legalDescription").value(hasItem(DEFAULT_LEGAL_DESCRIPTION)));
     }
     
     @Test
@@ -393,23 +309,13 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.id").value(parcel.getId().intValue()))
             .andExpect(jsonPath("$.label").value(DEFAULT_LABEL))
             .andExpect(jsonPath("$.area").value(DEFAULT_AREA.doubleValue()))
-            .andExpect(jsonPath("$.spatialUnitType").value(DEFAULT_SPATIAL_UNIT_TYPE))
             .andExpect(jsonPath("$.registrationOfficeDictionary").value(DEFAULT_REGISTRATION_OFFICE_DICTIONARY))
-            .andExpect(jsonPath("$.surveyType").value(DEFAULT_SURVEY_TYPE))
             .andExpect(jsonPath("$.surveyDate").value(DEFAULT_SURVEY_DATE.toString()))
-            .andExpect(jsonPath("$.propertyType").value(DEFAULT_PROPERTY_TYPE))
             .andExpect(jsonPath("$.accommodation").value(DEFAULT_ACCOMMODATION))
-            .andExpect(jsonPath("$.tenureType").value(DEFAULT_TENURE_TYPE))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.propertyArea").value(DEFAULT_PROPERTY_AREA.doubleValue()))
-            .andExpect(jsonPath("$.location").value(DEFAULT_LOCATION))
-            .andExpect(jsonPath("$.builtUpAreaType").value(DEFAULT_BUILT_UP_AREA_TYPE))
             .andExpect(jsonPath("$.planNumber").value(DEFAULT_PLAN_NUMBER))
-            .andExpect(jsonPath("$.measurementUnitType").value(DEFAULT_MEASUREMENT_UNIT_TYPE))
             .andExpect(jsonPath("$.premiumValue").value(DEFAULT_PREMIUM_VALUE))
-            .andExpect(jsonPath("$.landUseCategory").value(DEFAULT_LAND_USE_CATEGORY))
-            .andExpect(jsonPath("$.landUseType").value(DEFAULT_LAND_USE_TYPE))
-            .andExpect(jsonPath("$.developmentStatus").value(DEFAULT_DEVELOPMENT_STATUS))
             .andExpect(jsonPath("$.coordinateN").value(DEFAULT_COORDINATE_N))
             .andExpect(jsonPath("$.coordinateS").value(DEFAULT_COORDINATE_S))
             .andExpect(jsonPath("$.lagosSheetNumber").value(DEFAULT_LAGOS_SHEET_NUMBER))
@@ -417,11 +323,9 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.location1").value(DEFAULT_LOCATION_1))
             .andExpect(jsonPath("$.unitNumber").value(DEFAULT_UNIT_NUMBER))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.registerType").value(DEFAULT_REGISTER_TYPE))
             .andExpect(jsonPath("$.valuation").value(DEFAULT_VALUATION))
             .andExpect(jsonPath("$.comments").value(DEFAULT_COMMENTS))
-            .andExpect(jsonPath("$.legalDescription").value(DEFAULT_LEGAL_DESCRIPTION))
-            .andExpect(jsonPath("$.meansOfAcq").value(DEFAULT_MEANS_OF_ACQ));
+            .andExpect(jsonPath("$.legalDescription").value(DEFAULT_LEGAL_DESCRIPTION));
     }
 
     @Test
@@ -447,23 +351,13 @@ public class ParcelResourceIT {
         updatedParcel
             .label(UPDATED_LABEL)
             .area(UPDATED_AREA)
-            .spatialUnitType(UPDATED_SPATIAL_UNIT_TYPE)
             .registrationOfficeDictionary(UPDATED_REGISTRATION_OFFICE_DICTIONARY)
-            .surveyType(UPDATED_SURVEY_TYPE)
             .surveyDate(UPDATED_SURVEY_DATE)
-            .propertyType(UPDATED_PROPERTY_TYPE)
             .accommodation(UPDATED_ACCOMMODATION)
-            .tenureType(UPDATED_TENURE_TYPE)
             .description(UPDATED_DESCRIPTION)
             .propertyArea(UPDATED_PROPERTY_AREA)
-            .location(UPDATED_LOCATION)
-            .builtUpAreaType(UPDATED_BUILT_UP_AREA_TYPE)
             .planNumber(UPDATED_PLAN_NUMBER)
-            .measurementUnitType(UPDATED_MEASUREMENT_UNIT_TYPE)
             .premiumValue(UPDATED_PREMIUM_VALUE)
-            .landUseCategory(UPDATED_LAND_USE_CATEGORY)
-            .landUseType(UPDATED_LAND_USE_TYPE)
-            .developmentStatus(UPDATED_DEVELOPMENT_STATUS)
             .coordinateN(UPDATED_COORDINATE_N)
             .coordinateS(UPDATED_COORDINATE_S)
             .lagosSheetNumber(UPDATED_LAGOS_SHEET_NUMBER)
@@ -471,11 +365,9 @@ public class ParcelResourceIT {
             .location1(UPDATED_LOCATION_1)
             .unitNumber(UPDATED_UNIT_NUMBER)
             .name(UPDATED_NAME)
-            .registerType(UPDATED_REGISTER_TYPE)
             .valuation(UPDATED_VALUATION)
             .comments(UPDATED_COMMENTS)
-            .legalDescription(UPDATED_LEGAL_DESCRIPTION)
-            .meansOfAcq(UPDATED_MEANS_OF_ACQ);
+            .legalDescription(UPDATED_LEGAL_DESCRIPTION);
 
         restParcelMockMvc.perform(put("/api/parcels")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -488,23 +380,13 @@ public class ParcelResourceIT {
         Parcel testParcel = parcelList.get(parcelList.size() - 1);
         assertThat(testParcel.getLabel()).isEqualTo(UPDATED_LABEL);
         assertThat(testParcel.getArea()).isEqualTo(UPDATED_AREA);
-        assertThat(testParcel.getSpatialUnitType()).isEqualTo(UPDATED_SPATIAL_UNIT_TYPE);
         assertThat(testParcel.getRegistrationOfficeDictionary()).isEqualTo(UPDATED_REGISTRATION_OFFICE_DICTIONARY);
-        assertThat(testParcel.getSurveyType()).isEqualTo(UPDATED_SURVEY_TYPE);
         assertThat(testParcel.getSurveyDate()).isEqualTo(UPDATED_SURVEY_DATE);
-        assertThat(testParcel.getPropertyType()).isEqualTo(UPDATED_PROPERTY_TYPE);
         assertThat(testParcel.getAccommodation()).isEqualTo(UPDATED_ACCOMMODATION);
-        assertThat(testParcel.getTenureType()).isEqualTo(UPDATED_TENURE_TYPE);
         assertThat(testParcel.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testParcel.getPropertyArea()).isEqualTo(UPDATED_PROPERTY_AREA);
-        assertThat(testParcel.getLocation()).isEqualTo(UPDATED_LOCATION);
-        assertThat(testParcel.getBuiltUpAreaType()).isEqualTo(UPDATED_BUILT_UP_AREA_TYPE);
         assertThat(testParcel.getPlanNumber()).isEqualTo(UPDATED_PLAN_NUMBER);
-        assertThat(testParcel.getMeasurementUnitType()).isEqualTo(UPDATED_MEASUREMENT_UNIT_TYPE);
         assertThat(testParcel.getPremiumValue()).isEqualTo(UPDATED_PREMIUM_VALUE);
-        assertThat(testParcel.getLandUseCategory()).isEqualTo(UPDATED_LAND_USE_CATEGORY);
-        assertThat(testParcel.getLandUseType()).isEqualTo(UPDATED_LAND_USE_TYPE);
-        assertThat(testParcel.getDevelopmentStatus()).isEqualTo(UPDATED_DEVELOPMENT_STATUS);
         assertThat(testParcel.getCoordinateN()).isEqualTo(UPDATED_COORDINATE_N);
         assertThat(testParcel.getCoordinateS()).isEqualTo(UPDATED_COORDINATE_S);
         assertThat(testParcel.getLagosSheetNumber()).isEqualTo(UPDATED_LAGOS_SHEET_NUMBER);
@@ -512,11 +394,9 @@ public class ParcelResourceIT {
         assertThat(testParcel.getLocation1()).isEqualTo(UPDATED_LOCATION_1);
         assertThat(testParcel.getUnitNumber()).isEqualTo(UPDATED_UNIT_NUMBER);
         assertThat(testParcel.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testParcel.getRegisterType()).isEqualTo(UPDATED_REGISTER_TYPE);
         assertThat(testParcel.getValuation()).isEqualTo(UPDATED_VALUATION);
         assertThat(testParcel.getComments()).isEqualTo(UPDATED_COMMENTS);
         assertThat(testParcel.getLegalDescription()).isEqualTo(UPDATED_LEGAL_DESCRIPTION);
-        assertThat(testParcel.getMeansOfAcq()).isEqualTo(UPDATED_MEANS_OF_ACQ);
 
         // Validate the Parcel in Elasticsearch
         verify(mockParcelSearchRepository, times(1)).save(testParcel);
@@ -578,23 +458,13 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(parcel.getId().intValue())))
             .andExpect(jsonPath("$.[*].label").value(hasItem(DEFAULT_LABEL)))
             .andExpect(jsonPath("$.[*].area").value(hasItem(DEFAULT_AREA.doubleValue())))
-            .andExpect(jsonPath("$.[*].spatialUnitType").value(hasItem(DEFAULT_SPATIAL_UNIT_TYPE)))
             .andExpect(jsonPath("$.[*].registrationOfficeDictionary").value(hasItem(DEFAULT_REGISTRATION_OFFICE_DICTIONARY)))
-            .andExpect(jsonPath("$.[*].surveyType").value(hasItem(DEFAULT_SURVEY_TYPE)))
             .andExpect(jsonPath("$.[*].surveyDate").value(hasItem(DEFAULT_SURVEY_DATE.toString())))
-            .andExpect(jsonPath("$.[*].propertyType").value(hasItem(DEFAULT_PROPERTY_TYPE)))
             .andExpect(jsonPath("$.[*].accommodation").value(hasItem(DEFAULT_ACCOMMODATION)))
-            .andExpect(jsonPath("$.[*].tenureType").value(hasItem(DEFAULT_TENURE_TYPE)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].propertyArea").value(hasItem(DEFAULT_PROPERTY_AREA.doubleValue())))
-            .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION)))
-            .andExpect(jsonPath("$.[*].builtUpAreaType").value(hasItem(DEFAULT_BUILT_UP_AREA_TYPE)))
             .andExpect(jsonPath("$.[*].planNumber").value(hasItem(DEFAULT_PLAN_NUMBER)))
-            .andExpect(jsonPath("$.[*].measurementUnitType").value(hasItem(DEFAULT_MEASUREMENT_UNIT_TYPE)))
             .andExpect(jsonPath("$.[*].premiumValue").value(hasItem(DEFAULT_PREMIUM_VALUE)))
-            .andExpect(jsonPath("$.[*].landUseCategory").value(hasItem(DEFAULT_LAND_USE_CATEGORY)))
-            .andExpect(jsonPath("$.[*].landUseType").value(hasItem(DEFAULT_LAND_USE_TYPE)))
-            .andExpect(jsonPath("$.[*].developmentStatus").value(hasItem(DEFAULT_DEVELOPMENT_STATUS)))
             .andExpect(jsonPath("$.[*].coordinateN").value(hasItem(DEFAULT_COORDINATE_N)))
             .andExpect(jsonPath("$.[*].coordinateS").value(hasItem(DEFAULT_COORDINATE_S)))
             .andExpect(jsonPath("$.[*].lagosSheetNumber").value(hasItem(DEFAULT_LAGOS_SHEET_NUMBER)))
@@ -602,10 +472,8 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.[*].location1").value(hasItem(DEFAULT_LOCATION_1)))
             .andExpect(jsonPath("$.[*].unitNumber").value(hasItem(DEFAULT_UNIT_NUMBER)))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].registerType").value(hasItem(DEFAULT_REGISTER_TYPE)))
             .andExpect(jsonPath("$.[*].valuation").value(hasItem(DEFAULT_VALUATION)))
             .andExpect(jsonPath("$.[*].comments").value(hasItem(DEFAULT_COMMENTS)))
-            .andExpect(jsonPath("$.[*].legalDescription").value(hasItem(DEFAULT_LEGAL_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].meansOfAcq").value(hasItem(DEFAULT_MEANS_OF_ACQ)));
+            .andExpect(jsonPath("$.[*].legalDescription").value(hasItem(DEFAULT_LEGAL_DESCRIPTION)));
     }
 }

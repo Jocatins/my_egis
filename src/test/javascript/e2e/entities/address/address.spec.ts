@@ -45,23 +45,23 @@ describe('Address e2e test', () => {
       addressUpdatePage.setBuildingNumberInput('buildingNumber'),
       addressUpdatePage.setPostalCodeInput('postalCode'),
       addressUpdatePage.setCityInput('city'),
-      addressUpdatePage.setCountryInput('5'),
-      addressUpdatePage.setRegionInput('5'),
-      addressUpdatePage.setDistrictInput('5'),
       addressUpdatePage.setVillageInput('village'),
-      addressUpdatePage.setStateInput('state'),
-      addressUpdatePage.setEstateNameInput('estateName'),
-      addressUpdatePage.setLocalGovernmentAreaInput('5'),
-      addressUpdatePage.setLocalCouncilAreaInput('5'),
       addressUpdatePage.setStreetNumberInput('streetNumber'),
-      addressUpdatePage.setStreetTypeInput('5'),
       addressUpdatePage.setTownInput('town'),
       addressUpdatePage.setWardInput('ward'),
-      addressUpdatePage.setCategoryInput('category'),
-      addressUpdatePage.setStateOfOriginInput('5'),
-      addressUpdatePage.setSchemeNameInput('5'),
       addressUpdatePage.setBlockNumberInput('blockNumber'),
-      addressUpdatePage.setPlotNumberInput('plotNumber')
+      addressUpdatePage.setPlotNumberInput('plotNumber'),
+      addressUpdatePage.countrySelectLastOption(),
+      addressUpdatePage.regionSelectLastOption(),
+      addressUpdatePage.districtSelectLastOption(),
+      addressUpdatePage.stateSelectLastOption(),
+      addressUpdatePage.estateNameSelectLastOption(),
+      addressUpdatePage.localGovernmentAreaSelectLastOption(),
+      addressUpdatePage.localCouncilAreaSelectLastOption(),
+      addressUpdatePage.streetTypeSelectLastOption(),
+      addressUpdatePage.stateOfOriginSelectLastOption(),
+      addressUpdatePage.schemeNameSelectLastOption(),
+      addressUpdatePage.categorySelectLastOption()
     ]);
     expect(await addressUpdatePage.getAddressAreaNameInput()).to.eq(
       'addressAreaName',
@@ -78,24 +78,13 @@ describe('Address e2e test', () => {
     );
     expect(await addressUpdatePage.getPostalCodeInput()).to.eq('postalCode', 'Expected PostalCode value to be equals to postalCode');
     expect(await addressUpdatePage.getCityInput()).to.eq('city', 'Expected City value to be equals to city');
-    expect(await addressUpdatePage.getCountryInput()).to.eq('5', 'Expected country value to be equals to 5');
-    expect(await addressUpdatePage.getRegionInput()).to.eq('5', 'Expected region value to be equals to 5');
-    expect(await addressUpdatePage.getDistrictInput()).to.eq('5', 'Expected district value to be equals to 5');
     expect(await addressUpdatePage.getVillageInput()).to.eq('village', 'Expected Village value to be equals to village');
-    expect(await addressUpdatePage.getStateInput()).to.eq('state', 'Expected State value to be equals to state');
-    expect(await addressUpdatePage.getEstateNameInput()).to.eq('estateName', 'Expected EstateName value to be equals to estateName');
-    expect(await addressUpdatePage.getLocalGovernmentAreaInput()).to.eq('5', 'Expected localGovernmentArea value to be equals to 5');
-    expect(await addressUpdatePage.getLocalCouncilAreaInput()).to.eq('5', 'Expected localCouncilArea value to be equals to 5');
     expect(await addressUpdatePage.getStreetNumberInput()).to.eq(
       'streetNumber',
       'Expected StreetNumber value to be equals to streetNumber'
     );
-    expect(await addressUpdatePage.getStreetTypeInput()).to.eq('5', 'Expected streetType value to be equals to 5');
     expect(await addressUpdatePage.getTownInput()).to.eq('town', 'Expected Town value to be equals to town');
     expect(await addressUpdatePage.getWardInput()).to.eq('ward', 'Expected Ward value to be equals to ward');
-    expect(await addressUpdatePage.getCategoryInput()).to.eq('category', 'Expected Category value to be equals to category');
-    expect(await addressUpdatePage.getStateOfOriginInput()).to.eq('5', 'Expected stateOfOrigin value to be equals to 5');
-    expect(await addressUpdatePage.getSchemeNameInput()).to.eq('5', 'Expected schemeName value to be equals to 5');
     expect(await addressUpdatePage.getBlockNumberInput()).to.eq('blockNumber', 'Expected BlockNumber value to be equals to blockNumber');
     expect(await addressUpdatePage.getPlotNumberInput()).to.eq('plotNumber', 'Expected PlotNumber value to be equals to plotNumber');
     await addressUpdatePage.save();

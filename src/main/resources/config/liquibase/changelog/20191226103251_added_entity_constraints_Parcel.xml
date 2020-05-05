@@ -14,5 +14,83 @@
                                  referencedColumnNames="id"
                                  referencedTableName="address"/>
 
+        <addForeignKeyConstraint baseColumnNames="spatial_unit_type_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_spatial_unit_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="survey_type_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_survey_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="property_type_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_property_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="tenure_type_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_tenure_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="location_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_location_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="built_up_area_type_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_built_up_area_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="measurement_unit_type_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_measurement_unit_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="land_use_category_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_land_use_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="land_use_type_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_land_use_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="development_status_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_development_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="register_type_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_register_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="means_of_acq_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_means_of_acq_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="region_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_region_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
     </changeSet>
 </databaseChangeLog>

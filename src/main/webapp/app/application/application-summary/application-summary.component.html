@@ -25,7 +25,7 @@
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.spatialUnitType">Spatial Unit Type</span></dt>
                     <dd>
-                        <span>{{parcel.spatialUnitType}}</span>
+                        <span>{{parcel.spatialUnitType.label}}</span>
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.registrationOfficeDictionary">Registration Office Dictionary</span></dt>
                     <dd>
@@ -33,7 +33,7 @@
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.surveyType">Survey Type</span></dt>
                     <dd>
-                        <span>{{parcel.surveyType}}</span>
+                        <span>{{parcel.surveyType.label}}</span>
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.surveyDate">Survey Date</span></dt>
                     <dd>
@@ -41,7 +41,7 @@
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.propertyType">Property Type</span></dt>
                     <dd>
-                        <span>{{parcel.propertyType}}</span>
+                        <span *ngIf="parcel.propertyType !== null" >{{parcel.propertyType.label}}</span>
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.accommodation">Accommodation</span></dt>
                     <dd>
@@ -49,7 +49,7 @@
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.tenureType">Tenure Type</span></dt>
                     <dd>
-                        <span>{{parcel.tenureType}}</span>
+                        <span *ngIf="parcel.tenureType !== null">{{parcel.tenureType.label}}</span>
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.description">Description</span></dt>
                     <dd>
@@ -61,11 +61,11 @@
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.location">Location</span></dt>
                     <dd>
-                        <span>{{locationOfLand.label}}</span>
+                        <span *ngIf="parcel.location !== null">{{parcel.location.label}}</span>
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.builtUpAreaType">Built Up Area Type</span></dt>
                     <dd>
-                        <span>{{builtUpAreaType.label}}</span>
+                        <span *ngIf="parcel.builtUpAreaType !== null" >{{parcel.builtUpAreaType.label}}</span>
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.planNumber">Plan Number</span></dt>
                     <dd>
@@ -73,7 +73,7 @@
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.measurementUnitType">Measurement Unit Type</span></dt>
                     <dd>
-                        <span>{{measurementUnitType.label}}</span>
+                        <span  *ngIf="parcel.measurementUnitType !== null" >{{parcel.measurementUnitType.label}}</span>
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.premiumValue">Premium Value</span></dt>
                     <dd>
@@ -81,15 +81,15 @@
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.landUseCategory">Land Use Category</span></dt>
                     <dd>
-                        <span>{{landUseCategory.label}}</span>
+                        <span  *ngIf="parcel.landUseCategory !== null"  >{{parcel.landUseCategory.label}}</span>
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.landUseType">Land Use Type</span></dt>
                     <dd>
-                        <span>{{landUseType.label}}</span>
+                        <span  *ngIf="parcel.builtUpAreaType !== null" >{{parcel.landUseType.label}}</span>
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.developmentStatus">Development Status</span></dt>
                     <dd>
-                        <span>{{parcel.developmentStatus}}</span>
+                        <span *ngIf="parcel.developmentStatus !== null">{{parcel.developmentStatus.label}}</span>
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.coordinateN">Coordinate N</span></dt>
                     <dd>
@@ -121,7 +121,7 @@
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.registerType">Register Type</span></dt>
                     <dd>
-                        <span>{{parcel.registerType}}</span>
+                        <span *ngIf="parcel.registerType !== null">{{parcel.registerType.label}}</span>
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.valuation">Valuation</span></dt>
                     <dd>
@@ -137,7 +137,7 @@
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.meansOfAcq">Means Of Acq</span></dt>
                     <dd>
-                        <span>{{parcel.meansOfAcq}}</span>
+                        <span *ngIf="parcel.meansOfAcq !== null">{{parcel.meansOfAcq.label}}</span>
                     </dd>
                     <dt><span jhiTranslate="egisexternalApp.parcel.address">Address</span></dt>
                     <dd>

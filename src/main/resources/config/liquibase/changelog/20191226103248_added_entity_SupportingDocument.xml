@@ -18,16 +18,7 @@
             <column name="document_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="document_type" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="ownership_area" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="document_sub_type" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="issued_by" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="page_count" type="integer">
@@ -60,6 +51,15 @@
             <column name="date" type="date">
                 <constraints nullable="true" />
             </column>
+            <column name="document_sub_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="document_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="issued_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
     </changeSet>
@@ -84,10 +84,7 @@
                   tableName="supporting_document">
             <column name="id" type="numeric"/>
             <column name="document_number" type="string"/>
-            <column name="document_type" type="numeric"/>
             <column name="ownership_area" type="string"/>
-            <column name="document_sub_type" type="numeric"/>
-            <column name="issued_by" type="numeric"/>
             <column name="page_count" type="numeric"/>
             <column name="status" type="string"/>
             <column name="provided" type="string"/>

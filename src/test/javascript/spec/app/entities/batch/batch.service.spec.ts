@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Batch(0, 0, 0, 'AAAAAAA', currentDate, currentDate, 0);
+      elemDefault = new Batch(0, 0, 'AAAAAAA', currentDate, currentDate, 0);
     });
 
     describe('Service methods', () => {
@@ -75,7 +75,6 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             batchNumber: 1,
-            batchStatus: 1,
             invoiceNumber: 'BBBBBB',
             createDate: currentDate.format(DATE_FORMAT),
             deliveryDate: currentDate.format(DATE_FORMAT),
@@ -104,7 +103,6 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             batchNumber: 1,
-            batchStatus: 1,
             invoiceNumber: 'BBBBBB',
             createDate: currentDate.format(DATE_FORMAT),
             deliveryDate: currentDate.format(DATE_FORMAT),

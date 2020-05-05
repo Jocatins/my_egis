@@ -42,17 +42,8 @@ public class SupportingDocumentResourceIT {
     private static final String DEFAULT_DOCUMENT_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_DOCUMENT_NUMBER = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_DOCUMENT_TYPE = 1;
-    private static final Integer UPDATED_DOCUMENT_TYPE = 2;
-
     private static final String DEFAULT_OWNERSHIP_AREA = "AAAAAAAAAA";
     private static final String UPDATED_OWNERSHIP_AREA = "BBBBBBBBBB";
-
-    private static final Integer DEFAULT_DOCUMENT_SUB_TYPE = 1;
-    private static final Integer UPDATED_DOCUMENT_SUB_TYPE = 2;
-
-    private static final Integer DEFAULT_ISSUED_BY = 1;
-    private static final Integer UPDATED_ISSUED_BY = 2;
 
     private static final Integer DEFAULT_PAGE_COUNT = 1;
     private static final Integer UPDATED_PAGE_COUNT = 2;
@@ -135,10 +126,7 @@ public class SupportingDocumentResourceIT {
     public static SupportingDocument createEntity(EntityManager em) {
         SupportingDocument supportingDocument = new SupportingDocument()
             .documentNumber(DEFAULT_DOCUMENT_NUMBER)
-            .documentType(DEFAULT_DOCUMENT_TYPE)
             .ownershipArea(DEFAULT_OWNERSHIP_AREA)
-            .documentSubType(DEFAULT_DOCUMENT_SUB_TYPE)
-            .issuedBy(DEFAULT_ISSUED_BY)
             .pageCount(DEFAULT_PAGE_COUNT)
             .status(DEFAULT_STATUS)
             .provided(DEFAULT_PROVIDED)
@@ -160,10 +148,7 @@ public class SupportingDocumentResourceIT {
     public static SupportingDocument createUpdatedEntity(EntityManager em) {
         SupportingDocument supportingDocument = new SupportingDocument()
             .documentNumber(UPDATED_DOCUMENT_NUMBER)
-            .documentType(UPDATED_DOCUMENT_TYPE)
             .ownershipArea(UPDATED_OWNERSHIP_AREA)
-            .documentSubType(UPDATED_DOCUMENT_SUB_TYPE)
-            .issuedBy(UPDATED_ISSUED_BY)
             .pageCount(UPDATED_PAGE_COUNT)
             .status(UPDATED_STATUS)
             .provided(UPDATED_PROVIDED)
@@ -198,10 +183,7 @@ public class SupportingDocumentResourceIT {
         assertThat(supportingDocumentList).hasSize(databaseSizeBeforeCreate + 1);
         SupportingDocument testSupportingDocument = supportingDocumentList.get(supportingDocumentList.size() - 1);
         assertThat(testSupportingDocument.getDocumentNumber()).isEqualTo(DEFAULT_DOCUMENT_NUMBER);
-        assertThat(testSupportingDocument.getDocumentType()).isEqualTo(DEFAULT_DOCUMENT_TYPE);
         assertThat(testSupportingDocument.getOwnershipArea()).isEqualTo(DEFAULT_OWNERSHIP_AREA);
-        assertThat(testSupportingDocument.getDocumentSubType()).isEqualTo(DEFAULT_DOCUMENT_SUB_TYPE);
-        assertThat(testSupportingDocument.getIssuedBy()).isEqualTo(DEFAULT_ISSUED_BY);
         assertThat(testSupportingDocument.getPageCount()).isEqualTo(DEFAULT_PAGE_COUNT);
         assertThat(testSupportingDocument.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testSupportingDocument.getProvided()).isEqualTo(DEFAULT_PROVIDED);
@@ -252,10 +234,7 @@ public class SupportingDocumentResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(supportingDocument.getId().intValue())))
             .andExpect(jsonPath("$.[*].documentNumber").value(hasItem(DEFAULT_DOCUMENT_NUMBER)))
-            .andExpect(jsonPath("$.[*].documentType").value(hasItem(DEFAULT_DOCUMENT_TYPE)))
             .andExpect(jsonPath("$.[*].ownershipArea").value(hasItem(DEFAULT_OWNERSHIP_AREA)))
-            .andExpect(jsonPath("$.[*].documentSubType").value(hasItem(DEFAULT_DOCUMENT_SUB_TYPE)))
-            .andExpect(jsonPath("$.[*].issuedBy").value(hasItem(DEFAULT_ISSUED_BY)))
             .andExpect(jsonPath("$.[*].pageCount").value(hasItem(DEFAULT_PAGE_COUNT)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].provided").value(hasItem(DEFAULT_PROVIDED)))
@@ -280,10 +259,7 @@ public class SupportingDocumentResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(supportingDocument.getId().intValue()))
             .andExpect(jsonPath("$.documentNumber").value(DEFAULT_DOCUMENT_NUMBER))
-            .andExpect(jsonPath("$.documentType").value(DEFAULT_DOCUMENT_TYPE))
             .andExpect(jsonPath("$.ownershipArea").value(DEFAULT_OWNERSHIP_AREA))
-            .andExpect(jsonPath("$.documentSubType").value(DEFAULT_DOCUMENT_SUB_TYPE))
-            .andExpect(jsonPath("$.issuedBy").value(DEFAULT_ISSUED_BY))
             .andExpect(jsonPath("$.pageCount").value(DEFAULT_PAGE_COUNT))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.provided").value(DEFAULT_PROVIDED))
@@ -318,10 +294,7 @@ public class SupportingDocumentResourceIT {
         em.detach(updatedSupportingDocument);
         updatedSupportingDocument
             .documentNumber(UPDATED_DOCUMENT_NUMBER)
-            .documentType(UPDATED_DOCUMENT_TYPE)
             .ownershipArea(UPDATED_OWNERSHIP_AREA)
-            .documentSubType(UPDATED_DOCUMENT_SUB_TYPE)
-            .issuedBy(UPDATED_ISSUED_BY)
             .pageCount(UPDATED_PAGE_COUNT)
             .status(UPDATED_STATUS)
             .provided(UPDATED_PROVIDED)
@@ -343,10 +316,7 @@ public class SupportingDocumentResourceIT {
         assertThat(supportingDocumentList).hasSize(databaseSizeBeforeUpdate);
         SupportingDocument testSupportingDocument = supportingDocumentList.get(supportingDocumentList.size() - 1);
         assertThat(testSupportingDocument.getDocumentNumber()).isEqualTo(UPDATED_DOCUMENT_NUMBER);
-        assertThat(testSupportingDocument.getDocumentType()).isEqualTo(UPDATED_DOCUMENT_TYPE);
         assertThat(testSupportingDocument.getOwnershipArea()).isEqualTo(UPDATED_OWNERSHIP_AREA);
-        assertThat(testSupportingDocument.getDocumentSubType()).isEqualTo(UPDATED_DOCUMENT_SUB_TYPE);
-        assertThat(testSupportingDocument.getIssuedBy()).isEqualTo(UPDATED_ISSUED_BY);
         assertThat(testSupportingDocument.getPageCount()).isEqualTo(UPDATED_PAGE_COUNT);
         assertThat(testSupportingDocument.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testSupportingDocument.getProvided()).isEqualTo(UPDATED_PROVIDED);
@@ -417,10 +387,7 @@ public class SupportingDocumentResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(supportingDocument.getId().intValue())))
             .andExpect(jsonPath("$.[*].documentNumber").value(hasItem(DEFAULT_DOCUMENT_NUMBER)))
-            .andExpect(jsonPath("$.[*].documentType").value(hasItem(DEFAULT_DOCUMENT_TYPE)))
             .andExpect(jsonPath("$.[*].ownershipArea").value(hasItem(DEFAULT_OWNERSHIP_AREA)))
-            .andExpect(jsonPath("$.[*].documentSubType").value(hasItem(DEFAULT_DOCUMENT_SUB_TYPE)))
-            .andExpect(jsonPath("$.[*].issuedBy").value(hasItem(DEFAULT_ISSUED_BY)))
             .andExpect(jsonPath("$.[*].pageCount").value(hasItem(DEFAULT_PAGE_COUNT)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].provided").value(hasItem(DEFAULT_PROVIDED)))

@@ -3,7 +3,7 @@ import { Route, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { ApplicationSummaryComponent } from './application-summary.component';
 import { IBatch, Batch } from 'app/shared/model/batch.model';
-import { BatchService } from '../ext/batch/batch.service';
+import { BatchService } from '../ext/batch-old/batch.service';
 import { Observable, of } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -35,13 +35,3 @@ export const APPLICATION_SUMMARY: Route = {
   },
   canActivate: [UserRouteAccessService]
 };
-
-// export const TRANS_DETAIL_DETAIL: Route = {
-//   path: 'trans-detail/:code_/:tab_',
-//   component: TransDetailComponent,
-//   data: {
-//     authorities: [],
-//     pageTitle: 'trans-detail.title'
-//   },
-//   canActivate: [UserRouteAccessService]
-// };

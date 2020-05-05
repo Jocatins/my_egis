@@ -27,19 +27,19 @@ export class TransactionUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
   transactionNumberInput = element(by.id('field_transactionNumber'));
-  transactionTypeInput = element(by.id('field_transactionType'));
-  transactionSubTypeInput = element(by.id('field_transactionSubType'));
   applicationDateInput = element(by.id('field_applicationDate'));
   transactionStartDateInput = element(by.id('field_transactionStartDate'));
   commentsInput = element(by.id('field_comments'));
-  ownershipTypeInput = element(by.id('field_ownershipType'));
   createDateInput = element(by.id('field_createDate'));
   startDateInput = element(by.id('field_startDate'));
   completeDateInput = element(by.id('field_completeDate'));
-  tenureTypeInput = element(by.id('field_tenureType'));
   batchIdInput = element(by.id('field_batchId'));
   transactionCodeInput = element(by.id('field_transactionCode'));
   extSelect = element(by.id('field_ext'));
+  transactionTypeSelect = element(by.id('field_transactionType'));
+  transactionSubTypeSelect = element(by.id('field_transactionSubType'));
+  ownershipTypeSelect = element(by.id('field_ownershipType'));
+  tenureTypeSelect = element(by.id('field_tenureType'));
   partySelect = element(by.id('field_party'));
   parcelSelect = element(by.id('field_parcel'));
   docsSelect = element(by.id('field_docs'));
@@ -54,22 +54,6 @@ export class TransactionUpdatePage {
 
   async getTransactionNumberInput() {
     return await this.transactionNumberInput.getAttribute('value');
-  }
-
-  async setTransactionTypeInput(transactionType) {
-    await this.transactionTypeInput.sendKeys(transactionType);
-  }
-
-  async getTransactionTypeInput() {
-    return await this.transactionTypeInput.getAttribute('value');
-  }
-
-  async setTransactionSubTypeInput(transactionSubType) {
-    await this.transactionSubTypeInput.sendKeys(transactionSubType);
-  }
-
-  async getTransactionSubTypeInput() {
-    return await this.transactionSubTypeInput.getAttribute('value');
   }
 
   async setApplicationDateInput(applicationDate) {
@@ -96,14 +80,6 @@ export class TransactionUpdatePage {
     return await this.commentsInput.getAttribute('value');
   }
 
-  async setOwnershipTypeInput(ownershipType) {
-    await this.ownershipTypeInput.sendKeys(ownershipType);
-  }
-
-  async getOwnershipTypeInput() {
-    return await this.ownershipTypeInput.getAttribute('value');
-  }
-
   async setCreateDateInput(createDate) {
     await this.createDateInput.sendKeys(createDate);
   }
@@ -126,14 +102,6 @@ export class TransactionUpdatePage {
 
   async getCompleteDateInput() {
     return await this.completeDateInput.getAttribute('value');
-  }
-
-  async setTenureTypeInput(tenureType) {
-    await this.tenureTypeInput.sendKeys(tenureType);
-  }
-
-  async getTenureTypeInput() {
-    return await this.tenureTypeInput.getAttribute('value');
   }
 
   async setBatchIdInput(batchId) {
@@ -169,6 +137,82 @@ export class TransactionUpdatePage {
 
   async getExtSelectedOption() {
     return await this.extSelect.element(by.css('option:checked')).getText();
+  }
+
+  async transactionTypeSelectLastOption() {
+    await this.transactionTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async transactionTypeSelectOption(option) {
+    await this.transactionTypeSelect.sendKeys(option);
+  }
+
+  getTransactionTypeSelect(): ElementFinder {
+    return this.transactionTypeSelect;
+  }
+
+  async getTransactionTypeSelectedOption() {
+    return await this.transactionTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async transactionSubTypeSelectLastOption() {
+    await this.transactionSubTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async transactionSubTypeSelectOption(option) {
+    await this.transactionSubTypeSelect.sendKeys(option);
+  }
+
+  getTransactionSubTypeSelect(): ElementFinder {
+    return this.transactionSubTypeSelect;
+  }
+
+  async getTransactionSubTypeSelectedOption() {
+    return await this.transactionSubTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async ownershipTypeSelectLastOption() {
+    await this.ownershipTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async ownershipTypeSelectOption(option) {
+    await this.ownershipTypeSelect.sendKeys(option);
+  }
+
+  getOwnershipTypeSelect(): ElementFinder {
+    return this.ownershipTypeSelect;
+  }
+
+  async getOwnershipTypeSelectedOption() {
+    return await this.ownershipTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async tenureTypeSelectLastOption() {
+    await this.tenureTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async tenureTypeSelectOption(option) {
+    await this.tenureTypeSelect.sendKeys(option);
+  }
+
+  getTenureTypeSelect(): ElementFinder {
+    return this.tenureTypeSelect;
+  }
+
+  async getTenureTypeSelectedOption() {
+    return await this.tenureTypeSelect.element(by.css('option:checked')).getText();
   }
 
   async partySelectLastOption() {

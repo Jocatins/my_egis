@@ -9,21 +9,9 @@
                 <dd>
                     <span>{{supportingDocument.documentNumber}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.supportingDocument.documentType">Document Type</span></dt>
-                <dd>
-                    <span>{{supportingDocument.documentType}}</span>
-                </dd>
                 <dt><span jhiTranslate="egisexternalApp.supportingDocument.ownershipArea">Ownership Area</span></dt>
                 <dd>
                     <span>{{supportingDocument.ownershipArea}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.supportingDocument.documentSubType">Document Sub Type</span></dt>
-                <dd>
-                    <span>{{supportingDocument.documentSubType}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.supportingDocument.issuedBy">Issued By</span></dt>
-                <dd>
-                    <span>{{supportingDocument.issuedBy}}</span>
                 </dd>
                 <dt><span jhiTranslate="egisexternalApp.supportingDocument.pageCount">Page Count</span></dt>
                 <dd>
@@ -64,6 +52,24 @@
                 <dt><span jhiTranslate="egisexternalApp.supportingDocument.date">Date</span></dt>
                 <dd>
                     <span>{{supportingDocument.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.documentSubType">Document Sub Type</span></dt>
+                <dd>
+                    <div *ngIf="supportingDocument.documentSubType">
+                        <a [routerLink]="['/dictionary', supportingDocument.documentSubType?.id, 'view']">{{supportingDocument.documentSubType?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.documentType">Document Type</span></dt>
+                <dd>
+                    <div *ngIf="supportingDocument.documentType">
+                        <a [routerLink]="['/dictionary', supportingDocument.documentType?.id, 'view']">{{supportingDocument.documentType?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.supportingDocument.issuedBy">Issued By</span></dt>
+                <dd>
+                    <div *ngIf="supportingDocument.issuedBy">
+                        <a [routerLink]="['/dictionary', supportingDocument.issuedBy?.id, 'view']">{{supportingDocument.issuedBy?.id}}</a>
+                    </div>
                 </dd>
             </dl>
 

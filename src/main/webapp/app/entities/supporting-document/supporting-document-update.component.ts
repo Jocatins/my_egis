@@ -9,6 +9,8 @@ import * as moment from 'moment';
 import { JhiAlertService } from 'ng-jhipster';
 import { ISupportingDocument, SupportingDocument } from 'app/shared/model/supporting-document.model';
 import { SupportingDocumentService } from './supporting-document.service';
+import { IDictionary } from 'app/shared/model/dictionary.model';
+import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
 import { ITransaction } from 'app/shared/model/transaction.model';
 import { TransactionService } from 'app/entities/transaction/transaction.service';
 
@@ -19,16 +21,15 @@ import { TransactionService } from 'app/entities/transaction/transaction.service
 export class SupportingDocumentUpdateComponent implements OnInit {
   isSaving: boolean;
 
+  dictionaries: IDictionary[];
+
   transactions: ITransaction[];
   dateDp: any;
 
   editForm = this.fb.group({
     id: [],
     documentNumber: [],
-    documentType: [],
     ownershipArea: [],
-    documentSubType: [],
-    issuedBy: [],
     pageCount: [],
     status: [],
     provided: [],
@@ -38,12 +39,16 @@ export class SupportingDocumentUpdateComponent implements OnInit {
     content: [],
     contentUrl: [],
     image: [],
-    date: []
+    date: [],
+    documentSubType: [],
+    documentType: [],
+    issuedBy: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected supportingDocumentService: SupportingDocumentService,
+    protected dictionaryService: DictionaryService,
     protected transactionService: TransactionService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -54,6 +59,12 @@ export class SupportingDocumentUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ supportingDocument }) => {
       this.updateForm(supportingDocument);
     });
+    this.dictionaryService
+      .query()
+      .subscribe(
+        (res: HttpResponse<IDictionary[]>) => (this.dictionaries = res.body),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
     this.transactionService
       .query()
       .subscribe(
@@ -66,10 +77,7 @@ export class SupportingDocumentUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: supportingDocument.id,
       documentNumber: supportingDocument.documentNumber,
-      documentType: supportingDocument.documentType,
       ownershipArea: supportingDocument.ownershipArea,
-      documentSubType: supportingDocument.documentSubType,
-      issuedBy: supportingDocument.issuedBy,
       pageCount: supportingDocument.pageCount,
       status: supportingDocument.status,
       provided: supportingDocument.provided,
@@ -79,7 +87,10 @@ export class SupportingDocumentUpdateComponent implements OnInit {
       content: supportingDocument.content,
       contentUrl: supportingDocument.contentUrl,
       image: supportingDocument.image,
-      date: supportingDocument.date
+      date: supportingDocument.date,
+      documentSubType: supportingDocument.documentSubType,
+      documentType: supportingDocument.documentType,
+      issuedBy: supportingDocument.issuedBy
     });
   }
 
@@ -102,10 +113,7 @@ export class SupportingDocumentUpdateComponent implements OnInit {
       ...new SupportingDocument(),
       id: this.editForm.get(['id']).value,
       documentNumber: this.editForm.get(['documentNumber']).value,
-      documentType: this.editForm.get(['documentType']).value,
       ownershipArea: this.editForm.get(['ownershipArea']).value,
-      documentSubType: this.editForm.get(['documentSubType']).value,
-      issuedBy: this.editForm.get(['issuedBy']).value,
       pageCount: this.editForm.get(['pageCount']).value,
       status: this.editForm.get(['status']).value,
       provided: this.editForm.get(['provided']).value,
@@ -115,7 +123,10 @@ export class SupportingDocumentUpdateComponent implements OnInit {
       content: this.editForm.get(['content']).value,
       contentUrl: this.editForm.get(['contentUrl']).value,
       image: this.editForm.get(['image']).value,
-      date: this.editForm.get(['date']).value
+      date: this.editForm.get(['date']).value,
+      documentSubType: this.editForm.get(['documentSubType']).value,
+      documentType: this.editForm.get(['documentType']).value,
+      issuedBy: this.editForm.get(['issuedBy']).value
     };
   }
 
@@ -133,6 +144,10 @@ export class SupportingDocumentUpdateComponent implements OnInit {
   }
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  trackDictionaryById(index: number, item: IDictionary) {
+    return item.id;
   }
 
   trackTransactionById(index: number, item: ITransaction) {

@@ -10,7 +10,7 @@ import { SupportingDocumentDeleteDialogComponent } from '../ext/supporting-docum
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 import { PartyDeleteDialogComponent } from '../party/party-delete-dialog.component';
-import { BatchService } from '../ext/batch/batch.service';
+import { BatchService } from '../ext/batch-old/batch.service';
 import { Subscription } from 'rxjs';
 
 @Component({

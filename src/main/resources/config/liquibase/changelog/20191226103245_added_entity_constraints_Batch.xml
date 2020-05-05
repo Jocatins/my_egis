@@ -14,6 +14,12 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
+        <addForeignKeyConstraint baseColumnNames="batch_status_id"
+                                 baseTableName="batch"
+                                 constraintName="fk_batch_batch_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
         <addForeignKeyConstraint baseColumnNames="batch_id"
                                  baseTableName="batch_transaction"
                                  constraintName="fk_batch_transaction_batch_id"

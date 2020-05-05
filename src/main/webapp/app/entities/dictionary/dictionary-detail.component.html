@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dictionary">
+            <h2><span jhiTranslate="egisexternalApp.dictionary.detail.title">Dictionary</span> {{dictionary.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.dictionary.code">Code</span></dt>
+                <dd>
+                    <span>{{dictionary.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.dictionary.label">Label</span></dt>
+                <dd>
+                    <span>{{dictionary.label}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.dictionary.descr">Descr</span></dt>
+                <dd>
+                    <span>{{dictionary.descr}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.dictionary.category">Category</span></dt>
+                <dd>
+                    <span>{{dictionary.category}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dictionary', dictionary.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

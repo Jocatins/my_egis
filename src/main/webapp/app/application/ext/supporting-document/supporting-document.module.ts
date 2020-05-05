@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { EgisexternalSharedModule } from 'app/shared/shared.module';
 import { SupportingDocumentComponent } from './supporting-document.component';
 import { SupportingDocumentDetailComponent } from './supporting-document-detail.component';
-import { SupportingExtDocumentUpdateComponent } from './supporting-document-update.component';
+import { SupportingDocumentUpdateComponent } from './supporting-document-update.component';
 import { SupportingDocumentDeleteDialogComponent } from './supporting-document-delete-dialog.component';
 import { supportingDocumentRoute } from './supporting-document.route';
 
@@ -13,7 +13,7 @@ import { supportingDocumentRoute } from './supporting-document.route';
   declarations: [
     SupportingDocumentComponent,
     SupportingDocumentDetailComponent,
-    SupportingExtDocumentUpdateComponent,
+    SupportingDocumentUpdateComponent,
     SupportingDocumentDeleteDialogComponent
   ],
   entryComponents: [SupportingDocumentDeleteDialogComponent]

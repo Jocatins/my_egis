@@ -8,11 +8,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IBatch } from 'app/shared/model/batch.model';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
-import { BatchService } from '../application/ext/batch/batch.service';
+import { BatchService } from '../application/ext/batch-old/batch.service';
 import { SERVER_API_URL } from 'app/app.constants';
 import { timeout, catchError } from 'rxjs/operators';
 import { DashboardService } from './dashboard.service';
-import { BatchDeleteDialogComponent } from '../application/ext/batch/batch-delete-dialog.component';
+import { BatchDeleteDialogComponent } from '../application/ext/batch-old/batch-delete-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 @Component({
@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     protected http: HttpClient,
     protected dashboardService: DashboardService
   ) {
+
     this.batches = [];
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.page = 0;
@@ -78,6 +79,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       })
       .subscribe((res: HttpResponse<IBatch[]>) => {
         this.batches = res.body;
+        // alert(JSON.stringify(this.batches))
         this.batches.forEach((batch: IBatch) => {
           const code = batch.transactions[0].transactionCode;
           // const simpleresourceUrl = BatchService.serverApiURL + 'api/backoffice/transmeatada?code=' + code;

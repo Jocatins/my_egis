@@ -17,6 +17,7 @@ import { ITransaction } from 'app/shared/model/transaction.model';
 import { TransactionService } from 'app/entities/transaction/transaction.service';
 import { IEGISDIctionary } from 'app/application/model/egisdictionary.model';
 import { DashboardService } from 'app/dashboard/dashboard.service';
+import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
 
 @Component({
   selector: 'jhi-party-update',
@@ -131,7 +132,8 @@ export class PartyExtUpdateComponent implements OnInit {
     protected dashboardService: DashboardService,
     private fb: FormBuilder,
     protected eventManager: JhiEventManager,
-    private router: Router
+    private router: Router,
+    protected dictionaryService: DictionaryService
   ) {
     this.batchId = activatedRoute.snapshot.params['batchId'];
     this.newOrEdit = activatedRoute.snapshot.params['newOrEdit'];
@@ -141,24 +143,25 @@ export class PartyExtUpdateComponent implements OnInit {
     this.isSaving = false;
     // alert(this.batchId)
     this.activatedRoute.data.subscribe(({ party }) => {
+      alert(party)
       this.updateForm(party);
-      this.updateAddressForm(party.address);
+      //this.updateAddressForm(party.address);
     });
-    this.addressService.query({ filter: 'party-is-null' }).subscribe(
-      (res: HttpResponse<IAddress[]>) => {
-        if (!this.editForm.get('address').value || !this.editForm.get('address').value.id) {
-          this.addresses = res.body;
-        } else {
-          this.addressService
-            .find(this.editForm.get('address').value.id)
-            .subscribe(
-              (subRes: HttpResponse<IAddress>) => (this.addresses = [subRes.body].concat(res.body)),
-              (subRes: HttpErrorResponse) => this.onError(subRes.message)
-            );
-        }
-      },
-      (res: HttpErrorResponse) => this.onError(res.message)
-    );
+    // this.addressService.query({ filter: 'party-is-null' }).subscribe(
+    //   (res: HttpResponse<IAddress[]>) => {
+    //     if (!this.editForm.get('address').value || !this.editForm.get('address').value.id) {
+    //       this.addresses = res.body;
+    //     } else {
+    //       this.addressService
+    //         .find(this.editForm.get('address').value.id)
+    //         .subscribe(
+    //           (subRes: HttpResponse<IAddress>) => (this.addresses = [subRes.body].concat(res.body)),
+    //           (subRes: HttpErrorResponse) => this.onError(subRes.message)
+    //         );
+    //     }
+    //   },
+    //   (res: HttpErrorResponse) => this.onError(res.message)
+    // );
     this.batchService
       .query()
       .subscribe((res: HttpResponse<IBatch[]>) => (this.batches = res.body), (res: HttpErrorResponse) => this.onError(res.message));
@@ -168,6 +171,7 @@ export class PartyExtUpdateComponent implements OnInit {
         (res: HttpResponse<ITransaction[]>) => (this.transactions = res.body),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
+
 
     this.states = DashboardService.states;
     this.partyTypes = DashboardService.partyTypes;
@@ -230,31 +234,32 @@ export class PartyExtUpdateComponent implements OnInit {
   }
 
   updateAddressForm(address: IAddress) {
+    // alert()
     this.editForm.patchValue({
-      addressId: address.id,
-      addressAreaName: address.addressAreaName,
+      // addressId: address.id,
+      // addressAreaName: address.addressAreaName,
       streetName: address.streetName,
       buildingName: address.buildingName,
       buildingNumber: address.buildingNumber,
       postalCode: address.postalCode,
       city: address.city,
-      country: address.country,
-      region: address.region,
-      district: address.district,
-      village: address.village,
-      state: address.state,
-      estateName: address.estateName,
-      localGovernmentArea: address.localGovernmentArea,
-      localCouncilArea: address.localCouncilArea,
-      streetNumber: address.streetNumber,
-      streetType: address.streetType,
-      town: address.town,
-      ward: address.ward,
-      category: address.category,
-      stateOfOrigin: address.stateOfOrigin,
-      schemeName: address.schemeName,
-      blockNumber: address.blockNumber,
-      plotNumber: address.plotNumber
+      // country: address.country,
+      // region: address.region,
+      // district: address.district,
+      // village: address.village,
+      // state: address.state,
+      // estateName: address.estateName,
+      // localGovernmentArea: address.localGovernmentArea,
+      // localCouncilArea: address.localCouncilArea,
+      // streetNumber: address.streetNumber,
+      // streetType: address.streetType,
+      // town: address.town,
+      // ward: address.ward,
+      // category: address.category,
+      // stateOfOrigin: address.stateOfOrigin,
+      // schemeName: address.schemeName,
+      // blockNumber: address.blockNumber,
+      // plotNumber: address.plotNumber
     });
   }
 
@@ -295,7 +300,6 @@ export class PartyExtUpdateComponent implements OnInit {
   save() {
     this.isSaving = true;
     const party = this.createFromForm();
-    alert(party.businessNature);
     if (party.id !== undefined) {
       this.subscribeToSaveResponse(this.partyService.update(party));
     } else {
@@ -304,48 +308,78 @@ export class PartyExtUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IParty {
+    const party = new Party()
+    this.dictionaryService.query().subscribe(
+      data => {
+        const all = data.body
+        party.id = this.editForm.get(['id']).value
+        party.partyType = all.filter(x => x.id === this.editForm.get(['partyType']).value)[0]
+        party.partyRoleType = all.filter(x => x.id === this.editForm.get(['partyRoleType']).value)[0]
+        party.partySubRoleType = all.filter(x => x.id === this.editForm.get(['partySubRoleType']).value)[0]
+        party.deliveryType = all.filter(x => x.id === this.editForm.get(['deliveryType']).value)[0]
+        party.partyName = this.editForm.get(['partyName']).value
+        party.shareNominator = this.editForm.get(['shareNominator']).value
+        party.shareDenominator = this.editForm.get(['shareDenominator']).value
+        party.taxExempt = this.editForm.get(['taxExempt']).value
+        party.primaryParty = this.editForm.get(['primaryParty']).value
+        party.otherName = this.editForm.get(['otherName']).value
+        party.personIdType = all.filter(x => x.id === this.editForm.get(['personIdType']).value)[0]
+        party.personType = all.filter(x => x.id === this.editForm.get(['personType']).value)[0]
+        party.fax = this.editForm.get(['fax']).value
+        party.email = this.editForm.get(['email']).value
+        party.emailType = all.filter(x => x.id === this.editForm.get(['emailType']).value)[0]
+        party.phoneNumber = this.editForm.get(['phoneNumber']).value
+        party.payerId = this.editForm.get(['payerId']).value
+        party.taxPayerNumber = this.editForm.get(['taxPayerNumber']).value
+        // party.partyRoleType = all.filter(x => x.id === this.editForm.get(['partyRoleType']).value)[0]
+        // party.partyRoleType = all.filter(x => x.id === this.editForm.get(['partyRoleType']).value)[0]
+        party.address = this.editForm.get(['address']).value
+        return party
+      }
+    )
     return {
-      ...new Party(),
-      id: this.editForm.get(['id']).value,
-      partyType: this.editForm.get(['partyType']).value,
-      partyRoleType: this.editForm.get(['partyRoleType']).value,
-      partySubRoleType: this.editForm.get(['partySubRoleType']).value,
-      deliveryType: this.editForm.get(['deliveryType']).value,
-      partyName: this.editForm.get(['partyName']).value,
-      shareNominator: this.editForm.get(['shareNominator']).value,
-      shareDenominator: this.editForm.get(['shareDenominator']).value,
-      taxExempt: this.editForm.get(['taxExempt']).value,
-      primaryParty: this.editForm.get(['primaryParty']).value,
-      otherName: this.editForm.get(['otherName']).value,
-      personIdType: this.editForm.get(['personIdType']).value,
-      personType: this.editForm.get(['personType']).value,
-      fax: this.editForm.get(['fax']).value,
-      email: this.editForm.get(['email']).value,
-      emailType: this.editForm.get(['emailType']).value,
-      phoneNumber: this.editForm.get(['phoneNumber']).value,
-      payerId: this.editForm.get(['payerId']).value,
-      taxPayerNumber: this.editForm.get(['taxPayerNumber']).value,
-      comments: this.editForm.get(['comments']).value,
-      personIdIssuedBy: this.editForm.get(['personIdIssuedBy']).value,
-      personIdDate: this.editForm.get(['personIdDate']).value,
-      personIdExpirationDate: this.editForm.get(['personIdExpirationDate']).value,
-      rcNumber: this.editForm.get(['rcNumber']).value,
-      organization: this.editForm.get(['organization']).value,
-      businessNature: this.editForm.get(['businessNature']).value,
-      birthPlace: this.editForm.get(['birthPlace']).value,
-      birthDate: this.editForm.get(['birthDate']).value,
-      personTitle: this.editForm.get(['personTitle']).value,
-      gender: this.editForm.get(['gender']).value,
-      firstName: this.editForm.get(['firstName']).value,
-      middleName: this.editForm.get(['middleName']).value,
-      lastName: this.editForm.get(['lastName']).value,
-      civilState: this.editForm.get(['civilState']).value,
-      driverLicenseRegion: this.editForm.get(['driverLicenseRegion']).value,
-      driverLicence: this.editForm.get(['driverLicence']).value,
-      representativeId: this.editForm.get(['representativeId']).value,
-      professionRegNo: this.editForm.get(['professionRegNo']).value,
-      occupation: this.editForm.get(['occupation']).value,
-      address: this.editForm.get(['address']).value
+      ...new Party()
+      // ,
+      // id: this.editForm.get(['id']).value,
+      // partyType: this.editForm.get(['partyType']).value,
+      // partyRoleType: this.editForm.get(['partyRoleType']).value,
+      // partySubRoleType: this.editForm.get(['partySubRoleType']).value,
+      // deliveryType: this.editForm.get(['deliveryType']).value,
+      // partyName: this.editForm.get(['partyName']).value,
+      // shareNominator: this.editForm.get(['shareNominator']).value,
+      // shareDenominator: this.editForm.get(['shareDenominator']).value,
+      // taxExempt: this.editForm.get(['taxExempt']).value,
+      // primaryParty: this.editForm.get(['primaryParty']).value,
+      // otherName: this.editForm.get(['otherName']).value,
+      // personIdType: this.editForm.get(['personIdType']).value,
+      // personType: this.editForm.get(['personType']).value,
+      // fax: this.editForm.get(['fax']).value,
+      // email: this.editForm.get(['email']).value,
+      // emailType: this.editForm.get(['emailType']).value,
+      // phoneNumber: this.editForm.get(['phoneNumber']).value,
+      // payerId: this.editForm.get(['payerId']).value,
+      // taxPayerNumber: this.editForm.get(['taxPayerNumber']).value,
+      // comments: this.editForm.get(['comments']).value,
+      // personIdIssuedBy: this.editForm.get(['personIdIssuedBy']).value,
+      // personIdDate: this.editForm.get(['personIdDate']).value,
+      // personIdExpirationDate: this.editForm.get(['personIdExpirationDate']).value,
+      // rcNumber: this.editForm.get(['rcNumber']).value,
+      // organization: this.editForm.get(['organization']).value,
+      // businessNature: this.editForm.get(['businessNature']).value,
+      // birthPlace: this.editForm.get(['birthPlace']).value,
+      // birthDate: this.editForm.get(['birthDate']).value,
+      // personTitle: this.editForm.get(['personTitle']).value,
+      // gender: this.editForm.get(['gender']).value,
+      // firstName: this.editForm.get(['firstName']).value,
+      // middleName: this.editForm.get(['middleName']).value,
+      // lastName: this.editForm.get(['lastName']).value,
+      // civilState: this.editForm.get(['civilState']).value,
+      // driverLicenseRegion: this.editForm.get(['driverLicenseRegion']).value,
+      // driverLicence: this.editForm.get(['driverLicence']).value,
+      // representativeId: this.editForm.get(['representativeId']).value,
+      // professionRegNo: this.editForm.get(['professionRegNo']).value,
+      // occupation: this.editForm.get(['occupation']).value,
+      // address: this.editForm.get(['address']).value
     };
   }
 

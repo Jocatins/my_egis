@@ -46,12 +46,6 @@ public class TransactionResourceIT {
     private static final String DEFAULT_TRANSACTION_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_TRANSACTION_NUMBER = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_TRANSACTION_TYPE = 1;
-    private static final Integer UPDATED_TRANSACTION_TYPE = 2;
-
-    private static final Integer DEFAULT_TRANSACTION_SUB_TYPE = 1;
-    private static final Integer UPDATED_TRANSACTION_SUB_TYPE = 2;
-
     private static final LocalDate DEFAULT_APPLICATION_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_APPLICATION_DATE = LocalDate.now(ZoneId.systemDefault());
 
@@ -61,9 +55,6 @@ public class TransactionResourceIT {
     private static final String DEFAULT_COMMENTS = "AAAAAAAAAA";
     private static final String UPDATED_COMMENTS = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_OWNERSHIP_TYPE = 1;
-    private static final Integer UPDATED_OWNERSHIP_TYPE = 2;
-
     private static final LocalDate DEFAULT_CREATE_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_CREATE_DATE = LocalDate.now(ZoneId.systemDefault());
 
@@ -72,9 +63,6 @@ public class TransactionResourceIT {
 
     private static final LocalDate DEFAULT_COMPLETE_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_COMPLETE_DATE = LocalDate.now(ZoneId.systemDefault());
-
-    private static final Integer DEFAULT_TENURE_TYPE = 1;
-    private static final Integer UPDATED_TENURE_TYPE = 2;
 
     private static final Integer DEFAULT_BATCH_ID = 1;
     private static final Integer UPDATED_BATCH_ID = 2;
@@ -136,16 +124,12 @@ public class TransactionResourceIT {
     public static Transaction createEntity(EntityManager em) {
         Transaction transaction = new Transaction()
             .transactionNumber(DEFAULT_TRANSACTION_NUMBER)
-            .transactionType(DEFAULT_TRANSACTION_TYPE)
-            .transactionSubType(DEFAULT_TRANSACTION_SUB_TYPE)
             .applicationDate(DEFAULT_APPLICATION_DATE)
             .transactionStartDate(DEFAULT_TRANSACTION_START_DATE)
             .comments(DEFAULT_COMMENTS)
-            .ownershipType(DEFAULT_OWNERSHIP_TYPE)
             .createDate(DEFAULT_CREATE_DATE)
             .startDate(DEFAULT_START_DATE)
             .completeDate(DEFAULT_COMPLETE_DATE)
-            .tenureType(DEFAULT_TENURE_TYPE)
             .batchId(DEFAULT_BATCH_ID)
             .transactionCode(DEFAULT_TRANSACTION_CODE);
         return transaction;
@@ -159,16 +143,12 @@ public class TransactionResourceIT {
     public static Transaction createUpdatedEntity(EntityManager em) {
         Transaction transaction = new Transaction()
             .transactionNumber(UPDATED_TRANSACTION_NUMBER)
-            .transactionType(UPDATED_TRANSACTION_TYPE)
-            .transactionSubType(UPDATED_TRANSACTION_SUB_TYPE)
             .applicationDate(UPDATED_APPLICATION_DATE)
             .transactionStartDate(UPDATED_TRANSACTION_START_DATE)
             .comments(UPDATED_COMMENTS)
-            .ownershipType(UPDATED_OWNERSHIP_TYPE)
             .createDate(UPDATED_CREATE_DATE)
             .startDate(UPDATED_START_DATE)
             .completeDate(UPDATED_COMPLETE_DATE)
-            .tenureType(UPDATED_TENURE_TYPE)
             .batchId(UPDATED_BATCH_ID)
             .transactionCode(UPDATED_TRANSACTION_CODE);
         return transaction;
@@ -195,16 +175,12 @@ public class TransactionResourceIT {
         assertThat(transactionList).hasSize(databaseSizeBeforeCreate + 1);
         Transaction testTransaction = transactionList.get(transactionList.size() - 1);
         assertThat(testTransaction.getTransactionNumber()).isEqualTo(DEFAULT_TRANSACTION_NUMBER);
-        assertThat(testTransaction.getTransactionType()).isEqualTo(DEFAULT_TRANSACTION_TYPE);
-        assertThat(testTransaction.getTransactionSubType()).isEqualTo(DEFAULT_TRANSACTION_SUB_TYPE);
         assertThat(testTransaction.getApplicationDate()).isEqualTo(DEFAULT_APPLICATION_DATE);
         assertThat(testTransaction.getTransactionStartDate()).isEqualTo(DEFAULT_TRANSACTION_START_DATE);
         assertThat(testTransaction.getComments()).isEqualTo(DEFAULT_COMMENTS);
-        assertThat(testTransaction.getOwnershipType()).isEqualTo(DEFAULT_OWNERSHIP_TYPE);
         assertThat(testTransaction.getCreateDate()).isEqualTo(DEFAULT_CREATE_DATE);
         assertThat(testTransaction.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testTransaction.getCompleteDate()).isEqualTo(DEFAULT_COMPLETE_DATE);
-        assertThat(testTransaction.getTenureType()).isEqualTo(DEFAULT_TENURE_TYPE);
         assertThat(testTransaction.getBatchId()).isEqualTo(DEFAULT_BATCH_ID);
         assertThat(testTransaction.getTransactionCode()).isEqualTo(DEFAULT_TRANSACTION_CODE);
 
@@ -237,24 +213,6 @@ public class TransactionResourceIT {
 
     @Test
     @Transactional
-    public void checkTransactionTypeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = transactionRepository.findAll().size();
-        // set the field null
-        transaction.setTransactionType(null);
-
-        // Create the Transaction, which fails.
-
-        restTransactionMockMvc.perform(post("/api/transactions")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(transaction)))
-            .andExpect(status().isBadRequest());
-
-        List<Transaction> transactionList = transactionRepository.findAll();
-        assertThat(transactionList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllTransactions() throws Exception {
         // Initialize the database
         transactionRepository.saveAndFlush(transaction);
@@ -265,16 +223,12 @@ public class TransactionResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(transaction.getId().intValue())))
             .andExpect(jsonPath("$.[*].transactionNumber").value(hasItem(DEFAULT_TRANSACTION_NUMBER)))
-            .andExpect(jsonPath("$.[*].transactionType").value(hasItem(DEFAULT_TRANSACTION_TYPE)))
-            .andExpect(jsonPath("$.[*].transactionSubType").value(hasItem(DEFAULT_TRANSACTION_SUB_TYPE)))
             .andExpect(jsonPath("$.[*].applicationDate").value(hasItem(DEFAULT_APPLICATION_DATE.toString())))
             .andExpect(jsonPath("$.[*].transactionStartDate").value(hasItem(DEFAULT_TRANSACTION_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].comments").value(hasItem(DEFAULT_COMMENTS)))
-            .andExpect(jsonPath("$.[*].ownershipType").value(hasItem(DEFAULT_OWNERSHIP_TYPE)))
             .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].completeDate").value(hasItem(DEFAULT_COMPLETE_DATE.toString())))
-            .andExpect(jsonPath("$.[*].tenureType").value(hasItem(DEFAULT_TENURE_TYPE)))
             .andExpect(jsonPath("$.[*].batchId").value(hasItem(DEFAULT_BATCH_ID)))
             .andExpect(jsonPath("$.[*].transactionCode").value(hasItem(DEFAULT_TRANSACTION_CODE)));
     }
@@ -324,16 +278,12 @@ public class TransactionResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(transaction.getId().intValue()))
             .andExpect(jsonPath("$.transactionNumber").value(DEFAULT_TRANSACTION_NUMBER))
-            .andExpect(jsonPath("$.transactionType").value(DEFAULT_TRANSACTION_TYPE))
-            .andExpect(jsonPath("$.transactionSubType").value(DEFAULT_TRANSACTION_SUB_TYPE))
             .andExpect(jsonPath("$.applicationDate").value(DEFAULT_APPLICATION_DATE.toString()))
             .andExpect(jsonPath("$.transactionStartDate").value(DEFAULT_TRANSACTION_START_DATE.toString()))
             .andExpect(jsonPath("$.comments").value(DEFAULT_COMMENTS))
-            .andExpect(jsonPath("$.ownershipType").value(DEFAULT_OWNERSHIP_TYPE))
             .andExpect(jsonPath("$.createDate").value(DEFAULT_CREATE_DATE.toString()))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
             .andExpect(jsonPath("$.completeDate").value(DEFAULT_COMPLETE_DATE.toString()))
-            .andExpect(jsonPath("$.tenureType").value(DEFAULT_TENURE_TYPE))
             .andExpect(jsonPath("$.batchId").value(DEFAULT_BATCH_ID))
             .andExpect(jsonPath("$.transactionCode").value(DEFAULT_TRANSACTION_CODE));
     }
@@ -360,16 +310,12 @@ public class TransactionResourceIT {
         em.detach(updatedTransaction);
         updatedTransaction
             .transactionNumber(UPDATED_TRANSACTION_NUMBER)
-            .transactionType(UPDATED_TRANSACTION_TYPE)
-            .transactionSubType(UPDATED_TRANSACTION_SUB_TYPE)
             .applicationDate(UPDATED_APPLICATION_DATE)
             .transactionStartDate(UPDATED_TRANSACTION_START_DATE)
             .comments(UPDATED_COMMENTS)
-            .ownershipType(UPDATED_OWNERSHIP_TYPE)
             .createDate(UPDATED_CREATE_DATE)
             .startDate(UPDATED_START_DATE)
             .completeDate(UPDATED_COMPLETE_DATE)
-            .tenureType(UPDATED_TENURE_TYPE)
             .batchId(UPDATED_BATCH_ID)
             .transactionCode(UPDATED_TRANSACTION_CODE);
 
@@ -383,16 +329,12 @@ public class TransactionResourceIT {
         assertThat(transactionList).hasSize(databaseSizeBeforeUpdate);
         Transaction testTransaction = transactionList.get(transactionList.size() - 1);
         assertThat(testTransaction.getTransactionNumber()).isEqualTo(UPDATED_TRANSACTION_NUMBER);
-        assertThat(testTransaction.getTransactionType()).isEqualTo(UPDATED_TRANSACTION_TYPE);
-        assertThat(testTransaction.getTransactionSubType()).isEqualTo(UPDATED_TRANSACTION_SUB_TYPE);
         assertThat(testTransaction.getApplicationDate()).isEqualTo(UPDATED_APPLICATION_DATE);
         assertThat(testTransaction.getTransactionStartDate()).isEqualTo(UPDATED_TRANSACTION_START_DATE);
         assertThat(testTransaction.getComments()).isEqualTo(UPDATED_COMMENTS);
-        assertThat(testTransaction.getOwnershipType()).isEqualTo(UPDATED_OWNERSHIP_TYPE);
         assertThat(testTransaction.getCreateDate()).isEqualTo(UPDATED_CREATE_DATE);
         assertThat(testTransaction.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testTransaction.getCompleteDate()).isEqualTo(UPDATED_COMPLETE_DATE);
-        assertThat(testTransaction.getTenureType()).isEqualTo(UPDATED_TENURE_TYPE);
         assertThat(testTransaction.getBatchId()).isEqualTo(UPDATED_BATCH_ID);
         assertThat(testTransaction.getTransactionCode()).isEqualTo(UPDATED_TRANSACTION_CODE);
 
@@ -455,16 +397,12 @@ public class TransactionResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(transaction.getId().intValue())))
             .andExpect(jsonPath("$.[*].transactionNumber").value(hasItem(DEFAULT_TRANSACTION_NUMBER)))
-            .andExpect(jsonPath("$.[*].transactionType").value(hasItem(DEFAULT_TRANSACTION_TYPE)))
-            .andExpect(jsonPath("$.[*].transactionSubType").value(hasItem(DEFAULT_TRANSACTION_SUB_TYPE)))
             .andExpect(jsonPath("$.[*].applicationDate").value(hasItem(DEFAULT_APPLICATION_DATE.toString())))
             .andExpect(jsonPath("$.[*].transactionStartDate").value(hasItem(DEFAULT_TRANSACTION_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].comments").value(hasItem(DEFAULT_COMMENTS)))
-            .andExpect(jsonPath("$.[*].ownershipType").value(hasItem(DEFAULT_OWNERSHIP_TYPE)))
             .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].completeDate").value(hasItem(DEFAULT_COMPLETE_DATE.toString())))
-            .andExpect(jsonPath("$.[*].tenureType").value(hasItem(DEFAULT_TENURE_TYPE)))
             .andExpect(jsonPath("$.[*].batchId").value(hasItem(DEFAULT_BATCH_ID)))
             .andExpect(jsonPath("$.[*].transactionCode").value(hasItem(DEFAULT_TRANSACTION_CODE)));
     }

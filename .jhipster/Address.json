@@ -26,44 +26,12 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "country",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "region",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "district",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "village",
             "fieldType": "String"
         },
         {
-            "fieldName": "state",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "estateName",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "localGovernmentArea",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "localCouncilArea",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "streetNumber",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "streetType",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "town",
@@ -74,18 +42,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "category",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "stateOfOrigin",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "schemeName",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "blockNumber",
             "fieldType": "String"
         },
@@ -94,7 +50,85 @@
             "fieldType": "String"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "country",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "region",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "district",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "state",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "estateName",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "localGovernmentArea",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "localCouncilArea",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "streetType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "stateOfOrigin",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "schemeName",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "category",
+            "otherEntityField": "id"
+        }
+    ],
     "changelogDate": "20191226103250",
     "entityTableName": "address",
     "dto": "no",

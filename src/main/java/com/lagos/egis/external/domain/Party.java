@@ -1,10 +1,10 @@
 package com.lagos.egis.external.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.io.Serializable;
@@ -29,20 +29,6 @@ public class Party implements Serializable {
     @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
     private Long id;
 
-    @NotNull
-    @Column(name = "party_type", nullable = false)
-    private Integer partyType;
-
-    @NotNull
-    @Column(name = "party_role_type", nullable = false)
-    private Integer partyRoleType;
-
-    @Column(name = "party_sub_role_type")
-    private Integer partySubRoleType;
-
-    @Column(name = "delivery_type")
-    private Integer deliveryType;
-
     @Column(name = "party_name")
     private String partyName;
 
@@ -55,26 +41,14 @@ public class Party implements Serializable {
     @Column(name = "tax_exempt")
     private String taxExempt;
 
-    @Column(name = "primary_party")
-    private String primaryParty;
-
     @Column(name = "other_name")
     private String otherName;
-
-    @Column(name = "person_id_type")
-    private Integer personIdType;
-
-    @Column(name = "person_type")
-    private Integer personType;
 
     @Column(name = "fax")
     private String fax;
 
     @Column(name = "email")
     private String email;
-
-    @Column(name = "email_type")
-    private Integer emailType;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -87,9 +61,6 @@ public class Party implements Serializable {
 
     @Column(name = "comments")
     private String comments;
-
-    @Column(name = "person_id_issued_by")
-    private Integer personIdIssuedBy;
 
     @Column(name = "person_id_date")
     private LocalDate personIdDate;
@@ -112,12 +83,6 @@ public class Party implements Serializable {
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
-    @Column(name = "person_title")
-    private Integer personTitle;
-
-    @Column(name = "gender")
-    private Integer gender;
-
     @Column(name = "first_name")
     private String firstName;
 
@@ -127,17 +92,8 @@ public class Party implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "civil_state")
-    private Integer civilState;
-
-    @Column(name = "driver_license_region")
-    private Integer driverLicenseRegion;
-
     @Column(name = "driver_licence")
     private String driverLicence;
-
-    @Column(name = "representative_id")
-    private Integer representativeId;
 
     @Column(name = "profession_reg_no")
     private String professionRegNo;
@@ -148,6 +104,62 @@ public class Party implements Serializable {
     @OneToOne
     @JoinColumn(unique = true)
     private Address address;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary partyType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary partyRoleType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary partySubRoleType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary deliveryType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary primaryParty;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary personIdType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary personType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary emailType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary personIdIssuedBy;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary personTitle;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary gender;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary civilState;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary driverLicenseRegion;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary representativeId;
 
     @ManyToMany(mappedBy = "parties")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -166,58 +178,6 @@ public class Party implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getPartyType() {
-        return partyType;
-    }
-
-    public Party partyType(Integer partyType) {
-        this.partyType = partyType;
-        return this;
-    }
-
-    public void setPartyType(Integer partyType) {
-        this.partyType = partyType;
-    }
-
-    public Integer getPartyRoleType() {
-        return partyRoleType;
-    }
-
-    public Party partyRoleType(Integer partyRoleType) {
-        this.partyRoleType = partyRoleType;
-        return this;
-    }
-
-    public void setPartyRoleType(Integer partyRoleType) {
-        this.partyRoleType = partyRoleType;
-    }
-
-    public Integer getPartySubRoleType() {
-        return partySubRoleType;
-    }
-
-    public Party partySubRoleType(Integer partySubRoleType) {
-        this.partySubRoleType = partySubRoleType;
-        return this;
-    }
-
-    public void setPartySubRoleType(Integer partySubRoleType) {
-        this.partySubRoleType = partySubRoleType;
-    }
-
-    public Integer getDeliveryType() {
-        return deliveryType;
-    }
-
-    public Party deliveryType(Integer deliveryType) {
-        this.deliveryType = deliveryType;
-        return this;
-    }
-
-    public void setDeliveryType(Integer deliveryType) {
-        this.deliveryType = deliveryType;
     }
 
     public String getPartyName() {
@@ -272,19 +232,6 @@ public class Party implements Serializable {
         this.taxExempt = taxExempt;
     }
 
-    public String getPrimaryParty() {
-        return primaryParty;
-    }
-
-    public Party primaryParty(String primaryParty) {
-        this.primaryParty = primaryParty;
-        return this;
-    }
-
-    public void setPrimaryParty(String primaryParty) {
-        this.primaryParty = primaryParty;
-    }
-
     public String getOtherName() {
         return otherName;
     }
@@ -296,32 +243,6 @@ public class Party implements Serializable {
 
     public void setOtherName(String otherName) {
         this.otherName = otherName;
-    }
-
-    public Integer getPersonIdType() {
-        return personIdType;
-    }
-
-    public Party personIdType(Integer personIdType) {
-        this.personIdType = personIdType;
-        return this;
-    }
-
-    public void setPersonIdType(Integer personIdType) {
-        this.personIdType = personIdType;
-    }
-
-    public Integer getPersonType() {
-        return personType;
-    }
-
-    public Party personType(Integer personType) {
-        this.personType = personType;
-        return this;
-    }
-
-    public void setPersonType(Integer personType) {
-        this.personType = personType;
     }
 
     public String getFax() {
@@ -348,19 +269,6 @@ public class Party implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Integer getEmailType() {
-        return emailType;
-    }
-
-    public Party emailType(Integer emailType) {
-        this.emailType = emailType;
-        return this;
-    }
-
-    public void setEmailType(Integer emailType) {
-        this.emailType = emailType;
     }
 
     public String getPhoneNumber() {
@@ -413,19 +321,6 @@ public class Party implements Serializable {
 
     public void setComments(String comments) {
         this.comments = comments;
-    }
-
-    public Integer getPersonIdIssuedBy() {
-        return personIdIssuedBy;
-    }
-
-    public Party personIdIssuedBy(Integer personIdIssuedBy) {
-        this.personIdIssuedBy = personIdIssuedBy;
-        return this;
-    }
-
-    public void setPersonIdIssuedBy(Integer personIdIssuedBy) {
-        this.personIdIssuedBy = personIdIssuedBy;
     }
 
     public LocalDate getPersonIdDate() {
@@ -519,32 +414,6 @@ public class Party implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public Integer getPersonTitle() {
-        return personTitle;
-    }
-
-    public Party personTitle(Integer personTitle) {
-        this.personTitle = personTitle;
-        return this;
-    }
-
-    public void setPersonTitle(Integer personTitle) {
-        this.personTitle = personTitle;
-    }
-
-    public Integer getGender() {
-        return gender;
-    }
-
-    public Party gender(Integer gender) {
-        this.gender = gender;
-        return this;
-    }
-
-    public void setGender(Integer gender) {
-        this.gender = gender;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -584,32 +453,6 @@ public class Party implements Serializable {
         this.lastName = lastName;
     }
 
-    public Integer getCivilState() {
-        return civilState;
-    }
-
-    public Party civilState(Integer civilState) {
-        this.civilState = civilState;
-        return this;
-    }
-
-    public void setCivilState(Integer civilState) {
-        this.civilState = civilState;
-    }
-
-    public Integer getDriverLicenseRegion() {
-        return driverLicenseRegion;
-    }
-
-    public Party driverLicenseRegion(Integer driverLicenseRegion) {
-        this.driverLicenseRegion = driverLicenseRegion;
-        return this;
-    }
-
-    public void setDriverLicenseRegion(Integer driverLicenseRegion) {
-        this.driverLicenseRegion = driverLicenseRegion;
-    }
-
     public String getDriverLicence() {
         return driverLicence;
     }
@@ -621,19 +464,6 @@ public class Party implements Serializable {
 
     public void setDriverLicence(String driverLicence) {
         this.driverLicence = driverLicence;
-    }
-
-    public Integer getRepresentativeId() {
-        return representativeId;
-    }
-
-    public Party representativeId(Integer representativeId) {
-        this.representativeId = representativeId;
-        return this;
-    }
-
-    public void setRepresentativeId(Integer representativeId) {
-        this.representativeId = representativeId;
     }
 
     public String getProfessionRegNo() {
@@ -673,6 +503,188 @@ public class Party implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Dictionary getPartyType() {
+        return partyType;
+    }
+
+    public Party partyType(Dictionary dictionary) {
+        this.partyType = dictionary;
+        return this;
+    }
+
+    public void setPartyType(Dictionary dictionary) {
+        this.partyType = dictionary;
+    }
+
+    public Dictionary getPartyRoleType() {
+        return partyRoleType;
+    }
+
+    public Party partyRoleType(Dictionary dictionary) {
+        this.partyRoleType = dictionary;
+        return this;
+    }
+
+    public void setPartyRoleType(Dictionary dictionary) {
+        this.partyRoleType = dictionary;
+    }
+
+    public Dictionary getPartySubRoleType() {
+        return partySubRoleType;
+    }
+
+    public Party partySubRoleType(Dictionary dictionary) {
+        this.partySubRoleType = dictionary;
+        return this;
+    }
+
+    public void setPartySubRoleType(Dictionary dictionary) {
+        this.partySubRoleType = dictionary;
+    }
+
+    public Dictionary getDeliveryType() {
+        return deliveryType;
+    }
+
+    public Party deliveryType(Dictionary dictionary) {
+        this.deliveryType = dictionary;
+        return this;
+    }
+
+    public void setDeliveryType(Dictionary dictionary) {
+        this.deliveryType = dictionary;
+    }
+
+    public Dictionary getPrimaryParty() {
+        return primaryParty;
+    }
+
+    public Party primaryParty(Dictionary dictionary) {
+        this.primaryParty = dictionary;
+        return this;
+    }
+
+    public void setPrimaryParty(Dictionary dictionary) {
+        this.primaryParty = dictionary;
+    }
+
+    public Dictionary getPersonIdType() {
+        return personIdType;
+    }
+
+    public Party personIdType(Dictionary dictionary) {
+        this.personIdType = dictionary;
+        return this;
+    }
+
+    public void setPersonIdType(Dictionary dictionary) {
+        this.personIdType = dictionary;
+    }
+
+    public Dictionary getPersonType() {
+        return personType;
+    }
+
+    public Party personType(Dictionary dictionary) {
+        this.personType = dictionary;
+        return this;
+    }
+
+    public void setPersonType(Dictionary dictionary) {
+        this.personType = dictionary;
+    }
+
+    public Dictionary getEmailType() {
+        return emailType;
+    }
+
+    public Party emailType(Dictionary dictionary) {
+        this.emailType = dictionary;
+        return this;
+    }
+
+    public void setEmailType(Dictionary dictionary) {
+        this.emailType = dictionary;
+    }
+
+    public Dictionary getPersonIdIssuedBy() {
+        return personIdIssuedBy;
+    }
+
+    public Party personIdIssuedBy(Dictionary dictionary) {
+        this.personIdIssuedBy = dictionary;
+        return this;
+    }
+
+    public void setPersonIdIssuedBy(Dictionary dictionary) {
+        this.personIdIssuedBy = dictionary;
+    }
+
+    public Dictionary getPersonTitle() {
+        return personTitle;
+    }
+
+    public Party personTitle(Dictionary dictionary) {
+        this.personTitle = dictionary;
+        return this;
+    }
+
+    public void setPersonTitle(Dictionary dictionary) {
+        this.personTitle = dictionary;
+    }
+
+    public Dictionary getGender() {
+        return gender;
+    }
+
+    public Party gender(Dictionary dictionary) {
+        this.gender = dictionary;
+        return this;
+    }
+
+    public void setGender(Dictionary dictionary) {
+        this.gender = dictionary;
+    }
+
+    public Dictionary getCivilState() {
+        return civilState;
+    }
+
+    public Party civilState(Dictionary dictionary) {
+        this.civilState = dictionary;
+        return this;
+    }
+
+    public void setCivilState(Dictionary dictionary) {
+        this.civilState = dictionary;
+    }
+
+    public Dictionary getDriverLicenseRegion() {
+        return driverLicenseRegion;
+    }
+
+    public Party driverLicenseRegion(Dictionary dictionary) {
+        this.driverLicenseRegion = dictionary;
+        return this;
+    }
+
+    public void setDriverLicenseRegion(Dictionary dictionary) {
+        this.driverLicenseRegion = dictionary;
+    }
+
+    public Dictionary getRepresentativeId() {
+        return representativeId;
+    }
+
+    public Party representativeId(Dictionary dictionary) {
+        this.representativeId = dictionary;
+        return this;
+    }
+
+    public void setRepresentativeId(Dictionary dictionary) {
+        this.representativeId = dictionary;
     }
 
     public Set<Batch> getBatches() {
@@ -746,26 +758,17 @@ public class Party implements Serializable {
     public String toString() {
         return "Party{" +
             "id=" + getId() +
-            ", partyType=" + getPartyType() +
-            ", partyRoleType=" + getPartyRoleType() +
-            ", partySubRoleType=" + getPartySubRoleType() +
-            ", deliveryType=" + getDeliveryType() +
             ", partyName='" + getPartyName() + "'" +
             ", shareNominator='" + getShareNominator() + "'" +
             ", shareDenominator='" + getShareDenominator() + "'" +
             ", taxExempt='" + getTaxExempt() + "'" +
-            ", primaryParty='" + getPrimaryParty() + "'" +
             ", otherName='" + getOtherName() + "'" +
-            ", personIdType=" + getPersonIdType() +
-            ", personType=" + getPersonType() +
             ", fax='" + getFax() + "'" +
             ", email='" + getEmail() + "'" +
-            ", emailType=" + getEmailType() +
             ", phoneNumber='" + getPhoneNumber() + "'" +
             ", payerId='" + getPayerId() + "'" +
             ", taxPayerNumber='" + getTaxPayerNumber() + "'" +
             ", comments='" + getComments() + "'" +
-            ", personIdIssuedBy=" + getPersonIdIssuedBy() +
             ", personIdDate='" + getPersonIdDate() + "'" +
             ", personIdExpirationDate='" + getPersonIdExpirationDate() + "'" +
             ", rcNumber='" + getRcNumber() + "'" +
@@ -773,15 +776,10 @@ public class Party implements Serializable {
             ", businessNature='" + getBusinessNature() + "'" +
             ", birthPlace='" + getBirthPlace() + "'" +
             ", birthDate='" + getBirthDate() + "'" +
-            ", personTitle=" + getPersonTitle() +
-            ", gender=" + getGender() +
             ", firstName='" + getFirstName() + "'" +
             ", middleName='" + getMiddleName() + "'" +
             ", lastName='" + getLastName() + "'" +
-            ", civilState=" + getCivilState() +
-            ", driverLicenseRegion=" + getDriverLicenseRegion() +
             ", driverLicence='" + getDriverLicence() + "'" +
-            ", representativeId=" + getRepresentativeId() +
             ", professionRegNo='" + getProfessionRegNo() + "'" +
             ", occupation='" + getOccupation() + "'" +
             "}";

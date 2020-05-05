@@ -8,7 +8,7 @@ import { SupportingDocument } from 'app/shared/model/supporting-document.model';
 import { SupportingDocumentService } from './supporting-document.service';
 import { SupportingDocumentComponent } from './supporting-document.component';
 import { SupportingDocumentDetailComponent } from './supporting-document-detail.component';
-import { SupportingExtDocumentUpdateComponent } from './supporting-document-update.component';
+import { SupportingDocumentUpdateComponent } from './supporting-document-update.component';
 import { ISupportingDocument } from 'app/shared/model/supporting-document.model';
 
 @Injectable({ providedIn: 'root' })
@@ -48,7 +48,7 @@ export const supportingDocumentRoute: Routes = [
   },
   {
     path: 'new',
-    component: SupportingExtDocumentUpdateComponent,
+    component: SupportingDocumentUpdateComponent,
     resolve: {
       supportingDocument: SupportingDocumentResolve
     },
@@ -60,7 +60,7 @@ export const supportingDocumentRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: SupportingExtDocumentUpdateComponent,
+    component: SupportingDocumentUpdateComponent,
     resolve: {
       supportingDocument: SupportingDocumentResolve
     },

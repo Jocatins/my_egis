@@ -74,23 +74,13 @@ class ParcelGatlingTest extends Simulation {
                 "id":null
                 , "label":"SAMPLE_TEXT"
                 , "area":null
-                , "spatialUnitType":"0"
                 , "registrationOfficeDictionary":"SAMPLE_TEXT"
-                , "surveyType":"SAMPLE_TEXT"
                 , "surveyDate":"2020-01-01T00:00:00.000Z"
-                , "propertyType":"0"
                 , "accommodation":"SAMPLE_TEXT"
-                , "tenureType":"0"
                 , "description":"SAMPLE_TEXT"
                 , "propertyArea":null
-                , "location":"0"
-                , "builtUpAreaType":"0"
                 , "planNumber":"SAMPLE_TEXT"
-                , "measurementUnitType":"0"
                 , "premiumValue":"SAMPLE_TEXT"
-                , "landUseCategory":"0"
-                , "landUseType":"0"
-                , "developmentStatus":"0"
                 , "coordinateN":"0"
                 , "coordinateS":"0"
                 , "lagosSheetNumber":"SAMPLE_TEXT"
@@ -98,11 +88,9 @@ class ParcelGatlingTest extends Simulation {
                 , "location1":"0"
                 , "unitNumber":"SAMPLE_TEXT"
                 , "name":"SAMPLE_TEXT"
-                , "registerType":"0"
                 , "valuation":"SAMPLE_TEXT"
                 , "comments":"SAMPLE_TEXT"
                 , "legalDescription":"SAMPLE_TEXT"
-                , "meansOfAcq":"0"
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_parcel_url"))).exitHereIfFailed

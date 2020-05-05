@@ -24,22 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Transaction(
-        0,
-        'AAAAAAA',
-        0,
-        0,
-        currentDate,
-        currentDate,
-        'AAAAAAA',
-        0,
-        currentDate,
-        currentDate,
-        currentDate,
-        0,
-        0,
-        'AAAAAAA'
-      );
+      elemDefault = new Transaction(0, 'AAAAAAA', currentDate, currentDate, 'AAAAAAA', currentDate, currentDate, currentDate, 0, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -99,16 +84,12 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             transactionNumber: 'BBBBBB',
-            transactionType: 1,
-            transactionSubType: 1,
             applicationDate: currentDate.format(DATE_FORMAT),
             transactionStartDate: currentDate.format(DATE_FORMAT),
             comments: 'BBBBBB',
-            ownershipType: 1,
             createDate: currentDate.format(DATE_FORMAT),
             startDate: currentDate.format(DATE_FORMAT),
             completeDate: currentDate.format(DATE_FORMAT),
-            tenureType: 1,
             batchId: 1,
             transactionCode: 'BBBBBB'
           },
@@ -138,16 +119,12 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             transactionNumber: 'BBBBBB',
-            transactionType: 1,
-            transactionSubType: 1,
             applicationDate: currentDate.format(DATE_FORMAT),
             transactionStartDate: currentDate.format(DATE_FORMAT),
             comments: 'BBBBBB',
-            ownershipType: 1,
             createDate: currentDate.format(DATE_FORMAT),
             startDate: currentDate.format(DATE_FORMAT),
             completeDate: currentDate.format(DATE_FORMAT),
-            tenureType: 1,
             batchId: 1,
             transactionCode: 'BBBBBB'
           },

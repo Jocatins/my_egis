@@ -10,15 +10,7 @@
             "fieldType": "Double"
         },
         {
-            "fieldName": "spatialUnitType",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "registrationOfficeDictionary",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "surveyType",
             "fieldType": "String"
         },
         {
@@ -26,16 +18,8 @@
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "propertyType",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "accommodation",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "tenureType",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "description",
@@ -46,36 +30,12 @@
             "fieldType": "Double"
         },
         {
-            "fieldName": "location",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "builtUpAreaType",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "planNumber",
             "fieldType": "String"
         },
         {
-            "fieldName": "measurementUnitType",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "premiumValue",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "landUseCategory",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "landUseType",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "developmentStatus",
-            "fieldType": "Integer"
         },
         {
             "fieldName": "coordinateN",
@@ -106,10 +66,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "registerType",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "valuation",
             "fieldType": "String"
         },
@@ -120,10 +76,6 @@
         {
             "fieldName": "legalDescription",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "meansOfAcq",
-            "fieldType": "Integer"
         }
     ],
     "relationships": [
@@ -134,6 +86,97 @@
             "relationshipName": "address",
             "otherEntityField": "id",
             "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "spatialUnitType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "surveyType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "propertyType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "tenureType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "location",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "builtUpAreaType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "measurementUnitType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "landUseCategory",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "landUseType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "developmentStatus",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "registerType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "meansOfAcq",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "region",
+            "otherEntityField": "id"
         },
         {
             "relationshipType": "many-to-many",
