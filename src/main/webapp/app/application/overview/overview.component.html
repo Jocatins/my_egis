@@ -35,46 +35,46 @@ if not signed in, hide. display if signed in -->
     <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batch.id)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
 </p>
 
-<ul class="nav nav-tabs" id="" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="document-received-tab" data-toggle="tab" href="" role="tab" aria-controls="document-received" aria-selected="true">Documents Received</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="pre-requisite-tab" data-toggle="tab" href="#pre-requisite" role="tab" aria-controls="pre-requisite" aria-selected="false">Pre-Requisites</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="procedure-tab" data-toggle="tab" href="#procedure" role="tab" aria-controls="procedure" aria-selected="false">Procedure</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="associated-fees-tab" data-toggle="tab" href="#associated-fees" role="tab" aria-controls="associated-fees-tab" aria-selected="false">Associated Fees</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="general-info-tab" data-toggle="tab" href="#general-info" role="tab" aria-controls="general-info" aria-selected="false">Application Forms & Methods</a>
-    </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="document-received" role="tabpanel" aria-labelledby="document-received-tab">
-        <!-- {{transInfo.docsreceived}} -->
-        <div [innerHTML]="transInfo.docsreceived"></div>
-    </div>
-    <div class="tab-pane fade" id="pre-requisite" role="tabpanel" aria-labelledby="pre-requisite-tab">
-        <h6><strong>Documents</strong></h6>
-        <!-- {{transInfo.prerequisitedocs}} -->
-        <div [innerHTML]="transInfo.prerequisitedocs"></div>
-        <h6><strong>Pre-requisite Transactions:</strong></h6>
-        <!-- {{transInfo.prerequisitetrans}} -->
-        <div [innerHTML]="transInfo.prerequisitetrans"></div>
-    </div>
-    <div class="tab-pane fade" id="procedure" role="tabpanel" aria-labelledby="procedure-tab">
-        <!-- {{transInfo.procedure}} -->
-        <div [innerHTML]="transInfo.procedure"></div>
-    </div>
-    <div class="tab-pane fade" id="associated-fees" role="tabpanel" aria-labelledby="associated-fees">
-        <!-- {{transInfo.associatedfees}} -->
-        <div [innerHTML]="transInfo.associatedfees"></div>
-    </div>
-    <div class="tab-pane fade" id="general-info" role="tabpanel" aria-labelledby="general-info-tab">
-        <!-- {{transInfo.expiration}} -->
-        <div [innerHTML]="transInfo.expiration"></div>
-    </div>
-</div>
+<h6 class="sub-header-style-2 pt-3"><span>Documents Received</span></h6>
+<!-- {{transInfo.docsreceived}} -->
+<div [innerHTML]="transInfo.docsreceived"></div>
+
+<h6 class="sub-header-style-2 pt-3"><span>Pre-Requisites</span></h6>
+<h6><strong>Documents</strong></h6>
+<!-- {{transInfo.prerequisitedocs}} -->
+<div [innerHTML]="transInfo.prerequisitedocs"></div>
+<h6><strong>Pre-requisite Transactions:</strong></h6>
+<!-- {{transInfo.prerequisitetrans}} -->
+<div [innerHTML]="transInfo.prerequisitetrans"></div>
+
+<h6 class="sub-header-style-2 pt-3"><span>Procedure</span></h6>
+<!-- {{transInfo.procedure}} -->
+<div [innerHTML]="transInfo.procedure"></div>
+
+<h6 class="sub-header-style-2 pt-3"><span>Associated Fees</span></h6>
+<!-- {{transInfo.associatedfees}} -->
+<div [innerHTML]="transInfo.associatedfees"></div>
+
+<h6 class="sub-header-style-2 pt-3"><span>Application Forms & Methods</span></h6>
+<p>
+    This application and all other forms are available for download at <a href="">http://www.lagosegisportal.com.ng/downloads</a>. Alternatively, the applicant can collect the forms from the Lands Bureau. You can submit your application for this transaction in any of these ways, depending on which is convenient and feasible: 
+    <ol>
+        <li>
+            <b>Paper submission:</b><br>
+            This can be done in 2 ways:
+            <ul>
+                <li>Visit the Lands Bureau: The applicant can visit the Lands Bureau and collect application forms from there. Then fill the application form and submit it with the required supporting documents.</li>
+                <li>Print the forms from the website: The applicant can go online and print the form from the Land Bureau Website. Then he can fill the appropriate fields and go physically to the Lands Bureau to submit the application form and supporting documents.</li>
+            </ul>
+        </li>
+        <li>
+            <b>Online Submission:</b><br>
+            The applicant can initiate this transaction on the online portal. He /she will need to create an account on the online portal, then download the fillable PDF to a computer system/ mobile device. Then fill in the PDF fields with text using a keyboard. After filling all fields, the applicant will need to print the PDF and sign where appropriate. Then upload the signed PDF to the online portal, accompanied with supporting documents. 
+        </li>
+    </ol>
+</p>
+<p>
+    <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="initiateTransaction(transCode)">Click here to Initiate Transaction <fa-icon icon="chevron-right"></fa-icon></button>
+
+    <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batch.id)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
+</p>
