@@ -8,6 +8,201 @@
      Application Summary Here ...
 
      Applicants ...
+      <div *ngFor="let party of parties" >
+        <dl class="row-md jh-entity-details">
+            <dt><span jhiTranslate="egisexternalApp.party.partyName">Party Name</span></dt>
+            <dd>
+                <span>{{party.partyName}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.shareNominator">Share Nominator</span></dt>
+            <dd>
+                <span>{{party.shareNominator}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.shareDenominator">Share Denominator</span></dt>
+            <dd>
+                <span>{{party.shareDenominator}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.taxExempt">Tax Exempt</span></dt>
+            <dd>
+                <span>{{party.taxExempt}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.otherName">Other Name</span></dt>
+            <dd>
+                <span>{{party.otherName}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.fax">Fax</span></dt>
+            <dd>
+                <span>{{party.fax}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.email">Email</span></dt>
+            <dd>
+                <span>{{party.email}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.phoneNumber">Phone Number</span></dt>
+            <dd>
+                <span>{{party.phoneNumber}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.payerId">Payer Id</span></dt>
+            <dd>
+                <span>{{party.payerId}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.taxPayerNumber">Tax Payer Number</span></dt>
+            <dd>
+                <span>{{party.taxPayerNumber}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.comments">Comments</span></dt>
+            <dd>
+                <span>{{party.comments}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.personIdDate">Person Id Date</span></dt>
+            <dd>
+                <span>{{party.personIdDate}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.personIdExpirationDate">Person Id Expiration Date</span></dt>
+            <dd>
+                <span>{{party.personIdExpirationDate}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.rcNumber">Rc Number</span></dt>
+            <dd>
+                <span>{{party.rcNumber}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.organization">Organization</span></dt>
+            <dd>
+                <span>{{party.organization}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.businessNature">Business Nature</span></dt>
+            <dd>
+                <span>{{party.businessNature}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.birthPlace">Birth Place</span></dt>
+            <dd>
+                <span>{{party.birthPlace}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.birthDate">Birth Date</span></dt>
+            <dd>
+                <span>{{party.birthDate}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.firstName">First Name</span></dt>
+            <dd>
+                <span>{{party.firstName}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.middleName">Middle Name</span></dt>
+            <dd>
+                <span>{{party.middleName}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.lastName">Last Name</span></dt>
+            <dd>
+                <span>{{party.lastName}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.driverLicence">Driver Licence</span></dt>
+            <dd>
+                <span>{{party.driverLicence}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.professionRegNo">Profession Reg No</span></dt>
+            <dd>
+                <span>{{party.professionRegNo}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.occupation">Occupation</span></dt>
+            <dd>
+                <span>{{party.occupation}}</span>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.address">Address</span></dt>
+            <dd>
+                <div *ngIf="party.address">
+                    <a [routerLink]="['/address', party.address?.id, 'view']">{{party.address?.id}}</a>
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.partyType">Party Type</span></dt>
+            <dd>
+                <div *ngIf="party.partyType">
+                    {{party.partyType?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.partyRoleType">Party Role Type</span></dt>
+            <dd>
+                <div *ngIf="party.partyRoleType">
+                    {{party.partyRoleType?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.partySubRoleType">Party Sub Role Type</span></dt>
+            <dd>
+                <div *ngIf="party.partySubRoleType">
+                    {{party.partySubRoleType?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.deliveryType">Delivery Type</span></dt>
+            <dd>
+                <div *ngIf="party.deliveryType">
+                    {{party.deliveryType?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.primaryParty">Primary Party</span></dt>
+            <dd>
+                <div *ngIf="party.primaryParty">
+                    {{party.primaryParty?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.personIdType">Person Id Type</span></dt>
+            <dd>
+                <div *ngIf="party.personIdType">
+                    {{party.personIdType?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.personType">Person Type</span></dt>
+            <dd>
+                <div *ngIf="party.personType">
+                    {{party.personType?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.emailType">Email Type</span></dt>
+            <dd>
+                <div *ngIf="party.emailType">
+                    {{party.emailType?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.personIdIssuedBy">Person Id Issued By</span></dt>
+            <dd>
+                <div *ngIf="party.personIdIssuedBy">
+                    {{party.personIdIssuedBy?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.personTitle">Person Title</span></dt>
+            <dd>
+                <div *ngIf="party.personTitle">
+                    {{party.personTitle?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.gender">Gender</span></dt>
+            <dd>
+                <div *ngIf="party.gender">
+                    {{party.gender?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.civilState">Civil State</span></dt>
+            <dd>
+                <div *ngIf="party.civilState">
+                    {{party.civilState?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.driverLicenseRegion">Driver License Region</span></dt>
+            <dd>
+                <div *ngIf="party.driverLicenseRegion">
+                    {{party.driverLicenseRegion?.label}}
+                </div>
+            </dd>
+            <dt><span jhiTranslate="egisexternalApp.party.representativeId">Representative Id</span></dt>
+            <dd>
+                <div *ngIf="party.representativeId">
+                    {{party.representativeId?.label}}
+                </div>
+            </dd>
+        </dl>
+
+        <br/>
+    </div>
+
+
+     Property Information ...
      <div class="row justify-content-center">
         <div class="col-8">
             <div *ngIf="parcel">
@@ -161,8 +356,6 @@
             </div>
         </div>
     </div>
-
-     Property Information ...
 
      Supporting Docs ...
 

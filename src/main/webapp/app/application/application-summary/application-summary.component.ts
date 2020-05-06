@@ -10,6 +10,7 @@ import { IBatch } from 'app/shared/model/batch.model';
 import { IParcel } from 'app/shared/model/parcel.model';
 import { IEGISDIctionary } from '../model/egisdictionary.model';
 import { DashboardService } from 'app/dashboard/dashboard.service';
+import { IParty } from 'app/shared/model/party.model';
 
 @Component({
   selector: 'jhi-trans-detail',
@@ -29,6 +30,7 @@ export class ApplicationSummaryComponent implements OnInit {
   form: boolean;
   batch: IBatch;
   parcel: IParcel;
+  parties: IParty[]
 
   spatialUnitLinkTypes: IEGISDIctionary[];
   landUseCategorys: IEGISDIctionary[];
@@ -71,6 +73,7 @@ export class ApplicationSummaryComponent implements OnInit {
     this.route.data.subscribe(({ batch }) => {
       this.batch = batch;
       this.parcel = this.batch.transactions[0].parcels[0];
+      this.parties = this.batch.parties
     });
   }
 }
