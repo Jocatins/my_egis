@@ -66,6 +66,7 @@ public class CacheConfiguration {
             createCache(cm, com.lagos.egis.external.domain.Surveyor.class.getName());
             createCache(cm, com.lagos.egis.external.domain.SurveyTransaction.class.getName());
             createCache(cm, com.lagos.egis.external.domain.Dictionary.class.getName());
+            createCache(cm, com.lagos.egis.external.domain.Metadata.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

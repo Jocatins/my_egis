@@ -1,0 +1,244 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-metadata-heading" jhiTranslate="egisexternalApp.metadata.home.createOrEditLabel">Create or edit a Metadata</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.hjtype" for="field_hjtype">Hjtype</label>
+                    <input type="text" class="form-control" name="hjtype" id="field_hjtype"
+                           formControlName="hjtype"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.code" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                           formControlName="code"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.label" for="field_label">Label</label>
+                    <input type="text" class="form-control" name="label" id="field_label"
+                           formControlName="label"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.descr" for="field_descr">Descr</label>
+                    <input type="text" class="form-control" name="descr" id="field_descr"
+                           formControlName="descr"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.category" for="field_category">Category</label>
+                    <input type="text" class="form-control" name="category" id="field_category"
+                           formControlName="category"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.generalTerm" for="field_generalTerm">General Term</label>
+                    <input type="text" class="form-control" name="generalTerm" id="field_generalTerm"
+                           formControlName="generalTerm"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.sortOrder" for="field_sortOrder">Sort Order</label>
+                    <input type="text" class="form-control" name="sortOrder" id="field_sortOrder"
+                           formControlName="sortOrder"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.hidden" for="field_hidden">Hidden</label>
+                    <input type="text" class="form-control" name="hidden" id="field_hidden"
+                           formControlName="hidden"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.groupName" for="field_groupName">Group Name</label>
+                    <input type="text" class="form-control" name="groupName" id="field_groupName"
+                           formControlName="groupName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.workflow" for="field_workflow">Workflow</label>
+                    <input type="text" class="form-control" name="workflow" id="field_workflow"
+                           formControlName="workflow"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.groupCode" for="field_groupCode">Group Code</label>
+                    <input type="text" class="form-control" name="groupCode" id="field_groupCode"
+                           formControlName="groupCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.normalDuration" for="field_normalDuration">Normal Duration</label>
+                    <input type="text" class="form-control" name="normalDuration" id="field_normalDuration"
+                           formControlName="normalDuration"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.lapsedDuration" for="field_lapsedDuration">Lapsed Duration</label>
+                    <input type="text" class="form-control" name="lapsedDuration" id="field_lapsedDuration"
+                           formControlName="lapsedDuration"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.maxDuration" for="field_maxDuration">Max Duration</label>
+                    <input type="text" class="form-control" name="maxDuration" id="field_maxDuration"
+                           formControlName="maxDuration"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.rightType" for="field_rightType">Right Type</label>
+                    <input type="text" class="form-control" name="rightType" id="field_rightType"
+                           formControlName="rightType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.rightTypeMultiple" for="field_rightTypeMultiple">Right Type Multiple</label>
+                    <input type="text" class="form-control" name="rightTypeMultiple" id="field_rightTypeMultiple"
+                           formControlName="rightTypeMultiple"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.rightTypeOther" for="field_rightTypeOther">Right Type Other</label>
+                    <input type="text" class="form-control" name="rightTypeOther" id="field_rightTypeOther"
+                           formControlName="rightTypeOther"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.createNewRrs" for="field_createNewRrs">Create New Rrs</label>
+                    <input type="text" class="form-control" name="createNewRrs" id="field_createNewRrs"
+                           formControlName="createNewRrs"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.modifyActiveRrrs" for="field_modifyActiveRrrs">Modify Active Rrrs</label>
+                    <input type="text" class="form-control" name="modifyActiveRrrs" id="field_modifyActiveRrrs"
+                           formControlName="modifyActiveRrrs"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.relatedActiveRrrs" for="field_relatedActiveRrrs">Related Active Rrrs</label>
+                    <input type="text" class="form-control" name="relatedActiveRrrs" id="field_relatedActiveRrrs"
+                           formControlName="relatedActiveRrrs"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.dischargeActiveRrrs" for="field_dischargeActiveRrrs">Discharge Active Rrrs</label>
+                    <input type="text" class="form-control" name="dischargeActiveRrrs" id="field_dischargeActiveRrrs"
+                           formControlName="dischargeActiveRrrs"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.blockedActiveRrrs" for="field_blockedActiveRrrs">Blocked Active Rrrs</label>
+                    <input type="text" class="form-control" name="blockedActiveRrrs" id="field_blockedActiveRrrs"
+                           formControlName="blockedActiveRrrs"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.metaType" for="field_metaType">Meta Type</label>
+                    <input type="text" class="form-control" name="metaType" id="field_metaType"
+                           formControlName="metaType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.sourcePartyType" for="field_sourcePartyType">Source Party Type</label>
+                    <input type="text" class="form-control" name="sourcePartyType" id="field_sourcePartyType"
+                           formControlName="sourcePartyType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.targetPartyType" for="field_targetPartyType">Target Party Type</label>
+                    <input type="text" class="form-control" name="targetPartyType" id="field_targetPartyType"
+                           formControlName="targetPartyType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.otherPartyType" for="field_otherPartyType">Other Party Type</label>
+                    <input type="text" class="form-control" name="otherPartyType" id="field_otherPartyType"
+                           formControlName="otherPartyType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.relatedTransactionCode" for="field_relatedTransactionCode">Related Transaction Code</label>
+                    <input type="text" class="form-control" name="relatedTransactionCode" id="field_relatedTransactionCode"
+                           formControlName="relatedTransactionCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.cashierTransactionCode" for="field_cashierTransactionCode">Cashier Transaction Code</label>
+                    <input type="text" class="form-control" name="cashierTransactionCode" id="field_cashierTransactionCode"
+                           formControlName="cashierTransactionCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.feePaymentCodes" for="field_feePaymentCodes">Fee Payment Codes</label>
+                    <input type="text" class="form-control" name="feePaymentCodes" id="field_feePaymentCodes"
+                           formControlName="feePaymentCodes"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.mandatoryDocsCodes" for="field_mandatoryDocsCodes">Mandatory Docs Codes</label>
+                    <input type="text" class="form-control" name="mandatoryDocsCodes" id="field_mandatoryDocsCodes"
+                           formControlName="mandatoryDocsCodes"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.mandatoryScanOutgoingDocsCodes" for="field_mandatoryScanOutgoingDocsCodes">Mandatory Scan Outgoing Docs Codes</label>
+                    <input type="text" class="form-control" name="mandatoryScanOutgoingDocsCodes" id="field_mandatoryScanOutgoingDocsCodes"
+                           formControlName="mandatoryScanOutgoingDocsCodes"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.createMutateProperty" for="field_createMutateProperty">Create Mutate Property</label>
+                    <input type="text" class="form-control" name="createMutateProperty" id="field_createMutateProperty"
+                           formControlName="createMutateProperty"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.referencedProperties" for="field_referencedProperties">Referenced Properties</label>
+                    <input type="text" class="form-control" name="referencedProperties" id="field_referencedProperties"
+                           formControlName="referencedProperties"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.priorRequiredTransactions" for="field_priorRequiredTransactions">Prior Required Transactions</label>
+                    <input type="text" class="form-control" name="priorRequiredTransactions" id="field_priorRequiredTransactions"
+                           formControlName="priorRequiredTransactions"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.createNewParty" for="field_createNewParty">Create New Party</label>
+                    <input type="text" class="form-control" name="createNewParty" id="field_createNewParty"
+                           formControlName="createNewParty"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.partyBusinessRules" for="field_partyBusinessRules">Party Business Rules</label>
+                    <input type="text" class="form-control" name="partyBusinessRules" id="field_partyBusinessRules"
+                           formControlName="partyBusinessRules"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.reportTemplates" for="field_reportTemplates">Report Templates</label>
+                    <input type="text" class="form-control" name="reportTemplates" id="field_reportTemplates"
+                           formControlName="reportTemplates"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.detachable" for="field_detachable">Detachable</label>
+                    <input type="text" class="form-control" name="detachable" id="field_detachable"
+                           formControlName="detachable"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.parentTransactionType" for="field_parentTransactionType">Parent Transaction Type</label>
+                    <input type="text" class="form-control" name="parentTransactionType" id="field_parentTransactionType"
+                           formControlName="parentTransactionType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.internalCode" for="field_internalCode">Internal Code</label>
+                    <input type="text" class="form-control" name="internalCode" id="field_internalCode"
+                           formControlName="internalCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.version" for="field_version">Version</label>
+                    <input type="text" class="form-control" name="version" id="field_version"
+                           formControlName="version"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.beginLifespanVersion" for="field_beginLifespanVersion">Begin Lifespan Version</label>
+                    <input type="text" class="form-control" name="beginLifespanVersion" id="field_beginLifespanVersion"
+                           formControlName="beginLifespanVersion"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.endLifespanVersion" for="field_endLifespanVersion">End Lifespan Version</label>
+                    <input type="text" class="form-control" name="endLifespanVersion" id="field_endLifespanVersion"
+                           formControlName="endLifespanVersion"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.metadata.tranIndex" for="field_tranIndex">Tran Index</label>
+                    <input type="text" class="form-control" name="tranIndex" id="field_tranIndex"
+                           formControlName="tranIndex"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

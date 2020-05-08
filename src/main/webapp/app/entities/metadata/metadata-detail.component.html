@@ -1,0 +1,199 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="metadata">
+            <h2><span jhiTranslate="egisexternalApp.metadata.detail.title">Metadata</span> {{metadata.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.metadata.hjtype">Hjtype</span></dt>
+                <dd>
+                    <span>{{metadata.hjtype}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.code">Code</span></dt>
+                <dd>
+                    <span>{{metadata.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.label">Label</span></dt>
+                <dd>
+                    <span>{{metadata.label}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.descr">Descr</span></dt>
+                <dd>
+                    <span>{{metadata.descr}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.category">Category</span></dt>
+                <dd>
+                    <span>{{metadata.category}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.generalTerm">General Term</span></dt>
+                <dd>
+                    <span>{{metadata.generalTerm}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.sortOrder">Sort Order</span></dt>
+                <dd>
+                    <span>{{metadata.sortOrder}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.hidden">Hidden</span></dt>
+                <dd>
+                    <span>{{metadata.hidden}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.groupName">Group Name</span></dt>
+                <dd>
+                    <span>{{metadata.groupName}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.workflow">Workflow</span></dt>
+                <dd>
+                    <span>{{metadata.workflow}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.groupCode">Group Code</span></dt>
+                <dd>
+                    <span>{{metadata.groupCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.normalDuration">Normal Duration</span></dt>
+                <dd>
+                    <span>{{metadata.normalDuration}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.lapsedDuration">Lapsed Duration</span></dt>
+                <dd>
+                    <span>{{metadata.lapsedDuration}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.maxDuration">Max Duration</span></dt>
+                <dd>
+                    <span>{{metadata.maxDuration}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.rightType">Right Type</span></dt>
+                <dd>
+                    <span>{{metadata.rightType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.rightTypeMultiple">Right Type Multiple</span></dt>
+                <dd>
+                    <span>{{metadata.rightTypeMultiple}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.rightTypeOther">Right Type Other</span></dt>
+                <dd>
+                    <span>{{metadata.rightTypeOther}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.createNewRrs">Create New Rrs</span></dt>
+                <dd>
+                    <span>{{metadata.createNewRrs}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.modifyActiveRrrs">Modify Active Rrrs</span></dt>
+                <dd>
+                    <span>{{metadata.modifyActiveRrrs}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.relatedActiveRrrs">Related Active Rrrs</span></dt>
+                <dd>
+                    <span>{{metadata.relatedActiveRrrs}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.dischargeActiveRrrs">Discharge Active Rrrs</span></dt>
+                <dd>
+                    <span>{{metadata.dischargeActiveRrrs}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.blockedActiveRrrs">Blocked Active Rrrs</span></dt>
+                <dd>
+                    <span>{{metadata.blockedActiveRrrs}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.metaType">Meta Type</span></dt>
+                <dd>
+                    <span>{{metadata.metaType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.sourcePartyType">Source Party Type</span></dt>
+                <dd>
+                    <span>{{metadata.sourcePartyType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.targetPartyType">Target Party Type</span></dt>
+                <dd>
+                    <span>{{metadata.targetPartyType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.otherPartyType">Other Party Type</span></dt>
+                <dd>
+                    <span>{{metadata.otherPartyType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.relatedTransactionCode">Related Transaction Code</span></dt>
+                <dd>
+                    <span>{{metadata.relatedTransactionCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.cashierTransactionCode">Cashier Transaction Code</span></dt>
+                <dd>
+                    <span>{{metadata.cashierTransactionCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.feePaymentCodes">Fee Payment Codes</span></dt>
+                <dd>
+                    <span>{{metadata.feePaymentCodes}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.mandatoryDocsCodes">Mandatory Docs Codes</span></dt>
+                <dd>
+                    <span>{{metadata.mandatoryDocsCodes}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.mandatoryScanOutgoingDocsCodes">Mandatory Scan Outgoing Docs Codes</span></dt>
+                <dd>
+                    <span>{{metadata.mandatoryScanOutgoingDocsCodes}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.createMutateProperty">Create Mutate Property</span></dt>
+                <dd>
+                    <span>{{metadata.createMutateProperty}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.referencedProperties">Referenced Properties</span></dt>
+                <dd>
+                    <span>{{metadata.referencedProperties}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.priorRequiredTransactions">Prior Required Transactions</span></dt>
+                <dd>
+                    <span>{{metadata.priorRequiredTransactions}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.createNewParty">Create New Party</span></dt>
+                <dd>
+                    <span>{{metadata.createNewParty}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.partyBusinessRules">Party Business Rules</span></dt>
+                <dd>
+                    <span>{{metadata.partyBusinessRules}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.reportTemplates">Report Templates</span></dt>
+                <dd>
+                    <span>{{metadata.reportTemplates}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.detachable">Detachable</span></dt>
+                <dd>
+                    <span>{{metadata.detachable}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.parentTransactionType">Parent Transaction Type</span></dt>
+                <dd>
+                    <span>{{metadata.parentTransactionType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.internalCode">Internal Code</span></dt>
+                <dd>
+                    <span>{{metadata.internalCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.version">Version</span></dt>
+                <dd>
+                    <span>{{metadata.version}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.beginLifespanVersion">Begin Lifespan Version</span></dt>
+                <dd>
+                    <span>{{metadata.beginLifespanVersion}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.endLifespanVersion">End Lifespan Version</span></dt>
+                <dd>
+                    <span>{{metadata.endLifespanVersion}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.metadata.tranIndex">Tran Index</span></dt>
+                <dd>
+                    <span>{{metadata.tranIndex}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/metadata', metadata.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

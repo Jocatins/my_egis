@@ -1,0 +1,192 @@
+{
+    "name": "Metadata",
+    "fields": [
+        {
+            "fieldName": "hjtype",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "label",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descr",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "category",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "generalTerm",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sortOrder",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hidden",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "groupName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "workflow",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "groupCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "normalDuration",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lapsedDuration",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "maxDuration",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rightType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rightTypeMultiple",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rightTypeOther",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createNewRrs",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modifyActiveRrrs",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "relatedActiveRrrs",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dischargeActiveRrrs",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "blockedActiveRrrs",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "metaType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sourcePartyType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "targetPartyType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "otherPartyType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "relatedTransactionCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cashierTransactionCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "feePaymentCodes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mandatoryDocsCodes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mandatoryScanOutgoingDocsCodes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createMutateProperty",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "referencedProperties",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "priorRequiredTransactions",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createNewParty",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "partyBusinessRules",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "reportTemplates",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "detachable",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "parentTransactionType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "internalCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "version",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "beginLifespanVersion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "endLifespanVersion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tranIndex",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200508042121",
+    "entityTableName": "metadata",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

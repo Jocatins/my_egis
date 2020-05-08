@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    
+    <!--
+        Added the entity Metadata.
+    -->
+    <changeSet id="20200508042121-1" author="jhipster">
+        <createTable tableName="metadata">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="hjtype" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="label" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="descr" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="category" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="general_term" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="sort_order" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="hidden" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="group_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="workflow" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="group_code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="normal_duration" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="lapsed_duration" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="max_duration" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="right_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="right_type_multiple" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="right_type_other" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="create_new_rrs" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="modify_active_rrrs" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="related_active_rrrs" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="discharge_active_rrrs" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="blocked_active_rrrs" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="meta_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="source_party_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="target_party_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="other_party_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="related_transaction_code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cashier_transaction_code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="fee_payment_codes" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="mandatory_docs_codes" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="mandatory_scan_outgoing_docs_codes" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="create_mutate_property" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="referenced_properties" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="prior_required_transactions" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="create_new_party" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="party_business_rules" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="report_templates" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="detachable" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="parent_transaction_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="internal_code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="version" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="begin_lifespan_version" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="end_lifespan_version" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="tran_index" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20200508042121-1-relations" author="jhipster">
+
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20200508042121-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/metadata.csv"
+                  separator=";"
+                  tableName="metadata">
+            <column name="id" type="numeric"/>
+            <column name="hjtype" type="string"/>
+            <column name="code" type="string"/>
+            <column name="label" type="string"/>
+            <column name="descr" type="string"/>
+            <column name="category" type="string"/>
+            <column name="general_term" type="string"/>
+            <column name="sort_order" type="string"/>
+            <column name="hidden" type="string"/>
+            <column name="group_name" type="string"/>
+            <column name="workflow" type="string"/>
+            <column name="group_code" type="string"/>
+            <column name="normal_duration" type="string"/>
+            <column name="lapsed_duration" type="string"/>
+            <column name="max_duration" type="string"/>
+            <column name="right_type" type="string"/>
+            <column name="right_type_multiple" type="string"/>
+            <column name="right_type_other" type="string"/>
+            <column name="create_new_rrs" type="string"/>
+            <column name="modify_active_rrrs" type="string"/>
+            <column name="related_active_rrrs" type="string"/>
+            <column name="discharge_active_rrrs" type="string"/>
+            <column name="blocked_active_rrrs" type="string"/>
+            <column name="meta_type" type="string"/>
+            <column name="source_party_type" type="string"/>
+            <column name="target_party_type" type="string"/>
+            <column name="other_party_type" type="string"/>
+            <column name="related_transaction_code" type="string"/>
+            <column name="cashier_transaction_code" type="string"/>
+            <column name="fee_payment_codes" type="string"/>
+            <column name="mandatory_docs_codes" type="string"/>
+            <column name="mandatory_scan_outgoing_docs_codes" type="string"/>
+            <column name="create_mutate_property" type="string"/>
+            <column name="referenced_properties" type="string"/>
+            <column name="prior_required_transactions" type="string"/>
+            <column name="create_new_party" type="string"/>
+            <column name="party_business_rules" type="string"/>
+            <column name="report_templates" type="string"/>
+            <column name="detachable" type="string"/>
+            <column name="parent_transaction_type" type="string"/>
+            <column name="internal_code" type="string"/>
+            <column name="version" type="string"/>
+            <column name="begin_lifespan_version" type="string"/>
+            <column name="end_lifespan_version" type="string"/>
+            <column name="tran_index" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

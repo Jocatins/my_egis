@@ -47,6 +47,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'dictionary',
         loadChildren: () => import('./dictionary/dictionary.module').then(m => m.EgisexternalDictionaryModule)
+      },
+      {
+        path: 'metadata',
+        loadChildren: () => import('./metadata/metadata.module').then(m => m.EgisexternalMetadataModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

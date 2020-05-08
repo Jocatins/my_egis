@@ -1,0 +1,66 @@
+{
+  "egisexternalApp": {
+    "metadata": {
+      "home": {
+        "title": "Metadata",
+        "createLabel": "Create a new Metadata",
+        "createOrEditLabel": "Create or edit a Metadata",
+        "search": "Search for Metadata",
+        "notFound": "No Metadata found"
+      },
+      "created": "A new Metadata is created with identifier {{ param }}",
+      "updated": "A Metadata is updated with identifier {{ param }}",
+      "deleted": "A Metadata is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Metadata {{ id }}?"
+      },
+      "detail": {
+        "title": "Metadata"
+      },
+      "hjtype": "Hjtype",
+      "code": "Code",
+      "label": "Label",
+      "descr": "Descr",
+      "category": "Category",
+      "generalTerm": "General Term",
+      "sortOrder": "Sort Order",
+      "hidden": "Hidden",
+      "groupName": "Group Name",
+      "workflow": "Workflow",
+      "groupCode": "Group Code",
+      "normalDuration": "Normal Duration",
+      "lapsedDuration": "Lapsed Duration",
+      "maxDuration": "Max Duration",
+      "rightType": "Right Type",
+      "rightTypeMultiple": "Right Type Multiple",
+      "rightTypeOther": "Right Type Other",
+      "createNewRrs": "Create New Rrs",
+      "modifyActiveRrrs": "Modify Active Rrrs",
+      "relatedActiveRrrs": "Related Active Rrrs",
+      "dischargeActiveRrrs": "Discharge Active Rrrs",
+      "blockedActiveRrrs": "Blocked Active Rrrs",
+      "metaType": "Meta Type",
+      "sourcePartyType": "Source Party Type",
+      "targetPartyType": "Target Party Type",
+      "otherPartyType": "Other Party Type",
+      "relatedTransactionCode": "Related Transaction Code",
+      "cashierTransactionCode": "Cashier Transaction Code",
+      "feePaymentCodes": "Fee Payment Codes",
+      "mandatoryDocsCodes": "Mandatory Docs Codes",
+      "mandatoryScanOutgoingDocsCodes": "Mandatory Scan Outgoing Docs Codes",
+      "createMutateProperty": "Create Mutate Property",
+      "referencedProperties": "Referenced Properties",
+      "priorRequiredTransactions": "Prior Required Transactions",
+      "createNewParty": "Create New Party",
+      "partyBusinessRules": "Party Business Rules",
+      "reportTemplates": "Report Templates",
+      "detachable": "Detachable",
+      "parentTransactionType": "Parent Transaction Type",
+      "internalCode": "Internal Code",
+      "version": "Version",
+      "beginLifespanVersion": "Begin Lifespan Version",
+      "endLifespanVersion": "End Lifespan Version",
+      "tranIndex": "Tran Index"
+    }
+  }
+}

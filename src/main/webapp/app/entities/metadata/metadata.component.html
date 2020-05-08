@@ -1,0 +1,156 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="egisexternalApp.metadata.home.title">Metadata</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-metadata" [routerLink]="['/metadata/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="egisexternalApp.metadata.home.createLabel">
+            Create a new Metadata
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'egisexternalApp.metadata.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="metadata?.length === 0">
+        <span jhiTranslate="egisexternalApp.metadata.home.notFound">No metadata found</span>
+    </div>
+    <div class="table-responsive" *ngIf="metadata?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.hjtype">Hjtype</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.code">Code</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.label">Label</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.descr">Descr</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.category">Category</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.generalTerm">General Term</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.sortOrder">Sort Order</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.hidden">Hidden</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.groupName">Group Name</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.workflow">Workflow</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.groupCode">Group Code</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.normalDuration">Normal Duration</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.lapsedDuration">Lapsed Duration</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.maxDuration">Max Duration</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.rightType">Right Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.rightTypeMultiple">Right Type Multiple</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.rightTypeOther">Right Type Other</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.createNewRrs">Create New Rrs</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.modifyActiveRrrs">Modify Active Rrrs</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.relatedActiveRrrs">Related Active Rrrs</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.dischargeActiveRrrs">Discharge Active Rrrs</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.blockedActiveRrrs">Blocked Active Rrrs</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.metaType">Meta Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.sourcePartyType">Source Party Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.targetPartyType">Target Party Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.otherPartyType">Other Party Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.relatedTransactionCode">Related Transaction Code</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.cashierTransactionCode">Cashier Transaction Code</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.feePaymentCodes">Fee Payment Codes</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.mandatoryDocsCodes">Mandatory Docs Codes</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.mandatoryScanOutgoingDocsCodes">Mandatory Scan Outgoing Docs Codes</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.createMutateProperty">Create Mutate Property</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.referencedProperties">Referenced Properties</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.priorRequiredTransactions">Prior Required Transactions</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.createNewParty">Create New Party</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.partyBusinessRules">Party Business Rules</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.reportTemplates">Report Templates</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.detachable">Detachable</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.parentTransactionType">Parent Transaction Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.internalCode">Internal Code</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.version">Version</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.beginLifespanVersion">Begin Lifespan Version</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.endLifespanVersion">End Lifespan Version</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.metadata.tranIndex">Tran Index</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let metadata of metadata ;trackBy: trackId">
+                <td><a [routerLink]="['/metadata', metadata.id, 'view' ]">{{metadata.id}}</a></td>
+                <td>{{metadata.hjtype}}</td>
+                <td>{{metadata.code}}</td>
+                <td>{{metadata.label}}</td>
+                <td>{{metadata.descr}}</td>
+                <td>{{metadata.category}}</td>
+                <td>{{metadata.generalTerm}}</td>
+                <td>{{metadata.sortOrder}}</td>
+                <td>{{metadata.hidden}}</td>
+                <td>{{metadata.groupName}}</td>
+                <td>{{metadata.workflow}}</td>
+                <td>{{metadata.groupCode}}</td>
+                <td>{{metadata.normalDuration}}</td>
+                <td>{{metadata.lapsedDuration}}</td>
+                <td>{{metadata.maxDuration}}</td>
+                <td>{{metadata.rightType}}</td>
+                <td>{{metadata.rightTypeMultiple}}</td>
+                <td>{{metadata.rightTypeOther}}</td>
+                <td>{{metadata.createNewRrs}}</td>
+                <td>{{metadata.modifyActiveRrrs}}</td>
+                <td>{{metadata.relatedActiveRrrs}}</td>
+                <td>{{metadata.dischargeActiveRrrs}}</td>
+                <td>{{metadata.blockedActiveRrrs}}</td>
+                <td>{{metadata.metaType}}</td>
+                <td>{{metadata.sourcePartyType}}</td>
+                <td>{{metadata.targetPartyType}}</td>
+                <td>{{metadata.otherPartyType}}</td>
+                <td>{{metadata.relatedTransactionCode}}</td>
+                <td>{{metadata.cashierTransactionCode}}</td>
+                <td>{{metadata.feePaymentCodes}}</td>
+                <td>{{metadata.mandatoryDocsCodes}}</td>
+                <td>{{metadata.mandatoryScanOutgoingDocsCodes}}</td>
+                <td>{{metadata.createMutateProperty}}</td>
+                <td>{{metadata.referencedProperties}}</td>
+                <td>{{metadata.priorRequiredTransactions}}</td>
+                <td>{{metadata.createNewParty}}</td>
+                <td>{{metadata.partyBusinessRules}}</td>
+                <td>{{metadata.reportTemplates}}</td>
+                <td>{{metadata.detachable}}</td>
+                <td>{{metadata.parentTransactionType}}</td>
+                <td>{{metadata.internalCode}}</td>
+                <td>{{metadata.version}}</td>
+                <td>{{metadata.beginLifespanVersion}}</td>
+                <td>{{metadata.endLifespanVersion}}</td>
+                <td>{{metadata.tranIndex}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/metadata', metadata.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/metadata', metadata.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(metadata)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
