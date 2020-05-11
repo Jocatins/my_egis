@@ -1,365 +1,528 @@
+<h5 class="sub-header mt-4 mb-4">Application Summary</h5>            
 <div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-    <h6 class="text-right">{{message}}</h6>
-    <h1 class="text-capitalize text-center" jhiTranslate="applicationtransdetail.title">Title</h1>
-    <h5 class="text-center" jhiTranslate="applicationtransdetail.subtitle">Subtitle</h5>
-    <hr/>
-     Application Summary Here ...
+    <div class="col-12">
+        <blockquote class="blockquote">
+            <p class="mb-0">
+                It is a punishable offence to provide any false information and/or make any false statements or claim when completing this form. Where it is subsequently discovered that a Certificate of Occupancy was issued based on false or inaccurate information, the Governor (or his appointee) may in his sole discretion, revoke such Certificate of Occupancy.
+            </p>
+        </blockquote> 
+        <div class="alert alert-info">
+            The Governor reserves the right to reject any application for not properly or fully completed and shall not incur any liability for any such revocation. The information you supply on this form is public knowledge and may be published in the media.
+        </div>
+        
+        <!-- <h6 class="text-right">{{message}}</h6>
+        <h1 class="text-capitalize text-center" jhiTranslate="applicationtransdetail.title">Title</h1>
+        <h5 class="text-center" jhiTranslate="applicationtransdetail.subtitle">Subtitle</h5> -->  
 
-     Applicants ...
-      <div *ngFor="let party of parties" >
-        <dl class="row-md jh-entity-details">
-            <dt><span jhiTranslate="egisexternalApp.party.partyName">Party Name</span></dt>
-            <dd>
-                <span>{{party.partyName}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.shareNominator">Share Nominator</span></dt>
-            <dd>
-                <span>{{party.shareNominator}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.shareDenominator">Share Denominator</span></dt>
-            <dd>
-                <span>{{party.shareDenominator}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.taxExempt">Tax Exempt</span></dt>
-            <dd>
-                <span>{{party.taxExempt}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.otherName">Other Name</span></dt>
-            <dd>
-                <span>{{party.otherName}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.fax">Fax</span></dt>
-            <dd>
-                <span>{{party.fax}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.email">Email</span></dt>
-            <dd>
-                <span>{{party.email}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.phoneNumber">Phone Number</span></dt>
-            <dd>
-                <span>{{party.phoneNumber}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.payerId">Payer Id</span></dt>
-            <dd>
-                <span>{{party.payerId}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.taxPayerNumber">Tax Payer Number</span></dt>
-            <dd>
-                <span>{{party.taxPayerNumber}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.comments">Comments</span></dt>
-            <dd>
-                <span>{{party.comments}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.personIdDate">Person Id Date</span></dt>
-            <dd>
-                <span>{{party.personIdDate}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.personIdExpirationDate">Person Id Expiration Date</span></dt>
-            <dd>
-                <span>{{party.personIdExpirationDate}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.rcNumber">Rc Number</span></dt>
-            <dd>
-                <span>{{party.rcNumber}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.organization">Organization</span></dt>
-            <dd>
-                <span>{{party.organization}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.businessNature">Business Nature</span></dt>
-            <dd>
-                <span>{{party.businessNature}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.birthPlace">Birth Place</span></dt>
-            <dd>
-                <span>{{party.birthPlace}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.birthDate">Birth Date</span></dt>
-            <dd>
-                <span>{{party.birthDate}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.firstName">First Name</span></dt>
-            <dd>
-                <span>{{party.firstName}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.middleName">Middle Name</span></dt>
-            <dd>
-                <span>{{party.middleName}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.lastName">Last Name</span></dt>
-            <dd>
-                <span>{{party.lastName}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.driverLicence">Driver Licence</span></dt>
-            <dd>
-                <span>{{party.driverLicence}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.professionRegNo">Profession Reg No</span></dt>
-            <dd>
-                <span>{{party.professionRegNo}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.occupation">Occupation</span></dt>
-            <dd>
-                <span>{{party.occupation}}</span>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.address">Address</span></dt>
-            <dd>
-                <div *ngIf="party.address">
-                    <a [routerLink]="['/address', party.address?.id, 'view']">{{party.address?.id}}</a>
+        <h6 class="sub-header-style-2 pt-3"><span>Applicant(s) Information</span></h6>
+        <div *ngFor="let party of parties" >
+            <div class="jh-entity-details">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.partyType">Party Type</span></h6>
+                        <div class="value" *ngIf="party.partyType">{{party.partyType?.label}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.partyRoleType">Legal Role</span></h6>
+                        <div class="value" *ngIf="party.partyRoleType">{{party.partyRoleType?.label}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.primaryParty">Primary Party</span></h6>
+                        <div class="value" *ngIf="party.primaryParty">{{party.primaryParty?.label}}</div>
+                    </div>
                 </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.partyType">Party Type</span></dt>
-            <dd>
-                <div *ngIf="party.partyType">
-                    {{party.partyType?.label}}
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.organization">Organization Name</span></h6>
+                        <div class="value">{{party.organization}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.rcNumber">RC Number</span></h6>
+                        <div class="value">{{party.rcNumber}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.businessNature">Nature of Business</span></h6>
+                        <div class="value">{{party.businessNature}}</div>
+                    </div>
                 </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.partyRoleType">Party Role Type</span></dt>
-            <dd>
-                <div *ngIf="party.partyRoleType">
-                    {{party.partyRoleType?.label}}
+                <div class="row">
+                    <div class="col-md-2">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.personTitle">Person Title</span></h6>
+                        <div class="value" *ngIf="party.personTitle">{{party.personTitle?.label}}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.lastName">Last Name</span></h6>
+                        <div class="value">{{party.lastName}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.firstName">First Name</span></h6>
+                        <div class="value">{{party.firstName}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.middleName">Middle Name</span></h6>
+                        <div class="value">{{party.middleName}}</div>
+                    </div>
                 </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.partySubRoleType">Party Sub Role Type</span></dt>
-            <dd>
-                <div *ngIf="party.partySubRoleType">
-                    {{party.partySubRoleType?.label}}
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.gender">Gender</span></h6>
+                        <div class="value" *ngIf="party.gender">{{party.gender?.label}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.occupation">Occupation</span></h6>
+                        <div class="value">{{party.occupation}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.birthPlace">Birth Place</span></h6>
+                        <div class="value">{{party.birthPlace}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.birthDate">Birth Date</span></h6>
+                        <div class="value">{{party.birthDate}}</div>
+                    </div>
                 </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.deliveryType">Delivery Type</span></dt>
-            <dd>
-                <div *ngIf="party.deliveryType">
-                    {{party.deliveryType?.label}}
-                </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.primaryParty">Primary Party</span></dt>
-            <dd>
-                <div *ngIf="party.primaryParty">
-                    {{party.primaryParty?.label}}
-                </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.personIdType">Person Id Type</span></dt>
-            <dd>
-                <div *ngIf="party.personIdType">
-                    {{party.personIdType?.label}}
-                </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.personType">Person Type</span></dt>
-            <dd>
-                <div *ngIf="party.personType">
-                    {{party.personType?.label}}
-                </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.emailType">Email Type</span></dt>
-            <dd>
-                <div *ngIf="party.emailType">
-                    {{party.emailType?.label}}
-                </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.personIdIssuedBy">Person Id Issued By</span></dt>
-            <dd>
-                <div *ngIf="party.personIdIssuedBy">
-                    {{party.personIdIssuedBy?.label}}
-                </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.personTitle">Person Title</span></dt>
-            <dd>
-                <div *ngIf="party.personTitle">
-                    {{party.personTitle?.label}}
-                </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.gender">Gender</span></dt>
-            <dd>
-                <div *ngIf="party.gender">
-                    {{party.gender?.label}}
-                </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.civilState">Civil State</span></dt>
-            <dd>
-                <div *ngIf="party.civilState">
-                    {{party.civilState?.label}}
-                </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.driverLicenseRegion">Driver License Region</span></dt>
-            <dd>
-                <div *ngIf="party.driverLicenseRegion">
-                    {{party.driverLicenseRegion?.label}}
-                </div>
-            </dd>
-            <dt><span jhiTranslate="egisexternalApp.party.representativeId">Representative Id</span></dt>
-            <dd>
-                <div *ngIf="party.representativeId">
-                    {{party.representativeId?.label}}
-                </div>
-            </dd>
-        </dl>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.civilState">State of Origin</span></h6>
+                        <div class="value" *ngIf="party.civilState">{{party.civilState?.label}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Marital Status</span></h6>
+                        <div class="value"> </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>ID Document Number</span></h6>
+                        <div class="value"> </div>
+                    </div>
+                    <div class="col-md-3">
 
-        <br/>
-    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.personIdType">ID Document Type</span></h6>
+                        <div class="value" *ngIf="party.personIdType">{{party.personIdType?.label}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.personIdDate">ID Document Issued Date</span></h6>
+                        <div class="value">{{party.personIdDate}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.personIdExpirationDate">ID Document Expiration Date</span></h6>
+                        <div class="value">{{party.personIdExpirationDate}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.personIdIssuedBy">ID Document Issued By</span></h6>
+                        <div class="value" *ngIf="party.personIdIssuedBy">{{party.personIdIssuedBy?.label}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.payerId">Payer Id</span></h6>
+                        <div class="value">{{party.payerId}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.taxPayerNumber">Tax Payer Number</span></h6>
+                        <div class="value">{{party.taxPayerNumber}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>PAYE Number</span></h6>
+                        <div class="value"> </div>
+                    </div>
+                    <div class="col-md-3">
 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.address">Address</span></h6>
+                        <div class="value" *ngIf="parcel.address"><a [routerLink]="['/address', parcel.address?.id, 'view']">{{parcel.address?.id}}</a></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.email">Email</span></h6>
+                        <div class="value">{{party.email}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.party.phoneNumber">Phone Number</span></h6>
+                        <div class="value">{{party.phoneNumber}}</div>
+                    </div>
+                    <div class="col-md-3">
 
-     Property Information ...
-     <div class="row justify-content-center">
-        <div class="col-8">
-            <div *ngIf="parcel">
-                <h2><span jhiTranslate="egisexternalApp.parcel.detail.title">Parcel</span> {{parcel.id}}</h2>
-                <hr>
-                <jhi-alert-error></jhi-alert-error>
-                <dl class="row-md jh-entity-details">
-                    <dt><span jhiTranslate="egisexternalApp.parcel.label">Label</span></dt>
-                    <dd>
-                        <span>{{parcel.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.area">Area</span></dt>
-                    <dd>
-                        <span>{{parcel.area}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.spatialUnitType">Spatial Unit Type</span></dt>
-                    <dd>
-                        <span>{{parcel.spatialUnitType.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.registrationOfficeDictionary">Registration Office Dictionary</span></dt>
-                    <dd>
-                        <span>{{parcel.registrationOfficeDictionary}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.surveyType">Survey Type</span></dt>
-                    <dd>
-                        <span>{{parcel.surveyType.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.surveyDate">Survey Date</span></dt>
-                    <dd>
-                        <span>{{parcel.surveyDate}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.propertyType">Property Type</span></dt>
-                    <dd>
-                        <span *ngIf="parcel.propertyType !== null" >{{parcel.propertyType.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.accommodation">Accommodation</span></dt>
-                    <dd>
-                        <span>{{parcel.accommodation}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.tenureType">Tenure Type</span></dt>
-                    <dd>
-                        <span *ngIf="parcel.tenureType !== null">{{parcel.tenureType.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.description">Description</span></dt>
-                    <dd>
-                        <span>{{parcel.description}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.propertyArea">Property Area</span></dt>
-                    <dd>
-                        <span>{{parcel.propertyArea}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.location">Location</span></dt>
-                    <dd>
-                        <span *ngIf="parcel.location !== null">{{parcel.location.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.builtUpAreaType">Built Up Area Type</span></dt>
-                    <dd>
-                        <span *ngIf="parcel.builtUpAreaType !== null" >{{parcel.builtUpAreaType.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.planNumber">Plan Number</span></dt>
-                    <dd>
-                        <span>{{parcel.planNumber}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.measurementUnitType">Measurement Unit Type</span></dt>
-                    <dd>
-                        <span  *ngIf="parcel.measurementUnitType !== null" >{{parcel.measurementUnitType.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.premiumValue">Premium Value</span></dt>
-                    <dd>
-                        <span>{{parcel.premiumValue}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.landUseCategory">Land Use Category</span></dt>
-                    <dd>
-                        <span  *ngIf="parcel.landUseCategory !== null"  >{{parcel.landUseCategory.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.landUseType">Land Use Type</span></dt>
-                    <dd>
-                        <span  *ngIf="parcel.builtUpAreaType !== null" >{{parcel.landUseType.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.developmentStatus">Development Status</span></dt>
-                    <dd>
-                        <span *ngIf="parcel.developmentStatus !== null">{{parcel.developmentStatus.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.coordinateN">Coordinate N</span></dt>
-                    <dd>
-                        <span>{{parcel.coordinateN}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.coordinateS">Coordinate S</span></dt>
-                    <dd>
-                        <span>{{parcel.coordinateS}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.lagosSheetNumber">Lagos Sheet Number</span></dt>
-                    <dd>
-                        <span>{{parcel.lagosSheetNumber}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.allocation">Allocation</span></dt>
-                    <dd>
-                        <span>{{parcel.allocation}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.location1">Location 1</span></dt>
-                    <dd>
-                        <span>{{parcel.location1}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.unitNumber">Unit Number</span></dt>
-                    <dd>
-                        <span>{{parcel.unitNumber}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.name">Name</span></dt>
-                    <dd>
-                        <span>{{parcel.name}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.registerType">Register Type</span></dt>
-                    <dd>
-                        <span *ngIf="parcel.registerType !== null">{{parcel.registerType.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.valuation">Valuation</span></dt>
-                    <dd>
-                        <span>{{parcel.valuation}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.comments">Comments</span></dt>
-                    <dd>
-                        <span>{{parcel.comments}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.legalDescription">Legal Description</span></dt>
-                    <dd>
-                        <span>{{parcel.legalDescription}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.meansOfAcq">Means Of Acq</span></dt>
-                    <dd>
-                        <span *ngIf="parcel.meansOfAcq !== null">{{parcel.meansOfAcq.label}}</span>
-                    </dd>
-                    <dt><span jhiTranslate="egisexternalApp.parcel.address">Address</span></dt>
-                    <dd>
-                        <div *ngIf="parcel.address">
-                            <a [routerLink]="['/address', parcel.address?.id, 'view']">{{parcel.address?.id}}</a>
-                        </div>
-                    </dd>
-                </dl>
-
-                <button type="submit"
-                        (click)="previousState()"
-                        class="btn btn-info">
-                    <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-                </button>
-
-                <button type="button"
-                        [routerLink]="['/parcel', parcel.id, 'edit']"
-                        class="btn btn-primary">
-                    <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-                </button>
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col-md-2">
+                        <h6 class="field"><span>Unit Number</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <h6 class="field"><span>Block Number</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <h6 class="field"><span>Plot Number</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Estate Name</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Scheme Name</span></h6>
+                        <div class="value"></div>
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col-md-2">
+                        <h6 class="field"><span>Street Number</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="field"><span>Street Name</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Street Type</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>District</span></h6>
+                        <div class="value"></div>
+                    </div>
+                </div>              
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Town</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Village</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Ward</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Local Government Area</span></h6>
+                        <div class="value"></div>
+                    </div>
+                </div>              
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span>State</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Country</span></h6>
+                        <div class="value"></div>
+                    </div>
+                </div>
             </div>
+            <!-- <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.party.partyName">Party Name</span></dt>
+                <dd>
+                    <span>{{party.partyName}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.shareNominator">Share Nominator</span></dt>
+                <dd>
+                    <span>{{party.shareNominator}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.shareDenominator">Share Denominator</span></dt>
+                <dd>
+                    <span>{{party.shareDenominator}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.taxExempt">Tax Exempt</span></dt>
+                <dd>
+                    <span>{{party.taxExempt}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.otherName">Other Name</span></dt>
+                <dd>
+                    <span>{{party.otherName}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.fax">Fax</span></dt>
+                <dd>
+                    <span>{{party.fax}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.comments">Comments</span></dt>
+                <dd>
+                    <span>{{party.comments}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.driverLicence">Driver Licence</span></dt>
+                <dd>
+                    <span>{{party.driverLicence}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.professionRegNo">Profession Reg No</span></dt>
+                <dd>
+                    <span>{{party.professionRegNo}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.partySubRoleType">Party Sub Role Type</span></dt>
+                <dd>
+                    <div *ngIf="party.partySubRoleType">
+                        {{party.partySubRoleType?.label}}
+                    </div>
+                </dd> 
+                <dt><span jhiTranslate="egisexternalApp.party.deliveryType">Delivery Type</span></dt>
+                <dd>
+                    <div *ngIf="party.deliveryType">
+                        {{party.deliveryType?.label}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.personType">Person Type</span></dt>
+                <dd>
+                    <div *ngIf="party.personType">
+                        {{party.personType?.label}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.emailType">Email Type</span></dt>
+                <dd>
+                    <div *ngIf="party.emailType">
+                        {{party.emailType?.label}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.driverLicenseRegion">Driver License Region</span></dt>
+                <dd>
+                    <div *ngIf="party.driverLicenseRegion">
+                        {{party.driverLicenseRegion?.label}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.representativeId">Representative Id</span></dt>
+                <dd>
+                    <div *ngIf="party.representativeId">
+                        {{party.representativeId?.label}}
+                    </div>
+                </dd>
+            </dl> -->
+        </div>
+
+        <h6 class="sub-header-style-2 pt-3"><span>Property Information</span></h6>
+        <div *ngIf="parcel">
+            <!-- <span jhiTranslate="egisexternalApp.parcel.detail.title">Parcel</span> {{parcel.id}} -->
+            <jhi-alert-error></jhi-alert-error>
+            <div class="jh-entity-details">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Government Status</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.propertyType">Property Type</span></h6>
+                        <div class="value" *ngIf="parcel.propertyType !== null" >{{parcel.propertyType.label}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.description">Description</span></h6>
+                        <div class="value">{{parcel.description}}</div>
+                    </div>
+                    <div class="col-md-2">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.unitNumber">Unit Number</span></h6>
+                        <div class="value">{{parcel.unitNumber}}</div>
+                    </div>
+                    <div class="col-md-2">
+                        <h6 class="field"><span>Block Number</span></h6>
+                        <div class="value"> </div>
+                    </div>
+                    <div class="col-md-2">
+                        <h6 class="field"><span>Plot Number</span></h6>
+                        <div class="value"> </div>
+                    </div>
+                </div>               
+                <div class="row">
+                    <div class="col-md-2">
+                        <h6 class="field"><span>Street Number</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="field"><span>Street Name</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Street Type</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>District</span></h6>
+                        <div class="value"></div>
+                    </div>
+                </div>               
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Estate Name</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Scheme Name</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Ward</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Town</span></h6>
+                        <div class="value"></div>
+                    </div>
+                </div>              
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Local Government Area</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span>State</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.propertyArea">Property Area</span></h6>
+                        <div class="value">{{parcel.propertyArea}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.location">Location of Land</span></h6>
+                        <div class="value" *ngIf="parcel.location !== null">{{parcel.location.label}}</div>
+                    </div>
+                </div>             
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Village</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.accommodation">Accommodation</span></h6>
+                        <div class="value">{{parcel.accommodation}}</div>
+                    </div>
+                </div>              
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.valuation">Valuation</span></h6>
+                        <div class="value">{{parcel.valuation}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.premiumValue">Premium Value</span></h6>
+                        <div class="value">{{parcel.premiumValue}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.landUseCategory">Land Use Category</span></h6>
+                        <div class="value" *ngIf="parcel.landUseCategory !== null">{{parcel.landUseCategory.label}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.landUseType">Land Use Type</span></h6>
+                        <div class="value" *ngIf="parcel.builtUpAreaType !== null" >{{parcel.landUseType.label}}</div>
+                    </div>
+                </div>              
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span>Property Number</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.planNumber">Survey Plan Number</span></h6>
+                        <div class="value">{{parcel.planNumber}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.area">Area</span></h6>
+                        <div class="value">{{parcel.area}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.measurementUnitType">Measurement Unit Type</span></h6>
+                        <div class="value" *ngIf="parcel.measurementUnitType !== null">{{parcel.measurementUnitType.label}}</div>
+                    </div>
+                </div>              
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span>UPIN</span></h6>
+                        <div class="value"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.coordinateN">Coordinate N</span></h6>
+                        <div class="value">{{parcel.coordinateN}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.coordinateS">Coordinate E</span></h6>
+                        <div class="value">{{parcel.coordinateS}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.developmentStatus">Development Status</span></h6>
+                        <div class="value" *ngIf="parcel.developmentStatus !== null">{{parcel.developmentStatus.label}}</div>
+                    </div>
+                </div>              
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.tenureType">Tenure Type</span></h6>
+                        <div class="value" *ngIf="parcel.tenureType !== null">{{parcel.tenureType.label}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.builtUpAreaType">Built Up Area Type</span></h6>
+                        <div class="value" *ngIf="parcel.builtUpAreaType !== null" >{{parcel.builtUpAreaType.label}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.lagosSheetNumber">Lagos Sheet Number</span></h6>
+                        <div class="value">{{parcel.lagosSheetNumber}}</div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.allocation">Allocation</span></h6>
+                        <div class="value">{{parcel.allocation}}</div>
+                    </div>
+                </div> 
+            </div>
+            <!-- <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.parcel.label">Label</span></dt>
+                <dd>
+                    <span>{{parcel.label}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.spatialUnitType">Spatial Unit Type</span></dt>
+                <dd>
+                    <span>{{parcel.spatialUnitType.label}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.registrationOfficeDictionary">Registration Office Dictionary</span></dt>
+                <dd>
+                    <span>{{parcel.registrationOfficeDictionary}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.surveyType">Survey Type</span></dt>
+                <dd>
+                    <span>{{parcel.surveyType.label}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.surveyDate">Survey Date</span></dt>
+                <dd>
+                    <span>{{parcel.surveyDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.location1">Location 1</span></dt>
+                <dd>
+                    <span>{{parcel.location1}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.name">Name</span></dt>
+                <dd>
+                    <span>{{parcel.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.registerType">Register Type</span></dt>
+                <dd>
+                    <span *ngIf="parcel.registerType !== null">{{parcel.registerType.label}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.comments">Comments</span></dt>
+                <dd>
+                    <span>{{parcel.comments}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.legalDescription">Legal Description</span></dt>
+                <dd>
+                    <span>{{parcel.legalDescription}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.meansOfAcq">Means Of Acq</span></dt>
+                <dd>
+                    <span *ngIf="parcel.meansOfAcq !== null">{{parcel.meansOfAcq.label}}</span>
+                </dd>
+            </dl> -->
+            <label class="alert alert-secondary mt-4">
+                I attest that all information entered are accurate and have been reviewed by me. I also declare that I am liable for all information entered above. By clicking the "Submit" button, Asides form submitting of this application for processing, it also implies that I agree to abide by the terms and conditions that may be imposed as a result of this application and to any subsequent amendment of existing laws thereto.
+            </label>
+            <button type="submit" (click)="previousState()" class="btn btn-outline-secondary">
+                <fa-icon icon="chevron-left"></fa-icon> <span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+            <button type="button" [routerLink]="['/parcel', parcel.id, 'edit']" class="btn btn-outline-secondary">
+                <fa-icon icon="pencil-alt"></fa-icon> <span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
         </div>
     </div>
-
-     Supporting Docs ...
-
-
-  </div>
-  <div class="col-md-1"></div>
 </div>

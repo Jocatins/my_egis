@@ -1,1 +1,13 @@
 /* application-summary.component.scss */
+h6.field {
+  background-color: ghostwhite;
+  padding: 6px 14px 6px 14px;
+  border-bottom: solid thin #999;
+  margin-bottom: 0px;
+}
+
+.value {
+  padding: 6px 14px 6px 14px;
+  margin-bottom: 10px;
+  min-height: 30px;
+}

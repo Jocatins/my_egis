@@ -8,6 +8,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   display: inline-block;
+  background-color: red;
 }
 // .hide {
 //     display: none;
@@ -22,3 +23,7 @@
 // .red{ background: #ff0000; }
 // .green{ background: #228B22; }
 // .blue{ background: #0000ff; }
+
+#startFormDownloadWizard {
+  display: none;
+}

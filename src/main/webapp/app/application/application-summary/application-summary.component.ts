@@ -1,11 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { TransInfo } from '../model/transinfo.model';
-import { timeout, catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { Trans } from '../model/trans.model';
+// import { timeout, catchError } from 'rxjs/operators';
+// import { Observable } from 'rxjs';
+// import { Trans } from '../model/trans.model';
 import { IBatch } from 'app/shared/model/batch.model';
 import { IParcel } from 'app/shared/model/parcel.model';
 import { IEGISDIctionary } from '../model/egisdictionary.model';
@@ -30,7 +30,7 @@ export class ApplicationSummaryComponent implements OnInit {
   form: boolean;
   batch: IBatch;
   parcel: IParcel;
-  parties: IParty[]
+  parties: IParty[];
 
   spatialUnitLinkTypes: IEGISDIctionary[];
   landUseCategorys: IEGISDIctionary[];
@@ -73,11 +73,11 @@ export class ApplicationSummaryComponent implements OnInit {
     this.route.data.subscribe(({ batch }) => {
       this.batch = batch;
       this.parcel = this.batch.transactions[0].parcels[0];
-      this.parties = this.batch.parties
+      this.parties = this.batch.parties;
     });
   }
 }
 
 export class TabDisplay {
-  constructor(show1: boolean) {}
+  // constructor(show1: boolean) {}
 }

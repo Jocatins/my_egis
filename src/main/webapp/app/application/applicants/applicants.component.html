@@ -13,33 +13,35 @@
 <!-- <h6>Length of the array for parties = {{parties?.length}}</h6> -->
 
 <div class="table-responsive" *ngIf="parties?.length > 0">
-    <table class="table table-striped" aria-describedby="page-heading">
+    <table class="table table-striped table-sm" aria-describedby="page-heading">
         <thead>
             <tr>
-                <th scope="col"><span jhiTranslate="global.field.id">ID</span><fa-icon [icon]="'sort'"></fa-icon></th>
-                <th scope="col"><span jhiTranslate="egisexternalApp.party.partyType">Party Type</span><fa-icon [icon]="'sort'"></fa-icon></th>
-                <th scope="col"><span jhiTranslate="egisexternalApp.party.name">Name</span><fa-icon [icon]="'sort'"></fa-icon></th>
-                <th scope="col"></th>
+                <th scope="col"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.party.partyName">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th scope="col"><span jhiTranslate="egisexternalApp.party.partyType">Party Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th scope="col">Party Role <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th scope="col"> ??? <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th scope="col" class="text-right">Actions <fa-icon [icon]="'sort'"></fa-icon></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let party of parties ;trackBy: trackId">
                 <td><a [routerLink]="['/party', party.id, 'view' ]">{{party.id}}</a></td>
+                <td>{{party.name}}</td>
                 <td>{{party.partyType.label}}</td>
                 <td>{{party.partyRoleType.label}}</td>
-                <td>{{party.name}}</td>
                 <td>
                     <div *ngIf="party.person">
                         <a [routerLink]="['/person', party.person?.id, 'view' ]">{{party.person?.id}}</a>
-                    </div>
+                    </div>                   
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
-                        <button type="submit" (click)="editNewApplicant('edit',batch.id, party.id)" class="btn btn-primary btn-sm">
+                        <button type="submit" (click)="editNewApplicant('edit',batch.id, party.id)" class="btn btn-info btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon> <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit" (click)="deleteParty(party, batch.id)" class="btn btn-danger btn-sm">
-                            <fa-icon [icon]="'times'"></fa-icon> <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            <fa-icon [icon]="'trash'"></fa-icon> <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </td>
