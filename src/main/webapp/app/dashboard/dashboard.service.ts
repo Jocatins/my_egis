@@ -211,8 +211,8 @@ export class DashboardService {
   }
 
   getTransMetadata(code: string) {
-    this.serverApiURL = '/api/backoffice/';
-    return this.http.get<any>(`${this.serverApiURL + 'transmetadata'}/?code=${code}`, { observe: 'response' });
+    this.serverApiURL = '/api/metadata/';
+    return this.http.get<any>(`${this.serverApiURL + 'getByCode'}/?code=${code}`, { observe: 'response' });
   }
 
   public fetchDictionaryValuesObj(category: string) {

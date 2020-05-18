@@ -26,7 +26,7 @@
                     <td><a [routerLink]="['/batch', batch.id, 'view' ]">{{batch.id}}</a></td>
                     <td>{{batch.batchNumber}} </td>
                     <td>{{batch.batchStatus.label}}</td>
-                    <td>{{  batch.moreData  }}</td>
+                    <td>{{  batch.transactions[0].comments }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

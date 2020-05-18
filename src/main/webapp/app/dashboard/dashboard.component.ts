@@ -11,8 +11,9 @@ import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { BatchService } from '../application/ext/batch-old/batch.service';
 import { SERVER_API_URL } from 'app/app.constants';
 import { timeout, catchError } from 'rxjs/operators';
-import { DashboardService } from './dashboard.service';
 import { BatchDeleteDialogComponent } from '../application/ext/batch-old/batch-delete-dialog.component';
+import { MetadataService } from 'app/entities/metadata/metadata.service';
+
 
 @Injectable({ providedIn: 'root' })
 @Component({
@@ -40,7 +41,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     protected parseLinks: JhiParseLinks,
     protected activatedRoute: ActivatedRoute,
     protected http: HttpClient,
-    protected dashboardService: DashboardService
+    protected metadata: MetadataService
   ) {
 
     this.batches = [];
@@ -82,22 +83,28 @@ export class DashboardComponent implements OnInit, OnDestroy {
         // alert(JSON.stringify(this.batches))
         this.batches.forEach((batch: IBatch) => {
           const code = batch.transactions[0].transactionCode;
-          // const simpleresourceUrl = BatchService.serverApiURL + 'api/backoffice/transmeatada?code=' + code;
-          this.dashboardService.getTransMetadata(code);
+          this.metadata.getByCode(code).subscribe(data =>{
+            // alert(JSON.stringify(data.body[0].label))
+            batch.transactions[0].comments = data.body[0].label
+          })
 
-          const callMetadata = this.dashboardService.getTransMetadata(code);
-          if (callMetadata !== null) {
-            callMetadata
-              .pipe(
-                timeout(2000),
-                catchError(ee => {
-                  return null;
-                })
-              )
-              .subscribe((dataMeta: any) => {
-                batch.moreData = code + ' - ' + JSON.parse(dataMeta.body.metadata).descr;
-              });
-          }
+
+
+         // const callMetadata = this.dashboardService.getTransMetadata(code);
+          // if (callMetadata !== null) {
+          //   callMetadata
+          //     .pipe(
+          //       timeout(2000),
+          //       catchError(ee => {
+          //         return null;
+          //       })
+          //     )
+          //     .subscribe((dataMeta: any) => {
+          //       batch.moreData = '';
+          //       // code + ' - ' + JSON.parse(dataMeta.body.metadata).descr;
+          //       alert(dataMeta.body)
+          //     });
+          // }
         });
       });
   }
