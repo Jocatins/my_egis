@@ -3,7 +3,7 @@ import { Route } from '@angular/router';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { ApplicationComponent } from './application.component';
 import { LANDING } from './landing/landing.route';
-import { OVERVIEW, OVERVIEW_BATCH } from './overview/overview.route';
+import { OVERVIEW } from './overview/overview.route';
 import { APPLICANTS } from './applicants/applicants.route';
 import { APPLICATION_SUMMARY } from './application-summary/application-summary.route';
 import { PROPERTY, PROPERTY_TEST, PROPERTY_TEST_P1, PROPERTY_TEST_P1_P2 } from './property/property.route';
@@ -34,7 +34,6 @@ export const APPLICATION_ROUTE: Route = {
     NEW_APPLICANT,
     NEW_PARCEL,
     NEW_EDIT_DOCUMENT,
-    OVERVIEW_BATCH,
     SUPP_DOCUMENTS,
     EDIT_APPLICANT_NEW,
     PROPERTY_TEST,

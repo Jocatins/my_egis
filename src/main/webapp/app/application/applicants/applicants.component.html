@@ -6,9 +6,9 @@
     </p>
 </blockquote>
 
-<ngb-alert [dismissible]="false" [type]="alert.info" class="alert alert-info" *ngIf="parties?.length === 0">
+<!-- <ngb-alert [dismissible]="false" [type]="alert.info" class="alert alert-info" *ngIf="parties?.length === 0">
     <span jhiTranslate="egisexternalApp.party.home.notFound">No parties found</span>
-</ngb-alert>
+</ngb-alert> -->
 
 <!-- <h6>Length of the array for parties = {{parties?.length}}</h6> -->
 
@@ -17,24 +17,18 @@
         <thead>
             <tr>
                 <th scope="col"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                <th scope="col"><span jhiTranslate="egisexternalApp.party.partyName">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th scope="col">Party / Applicant Name <fa-icon [icon]="'sort'"></fa-icon></th>
                 <th scope="col"><span jhiTranslate="egisexternalApp.party.partyType">Party Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
                 <th scope="col">Party Role <fa-icon [icon]="'sort'"></fa-icon></th>
-                <th scope="col"> ??? <fa-icon [icon]="'sort'"></fa-icon></th>
                 <th scope="col" class="text-right">Actions <fa-icon [icon]="'sort'"></fa-icon></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let party of parties ;trackBy: trackId">
                 <td><a [routerLink]="['/party', party.id, 'view' ]">{{party.id}}</a></td>
-                <td>{{party.name}}</td>
+                <td>{{party.organization}} {{party.firstName}} {{party.middleName}} {{party.lastName}}</td>
                 <td>{{party.partyType.label}}</td>
                 <td>{{party.partyRoleType.label}}</td>
-                <td>
-                    <div *ngIf="party.person">
-                        <a [routerLink]="['/person', party.person?.id, 'view' ]">{{party.person?.id}}</a>
-                    </div>                   
-                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit" (click)="editNewApplicant('edit',batch.id, party.id)" class="btn btn-info btn-sm">

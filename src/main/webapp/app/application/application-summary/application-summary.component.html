@@ -1,18 +1,18 @@
-<h5 class="sub-header mt-4 mb-4">Application Summary</h5>            
+<h5 class="sub-header mt-4 mb-4">Application Summary</h5>
 <div class="row">
     <div class="col-12">
         <blockquote class="blockquote">
             <p class="mb-0">
                 It is a punishable offence to provide any false information and/or make any false statements or claim when completing this form. Where it is subsequently discovered that a Certificate of Occupancy was issued based on false or inaccurate information, the Governor (or his appointee) may in his sole discretion, revoke such Certificate of Occupancy.
             </p>
-        </blockquote> 
+        </blockquote>
         <div class="alert alert-info">
             The Governor reserves the right to reject any application for not properly or fully completed and shall not incur any liability for any such revocation. The information you supply on this form is public knowledge and may be published in the media.
         </div>
-        
+
         <!-- <h6 class="text-right">{{message}}</h6>
         <h1 class="text-capitalize text-center" jhiTranslate="applicationtransdetail.title">Title</h1>
-        <h5 class="text-center" jhiTranslate="applicationtransdetail.subtitle">Subtitle</h5> -->  
+        <h5 class="text-center" jhiTranslate="applicationtransdetail.subtitle">Subtitle</h5> -->
 
         <h6 class="sub-header-style-2 pt-3"><span>Applicant(s) Information</span></h6>
         <div *ngFor="let party of parties" >
@@ -149,7 +149,7 @@
                     <div class="col-md-3">
 
                     </div>
-                </div>                
+                </div>
                 <div class="row">
                     <div class="col-md-2">
                         <h6 class="field"><span>Unit Number</span></h6>
@@ -171,7 +171,7 @@
                         <h6 class="field"><span>Scheme Name</span></h6>
                         <div class="value"></div>
                     </div>
-                </div>                
+                </div>
                 <div class="row">
                     <div class="col-md-2">
                         <h6 class="field"><span>Street Number</span></h6>
@@ -189,7 +189,7 @@
                         <h6 class="field"><span>District</span></h6>
                         <div class="value"></div>
                     </div>
-                </div>              
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="field"><span>Town</span></h6>
@@ -207,7 +207,7 @@
                         <h6 class="field"><span>Local Government Area</span></h6>
                         <div class="value"></div>
                     </div>
-                </div>              
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="field"><span>State</span></h6>
@@ -261,7 +261,7 @@
                     <div *ngIf="party.partySubRoleType">
                         {{party.partySubRoleType?.label}}
                     </div>
-                </dd> 
+                </dd>
                 <dt><span jhiTranslate="egisexternalApp.party.deliveryType">Delivery Type</span></dt>
                 <dd>
                     <div *ngIf="party.deliveryType">
@@ -303,20 +303,20 @@
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="field"><span>Government Status</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.governmentStatus.label}}</div>
                     </div>
                     <div class="col-md-3">
                         <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.propertyType">Property Type</span></h6>
                         <div class="value" *ngIf="parcel.propertyType !== null" >{{parcel.propertyType.label}}</div>
                     </div>
                     <div class="col-md-3">
-                        
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.description">Description</span></h6>
-                        <div class="value">{{parcel.description}}</div>
+                        <div class="value">{{parcel.comments}}</div>
                     </div>
                     <div class="col-md-2">
                         <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.unitNumber">Unit Number</span></h6>
@@ -324,57 +324,57 @@
                     </div>
                     <div class="col-md-2">
                         <h6 class="field"><span>Block Number</span></h6>
-                        <div class="value"> </div>
+                        <div class="value"> {{parcel.blockNumber}}</div>
                     </div>
                     <div class="col-md-2">
                         <h6 class="field"><span>Plot Number</span></h6>
-                        <div class="value"> </div>
+                        <div class="value"> {{parcel.plotNumber}}</div>
                     </div>
-                </div>               
+                </div>
                 <div class="row">
                     <div class="col-md-2">
                         <h6 class="field"><span>Street Number</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.streetNumber}}</div>
                     </div>
                     <div class="col-md-4">
                         <h6 class="field"><span>Street Name</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.streetName}}</div>
                     </div>
                     <div class="col-md-3">
                         <h6 class="field"><span>Street Type</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.streetType.label}}</div>
                     </div>
                     <div class="col-md-3">
                         <h6 class="field"><span>District</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.district}}</div>
                     </div>
-                </div>               
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="field"><span>Estate Name</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.estateName.label}}</div>
                     </div>
                     <div class="col-md-3">
                         <h6 class="field"><span>Scheme Name</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.schemeName.label}}</div>
                     </div>
                     <div class="col-md-3">
                         <h6 class="field"><span>Ward</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.ward}}</div>
                     </div>
                     <div class="col-md-3">
                         <h6 class="field"><span>Town</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.ward}}</div>
                     </div>
-                </div>              
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="field"><span>Local Government Area</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.localGovernmentArea.label}}</div>
                     </div>
                     <div class="col-md-3">
                         <h6 class="field"><span>State</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.state.label}}</div>
                     </div>
                     <div class="col-md-3">
                         <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.propertyArea">Property Area</span></h6>
@@ -384,21 +384,21 @@
                         <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.location">Location of Land</span></h6>
                         <div class="value" *ngIf="parcel.location !== null">{{parcel.location.label}}</div>
                     </div>
-                </div>             
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="field"><span>Village</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.village}}</div>
                     </div>
                     <div class="col-md-3">
-                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.accommodation">Accommodation</span></h6>
-                        <div class="value">{{parcel.accommodation}}</div>
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.typeOfAccommodation">Accommodation</span></h6>
+                        <div class="value">{{parcel.typeOfAccommodation.label}}</div>
                     </div>
-                </div>              
+                </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.valuation">Valuation</span></h6>
-                        <div class="value">{{parcel.valuation}}</div>
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.valuationAmount">Valuation</span></h6>
+                        <div class="value">{{parcel.valuationAmount}}</div>
                     </div>
                     <div class="col-md-3">
                         <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.premiumValue">Premium Value</span></h6>
@@ -412,7 +412,7 @@
                         <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.landUseType">Land Use Type</span></h6>
                         <div class="value" *ngIf="parcel.builtUpAreaType !== null" >{{parcel.landUseType.label}}</div>
                     </div>
-                </div>              
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="field"><span>Property Number</span></h6>
@@ -430,25 +430,25 @@
                         <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.measurementUnitType">Measurement Unit Type</span></h6>
                         <div class="value" *ngIf="parcel.measurementUnitType !== null">{{parcel.measurementUnitType.label}}</div>
                     </div>
-                </div>              
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="field"><span>UPIN</span></h6>
-                        <div class="value"></div>
+                        <div class="value">{{parcel.upin}}</div>
                     </div>
                     <div class="col-md-3">
                         <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.coordinateN">Coordinate N</span></h6>
                         <div class="value">{{parcel.coordinateN}}</div>
                     </div>
                     <div class="col-md-3">
-                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.coordinateS">Coordinate E</span></h6>
-                        <div class="value">{{parcel.coordinateS}}</div>
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.coordinateE">Coordinate E</span></h6>
+                        <div class="value">{{parcel.coordinateE}}</div>
                     </div>
                     <div class="col-md-3">
                         <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.developmentStatus">Development Status</span></h6>
                         <div class="value" *ngIf="parcel.developmentStatus !== null">{{parcel.developmentStatus.label}}</div>
                     </div>
-                </div>              
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.tenureType">Tenure Type</span></h6>
@@ -463,10 +463,10 @@
                         <div class="value">{{parcel.lagosSheetNumber}}</div>
                     </div>
                     <div class="col-md-3">
-                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.allocation">Allocation</span></h6>
-                        <div class="value">{{parcel.allocation}}</div>
+                        <h6 class="field"><span jhiTranslate="egisexternalApp.parcel.allocationName">Allocation</span></h6>
+                        <div class="value">{{parcel.allocationName.label}}</div>
                     </div>
-                </div> 
+                </div>
             </div>
             <!-- <dl class="row-md jh-entity-details">
                 <dt><span jhiTranslate="egisexternalApp.parcel.label">Label</span></dt>

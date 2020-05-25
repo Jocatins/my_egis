@@ -1,5 +1,3 @@
-import { IAddress } from 'app/shared/model/address.model';
-
 export interface ISurveyor {
   id?: number;
   email?: string;
@@ -7,7 +5,6 @@ export interface ISurveyor {
   registrationNumber?: string;
   phone?: string;
   status?: string;
-  address?: IAddress;
 }
 
 export class Surveyor implements ISurveyor {
@@ -17,7 +14,6 @@ export class Surveyor implements ISurveyor {
     public surconNumber?: string,
     public registrationNumber?: string,
     public phone?: string,
-    public status?: string,
-    public address?: IAddress
+    public status?: string
   ) {}
 }

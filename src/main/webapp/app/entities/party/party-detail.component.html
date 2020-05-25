@@ -5,33 +5,9 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="egisexternalApp.party.partyName">Party Name</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.party.emailAddress">Email Address</span></dt>
                 <dd>
-                    <span>{{party.partyName}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.shareNominator">Share Nominator</span></dt>
-                <dd>
-                    <span>{{party.shareNominator}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.shareDenominator">Share Denominator</span></dt>
-                <dd>
-                    <span>{{party.shareDenominator}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.taxExempt">Tax Exempt</span></dt>
-                <dd>
-                    <span>{{party.taxExempt}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.otherName">Other Name</span></dt>
-                <dd>
-                    <span>{{party.otherName}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.fax">Fax</span></dt>
-                <dd>
-                    <span>{{party.fax}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.email">Email</span></dt>
-                <dd>
-                    <span>{{party.email}}</span>
+                    <span>{{party.emailAddress}}</span>
                 </dd>
                 <dt><span jhiTranslate="egisexternalApp.party.phoneNumber">Phone Number</span></dt>
                 <dd>
@@ -44,6 +20,10 @@
                 <dt><span jhiTranslate="egisexternalApp.party.taxPayerNumber">Tax Payer Number</span></dt>
                 <dd>
                     <span>{{party.taxPayerNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.payeNumber">Paye Number</span></dt>
+                <dd>
+                    <span>{{party.payeNumber}}</span>
                 </dd>
                 <dt><span jhiTranslate="egisexternalApp.party.comments">Comments</span></dt>
                 <dd>
@@ -65,10 +45,6 @@
                 <dd>
                     <span>{{party.organization}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.businessNature">Business Nature</span></dt>
-                <dd>
-                    <span>{{party.businessNature}}</span>
-                </dd>
                 <dt><span jhiTranslate="egisexternalApp.party.birthPlace">Birth Place</span></dt>
                 <dd>
                     <span>{{party.birthPlace}}</span>
@@ -89,23 +65,81 @@
                 <dd>
                     <span>{{party.lastName}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.driverLicence">Driver Licence</span></dt>
-                <dd>
-                    <span>{{party.driverLicence}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.professionRegNo">Profession Reg No</span></dt>
-                <dd>
-                    <span>{{party.professionRegNo}}</span>
-                </dd>
                 <dt><span jhiTranslate="egisexternalApp.party.occupation">Occupation</span></dt>
                 <dd>
                     <span>{{party.occupation}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.address">Address</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.party.unitNumber">Unit Number</span></dt>
                 <dd>
-                    <div *ngIf="party.address">
-                        <a [routerLink]="['/address', party.address?.id, 'view']">{{party.address?.id}}</a>
-                    </div>
+                    <span>{{party.unitNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.blockNumber">Block Number</span></dt>
+                <dd>
+                    <span>{{party.blockNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.plotNumber">Plot Number</span></dt>
+                <dd>
+                    <span>{{party.plotNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.streetNumber">Street Number</span></dt>
+                <dd>
+                    <span>{{party.streetNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.streetName">Street Name</span></dt>
+                <dd>
+                    <span>{{party.streetName}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.buildingName">Building Name</span></dt>
+                <dd>
+                    <span>{{party.buildingName}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.buildingNumber">Building Number</span></dt>
+                <dd>
+                    <span>{{party.buildingNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.postalCode">Postal Code</span></dt>
+                <dd>
+                    <span>{{party.postalCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.city">City</span></dt>
+                <dd>
+                    <span>{{party.city}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.village">Village</span></dt>
+                <dd>
+                    <span>{{party.village}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.longAddress">Long Address</span></dt>
+                <dd>
+                    <span>{{party.longAddress}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.town">Town</span></dt>
+                <dd>
+                    <span>{{party.town}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.ward">Ward</span></dt>
+                <dd>
+                    <span>{{party.ward}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.nextOfKinPhone">Next Of Kin Phone</span></dt>
+                <dd>
+                    <span>{{party.nextOfKinPhone}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.iDDocumentIssuedDate">I D Document Issued Date</span></dt>
+                <dd>
+                    <span>{{party.iDDocumentIssuedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.iDDocumentExpirationDate">I D Document Expiration Date</span></dt>
+                <dd>
+                    <span>{{party.iDDocumentExpirationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.iDDocumentNumber">I D Document Number</span></dt>
+                <dd>
+                    <span>{{party.iDDocumentNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.primaryParty">Primary Party</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'egisexternalApp.YesOrNo.' + party.primaryParty}}">{{party.primaryParty}}</span>
                 </dd>
                 <dt><span jhiTranslate="egisexternalApp.party.partyType">Party Type</span></dt>
                 <dd>
@@ -117,30 +151,6 @@
                 <dd>
                     <div *ngIf="party.partyRoleType">
                         <a [routerLink]="['/dictionary', party.partyRoleType?.id, 'view']">{{party.partyRoleType?.id}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.partySubRoleType">Party Sub Role Type</span></dt>
-                <dd>
-                    <div *ngIf="party.partySubRoleType">
-                        <a [routerLink]="['/dictionary', party.partySubRoleType?.id, 'view']">{{party.partySubRoleType?.id}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.deliveryType">Delivery Type</span></dt>
-                <dd>
-                    <div *ngIf="party.deliveryType">
-                        <a [routerLink]="['/dictionary', party.deliveryType?.id, 'view']">{{party.deliveryType?.id}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.primaryParty">Primary Party</span></dt>
-                <dd>
-                    <div *ngIf="party.primaryParty">
-                        <a [routerLink]="['/dictionary', party.primaryParty?.id, 'view']">{{party.primaryParty?.id}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.personIdType">Person Id Type</span></dt>
-                <dd>
-                    <div *ngIf="party.personIdType">
-                        <a [routerLink]="['/dictionary', party.personIdType?.id, 'view']">{{party.personIdType?.id}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="egisexternalApp.party.personType">Person Type</span></dt>
@@ -185,10 +195,100 @@
                         <a [routerLink]="['/dictionary', party.driverLicenseRegion?.id, 'view']">{{party.driverLicenseRegion?.id}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.representativeId">Representative Id</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.party.businessNature">Business Nature</span></dt>
                 <dd>
-                    <div *ngIf="party.representativeId">
-                        <a [routerLink]="['/dictionary', party.representativeId?.id, 'view']">{{party.representativeId?.id}}</a>
+                    <div *ngIf="party.businessNature">
+                        <a [routerLink]="['/dictionary', party.businessNature?.id, 'view']">{{party.businessNature?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.phoneCategory">Phone Category</span></dt>
+                <dd>
+                    <div *ngIf="party.phoneCategory">
+                        <a [routerLink]="['/dictionary', party.phoneCategory?.id, 'view']">{{party.phoneCategory?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.nextOfKinPhoneCategory">Next Of Kin Phone Category</span></dt>
+                <dd>
+                    <div *ngIf="party.nextOfKinPhoneCategory">
+                        <a [routerLink]="['/dictionary', party.nextOfKinPhoneCategory?.id, 'view']">{{party.nextOfKinPhoneCategory?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.emailCategory">Email Category</span></dt>
+                <dd>
+                    <div *ngIf="party.emailCategory">
+                        <a [routerLink]="['/dictionary', party.emailCategory?.id, 'view']">{{party.emailCategory?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.addressCategory">Address Category</span></dt>
+                <dd>
+                    <div *ngIf="party.addressCategory">
+                        <a [routerLink]="['/dictionary', party.addressCategory?.id, 'view']">{{party.addressCategory?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.iDDocumentType">I D Document Type</span></dt>
+                <dd>
+                    <div *ngIf="party.iDDocumentType">
+                        <a [routerLink]="['/dictionary', party.iDDocumentType?.id, 'view']">{{party.iDDocumentType?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.iDDocumentIssuedBy">I D Document Issued By</span></dt>
+                <dd>
+                    <div *ngIf="party.iDDocumentIssuedBy">
+                        <a [routerLink]="['/dictionary', party.iDDocumentIssuedBy?.id, 'view']">{{party.iDDocumentIssuedBy?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.suffixTitle">Suffix Title</span></dt>
+                <dd>
+                    <div *ngIf="party.suffixTitle">
+                        <a [routerLink]="['/dictionary', party.suffixTitle?.id, 'view']">{{party.suffixTitle?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.stateofOrigin">Stateof Origin</span></dt>
+                <dd>
+                    <div *ngIf="party.stateofOrigin">
+                        <a [routerLink]="['/dictionary', party.stateofOrigin?.id, 'view']">{{party.stateofOrigin?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.maritalStatus">Marital Status</span></dt>
+                <dd>
+                    <div *ngIf="party.maritalStatus">
+                        <a [routerLink]="['/dictionary', party.maritalStatus?.id, 'view']">{{party.maritalStatus?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.streetType">Street Type</span></dt>
+                <dd>
+                    <div *ngIf="party.streetType">
+                        <a [routerLink]="['/dictionary', party.streetType?.id, 'view']">{{party.streetType?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.estateName">Estate Name</span></dt>
+                <dd>
+                    <div *ngIf="party.estateName">
+                        <a [routerLink]="['/dictionary', party.estateName?.id, 'view']">{{party.estateName?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.schemeName">Scheme Name</span></dt>
+                <dd>
+                    <div *ngIf="party.schemeName">
+                        <a [routerLink]="['/dictionary', party.schemeName?.id, 'view']">{{party.schemeName?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.district">District</span></dt>
+                <dd>
+                    <div *ngIf="party.district">
+                        <a [routerLink]="['/dictionary', party.district?.id, 'view']">{{party.district?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.localGovernmentArea">Local Government Area</span></dt>
+                <dd>
+                    <div *ngIf="party.localGovernmentArea">
+                        <a [routerLink]="['/dictionary', party.localGovernmentArea?.id, 'view']">{{party.localGovernmentArea?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.party.country">Country</span></dt>
+                <dd>
+                    <div *ngIf="party.country">
+                        <a [routerLink]="['/dictionary', party.country?.id, 'view']">{{party.country?.id}}</a>
                     </div>
                 </dd>
             </dl>

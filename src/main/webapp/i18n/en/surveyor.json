@@ -21,8 +21,7 @@
       "surconNumber": "Surcon Number",
       "registrationNumber": "Registration Number",
       "phone": "Phone",
-      "status": "Status",
-      "address": "Address"
+      "status": "Status"
     }
   }
 }

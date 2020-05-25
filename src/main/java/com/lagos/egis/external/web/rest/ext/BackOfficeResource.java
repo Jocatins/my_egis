@@ -1,12 +1,6 @@
 package com.lagos.egis.external.web.rest.ext;
 
-import com.lagos.egis.external.domain.Address;
-import com.lagos.egis.external.repository.AddressRepository;
-import com.lagos.egis.external.repository.search.AddressSearchRepository;
-import com.lagos.egis.external.web.rest.errors.BadRequestAlertException;
 
-import io.github.jhipster.web.util.HeaderUtil;
-import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,13 +16,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
-
 /**
  * REST controller for managing {@link Address}.
  */

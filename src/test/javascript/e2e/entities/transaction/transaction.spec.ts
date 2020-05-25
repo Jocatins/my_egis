@@ -47,12 +47,12 @@ describe('Transaction e2e test', () => {
       transactionUpdatePage.setStartDateInput('2000-12-31'),
       transactionUpdatePage.setCompleteDateInput('2000-12-31'),
       transactionUpdatePage.setBatchIdInput('5'),
-      transactionUpdatePage.setTransactionCodeInput('transactionCode'),
       transactionUpdatePage.extSelectLastOption(),
       transactionUpdatePage.transactionTypeSelectLastOption(),
       transactionUpdatePage.transactionSubTypeSelectLastOption(),
       transactionUpdatePage.ownershipTypeSelectLastOption(),
-      transactionUpdatePage.tenureTypeSelectLastOption()
+      transactionUpdatePage.tenureTypeSelectLastOption(),
+      transactionUpdatePage.transactionCodeSelectLastOption()
       // transactionUpdatePage.partySelectLastOption(),
       // transactionUpdatePage.parcelSelectLastOption(),
       // transactionUpdatePage.docsSelectLastOption(),
@@ -77,10 +77,6 @@ describe('Transaction e2e test', () => {
       'Expected completeDate value to be equals to 2000-12-31'
     );
     expect(await transactionUpdatePage.getBatchIdInput()).to.eq('5', 'Expected batchId value to be equals to 5');
-    expect(await transactionUpdatePage.getTransactionCodeInput()).to.eq(
-      'transactionCode',
-      'Expected TransactionCode value to be equals to transactionCode'
-    );
     await transactionUpdatePage.save();
     expect(await transactionUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

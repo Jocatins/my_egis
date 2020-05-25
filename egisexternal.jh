@@ -23,8 +23,7 @@ entity Transaction{
     createDate LocalDate,
     startDate LocalDate,
     completeDate LocalDate,
-    batchId Integer,
-    transactionCode String
+    batchId Integer
 }
 
 entity TransactionExt{
@@ -67,7 +66,6 @@ entity Party{
     middleName String,
     lastName String,
     occupation String,
-    addressAreaName String,
     unitNumber String,
     blockNumber String,
     plotNumber String,
@@ -119,20 +117,6 @@ relationship ManyToOne{
     Party{country required} to Dictionary
 }
 
-entity Address{
-    addressAreaName String,
-    streetName String,
-    buildingName String,
-    buildingNumber String,
-    postalCode String,
-    city String,
-    village String,
-    streetNumber String,
-    town String,
-    ward String,
-    blockNumber String,
-    plotNumber String
-}
 
 entity Parcel{
 	propertyNumber String,
@@ -241,12 +225,12 @@ relationship ManyToOne{
     Transaction{transactionSubType} to Dictionary,
     Transaction{ownershipType} to Dictionary,
     Transaction{tenureType} to Dictionary,
+    Transaction{transactionCode} to Metadata,
     SupportingDocument{documentSubType} to Dictionary,
     SupportingDocument{documentType} to Dictionary,
     SupportingDocument{issuedBy} to Dictionary,
 
 }
-
 
 
 
@@ -278,10 +262,8 @@ relationship ManyToMany{
 
 
 relationship OneToOne{
-    Party{address} to Address
     Transaction{ext}  to TransactionExt,
-    Surveyor{address} to Address,
-    UserExt {user} to User,
+    UserExt {user} to User
 }
 
 

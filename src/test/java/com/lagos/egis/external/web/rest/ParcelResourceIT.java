@@ -2,6 +2,7 @@ package com.lagos.egis.external.web.rest;
 
 import com.lagos.egis.external.EgisexternalApp;
 import com.lagos.egis.external.domain.Parcel;
+import com.lagos.egis.external.domain.Dictionary;
 import com.lagos.egis.external.repository.ParcelRepository;
 import com.lagos.egis.external.repository.search.ParcelSearchRepository;
 import com.lagos.egis.external.web.rest.errors.ExceptionTranslator;
@@ -20,8 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Collections;
 import java.util.List;
 
@@ -39,20 +38,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = EgisexternalApp.class)
 public class ParcelResourceIT {
 
-    private static final String DEFAULT_LABEL = "AAAAAAAAAA";
-    private static final String UPDATED_LABEL = "BBBBBBBBBB";
+    private static final String DEFAULT_PROPERTY_NUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_PROPERTY_NUMBER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PARCEL_LINEAGE = "AAAAAAAAAA";
+    private static final String UPDATED_PARCEL_LINEAGE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_SURVEY_PLAN_NUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_SURVEY_PLAN_NUMBER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PROPERTY_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_PROPERTY_DESCRIPTION = "BBBBBBBBBB";
 
     private static final Double DEFAULT_AREA = 1D;
     private static final Double UPDATED_AREA = 2D;
-
-    private static final String DEFAULT_REGISTRATION_OFFICE_DICTIONARY = "AAAAAAAAAA";
-    private static final String UPDATED_REGISTRATION_OFFICE_DICTIONARY = "BBBBBBBBBB";
-
-    private static final LocalDate DEFAULT_SURVEY_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_SURVEY_DATE = LocalDate.now(ZoneId.systemDefault());
-
-    private static final String DEFAULT_ACCOMMODATION = "AAAAAAAAAA";
-    private static final String UPDATED_ACCOMMODATION = "BBBBBBBBBB";
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
@@ -63,38 +62,56 @@ public class ParcelResourceIT {
     private static final String DEFAULT_PLAN_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_PLAN_NUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PREMIUM_VALUE = "AAAAAAAAAA";
-    private static final String UPDATED_PREMIUM_VALUE = "BBBBBBBBBB";
+    private static final Double DEFAULT_PREMIUM_VALUE = 1D;
+    private static final Double UPDATED_PREMIUM_VALUE = 2D;
 
     private static final Integer DEFAULT_COORDINATE_N = 1;
     private static final Integer UPDATED_COORDINATE_N = 2;
 
-    private static final Integer DEFAULT_COORDINATE_S = 1;
-    private static final Integer UPDATED_COORDINATE_S = 2;
+    private static final Integer DEFAULT_COORDINATE_E = 1;
+    private static final Integer UPDATED_COORDINATE_E = 2;
 
     private static final String DEFAULT_LAGOS_SHEET_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_LAGOS_SHEET_NUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_ALLOCATION = "AAAAAAAAAA";
-    private static final String UPDATED_ALLOCATION = "BBBBBBBBBB";
-
-    private static final Integer DEFAULT_LOCATION_1 = 1;
-    private static final Integer UPDATED_LOCATION_1 = 2;
-
     private static final String DEFAULT_UNIT_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_UNIT_NUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_VALUATION = "AAAAAAAAAA";
-    private static final String UPDATED_VALUATION = "BBBBBBBBBB";
+    private static final Double DEFAULT_VALUATION_AMOUNT = 1D;
+    private static final Double UPDATED_VALUATION_AMOUNT = 2D;
 
     private static final String DEFAULT_COMMENTS = "AAAAAAAAAA";
     private static final String UPDATED_COMMENTS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_LEGAL_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_LEGAL_DESCRIPTION = "BBBBBBBBBB";
+    private static final String DEFAULT_STREET_NUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_STREET_NUMBER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_STREET_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_STREET_NAME = "BBBBBBBBBB";
+
+    private static final String DEFAULT_BLOCK_NUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_BLOCK_NUMBER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PLOT_NUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_PLOT_NUMBER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_WARD = "AAAAAAAAAA";
+    private static final String UPDATED_WARD = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TOWN = "AAAAAAAAAA";
+    private static final String UPDATED_TOWN = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DISTRICT = "AAAAAAAAAA";
+    private static final String UPDATED_DISTRICT = "BBBBBBBBBB";
+
+    private static final String DEFAULT_VILLAGE = "AAAAAAAAAA";
+    private static final String UPDATED_VILLAGE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_UPIN = "AAAAAAAAAA";
+    private static final String UPDATED_UPIN = "BBBBBBBBBB";
+
+    private static final String DEFAULT_COMMENT = "AAAAAAAAAA";
+    private static final String UPDATED_COMMENT = "BBBBBBBBBB";
 
     @Autowired
     private ParcelRepository parcelRepository;
@@ -146,25 +163,45 @@ public class ParcelResourceIT {
      */
     public static Parcel createEntity(EntityManager em) {
         Parcel parcel = new Parcel()
-            .label(DEFAULT_LABEL)
+            .propertyNumber(DEFAULT_PROPERTY_NUMBER)
+            .parcelLineage(DEFAULT_PARCEL_LINEAGE)
+            .surveyPlanNumber(DEFAULT_SURVEY_PLAN_NUMBER)
+            .propertyDescription(DEFAULT_PROPERTY_DESCRIPTION)
             .area(DEFAULT_AREA)
-            .registrationOfficeDictionary(DEFAULT_REGISTRATION_OFFICE_DICTIONARY)
-            .surveyDate(DEFAULT_SURVEY_DATE)
-            .accommodation(DEFAULT_ACCOMMODATION)
             .description(DEFAULT_DESCRIPTION)
             .propertyArea(DEFAULT_PROPERTY_AREA)
             .planNumber(DEFAULT_PLAN_NUMBER)
             .premiumValue(DEFAULT_PREMIUM_VALUE)
             .coordinateN(DEFAULT_COORDINATE_N)
-            .coordinateS(DEFAULT_COORDINATE_S)
+            .coordinateE(DEFAULT_COORDINATE_E)
             .lagosSheetNumber(DEFAULT_LAGOS_SHEET_NUMBER)
-            .allocation(DEFAULT_ALLOCATION)
-            .location1(DEFAULT_LOCATION_1)
             .unitNumber(DEFAULT_UNIT_NUMBER)
-            .name(DEFAULT_NAME)
-            .valuation(DEFAULT_VALUATION)
+            .valuationAmount(DEFAULT_VALUATION_AMOUNT)
             .comments(DEFAULT_COMMENTS)
-            .legalDescription(DEFAULT_LEGAL_DESCRIPTION);
+            .streetNumber(DEFAULT_STREET_NUMBER)
+            .streetName(DEFAULT_STREET_NAME)
+            .blockNumber(DEFAULT_BLOCK_NUMBER)
+            .plotNumber(DEFAULT_PLOT_NUMBER)
+            .ward(DEFAULT_WARD)
+            .town(DEFAULT_TOWN)
+            .district(DEFAULT_DISTRICT)
+            .village(DEFAULT_VILLAGE)
+            .upin(DEFAULT_UPIN)
+            .comment(DEFAULT_COMMENT);
+        // Add required entity
+        Dictionary dictionary;
+        if (TestUtil.findAll(em, Dictionary.class).isEmpty()) {
+            dictionary = DictionaryResourceIT.createEntity(em);
+            em.persist(dictionary);
+            em.flush();
+        } else {
+            dictionary = TestUtil.findAll(em, Dictionary.class).get(0);
+        }
+        parcel.setMeasurementUnitType(dictionary);
+        // Add required entity
+        parcel.setPropertyType(dictionary);
+        // Add required entity
+        parcel.setLocalGovernmentArea(dictionary);
         return parcel;
     }
     /**
@@ -175,25 +212,45 @@ public class ParcelResourceIT {
      */
     public static Parcel createUpdatedEntity(EntityManager em) {
         Parcel parcel = new Parcel()
-            .label(UPDATED_LABEL)
+            .propertyNumber(UPDATED_PROPERTY_NUMBER)
+            .parcelLineage(UPDATED_PARCEL_LINEAGE)
+            .surveyPlanNumber(UPDATED_SURVEY_PLAN_NUMBER)
+            .propertyDescription(UPDATED_PROPERTY_DESCRIPTION)
             .area(UPDATED_AREA)
-            .registrationOfficeDictionary(UPDATED_REGISTRATION_OFFICE_DICTIONARY)
-            .surveyDate(UPDATED_SURVEY_DATE)
-            .accommodation(UPDATED_ACCOMMODATION)
             .description(UPDATED_DESCRIPTION)
             .propertyArea(UPDATED_PROPERTY_AREA)
             .planNumber(UPDATED_PLAN_NUMBER)
             .premiumValue(UPDATED_PREMIUM_VALUE)
             .coordinateN(UPDATED_COORDINATE_N)
-            .coordinateS(UPDATED_COORDINATE_S)
+            .coordinateE(UPDATED_COORDINATE_E)
             .lagosSheetNumber(UPDATED_LAGOS_SHEET_NUMBER)
-            .allocation(UPDATED_ALLOCATION)
-            .location1(UPDATED_LOCATION_1)
             .unitNumber(UPDATED_UNIT_NUMBER)
-            .name(UPDATED_NAME)
-            .valuation(UPDATED_VALUATION)
+            .valuationAmount(UPDATED_VALUATION_AMOUNT)
             .comments(UPDATED_COMMENTS)
-            .legalDescription(UPDATED_LEGAL_DESCRIPTION);
+            .streetNumber(UPDATED_STREET_NUMBER)
+            .streetName(UPDATED_STREET_NAME)
+            .blockNumber(UPDATED_BLOCK_NUMBER)
+            .plotNumber(UPDATED_PLOT_NUMBER)
+            .ward(UPDATED_WARD)
+            .town(UPDATED_TOWN)
+            .district(UPDATED_DISTRICT)
+            .village(UPDATED_VILLAGE)
+            .upin(UPDATED_UPIN)
+            .comment(UPDATED_COMMENT);
+        // Add required entity
+        Dictionary dictionary;
+        if (TestUtil.findAll(em, Dictionary.class).isEmpty()) {
+            dictionary = DictionaryResourceIT.createUpdatedEntity(em);
+            em.persist(dictionary);
+            em.flush();
+        } else {
+            dictionary = TestUtil.findAll(em, Dictionary.class).get(0);
+        }
+        parcel.setMeasurementUnitType(dictionary);
+        // Add required entity
+        parcel.setPropertyType(dictionary);
+        // Add required entity
+        parcel.setLocalGovernmentArea(dictionary);
         return parcel;
     }
 
@@ -217,25 +274,31 @@ public class ParcelResourceIT {
         List<Parcel> parcelList = parcelRepository.findAll();
         assertThat(parcelList).hasSize(databaseSizeBeforeCreate + 1);
         Parcel testParcel = parcelList.get(parcelList.size() - 1);
-        assertThat(testParcel.getLabel()).isEqualTo(DEFAULT_LABEL);
+        assertThat(testParcel.getPropertyNumber()).isEqualTo(DEFAULT_PROPERTY_NUMBER);
+        assertThat(testParcel.getParcelLineage()).isEqualTo(DEFAULT_PARCEL_LINEAGE);
+        assertThat(testParcel.getSurveyPlanNumber()).isEqualTo(DEFAULT_SURVEY_PLAN_NUMBER);
+        assertThat(testParcel.getPropertyDescription()).isEqualTo(DEFAULT_PROPERTY_DESCRIPTION);
         assertThat(testParcel.getArea()).isEqualTo(DEFAULT_AREA);
-        assertThat(testParcel.getRegistrationOfficeDictionary()).isEqualTo(DEFAULT_REGISTRATION_OFFICE_DICTIONARY);
-        assertThat(testParcel.getSurveyDate()).isEqualTo(DEFAULT_SURVEY_DATE);
-        assertThat(testParcel.getAccommodation()).isEqualTo(DEFAULT_ACCOMMODATION);
         assertThat(testParcel.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testParcel.getPropertyArea()).isEqualTo(DEFAULT_PROPERTY_AREA);
         assertThat(testParcel.getPlanNumber()).isEqualTo(DEFAULT_PLAN_NUMBER);
         assertThat(testParcel.getPremiumValue()).isEqualTo(DEFAULT_PREMIUM_VALUE);
         assertThat(testParcel.getCoordinateN()).isEqualTo(DEFAULT_COORDINATE_N);
-        assertThat(testParcel.getCoordinateS()).isEqualTo(DEFAULT_COORDINATE_S);
+        assertThat(testParcel.getCoordinateE()).isEqualTo(DEFAULT_COORDINATE_E);
         assertThat(testParcel.getLagosSheetNumber()).isEqualTo(DEFAULT_LAGOS_SHEET_NUMBER);
-        assertThat(testParcel.getAllocation()).isEqualTo(DEFAULT_ALLOCATION);
-        assertThat(testParcel.getLocation1()).isEqualTo(DEFAULT_LOCATION_1);
         assertThat(testParcel.getUnitNumber()).isEqualTo(DEFAULT_UNIT_NUMBER);
-        assertThat(testParcel.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testParcel.getValuation()).isEqualTo(DEFAULT_VALUATION);
+        assertThat(testParcel.getValuationAmount()).isEqualTo(DEFAULT_VALUATION_AMOUNT);
         assertThat(testParcel.getComments()).isEqualTo(DEFAULT_COMMENTS);
-        assertThat(testParcel.getLegalDescription()).isEqualTo(DEFAULT_LEGAL_DESCRIPTION);
+        assertThat(testParcel.getStreetNumber()).isEqualTo(DEFAULT_STREET_NUMBER);
+        assertThat(testParcel.getStreetName()).isEqualTo(DEFAULT_STREET_NAME);
+        assertThat(testParcel.getBlockNumber()).isEqualTo(DEFAULT_BLOCK_NUMBER);
+        assertThat(testParcel.getPlotNumber()).isEqualTo(DEFAULT_PLOT_NUMBER);
+        assertThat(testParcel.getWard()).isEqualTo(DEFAULT_WARD);
+        assertThat(testParcel.getTown()).isEqualTo(DEFAULT_TOWN);
+        assertThat(testParcel.getDistrict()).isEqualTo(DEFAULT_DISTRICT);
+        assertThat(testParcel.getVillage()).isEqualTo(DEFAULT_VILLAGE);
+        assertThat(testParcel.getUpin()).isEqualTo(DEFAULT_UPIN);
+        assertThat(testParcel.getComment()).isEqualTo(DEFAULT_COMMENT);
 
         // Validate the Parcel in Elasticsearch
         verify(mockParcelSearchRepository, times(1)).save(testParcel);
@@ -266,6 +329,42 @@ public class ParcelResourceIT {
 
     @Test
     @Transactional
+    public void checkBlockNumberIsRequired() throws Exception {
+        int databaseSizeBeforeTest = parcelRepository.findAll().size();
+        // set the field null
+        parcel.setBlockNumber(null);
+
+        // Create the Parcel, which fails.
+
+        restParcelMockMvc.perform(post("/api/parcels")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(parcel)))
+            .andExpect(status().isBadRequest());
+
+        List<Parcel> parcelList = parcelRepository.findAll();
+        assertThat(parcelList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkPlotNumberIsRequired() throws Exception {
+        int databaseSizeBeforeTest = parcelRepository.findAll().size();
+        // set the field null
+        parcel.setPlotNumber(null);
+
+        // Create the Parcel, which fails.
+
+        restParcelMockMvc.perform(post("/api/parcels")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(parcel)))
+            .andExpect(status().isBadRequest());
+
+        List<Parcel> parcelList = parcelRepository.findAll();
+        assertThat(parcelList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllParcels() throws Exception {
         // Initialize the database
         parcelRepository.saveAndFlush(parcel);
@@ -275,25 +374,31 @@ public class ParcelResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(parcel.getId().intValue())))
-            .andExpect(jsonPath("$.[*].label").value(hasItem(DEFAULT_LABEL)))
+            .andExpect(jsonPath("$.[*].propertyNumber").value(hasItem(DEFAULT_PROPERTY_NUMBER)))
+            .andExpect(jsonPath("$.[*].parcelLineage").value(hasItem(DEFAULT_PARCEL_LINEAGE)))
+            .andExpect(jsonPath("$.[*].surveyPlanNumber").value(hasItem(DEFAULT_SURVEY_PLAN_NUMBER)))
+            .andExpect(jsonPath("$.[*].propertyDescription").value(hasItem(DEFAULT_PROPERTY_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].area").value(hasItem(DEFAULT_AREA.doubleValue())))
-            .andExpect(jsonPath("$.[*].registrationOfficeDictionary").value(hasItem(DEFAULT_REGISTRATION_OFFICE_DICTIONARY)))
-            .andExpect(jsonPath("$.[*].surveyDate").value(hasItem(DEFAULT_SURVEY_DATE.toString())))
-            .andExpect(jsonPath("$.[*].accommodation").value(hasItem(DEFAULT_ACCOMMODATION)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].propertyArea").value(hasItem(DEFAULT_PROPERTY_AREA.doubleValue())))
             .andExpect(jsonPath("$.[*].planNumber").value(hasItem(DEFAULT_PLAN_NUMBER)))
-            .andExpect(jsonPath("$.[*].premiumValue").value(hasItem(DEFAULT_PREMIUM_VALUE)))
+            .andExpect(jsonPath("$.[*].premiumValue").value(hasItem(DEFAULT_PREMIUM_VALUE.doubleValue())))
             .andExpect(jsonPath("$.[*].coordinateN").value(hasItem(DEFAULT_COORDINATE_N)))
-            .andExpect(jsonPath("$.[*].coordinateS").value(hasItem(DEFAULT_COORDINATE_S)))
+            .andExpect(jsonPath("$.[*].coordinateE").value(hasItem(DEFAULT_COORDINATE_E)))
             .andExpect(jsonPath("$.[*].lagosSheetNumber").value(hasItem(DEFAULT_LAGOS_SHEET_NUMBER)))
-            .andExpect(jsonPath("$.[*].allocation").value(hasItem(DEFAULT_ALLOCATION)))
-            .andExpect(jsonPath("$.[*].location1").value(hasItem(DEFAULT_LOCATION_1)))
             .andExpect(jsonPath("$.[*].unitNumber").value(hasItem(DEFAULT_UNIT_NUMBER)))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].valuation").value(hasItem(DEFAULT_VALUATION)))
+            .andExpect(jsonPath("$.[*].valuationAmount").value(hasItem(DEFAULT_VALUATION_AMOUNT.doubleValue())))
             .andExpect(jsonPath("$.[*].comments").value(hasItem(DEFAULT_COMMENTS)))
-            .andExpect(jsonPath("$.[*].legalDescription").value(hasItem(DEFAULT_LEGAL_DESCRIPTION)));
+            .andExpect(jsonPath("$.[*].streetNumber").value(hasItem(DEFAULT_STREET_NUMBER)))
+            .andExpect(jsonPath("$.[*].streetName").value(hasItem(DEFAULT_STREET_NAME)))
+            .andExpect(jsonPath("$.[*].blockNumber").value(hasItem(DEFAULT_BLOCK_NUMBER)))
+            .andExpect(jsonPath("$.[*].plotNumber").value(hasItem(DEFAULT_PLOT_NUMBER)))
+            .andExpect(jsonPath("$.[*].ward").value(hasItem(DEFAULT_WARD)))
+            .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN)))
+            .andExpect(jsonPath("$.[*].district").value(hasItem(DEFAULT_DISTRICT)))
+            .andExpect(jsonPath("$.[*].village").value(hasItem(DEFAULT_VILLAGE)))
+            .andExpect(jsonPath("$.[*].upin").value(hasItem(DEFAULT_UPIN)))
+            .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT)));
     }
     
     @Test
@@ -307,25 +412,31 @@ public class ParcelResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(parcel.getId().intValue()))
-            .andExpect(jsonPath("$.label").value(DEFAULT_LABEL))
+            .andExpect(jsonPath("$.propertyNumber").value(DEFAULT_PROPERTY_NUMBER))
+            .andExpect(jsonPath("$.parcelLineage").value(DEFAULT_PARCEL_LINEAGE))
+            .andExpect(jsonPath("$.surveyPlanNumber").value(DEFAULT_SURVEY_PLAN_NUMBER))
+            .andExpect(jsonPath("$.propertyDescription").value(DEFAULT_PROPERTY_DESCRIPTION))
             .andExpect(jsonPath("$.area").value(DEFAULT_AREA.doubleValue()))
-            .andExpect(jsonPath("$.registrationOfficeDictionary").value(DEFAULT_REGISTRATION_OFFICE_DICTIONARY))
-            .andExpect(jsonPath("$.surveyDate").value(DEFAULT_SURVEY_DATE.toString()))
-            .andExpect(jsonPath("$.accommodation").value(DEFAULT_ACCOMMODATION))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.propertyArea").value(DEFAULT_PROPERTY_AREA.doubleValue()))
             .andExpect(jsonPath("$.planNumber").value(DEFAULT_PLAN_NUMBER))
-            .andExpect(jsonPath("$.premiumValue").value(DEFAULT_PREMIUM_VALUE))
+            .andExpect(jsonPath("$.premiumValue").value(DEFAULT_PREMIUM_VALUE.doubleValue()))
             .andExpect(jsonPath("$.coordinateN").value(DEFAULT_COORDINATE_N))
-            .andExpect(jsonPath("$.coordinateS").value(DEFAULT_COORDINATE_S))
+            .andExpect(jsonPath("$.coordinateE").value(DEFAULT_COORDINATE_E))
             .andExpect(jsonPath("$.lagosSheetNumber").value(DEFAULT_LAGOS_SHEET_NUMBER))
-            .andExpect(jsonPath("$.allocation").value(DEFAULT_ALLOCATION))
-            .andExpect(jsonPath("$.location1").value(DEFAULT_LOCATION_1))
             .andExpect(jsonPath("$.unitNumber").value(DEFAULT_UNIT_NUMBER))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.valuation").value(DEFAULT_VALUATION))
+            .andExpect(jsonPath("$.valuationAmount").value(DEFAULT_VALUATION_AMOUNT.doubleValue()))
             .andExpect(jsonPath("$.comments").value(DEFAULT_COMMENTS))
-            .andExpect(jsonPath("$.legalDescription").value(DEFAULT_LEGAL_DESCRIPTION));
+            .andExpect(jsonPath("$.streetNumber").value(DEFAULT_STREET_NUMBER))
+            .andExpect(jsonPath("$.streetName").value(DEFAULT_STREET_NAME))
+            .andExpect(jsonPath("$.blockNumber").value(DEFAULT_BLOCK_NUMBER))
+            .andExpect(jsonPath("$.plotNumber").value(DEFAULT_PLOT_NUMBER))
+            .andExpect(jsonPath("$.ward").value(DEFAULT_WARD))
+            .andExpect(jsonPath("$.town").value(DEFAULT_TOWN))
+            .andExpect(jsonPath("$.district").value(DEFAULT_DISTRICT))
+            .andExpect(jsonPath("$.village").value(DEFAULT_VILLAGE))
+            .andExpect(jsonPath("$.upin").value(DEFAULT_UPIN))
+            .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT));
     }
 
     @Test
@@ -349,25 +460,31 @@ public class ParcelResourceIT {
         // Disconnect from session so that the updates on updatedParcel are not directly saved in db
         em.detach(updatedParcel);
         updatedParcel
-            .label(UPDATED_LABEL)
+            .propertyNumber(UPDATED_PROPERTY_NUMBER)
+            .parcelLineage(UPDATED_PARCEL_LINEAGE)
+            .surveyPlanNumber(UPDATED_SURVEY_PLAN_NUMBER)
+            .propertyDescription(UPDATED_PROPERTY_DESCRIPTION)
             .area(UPDATED_AREA)
-            .registrationOfficeDictionary(UPDATED_REGISTRATION_OFFICE_DICTIONARY)
-            .surveyDate(UPDATED_SURVEY_DATE)
-            .accommodation(UPDATED_ACCOMMODATION)
             .description(UPDATED_DESCRIPTION)
             .propertyArea(UPDATED_PROPERTY_AREA)
             .planNumber(UPDATED_PLAN_NUMBER)
             .premiumValue(UPDATED_PREMIUM_VALUE)
             .coordinateN(UPDATED_COORDINATE_N)
-            .coordinateS(UPDATED_COORDINATE_S)
+            .coordinateE(UPDATED_COORDINATE_E)
             .lagosSheetNumber(UPDATED_LAGOS_SHEET_NUMBER)
-            .allocation(UPDATED_ALLOCATION)
-            .location1(UPDATED_LOCATION_1)
             .unitNumber(UPDATED_UNIT_NUMBER)
-            .name(UPDATED_NAME)
-            .valuation(UPDATED_VALUATION)
+            .valuationAmount(UPDATED_VALUATION_AMOUNT)
             .comments(UPDATED_COMMENTS)
-            .legalDescription(UPDATED_LEGAL_DESCRIPTION);
+            .streetNumber(UPDATED_STREET_NUMBER)
+            .streetName(UPDATED_STREET_NAME)
+            .blockNumber(UPDATED_BLOCK_NUMBER)
+            .plotNumber(UPDATED_PLOT_NUMBER)
+            .ward(UPDATED_WARD)
+            .town(UPDATED_TOWN)
+            .district(UPDATED_DISTRICT)
+            .village(UPDATED_VILLAGE)
+            .upin(UPDATED_UPIN)
+            .comment(UPDATED_COMMENT);
 
         restParcelMockMvc.perform(put("/api/parcels")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -378,25 +495,31 @@ public class ParcelResourceIT {
         List<Parcel> parcelList = parcelRepository.findAll();
         assertThat(parcelList).hasSize(databaseSizeBeforeUpdate);
         Parcel testParcel = parcelList.get(parcelList.size() - 1);
-        assertThat(testParcel.getLabel()).isEqualTo(UPDATED_LABEL);
+        assertThat(testParcel.getPropertyNumber()).isEqualTo(UPDATED_PROPERTY_NUMBER);
+        assertThat(testParcel.getParcelLineage()).isEqualTo(UPDATED_PARCEL_LINEAGE);
+        assertThat(testParcel.getSurveyPlanNumber()).isEqualTo(UPDATED_SURVEY_PLAN_NUMBER);
+        assertThat(testParcel.getPropertyDescription()).isEqualTo(UPDATED_PROPERTY_DESCRIPTION);
         assertThat(testParcel.getArea()).isEqualTo(UPDATED_AREA);
-        assertThat(testParcel.getRegistrationOfficeDictionary()).isEqualTo(UPDATED_REGISTRATION_OFFICE_DICTIONARY);
-        assertThat(testParcel.getSurveyDate()).isEqualTo(UPDATED_SURVEY_DATE);
-        assertThat(testParcel.getAccommodation()).isEqualTo(UPDATED_ACCOMMODATION);
         assertThat(testParcel.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testParcel.getPropertyArea()).isEqualTo(UPDATED_PROPERTY_AREA);
         assertThat(testParcel.getPlanNumber()).isEqualTo(UPDATED_PLAN_NUMBER);
         assertThat(testParcel.getPremiumValue()).isEqualTo(UPDATED_PREMIUM_VALUE);
         assertThat(testParcel.getCoordinateN()).isEqualTo(UPDATED_COORDINATE_N);
-        assertThat(testParcel.getCoordinateS()).isEqualTo(UPDATED_COORDINATE_S);
+        assertThat(testParcel.getCoordinateE()).isEqualTo(UPDATED_COORDINATE_E);
         assertThat(testParcel.getLagosSheetNumber()).isEqualTo(UPDATED_LAGOS_SHEET_NUMBER);
-        assertThat(testParcel.getAllocation()).isEqualTo(UPDATED_ALLOCATION);
-        assertThat(testParcel.getLocation1()).isEqualTo(UPDATED_LOCATION_1);
         assertThat(testParcel.getUnitNumber()).isEqualTo(UPDATED_UNIT_NUMBER);
-        assertThat(testParcel.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testParcel.getValuation()).isEqualTo(UPDATED_VALUATION);
+        assertThat(testParcel.getValuationAmount()).isEqualTo(UPDATED_VALUATION_AMOUNT);
         assertThat(testParcel.getComments()).isEqualTo(UPDATED_COMMENTS);
-        assertThat(testParcel.getLegalDescription()).isEqualTo(UPDATED_LEGAL_DESCRIPTION);
+        assertThat(testParcel.getStreetNumber()).isEqualTo(UPDATED_STREET_NUMBER);
+        assertThat(testParcel.getStreetName()).isEqualTo(UPDATED_STREET_NAME);
+        assertThat(testParcel.getBlockNumber()).isEqualTo(UPDATED_BLOCK_NUMBER);
+        assertThat(testParcel.getPlotNumber()).isEqualTo(UPDATED_PLOT_NUMBER);
+        assertThat(testParcel.getWard()).isEqualTo(UPDATED_WARD);
+        assertThat(testParcel.getTown()).isEqualTo(UPDATED_TOWN);
+        assertThat(testParcel.getDistrict()).isEqualTo(UPDATED_DISTRICT);
+        assertThat(testParcel.getVillage()).isEqualTo(UPDATED_VILLAGE);
+        assertThat(testParcel.getUpin()).isEqualTo(UPDATED_UPIN);
+        assertThat(testParcel.getComment()).isEqualTo(UPDATED_COMMENT);
 
         // Validate the Parcel in Elasticsearch
         verify(mockParcelSearchRepository, times(1)).save(testParcel);
@@ -456,24 +579,30 @@ public class ParcelResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(parcel.getId().intValue())))
-            .andExpect(jsonPath("$.[*].label").value(hasItem(DEFAULT_LABEL)))
+            .andExpect(jsonPath("$.[*].propertyNumber").value(hasItem(DEFAULT_PROPERTY_NUMBER)))
+            .andExpect(jsonPath("$.[*].parcelLineage").value(hasItem(DEFAULT_PARCEL_LINEAGE)))
+            .andExpect(jsonPath("$.[*].surveyPlanNumber").value(hasItem(DEFAULT_SURVEY_PLAN_NUMBER)))
+            .andExpect(jsonPath("$.[*].propertyDescription").value(hasItem(DEFAULT_PROPERTY_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].area").value(hasItem(DEFAULT_AREA.doubleValue())))
-            .andExpect(jsonPath("$.[*].registrationOfficeDictionary").value(hasItem(DEFAULT_REGISTRATION_OFFICE_DICTIONARY)))
-            .andExpect(jsonPath("$.[*].surveyDate").value(hasItem(DEFAULT_SURVEY_DATE.toString())))
-            .andExpect(jsonPath("$.[*].accommodation").value(hasItem(DEFAULT_ACCOMMODATION)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].propertyArea").value(hasItem(DEFAULT_PROPERTY_AREA.doubleValue())))
             .andExpect(jsonPath("$.[*].planNumber").value(hasItem(DEFAULT_PLAN_NUMBER)))
-            .andExpect(jsonPath("$.[*].premiumValue").value(hasItem(DEFAULT_PREMIUM_VALUE)))
+            .andExpect(jsonPath("$.[*].premiumValue").value(hasItem(DEFAULT_PREMIUM_VALUE.doubleValue())))
             .andExpect(jsonPath("$.[*].coordinateN").value(hasItem(DEFAULT_COORDINATE_N)))
-            .andExpect(jsonPath("$.[*].coordinateS").value(hasItem(DEFAULT_COORDINATE_S)))
+            .andExpect(jsonPath("$.[*].coordinateE").value(hasItem(DEFAULT_COORDINATE_E)))
             .andExpect(jsonPath("$.[*].lagosSheetNumber").value(hasItem(DEFAULT_LAGOS_SHEET_NUMBER)))
-            .andExpect(jsonPath("$.[*].allocation").value(hasItem(DEFAULT_ALLOCATION)))
-            .andExpect(jsonPath("$.[*].location1").value(hasItem(DEFAULT_LOCATION_1)))
             .andExpect(jsonPath("$.[*].unitNumber").value(hasItem(DEFAULT_UNIT_NUMBER)))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].valuation").value(hasItem(DEFAULT_VALUATION)))
+            .andExpect(jsonPath("$.[*].valuationAmount").value(hasItem(DEFAULT_VALUATION_AMOUNT.doubleValue())))
             .andExpect(jsonPath("$.[*].comments").value(hasItem(DEFAULT_COMMENTS)))
-            .andExpect(jsonPath("$.[*].legalDescription").value(hasItem(DEFAULT_LEGAL_DESCRIPTION)));
+            .andExpect(jsonPath("$.[*].streetNumber").value(hasItem(DEFAULT_STREET_NUMBER)))
+            .andExpect(jsonPath("$.[*].streetName").value(hasItem(DEFAULT_STREET_NAME)))
+            .andExpect(jsonPath("$.[*].blockNumber").value(hasItem(DEFAULT_BLOCK_NUMBER)))
+            .andExpect(jsonPath("$.[*].plotNumber").value(hasItem(DEFAULT_PLOT_NUMBER)))
+            .andExpect(jsonPath("$.[*].ward").value(hasItem(DEFAULT_WARD)))
+            .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN)))
+            .andExpect(jsonPath("$.[*].district").value(hasItem(DEFAULT_DISTRICT)))
+            .andExpect(jsonPath("$.[*].village").value(hasItem(DEFAULT_VILLAGE)))
+            .andExpect(jsonPath("$.[*].upin").value(hasItem(DEFAULT_UPIN)))
+            .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT)));
     }
 }

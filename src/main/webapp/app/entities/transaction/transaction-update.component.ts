@@ -13,6 +13,8 @@ import { ITransactionExt } from 'app/shared/model/transaction-ext.model';
 import { TransactionExtService } from 'app/entities/transaction-ext/transaction-ext.service';
 import { IDictionary } from 'app/shared/model/dictionary.model';
 import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
+import { IMetadata } from 'app/shared/model/metadata.model';
+import { MetadataService } from 'app/entities/metadata/metadata.service';
 import { IParty } from 'app/shared/model/party.model';
 import { PartyService } from 'app/entities/party/party.service';
 import { IParcel } from 'app/shared/model/parcel.model';
@@ -32,6 +34,8 @@ export class TransactionUpdateComponent implements OnInit {
   exts: ITransactionExt[];
 
   dictionaries: IDictionary[];
+
+  metadata: IMetadata[];
 
   parties: IParty[];
 
@@ -56,12 +60,12 @@ export class TransactionUpdateComponent implements OnInit {
     startDate: [],
     completeDate: [],
     batchId: [],
-    transactionCode: [],
     ext: [],
     transactionType: [],
     transactionSubType: [],
     ownershipType: [],
     tenureType: [],
+    transactionCode: [],
     parties: [],
     parcels: [],
     docs: []
@@ -72,6 +76,7 @@ export class TransactionUpdateComponent implements OnInit {
     protected transactionService: TransactionService,
     protected transactionExtService: TransactionExtService,
     protected dictionaryService: DictionaryService,
+    protected metadataService: MetadataService,
     protected partyService: PartyService,
     protected parcelService: ParcelService,
     protected supportingDocumentService: SupportingDocumentService,
@@ -106,6 +111,9 @@ export class TransactionUpdateComponent implements OnInit {
         (res: HttpResponse<IDictionary[]>) => (this.dictionaries = res.body),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
+    this.metadataService
+      .query()
+      .subscribe((res: HttpResponse<IMetadata[]>) => (this.metadata = res.body), (res: HttpErrorResponse) => this.onError(res.message));
     this.partyService
       .query()
       .subscribe((res: HttpResponse<IParty[]>) => (this.parties = res.body), (res: HttpErrorResponse) => this.onError(res.message));
@@ -134,12 +142,12 @@ export class TransactionUpdateComponent implements OnInit {
       startDate: transaction.startDate,
       completeDate: transaction.completeDate,
       batchId: transaction.batchId,
-      transactionCode: transaction.transactionCode,
       ext: transaction.ext,
       transactionType: transaction.transactionType,
       transactionSubType: transaction.transactionSubType,
       ownershipType: transaction.ownershipType,
       tenureType: transaction.tenureType,
+      transactionCode: transaction.transactionCode,
       parties: transaction.parties,
       parcels: transaction.parcels,
       docs: transaction.docs
@@ -172,12 +180,12 @@ export class TransactionUpdateComponent implements OnInit {
       startDate: this.editForm.get(['startDate']).value,
       completeDate: this.editForm.get(['completeDate']).value,
       batchId: this.editForm.get(['batchId']).value,
-      transactionCode: this.editForm.get(['transactionCode']).value,
       ext: this.editForm.get(['ext']).value,
       transactionType: this.editForm.get(['transactionType']).value,
       transactionSubType: this.editForm.get(['transactionSubType']).value,
       ownershipType: this.editForm.get(['ownershipType']).value,
       tenureType: this.editForm.get(['tenureType']).value,
+      transactionCode: this.editForm.get(['transactionCode']).value,
       parties: this.editForm.get(['parties']).value,
       parcels: this.editForm.get(['parcels']).value,
       docs: this.editForm.get(['docs']).value
@@ -205,6 +213,10 @@ export class TransactionUpdateComponent implements OnInit {
   }
 
   trackDictionaryById(index: number, item: IDictionary) {
+    return item.id;
+  }
+
+  trackMetadataById(index: number, item: IMetadata) {
     return item.id;
   }
 

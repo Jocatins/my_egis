@@ -80,7 +80,6 @@ class TransactionGatlingTest extends Simulation {
                 , "startDate":"2020-01-01T00:00:00.000Z"
                 , "completeDate":"2020-01-01T00:00:00.000Z"
                 , "batchId":"0"
-                , "transactionCode":"SAMPLE_TEXT"
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_transaction_url"))).exitHereIfFailed

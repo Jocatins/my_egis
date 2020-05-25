@@ -72,25 +72,31 @@ class ParcelGatlingTest extends Simulation {
             .headers(headers_http_authenticated)
             .body(StringBody("""{
                 "id":null
-                , "label":"SAMPLE_TEXT"
+                , "propertyNumber":"SAMPLE_TEXT"
+                , "parcelLineage":"SAMPLE_TEXT"
+                , "surveyPlanNumber":"SAMPLE_TEXT"
+                , "propertyDescription":"SAMPLE_TEXT"
                 , "area":null
-                , "registrationOfficeDictionary":"SAMPLE_TEXT"
-                , "surveyDate":"2020-01-01T00:00:00.000Z"
-                , "accommodation":"SAMPLE_TEXT"
                 , "description":"SAMPLE_TEXT"
                 , "propertyArea":null
                 , "planNumber":"SAMPLE_TEXT"
-                , "premiumValue":"SAMPLE_TEXT"
+                , "premiumValue":null
                 , "coordinateN":"0"
-                , "coordinateS":"0"
+                , "coordinateE":"0"
                 , "lagosSheetNumber":"SAMPLE_TEXT"
-                , "allocation":"SAMPLE_TEXT"
-                , "location1":"0"
                 , "unitNumber":"SAMPLE_TEXT"
-                , "name":"SAMPLE_TEXT"
-                , "valuation":"SAMPLE_TEXT"
+                , "valuationAmount":null
                 , "comments":"SAMPLE_TEXT"
-                , "legalDescription":"SAMPLE_TEXT"
+                , "streetNumber":"SAMPLE_TEXT"
+                , "streetName":"SAMPLE_TEXT"
+                , "blockNumber":"SAMPLE_TEXT"
+                , "plotNumber":"SAMPLE_TEXT"
+                , "ward":"SAMPLE_TEXT"
+                , "town":"SAMPLE_TEXT"
+                , "district":"SAMPLE_TEXT"
+                , "village":"SAMPLE_TEXT"
+                , "upin":"SAMPLE_TEXT"
+                , "comment":"SAMPLE_TEXT"
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_parcel_url"))).exitHereIfFailed

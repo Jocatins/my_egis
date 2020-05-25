@@ -50,18 +50,7 @@ describe('Address e2e test', () => {
       addressUpdatePage.setTownInput('town'),
       addressUpdatePage.setWardInput('ward'),
       addressUpdatePage.setBlockNumberInput('blockNumber'),
-      addressUpdatePage.setPlotNumberInput('plotNumber'),
-      addressUpdatePage.countrySelectLastOption(),
-      addressUpdatePage.regionSelectLastOption(),
-      addressUpdatePage.districtSelectLastOption(),
-      addressUpdatePage.stateSelectLastOption(),
-      addressUpdatePage.estateNameSelectLastOption(),
-      addressUpdatePage.localGovernmentAreaSelectLastOption(),
-      addressUpdatePage.localCouncilAreaSelectLastOption(),
-      addressUpdatePage.streetTypeSelectLastOption(),
-      addressUpdatePage.stateOfOriginSelectLastOption(),
-      addressUpdatePage.schemeNameSelectLastOption(),
-      addressUpdatePage.categorySelectLastOption()
+      addressUpdatePage.setPlotNumberInput('plotNumber')
     ]);
     expect(await addressUpdatePage.getAddressAreaNameInput()).to.eq(
       'addressAreaName',

@@ -39,7 +39,6 @@
             <th scope="col"  jhiSortBy="registrationNumber"><span jhiTranslate="egisexternalApp.surveyor.registrationNumber">Registration Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="phone"><span jhiTranslate="egisexternalApp.surveyor.phone">Phone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="status"><span jhiTranslate="egisexternalApp.surveyor.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="address.id"><span jhiTranslate="egisexternalApp.surveyor.address">Address</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -51,11 +50,6 @@
                 <td>{{surveyor.registrationNumber}}</td>
                 <td>{{surveyor.phone}}</td>
                 <td>{{surveyor.status}}</td>
-                <td>
-                    <div *ngIf="surveyor.address">
-                        <a [routerLink]="['/address', surveyor.address?.id, 'view' ]" >{{surveyor.address?.id}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

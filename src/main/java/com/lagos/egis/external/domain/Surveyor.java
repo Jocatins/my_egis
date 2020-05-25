@@ -39,10 +39,6 @@ public class Surveyor implements Serializable {
     @Column(name = "status")
     private String status;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Address address;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -115,19 +111,6 @@ public class Surveyor implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public Surveyor address(Address address) {
-        this.address = address;
-        return this;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

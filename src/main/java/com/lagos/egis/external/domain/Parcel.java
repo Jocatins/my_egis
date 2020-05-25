@@ -5,10 +5,10 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,20 +29,20 @@ public class Parcel implements Serializable {
     @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
     private Long id;
 
-    @Column(name = "label")
-    private String label;
+    @Column(name = "property_number")
+    private String propertyNumber;
+
+    @Column(name = "parcel_lineage")
+    private String parcelLineage;
+
+    @Column(name = "survey_plan_number")
+    private String surveyPlanNumber;
+
+    @Column(name = "property_description")
+    private String propertyDescription;
 
     @Column(name = "area")
     private Double area;
-
-    @Column(name = "registration_office_dictionary")
-    private String registrationOfficeDictionary;
-
-    @Column(name = "survey_date")
-    private LocalDate surveyDate;
-
-    @Column(name = "accommodation")
-    private String accommodation;
 
     @Column(name = "description")
     private String description;
@@ -54,57 +54,57 @@ public class Parcel implements Serializable {
     private String planNumber;
 
     @Column(name = "premium_value")
-    private String premiumValue;
+    private Double premiumValue;
 
     @Column(name = "coordinate_n")
     private Integer coordinateN;
 
-    @Column(name = "coordinate_s")
-    private Integer coordinateS;
+    @Column(name = "coordinate_e")
+    private Integer coordinateE;
 
     @Column(name = "lagos_sheet_number")
     private String lagosSheetNumber;
 
-    @Column(name = "allocation")
-    private String allocation;
-
-    @Column(name = "location_1")
-    private Integer location1;
-
     @Column(name = "unit_number")
     private String unitNumber;
 
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "valuation")
-    private String valuation;
+    @Column(name = "valuation_amount")
+    private Double valuationAmount;
 
     @Column(name = "comments")
     private String comments;
 
-    @Column(name = "legal_description")
-    private String legalDescription;
+    @Column(name = "street_number")
+    private String streetNumber;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Address address;
+    @Column(name = "street_name")
+    private String streetName;
 
-    @ManyToOne
-    @JsonIgnoreProperties("parcels")
-    private Dictionary spatialUnitType;
+    @NotNull
+    @Column(name = "block_number", nullable = false)
+    private String blockNumber;
 
-    @ManyToOne
-    @JsonIgnoreProperties("parcels")
-    private Dictionary surveyType;
+    @NotNull
+    @Column(name = "plot_number", nullable = false)
+    private String plotNumber;
 
-    @ManyToOne
-    @JsonIgnoreProperties("parcels")
-    private Dictionary propertyType;
+    @Column(name = "ward")
+    private String ward;
 
-    @ManyToOne
-    @JsonIgnoreProperties("parcels")
-    private Dictionary tenureType;
+    @Column(name = "town")
+    private String town;
+
+    @Column(name = "district")
+    private String district;
+
+    @Column(name = "village")
+    private String village;
+
+    @Column(name = "upin")
+    private String upin;
+
+    @Column(name = "comment")
+    private String comment;
 
     @ManyToOne
     @JsonIgnoreProperties("parcels")
@@ -114,7 +114,8 @@ public class Parcel implements Serializable {
     @JsonIgnoreProperties("parcels")
     private Dictionary builtUpAreaType;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     @JsonIgnoreProperties("parcels")
     private Dictionary measurementUnitType;
 
@@ -132,15 +133,49 @@ public class Parcel implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("parcels")
-    private Dictionary registerType;
+    private Dictionary governmentStatus;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("parcels")
+    private Dictionary propertyType;
 
     @ManyToOne
     @JsonIgnoreProperties("parcels")
-    private Dictionary meansOfAcq;
+    private Dictionary streetType;
 
     @ManyToOne
     @JsonIgnoreProperties("parcels")
-    private Dictionary region;
+    private Dictionary estateName;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parcels")
+    private Dictionary schemeName;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parcels")
+    private Dictionary state;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("parcels")
+    private Dictionary localGovernmentArea;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parcels")
+    private Dictionary locationofLand;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parcels")
+    private Dictionary typeOfAccommodation;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parcels")
+    private Dictionary tenureType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parcels")
+    private Dictionary allocationName;
 
     @ManyToMany(mappedBy = "parcels")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -156,17 +191,56 @@ public class Parcel implements Serializable {
         this.id = id;
     }
 
-    public String getLabel() {
-        return label;
+    public String getPropertyNumber() {
+        return propertyNumber;
     }
 
-    public Parcel label(String label) {
-        this.label = label;
+    public Parcel propertyNumber(String propertyNumber) {
+        this.propertyNumber = propertyNumber;
         return this;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setPropertyNumber(String propertyNumber) {
+        this.propertyNumber = propertyNumber;
+    }
+
+    public String getParcelLineage() {
+        return parcelLineage;
+    }
+
+    public Parcel parcelLineage(String parcelLineage) {
+        this.parcelLineage = parcelLineage;
+        return this;
+    }
+
+    public void setParcelLineage(String parcelLineage) {
+        this.parcelLineage = parcelLineage;
+    }
+
+    public String getSurveyPlanNumber() {
+        return surveyPlanNumber;
+    }
+
+    public Parcel surveyPlanNumber(String surveyPlanNumber) {
+        this.surveyPlanNumber = surveyPlanNumber;
+        return this;
+    }
+
+    public void setSurveyPlanNumber(String surveyPlanNumber) {
+        this.surveyPlanNumber = surveyPlanNumber;
+    }
+
+    public String getPropertyDescription() {
+        return propertyDescription;
+    }
+
+    public Parcel propertyDescription(String propertyDescription) {
+        this.propertyDescription = propertyDescription;
+        return this;
+    }
+
+    public void setPropertyDescription(String propertyDescription) {
+        this.propertyDescription = propertyDescription;
     }
 
     public Double getArea() {
@@ -180,45 +254,6 @@ public class Parcel implements Serializable {
 
     public void setArea(Double area) {
         this.area = area;
-    }
-
-    public String getRegistrationOfficeDictionary() {
-        return registrationOfficeDictionary;
-    }
-
-    public Parcel registrationOfficeDictionary(String registrationOfficeDictionary) {
-        this.registrationOfficeDictionary = registrationOfficeDictionary;
-        return this;
-    }
-
-    public void setRegistrationOfficeDictionary(String registrationOfficeDictionary) {
-        this.registrationOfficeDictionary = registrationOfficeDictionary;
-    }
-
-    public LocalDate getSurveyDate() {
-        return surveyDate;
-    }
-
-    public Parcel surveyDate(LocalDate surveyDate) {
-        this.surveyDate = surveyDate;
-        return this;
-    }
-
-    public void setSurveyDate(LocalDate surveyDate) {
-        this.surveyDate = surveyDate;
-    }
-
-    public String getAccommodation() {
-        return accommodation;
-    }
-
-    public Parcel accommodation(String accommodation) {
-        this.accommodation = accommodation;
-        return this;
-    }
-
-    public void setAccommodation(String accommodation) {
-        this.accommodation = accommodation;
     }
 
     public String getDescription() {
@@ -260,16 +295,16 @@ public class Parcel implements Serializable {
         this.planNumber = planNumber;
     }
 
-    public String getPremiumValue() {
+    public Double getPremiumValue() {
         return premiumValue;
     }
 
-    public Parcel premiumValue(String premiumValue) {
+    public Parcel premiumValue(Double premiumValue) {
         this.premiumValue = premiumValue;
         return this;
     }
 
-    public void setPremiumValue(String premiumValue) {
+    public void setPremiumValue(Double premiumValue) {
         this.premiumValue = premiumValue;
     }
 
@@ -286,17 +321,17 @@ public class Parcel implements Serializable {
         this.coordinateN = coordinateN;
     }
 
-    public Integer getCoordinateS() {
-        return coordinateS;
+    public Integer getCoordinateE() {
+        return coordinateE;
     }
 
-    public Parcel coordinateS(Integer coordinateS) {
-        this.coordinateS = coordinateS;
+    public Parcel coordinateE(Integer coordinateE) {
+        this.coordinateE = coordinateE;
         return this;
     }
 
-    public void setCoordinateS(Integer coordinateS) {
-        this.coordinateS = coordinateS;
+    public void setCoordinateE(Integer coordinateE) {
+        this.coordinateE = coordinateE;
     }
 
     public String getLagosSheetNumber() {
@@ -312,32 +347,6 @@ public class Parcel implements Serializable {
         this.lagosSheetNumber = lagosSheetNumber;
     }
 
-    public String getAllocation() {
-        return allocation;
-    }
-
-    public Parcel allocation(String allocation) {
-        this.allocation = allocation;
-        return this;
-    }
-
-    public void setAllocation(String allocation) {
-        this.allocation = allocation;
-    }
-
-    public Integer getLocation1() {
-        return location1;
-    }
-
-    public Parcel location1(Integer location1) {
-        this.location1 = location1;
-        return this;
-    }
-
-    public void setLocation1(Integer location1) {
-        this.location1 = location1;
-    }
-
     public String getUnitNumber() {
         return unitNumber;
     }
@@ -351,30 +360,17 @@ public class Parcel implements Serializable {
         this.unitNumber = unitNumber;
     }
 
-    public String getName() {
-        return name;
+    public Double getValuationAmount() {
+        return valuationAmount;
     }
 
-    public Parcel name(String name) {
-        this.name = name;
+    public Parcel valuationAmount(Double valuationAmount) {
+        this.valuationAmount = valuationAmount;
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getValuation() {
-        return valuation;
-    }
-
-    public Parcel valuation(String valuation) {
-        this.valuation = valuation;
-        return this;
-    }
-
-    public void setValuation(String valuation) {
-        this.valuation = valuation;
+    public void setValuationAmount(Double valuationAmount) {
+        this.valuationAmount = valuationAmount;
     }
 
     public String getComments() {
@@ -390,82 +386,134 @@ public class Parcel implements Serializable {
         this.comments = comments;
     }
 
-    public String getLegalDescription() {
-        return legalDescription;
+    public String getStreetNumber() {
+        return streetNumber;
     }
 
-    public Parcel legalDescription(String legalDescription) {
-        this.legalDescription = legalDescription;
+    public Parcel streetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
         return this;
     }
 
-    public void setLegalDescription(String legalDescription) {
-        this.legalDescription = legalDescription;
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getStreetName() {
+        return streetName;
     }
 
-    public Parcel address(Address address) {
-        this.address = address;
+    public Parcel streetName(String streetName) {
+        this.streetName = streetName;
         return this;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
     }
 
-    public Dictionary getSpatialUnitType() {
-        return spatialUnitType;
+    public String getBlockNumber() {
+        return blockNumber;
     }
 
-    public Parcel spatialUnitType(Dictionary dictionary) {
-        this.spatialUnitType = dictionary;
+    public Parcel blockNumber(String blockNumber) {
+        this.blockNumber = blockNumber;
         return this;
     }
 
-    public void setSpatialUnitType(Dictionary dictionary) {
-        this.spatialUnitType = dictionary;
+    public void setBlockNumber(String blockNumber) {
+        this.blockNumber = blockNumber;
     }
 
-    public Dictionary getSurveyType() {
-        return surveyType;
+    public String getPlotNumber() {
+        return plotNumber;
     }
 
-    public Parcel surveyType(Dictionary dictionary) {
-        this.surveyType = dictionary;
+    public Parcel plotNumber(String plotNumber) {
+        this.plotNumber = plotNumber;
         return this;
     }
 
-    public void setSurveyType(Dictionary dictionary) {
-        this.surveyType = dictionary;
+    public void setPlotNumber(String plotNumber) {
+        this.plotNumber = plotNumber;
     }
 
-    public Dictionary getPropertyType() {
-        return propertyType;
+    public String getWard() {
+        return ward;
     }
 
-    public Parcel propertyType(Dictionary dictionary) {
-        this.propertyType = dictionary;
+    public Parcel ward(String ward) {
+        this.ward = ward;
         return this;
     }
 
-    public void setPropertyType(Dictionary dictionary) {
-        this.propertyType = dictionary;
+    public void setWard(String ward) {
+        this.ward = ward;
     }
 
-    public Dictionary getTenureType() {
-        return tenureType;
+    public String getTown() {
+        return town;
     }
 
-    public Parcel tenureType(Dictionary dictionary) {
-        this.tenureType = dictionary;
+    public Parcel town(String town) {
+        this.town = town;
         return this;
     }
 
-    public void setTenureType(Dictionary dictionary) {
-        this.tenureType = dictionary;
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public Parcel district(String district) {
+        this.district = district;
+        return this;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getVillage() {
+        return village;
+    }
+
+    public Parcel village(String village) {
+        this.village = village;
+        return this;
+    }
+
+    public void setVillage(String village) {
+        this.village = village;
+    }
+
+    public String getUpin() {
+        return upin;
+    }
+
+    public Parcel upin(String upin) {
+        this.upin = upin;
+        return this;
+    }
+
+    public void setUpin(String upin) {
+        this.upin = upin;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public Parcel comment(String comment) {
+        this.comment = comment;
+        return this;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public Dictionary getLocation() {
@@ -546,43 +594,147 @@ public class Parcel implements Serializable {
         this.developmentStatus = dictionary;
     }
 
-    public Dictionary getRegisterType() {
-        return registerType;
+    public Dictionary getGovernmentStatus() {
+        return governmentStatus;
     }
 
-    public Parcel registerType(Dictionary dictionary) {
-        this.registerType = dictionary;
+    public Parcel governmentStatus(Dictionary dictionary) {
+        this.governmentStatus = dictionary;
         return this;
     }
 
-    public void setRegisterType(Dictionary dictionary) {
-        this.registerType = dictionary;
+    public void setGovernmentStatus(Dictionary dictionary) {
+        this.governmentStatus = dictionary;
     }
 
-    public Dictionary getMeansOfAcq() {
-        return meansOfAcq;
+    public Dictionary getPropertyType() {
+        return propertyType;
     }
 
-    public Parcel meansOfAcq(Dictionary dictionary) {
-        this.meansOfAcq = dictionary;
+    public Parcel propertyType(Dictionary dictionary) {
+        this.propertyType = dictionary;
         return this;
     }
 
-    public void setMeansOfAcq(Dictionary dictionary) {
-        this.meansOfAcq = dictionary;
+    public void setPropertyType(Dictionary dictionary) {
+        this.propertyType = dictionary;
     }
 
-    public Dictionary getRegion() {
-        return region;
+    public Dictionary getStreetType() {
+        return streetType;
     }
 
-    public Parcel region(Dictionary dictionary) {
-        this.region = dictionary;
+    public Parcel streetType(Dictionary dictionary) {
+        this.streetType = dictionary;
         return this;
     }
 
-    public void setRegion(Dictionary dictionary) {
-        this.region = dictionary;
+    public void setStreetType(Dictionary dictionary) {
+        this.streetType = dictionary;
+    }
+
+    public Dictionary getEstateName() {
+        return estateName;
+    }
+
+    public Parcel estateName(Dictionary dictionary) {
+        this.estateName = dictionary;
+        return this;
+    }
+
+    public void setEstateName(Dictionary dictionary) {
+        this.estateName = dictionary;
+    }
+
+    public Dictionary getSchemeName() {
+        return schemeName;
+    }
+
+    public Parcel schemeName(Dictionary dictionary) {
+        this.schemeName = dictionary;
+        return this;
+    }
+
+    public void setSchemeName(Dictionary dictionary) {
+        this.schemeName = dictionary;
+    }
+
+    public Dictionary getState() {
+        return state;
+    }
+
+    public Parcel state(Dictionary dictionary) {
+        this.state = dictionary;
+        return this;
+    }
+
+    public void setState(Dictionary dictionary) {
+        this.state = dictionary;
+    }
+
+    public Dictionary getLocalGovernmentArea() {
+        return localGovernmentArea;
+    }
+
+    public Parcel localGovernmentArea(Dictionary dictionary) {
+        this.localGovernmentArea = dictionary;
+        return this;
+    }
+
+    public void setLocalGovernmentArea(Dictionary dictionary) {
+        this.localGovernmentArea = dictionary;
+    }
+
+    public Dictionary getLocationofLand() {
+        return locationofLand;
+    }
+
+    public Parcel locationofLand(Dictionary dictionary) {
+        this.locationofLand = dictionary;
+        return this;
+    }
+
+    public void setLocationofLand(Dictionary dictionary) {
+        this.locationofLand = dictionary;
+    }
+
+    public Dictionary getTypeOfAccommodation() {
+        return typeOfAccommodation;
+    }
+
+    public Parcel typeOfAccommodation(Dictionary dictionary) {
+        this.typeOfAccommodation = dictionary;
+        return this;
+    }
+
+    public void setTypeOfAccommodation(Dictionary dictionary) {
+        this.typeOfAccommodation = dictionary;
+    }
+
+    public Dictionary getTenureType() {
+        return tenureType;
+    }
+
+    public Parcel tenureType(Dictionary dictionary) {
+        this.tenureType = dictionary;
+        return this;
+    }
+
+    public void setTenureType(Dictionary dictionary) {
+        this.tenureType = dictionary;
+    }
+
+    public Dictionary getAllocationName() {
+        return allocationName;
+    }
+
+    public Parcel allocationName(Dictionary dictionary) {
+        this.allocationName = dictionary;
+        return this;
+    }
+
+    public void setAllocationName(Dictionary dictionary) {
+        this.allocationName = dictionary;
     }
 
     public Set<Transaction> getTransactions() {
@@ -631,25 +783,31 @@ public class Parcel implements Serializable {
     public String toString() {
         return "Parcel{" +
             "id=" + getId() +
-            ", label='" + getLabel() + "'" +
+            ", propertyNumber='" + getPropertyNumber() + "'" +
+            ", parcelLineage='" + getParcelLineage() + "'" +
+            ", surveyPlanNumber='" + getSurveyPlanNumber() + "'" +
+            ", propertyDescription='" + getPropertyDescription() + "'" +
             ", area=" + getArea() +
-            ", registrationOfficeDictionary='" + getRegistrationOfficeDictionary() + "'" +
-            ", surveyDate='" + getSurveyDate() + "'" +
-            ", accommodation='" + getAccommodation() + "'" +
             ", description='" + getDescription() + "'" +
             ", propertyArea=" + getPropertyArea() +
             ", planNumber='" + getPlanNumber() + "'" +
-            ", premiumValue='" + getPremiumValue() + "'" +
+            ", premiumValue=" + getPremiumValue() +
             ", coordinateN=" + getCoordinateN() +
-            ", coordinateS=" + getCoordinateS() +
+            ", coordinateE=" + getCoordinateE() +
             ", lagosSheetNumber='" + getLagosSheetNumber() + "'" +
-            ", allocation='" + getAllocation() + "'" +
-            ", location1=" + getLocation1() +
             ", unitNumber='" + getUnitNumber() + "'" +
-            ", name='" + getName() + "'" +
-            ", valuation='" + getValuation() + "'" +
+            ", valuationAmount=" + getValuationAmount() +
             ", comments='" + getComments() + "'" +
-            ", legalDescription='" + getLegalDescription() + "'" +
+            ", streetNumber='" + getStreetNumber() + "'" +
+            ", streetName='" + getStreetName() + "'" +
+            ", blockNumber='" + getBlockNumber() + "'" +
+            ", plotNumber='" + getPlotNumber() + "'" +
+            ", ward='" + getWard() + "'" +
+            ", town='" + getTown() + "'" +
+            ", district='" + getDistrict() + "'" +
+            ", village='" + getVillage() + "'" +
+            ", upin='" + getUpin() + "'" +
+            ", comment='" + getComment() + "'" +
             "}";
     }
 }

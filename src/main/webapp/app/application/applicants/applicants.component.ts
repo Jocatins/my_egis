@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { TransInfo } from '../model/transinfo.model';
-import { BatchService } from '../ext/batch-old/batch.service';
+import { BatchService } from '../ext/batch/batch.service';
 import { IParty, Party } from 'app/shared/model/party.model';
 import { IBatch } from 'app/shared/model/batch.model';
 import { PartyDeleteDialogComponent } from '../party/party-delete-dialog.component';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Parcel } from 'app/shared/model/parcel.model';
+import { TransactionService } from 'app/entities/transaction/transaction.service';
 
 @Component({
   selector: 'jhi-trans-detail',
@@ -36,6 +38,7 @@ export class ApplicantsComponent implements OnInit {
     protected activatedRoute: ActivatedRoute,
     protected eventManager: JhiEventManager,
     protected modalService: NgbModal,
+    protected transService: TransactionService
   ) {}
 
   ngOnInit() {
@@ -52,17 +55,27 @@ export class ApplicantsComponent implements OnInit {
   }
 
   goToParcel(batchId: number) {
-    let newOrEdit = 'new';
+    let newOrEdit = 'edit';
     let parcelId = 0;
 
     this.batchService.find(batchId).subscribe(
       data => {
         this.batch = data.body;
-        if (undefined !== this.batch.transactions[0].parcels[0]) {
+        if (this.batch.transactions[0].parcels.length !== 0){
           newOrEdit = 'edit';
           parcelId = this.batch.transactions[0].parcels[0].id;
+          this.router.navigate(['/application/property', batchId, parcelId, newOrEdit]);
+        }else{
+          const transaction =  this.batch.transactions[0];
+          this.transService.update(transaction).subscribe(
+            trans=>{
+
+              this.router.navigate(['/application/property', batchId, 0, "new"]);
+            }
+          )
+
         }
-        this.router.navigate(['/application/property', batchId, parcelId, newOrEdit]);
+
       },
       () => alert()
     );

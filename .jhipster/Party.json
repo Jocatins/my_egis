@@ -2,36 +2,18 @@
     "name": "Party",
     "fields": [
         {
-            "fieldName": "partyName",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "shareNominator",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "shareDenominator",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "taxExempt",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "otherName",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "fax",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "email",
-            "fieldType": "String"
+            "fieldName": "emailAddress",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "phoneNumber",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "payerId",
@@ -39,6 +21,10 @@
         },
         {
             "fieldName": "taxPayerNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "payeNumber",
             "fieldType": "String"
         },
         {
@@ -62,10 +48,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "businessNature",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "birthPlace",
             "fieldType": "String"
         },
@@ -86,31 +68,92 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "driverLicence",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "professionRegNo",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "occupation",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "unitNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "blockNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "plotNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "streetNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "streetName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "buildingName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "buildingNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "postalCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "village",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "longAddress",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "town",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ward",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nextOfKinPhone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "iDDocumentIssuedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "iDDocumentExpirationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "iDDocumentNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "primaryParty",
+            "fieldType": "YesOrNo",
+            "fieldValues": "Y,N",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "address",
-            "otherEntityRelationshipName": "party",
-            "relationshipName": "address",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
             "relationshipType": "many-to-one",
             "otherEntityName": "dictionary",
             "otherEntityRelationshipName": "party",
+            "relationshipValidateRules": "required",
             "relationshipName": "partyType",
             "otherEntityField": "id"
         },
@@ -118,35 +161,8 @@
             "relationshipType": "many-to-one",
             "otherEntityName": "dictionary",
             "otherEntityRelationshipName": "party",
+            "relationshipValidateRules": "required",
             "relationshipName": "partyRoleType",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "dictionary",
-            "otherEntityRelationshipName": "party",
-            "relationshipName": "partySubRoleType",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "dictionary",
-            "otherEntityRelationshipName": "party",
-            "relationshipName": "deliveryType",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "dictionary",
-            "otherEntityRelationshipName": "party",
-            "relationshipName": "primaryParty",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "dictionary",
-            "otherEntityRelationshipName": "party",
-            "relationshipName": "personIdType",
             "otherEntityField": "id"
         },
         {
@@ -160,6 +176,7 @@
             "relationshipType": "many-to-one",
             "otherEntityName": "dictionary",
             "otherEntityRelationshipName": "party",
+            "relationshipValidateRules": "required",
             "relationshipName": "emailType",
             "otherEntityField": "id"
         },
@@ -202,7 +219,114 @@
             "relationshipType": "many-to-one",
             "otherEntityName": "dictionary",
             "otherEntityRelationshipName": "party",
-            "relationshipName": "representativeId",
+            "relationshipName": "businessNature",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipValidateRules": "required",
+            "relationshipName": "phoneCategory",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "nextOfKinPhoneCategory",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "emailCategory",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "addressCategory",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "iDDocumentType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "iDDocumentIssuedBy",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "suffixTitle",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "stateofOrigin",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "maritalStatus",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "streetType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "estateName",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "schemeName",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "district",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipName": "localGovernmentArea",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "party",
+            "relationshipValidateRules": "required",
+            "relationshipName": "country",
             "otherEntityField": "id"
         },
         {
@@ -231,5 +355,7 @@
     "fluentMethods": true,
     "readOnly": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "searchEngine": "elasticsearch",
+    "databaseType": "sql"
 }

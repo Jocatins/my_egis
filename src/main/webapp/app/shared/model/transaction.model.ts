@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
 import { ITransactionExt } from 'app/shared/model/transaction-ext.model';
 import { IDictionary } from 'app/shared/model/dictionary.model';
+import { IMetadata } from 'app/shared/model/metadata.model';
 import { IParty } from 'app/shared/model/party.model';
 import { IParcel } from 'app/shared/model/parcel.model';
 import { ISupportingDocument } from 'app/shared/model/supporting-document.model';
@@ -16,12 +17,12 @@ export interface ITransaction {
   startDate?: Moment;
   completeDate?: Moment;
   batchId?: number;
-  transactionCode?: string;
   ext?: ITransactionExt;
   transactionType?: IDictionary;
   transactionSubType?: IDictionary;
   ownershipType?: IDictionary;
   tenureType?: IDictionary;
+  transactionCode?: IMetadata;
   parties?: IParty[];
   parcels?: IParcel[];
   docs?: ISupportingDocument[];
@@ -39,12 +40,12 @@ export class Transaction implements ITransaction {
     public startDate?: Moment,
     public completeDate?: Moment,
     public batchId?: number,
-    public transactionCode?: string,
     public ext?: ITransactionExt,
     public transactionType?: IDictionary,
     public transactionSubType?: IDictionary,
     public ownershipType?: IDictionary,
     public tenureType?: IDictionary,
+    public transactionCode?: IMetadata,
     public parties?: IParty[],
     public parcels?: IParcel[],
     public docs?: ISupportingDocument[],

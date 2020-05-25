@@ -3,6 +3,9 @@
 <!-- <h5 class="text-center" jhiTranslate="applicationtransdetail.subtitle">Subtitle</h5> -->
 <!-- <p class="text-justify" jhiTranslate="/applicationtransdetail.content"></p> -->
 
+
+<h1>{{this.batch.transactions[0].transactionCode.code}} - {{this.batch.transactions[0].transactionCode.label}} </h1>
+
 <h5 class="sub-header mt-4 mb-4">{{transInfo.applicationname}}</h5>
 
 <!-- @oojekwe
@@ -10,7 +13,7 @@ if not signed in, hide. display if signed in -->
 <p>
     <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="initiateTransaction(transCode)">Click here to Initiate Transaction <fa-icon icon="chevron-right"></fa-icon></button>
 
-    <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batch.id)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
+    <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batchId)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
 </p>
 
 <!-- Fetch value from .xlx config sheet -->
@@ -28,12 +31,6 @@ if not signed in, hide. display if signed in -->
 <h6><strong>Expiration:</strong></h6>
 <!-- {{transInfo.expiration}} -->
 <div [innerHTML]="transInfo.expiration"></div>
-
-<p>
-    <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="initiateTransaction(transCode)">Click here to Initiate Transaction <fa-icon icon="chevron-right"></fa-icon></button>
-
-    <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batch.id)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
-</p>
 
 <h6 class="sub-header-style-2 pt-3"><span>Documents Received</span></h6>
 <!-- {{transInfo.docsreceived}} -->
@@ -57,7 +54,7 @@ if not signed in, hide. display if signed in -->
 
 <h6 class="sub-header-style-2 pt-3"><span>Application Forms & Methods</span></h6>
 <p>
-    This application and all other forms are available for download at <a href="">http://www.lagosegisportal.com.ng/downloads</a>. Alternatively, the applicant can collect the forms from the Lands Bureau. You can submit your application for this transaction in any of these ways, depending on which is convenient and feasible: 
+    This application and all other forms are available for download at <a href="">http://www.lagosegisportal.com.ng/downloads</a>. Alternatively, the applicant can collect the forms from the Lands Bureau. You can submit your application for this transaction in any of these ways, depending on which is convenient and feasible:
     <ol>
         <li>
             <b>Paper submission:</b><br>
@@ -69,12 +66,12 @@ if not signed in, hide. display if signed in -->
         </li>
         <li>
             <b>Online Submission:</b><br>
-            The applicant can initiate this transaction on the online portal. He /she will need to create an account on the online portal, then download the fillable PDF to a computer system/ mobile device. Then fill in the PDF fields with text using a keyboard. After filling all fields, the applicant will need to print the PDF and sign where appropriate. Then upload the signed PDF to the online portal, accompanied with supporting documents. 
+            The applicant can initiate this transaction on the online portal. He /she will need to create an account on the online portal, then download the fillable PDF to a computer system/ mobile device. Then fill in the PDF fields with text using a keyboard. After filling all fields, the applicant will need to print the PDF and sign where appropriate. Then upload the signed PDF to the online portal, accompanied with supporting documents.
         </li>
     </ol>
 </p>
 <p>
     <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="initiateTransaction(transCode)">Click here to Initiate Transaction <fa-icon icon="chevron-right"></fa-icon></button>
 
-    <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batch.id)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
+    <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batchId)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
 </p>

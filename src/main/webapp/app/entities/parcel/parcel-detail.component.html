@@ -5,25 +5,25 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="egisexternalApp.parcel.label">Label</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.parcel.propertyNumber">Property Number</span></dt>
                 <dd>
-                    <span>{{parcel.label}}</span>
+                    <span>{{parcel.propertyNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.parcelLineage">Parcel Lineage</span></dt>
+                <dd>
+                    <span>{{parcel.parcelLineage}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.surveyPlanNumber">Survey Plan Number</span></dt>
+                <dd>
+                    <span>{{parcel.surveyPlanNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.propertyDescription">Property Description</span></dt>
+                <dd>
+                    <span>{{parcel.propertyDescription}}</span>
                 </dd>
                 <dt><span jhiTranslate="egisexternalApp.parcel.area">Area</span></dt>
                 <dd>
                     <span>{{parcel.area}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.registrationOfficeDictionary">Registration Office Dictionary</span></dt>
-                <dd>
-                    <span>{{parcel.registrationOfficeDictionary}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.surveyDate">Survey Date</span></dt>
-                <dd>
-                    <span>{{parcel.surveyDate}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.accommodation">Accommodation</span></dt>
-                <dd>
-                    <span>{{parcel.accommodation}}</span>
                 </dd>
                 <dt><span jhiTranslate="egisexternalApp.parcel.description">Description</span></dt>
                 <dd>
@@ -45,71 +45,65 @@
                 <dd>
                     <span>{{parcel.coordinateN}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.coordinateS">Coordinate S</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.parcel.coordinateE">Coordinate E</span></dt>
                 <dd>
-                    <span>{{parcel.coordinateS}}</span>
+                    <span>{{parcel.coordinateE}}</span>
                 </dd>
                 <dt><span jhiTranslate="egisexternalApp.parcel.lagosSheetNumber">Lagos Sheet Number</span></dt>
                 <dd>
                     <span>{{parcel.lagosSheetNumber}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.allocation">Allocation</span></dt>
-                <dd>
-                    <span>{{parcel.allocation}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.location1">Location 1</span></dt>
-                <dd>
-                    <span>{{parcel.location1}}</span>
-                </dd>
                 <dt><span jhiTranslate="egisexternalApp.parcel.unitNumber">Unit Number</span></dt>
                 <dd>
                     <span>{{parcel.unitNumber}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.name">Name</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.parcel.valuationAmount">Valuation Amount</span></dt>
                 <dd>
-                    <span>{{parcel.name}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.valuation">Valuation</span></dt>
-                <dd>
-                    <span>{{parcel.valuation}}</span>
+                    <span>{{parcel.valuationAmount}}</span>
                 </dd>
                 <dt><span jhiTranslate="egisexternalApp.parcel.comments">Comments</span></dt>
                 <dd>
                     <span>{{parcel.comments}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.legalDescription">Legal Description</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.parcel.streetNumber">Street Number</span></dt>
                 <dd>
-                    <span>{{parcel.legalDescription}}</span>
+                    <span>{{parcel.streetNumber}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.address">Address</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.parcel.streetName">Street Name</span></dt>
                 <dd>
-                    <div *ngIf="parcel.address">
-                        <a [routerLink]="['/address', parcel.address?.id, 'view']">{{parcel.address?.id}}</a>
-                    </div>
+                    <span>{{parcel.streetName}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.spatialUnitType">Spatial Unit Type</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.parcel.blockNumber">Block Number</span></dt>
                 <dd>
-                    <div *ngIf="parcel.spatialUnitType">
-                        <a [routerLink]="['/dictionary', parcel.spatialUnitType?.id, 'view']">{{parcel.spatialUnitType?.id}}</a>
-                    </div>
+                    <span>{{parcel.blockNumber}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.surveyType">Survey Type</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.parcel.plotNumber">Plot Number</span></dt>
                 <dd>
-                    <div *ngIf="parcel.surveyType">
-                        <a [routerLink]="['/dictionary', parcel.surveyType?.id, 'view']">{{parcel.surveyType?.id}}</a>
-                    </div>
+                    <span>{{parcel.plotNumber}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.propertyType">Property Type</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.parcel.ward">Ward</span></dt>
                 <dd>
-                    <div *ngIf="parcel.propertyType">
-                        <a [routerLink]="['/dictionary', parcel.propertyType?.id, 'view']">{{parcel.propertyType?.id}}</a>
-                    </div>
+                    <span>{{parcel.ward}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.tenureType">Tenure Type</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.parcel.town">Town</span></dt>
                 <dd>
-                    <div *ngIf="parcel.tenureType">
-                        <a [routerLink]="['/dictionary', parcel.tenureType?.id, 'view']">{{parcel.tenureType?.id}}</a>
-                    </div>
+                    <span>{{parcel.town}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.district">District</span></dt>
+                <dd>
+                    <span>{{parcel.district}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.village">Village</span></dt>
+                <dd>
+                    <span>{{parcel.village}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.upin">Upin</span></dt>
+                <dd>
+                    <span>{{parcel.upin}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.comment">Comment</span></dt>
+                <dd>
+                    <span>{{parcel.comment}}</span>
                 </dd>
                 <dt><span jhiTranslate="egisexternalApp.parcel.location">Location</span></dt>
                 <dd>
@@ -147,22 +141,70 @@
                         <a [routerLink]="['/dictionary', parcel.developmentStatus?.id, 'view']">{{parcel.developmentStatus?.id}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.registerType">Register Type</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.parcel.governmentStatus">Government Status</span></dt>
                 <dd>
-                    <div *ngIf="parcel.registerType">
-                        <a [routerLink]="['/dictionary', parcel.registerType?.id, 'view']">{{parcel.registerType?.id}}</a>
+                    <div *ngIf="parcel.governmentStatus">
+                        <a [routerLink]="['/dictionary', parcel.governmentStatus?.id, 'view']">{{parcel.governmentStatus?.id}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.meansOfAcq">Means Of Acq</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.parcel.propertyType">Property Type</span></dt>
                 <dd>
-                    <div *ngIf="parcel.meansOfAcq">
-                        <a [routerLink]="['/dictionary', parcel.meansOfAcq?.id, 'view']">{{parcel.meansOfAcq?.id}}</a>
+                    <div *ngIf="parcel.propertyType">
+                        <a [routerLink]="['/dictionary', parcel.propertyType?.id, 'view']">{{parcel.propertyType?.id}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.parcel.region">Region</span></dt>
+                <dt><span jhiTranslate="egisexternalApp.parcel.streetType">Street Type</span></dt>
                 <dd>
-                    <div *ngIf="parcel.region">
-                        <a [routerLink]="['/dictionary', parcel.region?.id, 'view']">{{parcel.region?.id}}</a>
+                    <div *ngIf="parcel.streetType">
+                        <a [routerLink]="['/dictionary', parcel.streetType?.id, 'view']">{{parcel.streetType?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.estateName">Estate Name</span></dt>
+                <dd>
+                    <div *ngIf="parcel.estateName">
+                        <a [routerLink]="['/dictionary', parcel.estateName?.id, 'view']">{{parcel.estateName?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.schemeName">Scheme Name</span></dt>
+                <dd>
+                    <div *ngIf="parcel.schemeName">
+                        <a [routerLink]="['/dictionary', parcel.schemeName?.id, 'view']">{{parcel.schemeName?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.state">State</span></dt>
+                <dd>
+                    <div *ngIf="parcel.state">
+                        <a [routerLink]="['/dictionary', parcel.state?.id, 'view']">{{parcel.state?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.localGovernmentArea">Local Government Area</span></dt>
+                <dd>
+                    <div *ngIf="parcel.localGovernmentArea">
+                        <a [routerLink]="['/dictionary', parcel.localGovernmentArea?.id, 'view']">{{parcel.localGovernmentArea?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.locationofLand">Locationof Land</span></dt>
+                <dd>
+                    <div *ngIf="parcel.locationofLand">
+                        <a [routerLink]="['/dictionary', parcel.locationofLand?.id, 'view']">{{parcel.locationofLand?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.typeOfAccommodation">Type Of Accommodation</span></dt>
+                <dd>
+                    <div *ngIf="parcel.typeOfAccommodation">
+                        <a [routerLink]="['/dictionary', parcel.typeOfAccommodation?.id, 'view']">{{parcel.typeOfAccommodation?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.tenureType">Tenure Type</span></dt>
+                <dd>
+                    <div *ngIf="parcel.tenureType">
+                        <a [routerLink]="['/dictionary', parcel.tenureType?.id, 'view']">{{parcel.tenureType?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.allocationName">Allocation Name</span></dt>
+                <dd>
+                    <div *ngIf="parcel.allocationName">
+                        <a [routerLink]="['/dictionary', parcel.allocationName?.id, 'view']">{{parcel.allocationName?.id}}</a>
                     </div>
                 </dd>
             </dl>

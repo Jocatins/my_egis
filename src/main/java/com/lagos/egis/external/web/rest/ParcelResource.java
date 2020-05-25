@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional; 
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -56,7 +57,7 @@ public class ParcelResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/parcels")
-    public ResponseEntity<Parcel> createParcel(@RequestBody Parcel parcel) throws URISyntaxException {
+    public ResponseEntity<Parcel> createParcel(@Valid @RequestBody Parcel parcel) throws URISyntaxException {
         log.debug("REST request to save Parcel : {}", parcel);
         if (parcel.getId() != null) {
             throw new BadRequestAlertException("A new parcel cannot already have an ID", ENTITY_NAME, "idexists");
@@ -78,7 +79,7 @@ public class ParcelResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/parcels")
-    public ResponseEntity<Parcel> updateParcel(@RequestBody Parcel parcel) throws URISyntaxException {
+    public ResponseEntity<Parcel> updateParcel(@Valid @RequestBody Parcel parcel) throws URISyntaxException {
         log.debug("REST request to update Parcel : {}", parcel);
         if (parcel.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

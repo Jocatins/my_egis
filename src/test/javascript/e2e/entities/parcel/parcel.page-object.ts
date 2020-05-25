@@ -26,50 +26,83 @@ export class ParcelUpdatePage {
   pageTitle = element(by.id('jhi-parcel-heading'));
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
-  labelInput = element(by.id('field_label'));
+  propertyNumberInput = element(by.id('field_propertyNumber'));
+  parcelLineageInput = element(by.id('field_parcelLineage'));
+  surveyPlanNumberInput = element(by.id('field_surveyPlanNumber'));
+  propertyDescriptionInput = element(by.id('field_propertyDescription'));
   areaInput = element(by.id('field_area'));
-  registrationOfficeDictionaryInput = element(by.id('field_registrationOfficeDictionary'));
-  surveyDateInput = element(by.id('field_surveyDate'));
-  accommodationInput = element(by.id('field_accommodation'));
   descriptionInput = element(by.id('field_description'));
   propertyAreaInput = element(by.id('field_propertyArea'));
   planNumberInput = element(by.id('field_planNumber'));
   premiumValueInput = element(by.id('field_premiumValue'));
   coordinateNInput = element(by.id('field_coordinateN'));
-  coordinateSInput = element(by.id('field_coordinateS'));
+  coordinateEInput = element(by.id('field_coordinateE'));
   lagosSheetNumberInput = element(by.id('field_lagosSheetNumber'));
-  allocationInput = element(by.id('field_allocation'));
-  location1Input = element(by.id('field_location1'));
   unitNumberInput = element(by.id('field_unitNumber'));
-  nameInput = element(by.id('field_name'));
-  valuationInput = element(by.id('field_valuation'));
+  valuationAmountInput = element(by.id('field_valuationAmount'));
   commentsInput = element(by.id('field_comments'));
-  legalDescriptionInput = element(by.id('field_legalDescription'));
-  addressSelect = element(by.id('field_address'));
-  spatialUnitTypeSelect = element(by.id('field_spatialUnitType'));
-  surveyTypeSelect = element(by.id('field_surveyType'));
-  propertyTypeSelect = element(by.id('field_propertyType'));
-  tenureTypeSelect = element(by.id('field_tenureType'));
+  streetNumberInput = element(by.id('field_streetNumber'));
+  streetNameInput = element(by.id('field_streetName'));
+  blockNumberInput = element(by.id('field_blockNumber'));
+  plotNumberInput = element(by.id('field_plotNumber'));
+  wardInput = element(by.id('field_ward'));
+  townInput = element(by.id('field_town'));
+  districtInput = element(by.id('field_district'));
+  villageInput = element(by.id('field_village'));
+  upinInput = element(by.id('field_upin'));
+  commentInput = element(by.id('field_comment'));
   locationSelect = element(by.id('field_location'));
   builtUpAreaTypeSelect = element(by.id('field_builtUpAreaType'));
   measurementUnitTypeSelect = element(by.id('field_measurementUnitType'));
   landUseCategorySelect = element(by.id('field_landUseCategory'));
   landUseTypeSelect = element(by.id('field_landUseType'));
   developmentStatusSelect = element(by.id('field_developmentStatus'));
-  registerTypeSelect = element(by.id('field_registerType'));
-  meansOfAcqSelect = element(by.id('field_meansOfAcq'));
-  regionSelect = element(by.id('field_region'));
+  governmentStatusSelect = element(by.id('field_governmentStatus'));
+  propertyTypeSelect = element(by.id('field_propertyType'));
+  streetTypeSelect = element(by.id('field_streetType'));
+  estateNameSelect = element(by.id('field_estateName'));
+  schemeNameSelect = element(by.id('field_schemeName'));
+  stateSelect = element(by.id('field_state'));
+  localGovernmentAreaSelect = element(by.id('field_localGovernmentArea'));
+  locationofLandSelect = element(by.id('field_locationofLand'));
+  typeOfAccommodationSelect = element(by.id('field_typeOfAccommodation'));
+  tenureTypeSelect = element(by.id('field_tenureType'));
+  allocationNameSelect = element(by.id('field_allocationName'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
   }
 
-  async setLabelInput(label) {
-    await this.labelInput.sendKeys(label);
+  async setPropertyNumberInput(propertyNumber) {
+    await this.propertyNumberInput.sendKeys(propertyNumber);
   }
 
-  async getLabelInput() {
-    return await this.labelInput.getAttribute('value');
+  async getPropertyNumberInput() {
+    return await this.propertyNumberInput.getAttribute('value');
+  }
+
+  async setParcelLineageInput(parcelLineage) {
+    await this.parcelLineageInput.sendKeys(parcelLineage);
+  }
+
+  async getParcelLineageInput() {
+    return await this.parcelLineageInput.getAttribute('value');
+  }
+
+  async setSurveyPlanNumberInput(surveyPlanNumber) {
+    await this.surveyPlanNumberInput.sendKeys(surveyPlanNumber);
+  }
+
+  async getSurveyPlanNumberInput() {
+    return await this.surveyPlanNumberInput.getAttribute('value');
+  }
+
+  async setPropertyDescriptionInput(propertyDescription) {
+    await this.propertyDescriptionInput.sendKeys(propertyDescription);
+  }
+
+  async getPropertyDescriptionInput() {
+    return await this.propertyDescriptionInput.getAttribute('value');
   }
 
   async setAreaInput(area) {
@@ -78,30 +111,6 @@ export class ParcelUpdatePage {
 
   async getAreaInput() {
     return await this.areaInput.getAttribute('value');
-  }
-
-  async setRegistrationOfficeDictionaryInput(registrationOfficeDictionary) {
-    await this.registrationOfficeDictionaryInput.sendKeys(registrationOfficeDictionary);
-  }
-
-  async getRegistrationOfficeDictionaryInput() {
-    return await this.registrationOfficeDictionaryInput.getAttribute('value');
-  }
-
-  async setSurveyDateInput(surveyDate) {
-    await this.surveyDateInput.sendKeys(surveyDate);
-  }
-
-  async getSurveyDateInput() {
-    return await this.surveyDateInput.getAttribute('value');
-  }
-
-  async setAccommodationInput(accommodation) {
-    await this.accommodationInput.sendKeys(accommodation);
-  }
-
-  async getAccommodationInput() {
-    return await this.accommodationInput.getAttribute('value');
   }
 
   async setDescriptionInput(description) {
@@ -144,12 +153,12 @@ export class ParcelUpdatePage {
     return await this.coordinateNInput.getAttribute('value');
   }
 
-  async setCoordinateSInput(coordinateS) {
-    await this.coordinateSInput.sendKeys(coordinateS);
+  async setCoordinateEInput(coordinateE) {
+    await this.coordinateEInput.sendKeys(coordinateE);
   }
 
-  async getCoordinateSInput() {
-    return await this.coordinateSInput.getAttribute('value');
+  async getCoordinateEInput() {
+    return await this.coordinateEInput.getAttribute('value');
   }
 
   async setLagosSheetNumberInput(lagosSheetNumber) {
@@ -160,22 +169,6 @@ export class ParcelUpdatePage {
     return await this.lagosSheetNumberInput.getAttribute('value');
   }
 
-  async setAllocationInput(allocation) {
-    await this.allocationInput.sendKeys(allocation);
-  }
-
-  async getAllocationInput() {
-    return await this.allocationInput.getAttribute('value');
-  }
-
-  async setLocation1Input(location1) {
-    await this.location1Input.sendKeys(location1);
-  }
-
-  async getLocation1Input() {
-    return await this.location1Input.getAttribute('value');
-  }
-
   async setUnitNumberInput(unitNumber) {
     await this.unitNumberInput.sendKeys(unitNumber);
   }
@@ -184,20 +177,12 @@ export class ParcelUpdatePage {
     return await this.unitNumberInput.getAttribute('value');
   }
 
-  async setNameInput(name) {
-    await this.nameInput.sendKeys(name);
+  async setValuationAmountInput(valuationAmount) {
+    await this.valuationAmountInput.sendKeys(valuationAmount);
   }
 
-  async getNameInput() {
-    return await this.nameInput.getAttribute('value');
-  }
-
-  async setValuationInput(valuation) {
-    await this.valuationInput.sendKeys(valuation);
-  }
-
-  async getValuationInput() {
-    return await this.valuationInput.getAttribute('value');
+  async getValuationAmountInput() {
+    return await this.valuationAmountInput.getAttribute('value');
   }
 
   async setCommentsInput(comments) {
@@ -208,107 +193,84 @@ export class ParcelUpdatePage {
     return await this.commentsInput.getAttribute('value');
   }
 
-  async setLegalDescriptionInput(legalDescription) {
-    await this.legalDescriptionInput.sendKeys(legalDescription);
+  async setStreetNumberInput(streetNumber) {
+    await this.streetNumberInput.sendKeys(streetNumber);
   }
 
-  async getLegalDescriptionInput() {
-    return await this.legalDescriptionInput.getAttribute('value');
+  async getStreetNumberInput() {
+    return await this.streetNumberInput.getAttribute('value');
   }
 
-  async addressSelectLastOption() {
-    await this.addressSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
+  async setStreetNameInput(streetName) {
+    await this.streetNameInput.sendKeys(streetName);
   }
 
-  async addressSelectOption(option) {
-    await this.addressSelect.sendKeys(option);
+  async getStreetNameInput() {
+    return await this.streetNameInput.getAttribute('value');
   }
 
-  getAddressSelect(): ElementFinder {
-    return this.addressSelect;
+  async setBlockNumberInput(blockNumber) {
+    await this.blockNumberInput.sendKeys(blockNumber);
   }
 
-  async getAddressSelectedOption() {
-    return await this.addressSelect.element(by.css('option:checked')).getText();
+  async getBlockNumberInput() {
+    return await this.blockNumberInput.getAttribute('value');
   }
 
-  async spatialUnitTypeSelectLastOption() {
-    await this.spatialUnitTypeSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
+  async setPlotNumberInput(plotNumber) {
+    await this.plotNumberInput.sendKeys(plotNumber);
   }
 
-  async spatialUnitTypeSelectOption(option) {
-    await this.spatialUnitTypeSelect.sendKeys(option);
+  async getPlotNumberInput() {
+    return await this.plotNumberInput.getAttribute('value');
   }
 
-  getSpatialUnitTypeSelect(): ElementFinder {
-    return this.spatialUnitTypeSelect;
+  async setWardInput(ward) {
+    await this.wardInput.sendKeys(ward);
   }
 
-  async getSpatialUnitTypeSelectedOption() {
-    return await this.spatialUnitTypeSelect.element(by.css('option:checked')).getText();
+  async getWardInput() {
+    return await this.wardInput.getAttribute('value');
   }
 
-  async surveyTypeSelectLastOption() {
-    await this.surveyTypeSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
+  async setTownInput(town) {
+    await this.townInput.sendKeys(town);
   }
 
-  async surveyTypeSelectOption(option) {
-    await this.surveyTypeSelect.sendKeys(option);
+  async getTownInput() {
+    return await this.townInput.getAttribute('value');
   }
 
-  getSurveyTypeSelect(): ElementFinder {
-    return this.surveyTypeSelect;
+  async setDistrictInput(district) {
+    await this.districtInput.sendKeys(district);
   }
 
-  async getSurveyTypeSelectedOption() {
-    return await this.surveyTypeSelect.element(by.css('option:checked')).getText();
+  async getDistrictInput() {
+    return await this.districtInput.getAttribute('value');
   }
 
-  async propertyTypeSelectLastOption() {
-    await this.propertyTypeSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
+  async setVillageInput(village) {
+    await this.villageInput.sendKeys(village);
   }
 
-  async propertyTypeSelectOption(option) {
-    await this.propertyTypeSelect.sendKeys(option);
+  async getVillageInput() {
+    return await this.villageInput.getAttribute('value');
   }
 
-  getPropertyTypeSelect(): ElementFinder {
-    return this.propertyTypeSelect;
+  async setUpinInput(upin) {
+    await this.upinInput.sendKeys(upin);
   }
 
-  async getPropertyTypeSelectedOption() {
-    return await this.propertyTypeSelect.element(by.css('option:checked')).getText();
+  async getUpinInput() {
+    return await this.upinInput.getAttribute('value');
   }
 
-  async tenureTypeSelectLastOption() {
-    await this.tenureTypeSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
+  async setCommentInput(comment) {
+    await this.commentInput.sendKeys(comment);
   }
 
-  async tenureTypeSelectOption(option) {
-    await this.tenureTypeSelect.sendKeys(option);
-  }
-
-  getTenureTypeSelect(): ElementFinder {
-    return this.tenureTypeSelect;
-  }
-
-  async getTenureTypeSelectedOption() {
-    return await this.tenureTypeSelect.element(by.css('option:checked')).getText();
+  async getCommentInput() {
+    return await this.commentInput.getAttribute('value');
   }
 
   async locationSelectLastOption() {
@@ -425,61 +387,213 @@ export class ParcelUpdatePage {
     return await this.developmentStatusSelect.element(by.css('option:checked')).getText();
   }
 
-  async registerTypeSelectLastOption() {
-    await this.registerTypeSelect
+  async governmentStatusSelectLastOption() {
+    await this.governmentStatusSelect
       .all(by.tagName('option'))
       .last()
       .click();
   }
 
-  async registerTypeSelectOption(option) {
-    await this.registerTypeSelect.sendKeys(option);
+  async governmentStatusSelectOption(option) {
+    await this.governmentStatusSelect.sendKeys(option);
   }
 
-  getRegisterTypeSelect(): ElementFinder {
-    return this.registerTypeSelect;
+  getGovernmentStatusSelect(): ElementFinder {
+    return this.governmentStatusSelect;
   }
 
-  async getRegisterTypeSelectedOption() {
-    return await this.registerTypeSelect.element(by.css('option:checked')).getText();
+  async getGovernmentStatusSelectedOption() {
+    return await this.governmentStatusSelect.element(by.css('option:checked')).getText();
   }
 
-  async meansOfAcqSelectLastOption() {
-    await this.meansOfAcqSelect
+  async propertyTypeSelectLastOption() {
+    await this.propertyTypeSelect
       .all(by.tagName('option'))
       .last()
       .click();
   }
 
-  async meansOfAcqSelectOption(option) {
-    await this.meansOfAcqSelect.sendKeys(option);
+  async propertyTypeSelectOption(option) {
+    await this.propertyTypeSelect.sendKeys(option);
   }
 
-  getMeansOfAcqSelect(): ElementFinder {
-    return this.meansOfAcqSelect;
+  getPropertyTypeSelect(): ElementFinder {
+    return this.propertyTypeSelect;
   }
 
-  async getMeansOfAcqSelectedOption() {
-    return await this.meansOfAcqSelect.element(by.css('option:checked')).getText();
+  async getPropertyTypeSelectedOption() {
+    return await this.propertyTypeSelect.element(by.css('option:checked')).getText();
   }
 
-  async regionSelectLastOption() {
-    await this.regionSelect
+  async streetTypeSelectLastOption() {
+    await this.streetTypeSelect
       .all(by.tagName('option'))
       .last()
       .click();
   }
 
-  async regionSelectOption(option) {
-    await this.regionSelect.sendKeys(option);
+  async streetTypeSelectOption(option) {
+    await this.streetTypeSelect.sendKeys(option);
   }
 
-  getRegionSelect(): ElementFinder {
-    return this.regionSelect;
+  getStreetTypeSelect(): ElementFinder {
+    return this.streetTypeSelect;
   }
 
-  async getRegionSelectedOption() {
-    return await this.regionSelect.element(by.css('option:checked')).getText();
+  async getStreetTypeSelectedOption() {
+    return await this.streetTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async estateNameSelectLastOption() {
+    await this.estateNameSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async estateNameSelectOption(option) {
+    await this.estateNameSelect.sendKeys(option);
+  }
+
+  getEstateNameSelect(): ElementFinder {
+    return this.estateNameSelect;
+  }
+
+  async getEstateNameSelectedOption() {
+    return await this.estateNameSelect.element(by.css('option:checked')).getText();
+  }
+
+  async schemeNameSelectLastOption() {
+    await this.schemeNameSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async schemeNameSelectOption(option) {
+    await this.schemeNameSelect.sendKeys(option);
+  }
+
+  getSchemeNameSelect(): ElementFinder {
+    return this.schemeNameSelect;
+  }
+
+  async getSchemeNameSelectedOption() {
+    return await this.schemeNameSelect.element(by.css('option:checked')).getText();
+  }
+
+  async stateSelectLastOption() {
+    await this.stateSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async stateSelectOption(option) {
+    await this.stateSelect.sendKeys(option);
+  }
+
+  getStateSelect(): ElementFinder {
+    return this.stateSelect;
+  }
+
+  async getStateSelectedOption() {
+    return await this.stateSelect.element(by.css('option:checked')).getText();
+  }
+
+  async localGovernmentAreaSelectLastOption() {
+    await this.localGovernmentAreaSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async localGovernmentAreaSelectOption(option) {
+    await this.localGovernmentAreaSelect.sendKeys(option);
+  }
+
+  getLocalGovernmentAreaSelect(): ElementFinder {
+    return this.localGovernmentAreaSelect;
+  }
+
+  async getLocalGovernmentAreaSelectedOption() {
+    return await this.localGovernmentAreaSelect.element(by.css('option:checked')).getText();
+  }
+
+  async locationofLandSelectLastOption() {
+    await this.locationofLandSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async locationofLandSelectOption(option) {
+    await this.locationofLandSelect.sendKeys(option);
+  }
+
+  getLocationofLandSelect(): ElementFinder {
+    return this.locationofLandSelect;
+  }
+
+  async getLocationofLandSelectedOption() {
+    return await this.locationofLandSelect.element(by.css('option:checked')).getText();
+  }
+
+  async typeOfAccommodationSelectLastOption() {
+    await this.typeOfAccommodationSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async typeOfAccommodationSelectOption(option) {
+    await this.typeOfAccommodationSelect.sendKeys(option);
+  }
+
+  getTypeOfAccommodationSelect(): ElementFinder {
+    return this.typeOfAccommodationSelect;
+  }
+
+  async getTypeOfAccommodationSelectedOption() {
+    return await this.typeOfAccommodationSelect.element(by.css('option:checked')).getText();
+  }
+
+  async tenureTypeSelectLastOption() {
+    await this.tenureTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async tenureTypeSelectOption(option) {
+    await this.tenureTypeSelect.sendKeys(option);
+  }
+
+  getTenureTypeSelect(): ElementFinder {
+    return this.tenureTypeSelect;
+  }
+
+  async getTenureTypeSelectedOption() {
+    return await this.tenureTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async allocationNameSelectLastOption() {
+    await this.allocationNameSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async allocationNameSelectOption(option) {
+    await this.allocationNameSelect.sendKeys(option);
+  }
+
+  getAllocationNameSelect(): ElementFinder {
+    return this.allocationNameSelect;
+  }
+
+  async getAllocationNameSelectedOption() {
+    return await this.allocationNameSelect.element(by.css('option:checked')).getText();
   }
 
   async save() {

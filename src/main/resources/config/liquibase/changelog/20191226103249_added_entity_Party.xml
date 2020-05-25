@@ -15,34 +15,19 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="party_name" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="share_nominator" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="share_denominator" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="tax_exempt" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="other_name" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="fax" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="email" type="varchar(255)">
-                <constraints nullable="true" />
+            <column name="email_address" type="varchar(255)">
+                <constraints nullable="false" />
             </column>
             <column name="phone_number" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="payer_id" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="tax_payer_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="paye_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="comments" type="varchar(255)">
@@ -60,9 +45,6 @@
             <column name="organization" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="business_nature" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="birth_place" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -78,41 +60,74 @@
             <column name="last_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="driver_licence" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="profession_reg_no" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="occupation" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="address_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_party_address_id" />
+            <column name="unit_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="block_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="plot_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="street_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="street_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="building_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="building_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="postal_code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="city" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="village" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="long_address" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="town" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="ward" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="next_of_kin_phone" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="i_d_document_issued_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="i_d_document_expiration_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="i_d_document_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="primary_party" type="varchar(255)">
+                <constraints nullable="false" />
             </column>
             <column name="party_type_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="party_role_type_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="party_sub_role_type_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="delivery_type_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="primary_party_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="person_id_type_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="person_type_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="email_type_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="person_id_issued_by_id" type="bigint">
                 <constraints nullable="true" />
@@ -129,8 +144,53 @@
             <column name="driver_license_region_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="representative_id_id" type="bigint">
+            <column name="business_nature_id" type="bigint">
                 <constraints nullable="true" />
+            </column>
+            <column name="phone_category_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="next_of_kin_phone_category_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_category_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="address_category_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="iddocument_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="iddocument_issued_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="suffix_title_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="stateof_origin_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="marital_status_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="street_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="estate_name_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="scheme_name_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="district_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="local_government_area_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="country_id" type="bigint">
+                <constraints nullable="false" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
@@ -155,30 +215,45 @@
                   separator=";"
                   tableName="party">
             <column name="id" type="numeric"/>
-            <column name="party_name" type="string"/>
-            <column name="share_nominator" type="string"/>
-            <column name="share_denominator" type="string"/>
-            <column name="tax_exempt" type="string"/>
-            <column name="other_name" type="string"/>
-            <column name="fax" type="string"/>
-            <column name="email" type="string"/>
+            <column name="email_address" type="string"/>
             <column name="phone_number" type="string"/>
             <column name="payer_id" type="string"/>
             <column name="tax_payer_number" type="string"/>
+            <column name="paye_number" type="string"/>
             <column name="comments" type="string"/>
             <column name="person_id_date" type="date"/>
             <column name="person_id_expiration_date" type="date"/>
             <column name="rc_number" type="string"/>
             <column name="organization" type="string"/>
-            <column name="business_nature" type="string"/>
             <column name="birth_place" type="string"/>
             <column name="birth_date" type="date"/>
             <column name="first_name" type="string"/>
             <column name="middle_name" type="string"/>
             <column name="last_name" type="string"/>
-            <column name="driver_licence" type="string"/>
-            <column name="profession_reg_no" type="string"/>
             <column name="occupation" type="string"/>
+            <column name="unit_number" type="string"/>
+            <column name="block_number" type="string"/>
+            <column name="plot_number" type="string"/>
+            <column name="street_number" type="string"/>
+            <column name="street_name" type="string"/>
+            <column name="building_name" type="string"/>
+            <column name="building_number" type="string"/>
+            <column name="postal_code" type="string"/>
+            <column name="city" type="string"/>
+            <column name="village" type="string"/>
+            <column name="long_address" type="string"/>
+            <column name="town" type="string"/>
+            <column name="ward" type="string"/>
+            <column name="next_of_kin_phone" type="string"/>
+            <column name="i_d_document_issued_date" type="date"/>
+            <column name="i_d_document_expiration_date" type="date"/>
+            <column name="i_d_document_number" type="string"/>
+            <column name="primary_party" type="string"/>
+            <column name="party_type_id" type="numeric"/>
+            <column name="party_role_type_id" type="numeric"/>
+            <column name="email_type_id" type="numeric"/>
+            <column name="phone_category_id" type="numeric"/>
+            <column name="country_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

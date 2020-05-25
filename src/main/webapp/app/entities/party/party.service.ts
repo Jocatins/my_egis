@@ -65,7 +65,13 @@ export class PartyService {
         party.personIdExpirationDate != null && party.personIdExpirationDate.isValid()
           ? party.personIdExpirationDate.format(DATE_FORMAT)
           : null,
-      birthDate: party.birthDate != null && party.birthDate.isValid() ? party.birthDate.format(DATE_FORMAT) : null
+      birthDate: party.birthDate != null && party.birthDate.isValid() ? party.birthDate.format(DATE_FORMAT) : null,
+      iDDocumentIssuedDate:
+        party.iDDocumentIssuedDate != null && party.iDDocumentIssuedDate.isValid() ? party.iDDocumentIssuedDate.format(DATE_FORMAT) : null,
+      iDDocumentExpirationDate:
+        party.iDDocumentExpirationDate != null && party.iDDocumentExpirationDate.isValid()
+          ? party.iDDocumentExpirationDate.format(DATE_FORMAT)
+          : null
     });
     return copy;
   }
@@ -75,6 +81,8 @@ export class PartyService {
       res.body.personIdDate = res.body.personIdDate != null ? moment(res.body.personIdDate) : null;
       res.body.personIdExpirationDate = res.body.personIdExpirationDate != null ? moment(res.body.personIdExpirationDate) : null;
       res.body.birthDate = res.body.birthDate != null ? moment(res.body.birthDate) : null;
+      res.body.iDDocumentIssuedDate = res.body.iDDocumentIssuedDate != null ? moment(res.body.iDDocumentIssuedDate) : null;
+      res.body.iDDocumentExpirationDate = res.body.iDDocumentExpirationDate != null ? moment(res.body.iDDocumentExpirationDate) : null;
     }
     return res;
   }
@@ -85,6 +93,8 @@ export class PartyService {
         party.personIdDate = party.personIdDate != null ? moment(party.personIdDate) : null;
         party.personIdExpirationDate = party.personIdExpirationDate != null ? moment(party.personIdExpirationDate) : null;
         party.birthDate = party.birthDate != null ? moment(party.birthDate) : null;
+        party.iDDocumentIssuedDate = party.iDDocumentIssuedDate != null ? moment(party.iDDocumentIssuedDate) : null;
+        party.iDDocumentExpirationDate = party.iDDocumentExpirationDate != null ? moment(party.iDDocumentExpirationDate) : null;
       });
     }
     return res;

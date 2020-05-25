@@ -34,12 +34,12 @@ export class TransactionUpdatePage {
   startDateInput = element(by.id('field_startDate'));
   completeDateInput = element(by.id('field_completeDate'));
   batchIdInput = element(by.id('field_batchId'));
-  transactionCodeInput = element(by.id('field_transactionCode'));
   extSelect = element(by.id('field_ext'));
   transactionTypeSelect = element(by.id('field_transactionType'));
   transactionSubTypeSelect = element(by.id('field_transactionSubType'));
   ownershipTypeSelect = element(by.id('field_ownershipType'));
   tenureTypeSelect = element(by.id('field_tenureType'));
+  transactionCodeSelect = element(by.id('field_transactionCode'));
   partySelect = element(by.id('field_party'));
   parcelSelect = element(by.id('field_parcel'));
   docsSelect = element(by.id('field_docs'));
@@ -110,14 +110,6 @@ export class TransactionUpdatePage {
 
   async getBatchIdInput() {
     return await this.batchIdInput.getAttribute('value');
-  }
-
-  async setTransactionCodeInput(transactionCode) {
-    await this.transactionCodeInput.sendKeys(transactionCode);
-  }
-
-  async getTransactionCodeInput() {
-    return await this.transactionCodeInput.getAttribute('value');
   }
 
   async extSelectLastOption() {
@@ -213,6 +205,25 @@ export class TransactionUpdatePage {
 
   async getTenureTypeSelectedOption() {
     return await this.tenureTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async transactionCodeSelectLastOption() {
+    await this.transactionCodeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async transactionCodeSelectOption(option) {
+    await this.transactionCodeSelect.sendKeys(option);
+  }
+
+  getTransactionCodeSelect(): ElementFinder {
+    return this.transactionCodeSelect;
+  }
+
+  async getTransactionCodeSelectedOption() {
+    return await this.transactionCodeSelect.element(by.css('option:checked')).getText();
   }
 
   async partySelectLastOption() {

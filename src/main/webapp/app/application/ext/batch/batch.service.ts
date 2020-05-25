@@ -17,8 +17,15 @@ type EntityArrayResponseType = HttpResponse<IBatch[]>;
 export class BatchService {
   public resourceUrl = SERVER_API_URL + 'api/batches';
   public resourceSearchUrl = SERVER_API_URL + 'api/_search/batches';
+  public extResourceUrl = 'api/ext/batches/usersBatches?eagerload=false';
 
   constructor(protected http: HttpClient) {}
+
+  usersBatches(): Observable<EntityArrayResponseType> {
+    return this.http
+      .get<IBatch[]>(this.extResourceUrl, {  observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
 
   create(batch: IBatch): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(batch);

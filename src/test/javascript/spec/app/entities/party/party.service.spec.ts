@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { PartyService } from 'app/entities/party/party.service';
 import { IParty, Party } from 'app/shared/model/party.model';
+import { YesOrNo } from 'app/shared/model/enumerations/yes-or-no.model';
 
 describe('Service Tests', () => {
   describe('Party Service', () => {
@@ -32,14 +33,8 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
         currentDate,
         currentDate,
-        'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
@@ -49,7 +44,23 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
-        'AAAAAAA'
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        currentDate,
+        currentDate,
+        'AAAAAAA',
+        YesOrNo.Y
       );
     });
 
@@ -59,7 +70,9 @@ describe('Service Tests', () => {
           {
             personIdDate: currentDate.format(DATE_FORMAT),
             personIdExpirationDate: currentDate.format(DATE_FORMAT),
-            birthDate: currentDate.format(DATE_FORMAT)
+            birthDate: currentDate.format(DATE_FORMAT),
+            iDDocumentIssuedDate: currentDate.format(DATE_FORMAT),
+            iDDocumentExpirationDate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
@@ -79,7 +92,9 @@ describe('Service Tests', () => {
             id: 0,
             personIdDate: currentDate.format(DATE_FORMAT),
             personIdExpirationDate: currentDate.format(DATE_FORMAT),
-            birthDate: currentDate.format(DATE_FORMAT)
+            birthDate: currentDate.format(DATE_FORMAT),
+            iDDocumentIssuedDate: currentDate.format(DATE_FORMAT),
+            iDDocumentExpirationDate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
@@ -87,7 +102,9 @@ describe('Service Tests', () => {
           {
             personIdDate: currentDate,
             personIdExpirationDate: currentDate,
-            birthDate: currentDate
+            birthDate: currentDate,
+            iDDocumentIssuedDate: currentDate,
+            iDDocumentExpirationDate: currentDate
           },
           returnedFromService
         );
@@ -103,30 +120,40 @@ describe('Service Tests', () => {
       it('should update a Party', () => {
         const returnedFromService = Object.assign(
           {
-            partyName: 'BBBBBB',
-            shareNominator: 'BBBBBB',
-            shareDenominator: 'BBBBBB',
-            taxExempt: 'BBBBBB',
-            otherName: 'BBBBBB',
-            fax: 'BBBBBB',
-            email: 'BBBBBB',
+            emailAddress: 'BBBBBB',
             phoneNumber: 'BBBBBB',
             payerId: 'BBBBBB',
             taxPayerNumber: 'BBBBBB',
+            payeNumber: 'BBBBBB',
             comments: 'BBBBBB',
             personIdDate: currentDate.format(DATE_FORMAT),
             personIdExpirationDate: currentDate.format(DATE_FORMAT),
             rcNumber: 'BBBBBB',
             organization: 'BBBBBB',
-            businessNature: 'BBBBBB',
             birthPlace: 'BBBBBB',
             birthDate: currentDate.format(DATE_FORMAT),
             firstName: 'BBBBBB',
             middleName: 'BBBBBB',
             lastName: 'BBBBBB',
-            driverLicence: 'BBBBBB',
-            professionRegNo: 'BBBBBB',
-            occupation: 'BBBBBB'
+            occupation: 'BBBBBB',
+            unitNumber: 'BBBBBB',
+            blockNumber: 'BBBBBB',
+            plotNumber: 'BBBBBB',
+            streetNumber: 'BBBBBB',
+            streetName: 'BBBBBB',
+            buildingName: 'BBBBBB',
+            buildingNumber: 'BBBBBB',
+            postalCode: 'BBBBBB',
+            city: 'BBBBBB',
+            village: 'BBBBBB',
+            longAddress: 'BBBBBB',
+            town: 'BBBBBB',
+            ward: 'BBBBBB',
+            nextOfKinPhone: 'BBBBBB',
+            iDDocumentIssuedDate: currentDate.format(DATE_FORMAT),
+            iDDocumentExpirationDate: currentDate.format(DATE_FORMAT),
+            iDDocumentNumber: 'BBBBBB',
+            primaryParty: 'BBBBBB'
           },
           elemDefault
         );
@@ -135,7 +162,9 @@ describe('Service Tests', () => {
           {
             personIdDate: currentDate,
             personIdExpirationDate: currentDate,
-            birthDate: currentDate
+            birthDate: currentDate,
+            iDDocumentIssuedDate: currentDate,
+            iDDocumentExpirationDate: currentDate
           },
           returnedFromService
         );
@@ -151,30 +180,40 @@ describe('Service Tests', () => {
       it('should return a list of Party', () => {
         const returnedFromService = Object.assign(
           {
-            partyName: 'BBBBBB',
-            shareNominator: 'BBBBBB',
-            shareDenominator: 'BBBBBB',
-            taxExempt: 'BBBBBB',
-            otherName: 'BBBBBB',
-            fax: 'BBBBBB',
-            email: 'BBBBBB',
+            emailAddress: 'BBBBBB',
             phoneNumber: 'BBBBBB',
             payerId: 'BBBBBB',
             taxPayerNumber: 'BBBBBB',
+            payeNumber: 'BBBBBB',
             comments: 'BBBBBB',
             personIdDate: currentDate.format(DATE_FORMAT),
             personIdExpirationDate: currentDate.format(DATE_FORMAT),
             rcNumber: 'BBBBBB',
             organization: 'BBBBBB',
-            businessNature: 'BBBBBB',
             birthPlace: 'BBBBBB',
             birthDate: currentDate.format(DATE_FORMAT),
             firstName: 'BBBBBB',
             middleName: 'BBBBBB',
             lastName: 'BBBBBB',
-            driverLicence: 'BBBBBB',
-            professionRegNo: 'BBBBBB',
-            occupation: 'BBBBBB'
+            occupation: 'BBBBBB',
+            unitNumber: 'BBBBBB',
+            blockNumber: 'BBBBBB',
+            plotNumber: 'BBBBBB',
+            streetNumber: 'BBBBBB',
+            streetName: 'BBBBBB',
+            buildingName: 'BBBBBB',
+            buildingNumber: 'BBBBBB',
+            postalCode: 'BBBBBB',
+            city: 'BBBBBB',
+            village: 'BBBBBB',
+            longAddress: 'BBBBBB',
+            town: 'BBBBBB',
+            ward: 'BBBBBB',
+            nextOfKinPhone: 'BBBBBB',
+            iDDocumentIssuedDate: currentDate.format(DATE_FORMAT),
+            iDDocumentExpirationDate: currentDate.format(DATE_FORMAT),
+            iDDocumentNumber: 'BBBBBB',
+            primaryParty: 'BBBBBB'
           },
           elemDefault
         );
@@ -182,7 +221,9 @@ describe('Service Tests', () => {
           {
             personIdDate: currentDate,
             personIdExpirationDate: currentDate,
-            birthDate: currentDate
+            birthDate: currentDate,
+            iDDocumentIssuedDate: currentDate,
+            iDDocumentExpirationDate: currentDate
           },
           returnedFromService
         );

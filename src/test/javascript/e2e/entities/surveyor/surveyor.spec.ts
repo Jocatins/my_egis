@@ -43,8 +43,7 @@ describe('Surveyor e2e test', () => {
       surveyorUpdatePage.setSurconNumberInput('surconNumber'),
       surveyorUpdatePage.setRegistrationNumberInput('registrationNumber'),
       surveyorUpdatePage.setPhoneInput('phone'),
-      surveyorUpdatePage.setStatusInput('status'),
-      surveyorUpdatePage.addressSelectLastOption()
+      surveyorUpdatePage.setStatusInput('status')
     ]);
     expect(await surveyorUpdatePage.getEmailInput()).to.eq('email', 'Expected Email value to be equals to email');
     expect(await surveyorUpdatePage.getSurconNumberInput()).to.eq(

@@ -117,10 +117,10 @@
                 <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle text-dark" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Parastatals &amp; Agencies</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
-						<a class="dropdown-item" href="https://landsbureau.lagosstate.gov.ng/" target="new">Lands Bureau</a> 
-						<a class="dropdown-item" href="https://ntda.lagosstate.gov.ng/" target="new">New Towns Development Authority, NTDA</a> 
-						<a class="dropdown-item" href="https://mppud.lagosstate.gov.ng/" target="new">Lagos State Physical Planning and Urban Development </a> 
-						<a class="dropdown-item" href="https://publicworks.lagosstate.gov.ng/" target="new">Lagos State Lagos State Public Works Corporation, LSPWC </a> 
+						<a class="dropdown-item" href="https://landsbureau.lagosstate.gov.ng/" target="new">Lands Bureau</a>
+						<a class="dropdown-item" href="https://ntda.lagosstate.gov.ng/" target="new">New Towns Development Authority, NTDA</a>
+						<a class="dropdown-item" href="https://mppud.lagosstate.gov.ng/" target="new">Lagos State Physical Planning and Urban Development </a>
+						<a class="dropdown-item" href="https://publicworks.lagosstate.gov.ng/" target="new">Lagos State Lagos State Public Works Corporation, LSPWC </a>
 						<a class="dropdown-item" href="http://surveyorgeneral.lagosstate.gov.ng/" target="new">Lagos State Office of Surveyor General </a>
 					</div>
 				</li>
@@ -294,6 +294,19 @@
                             <span jhiTranslate="global.menu.entities.metadata">Metadata</span>
                         </a>
                     </li>
+                        <li>
+                        <a class="dropdown-item" routerLink="party" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.party">Party</span>
+                        </a>
+                    </li>
+
+                        <li>
+                        <a class="dropdown-item" routerLink="surveyor" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.surveyor">Surveyor</span>
+                        </a>
+                    </li>
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                     </ul>
                 </li>
@@ -338,7 +351,7 @@
                         <li>
                             <a class="dropdown-item" routerLink="admin/logs" routerLinkActive="active" (click)="collapseNavbar()">
                                 <fa-icon icon="tasks" fixedWidth="true"></fa-icon>
-                                <span jhiTranslate="global.menu.admin.logs">Logs</span>
+                                <span jhiTranslate="global.menu.admin.logs">Logs -- See mee</span>
                             </a>
                         </li>
                         <li *ngIf="swaggerEnabled">

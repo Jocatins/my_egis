@@ -8,10 +8,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IBatch } from 'app/shared/model/batch.model';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
-import { BatchService } from '../application/ext/batch-old/batch.service';
-import { SERVER_API_URL } from 'app/app.constants';
-import { timeout, catchError } from 'rxjs/operators';
-import { BatchDeleteDialogComponent } from '../application/ext/batch-old/batch-delete-dialog.component';
+import { BatchService } from '../application/ext/batch/batch.service';
+import { BatchDeleteDialogComponent } from '../application/ext/batch/batch-delete-dialog.component';
 import { MetadataService } from 'app/entities/metadata/metadata.service';
 
 
@@ -72,41 +70,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
         });
       return;
     }
-    this.batchService
-      .query({
-        page: this.page,
-        size: this.itemsPerPage,
-        sort: this.sort()
-      })
-      .subscribe((res: HttpResponse<IBatch[]>) => {
-        this.batches = res.body;
-        // alert(JSON.stringify(this.batches))
-        this.batches.forEach((batch: IBatch) => {
-          const code = batch.transactions[0].transactionCode;
-          this.metadata.getByCode(code).subscribe(data =>{
-            // alert(JSON.stringify(data.body[0].label))
-            batch.transactions[0].comments = data.body[0].label
-          })
+    // this.batchService
+    //   .query({
+    //     page: this.page,
+    //     size: this.itemsPerPage,
+    //     sort: this.sort()
+    //   })
+    //   .subscribe((res: HttpResponse<IBatch[]>) => {
+    //     this.batches = res.body;
+    //   });
 
-
-
-         // const callMetadata = this.dashboardService.getTransMetadata(code);
-          // if (callMetadata !== null) {
-          //   callMetadata
-          //     .pipe(
-          //       timeout(2000),
-          //       catchError(ee => {
-          //         return null;
-          //       })
-          //     )
-          //     .subscribe((dataMeta: any) => {
-          //       batch.moreData = '';
-          //       // code + ' - ' + JSON.parse(dataMeta.body.metadata).descr;
-          //       alert(dataMeta.body)
-          //     });
-          // }
-        });
-      });
+    this.batchService.usersBatches().subscribe((res: HttpResponse<IBatch[]>) => {
+      this.batches = res.body;
+    });
   }
 
   reset() {
@@ -156,7 +132,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.batchService.find(batchId).subscribe(
       (data: HttpResponse<IBatch>) => {
         this.batch = data.body;
-        this.router.navigate(['/application/overview', this.batch.transactions[0].transactionCode, batchId]);
+        this.router.navigate(['/application/overview',  batchId]);
       },
       () => alert('Error creating batch')
     );

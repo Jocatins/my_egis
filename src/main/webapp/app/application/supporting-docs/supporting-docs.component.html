@@ -1,15 +1,15 @@
-<h5 class="sub-header mt-4 mb-4">Supporting Document(s)</h5>            
+<h5 class="sub-header mt-4 mb-4">Supporting Document(s)</h5>
 <div class="row">
     <div class="col-12">
         <blockquote class="blockquote">
             <p class="mb-0">
-                
+
             </p>
-        </blockquote>     
+        </blockquote>
         <!-- <h6 class="text-right">{{message}}</h6>
         <h1 class="text-capitalize text-center" jhiTranslate="supporting-docs.title">Title</h1>
         <h5 class="text-center" jhiTranslate="supporting-docs.subtitle">Subtitle</h5> -->
-        
+
         <form name="editForm" role="form" novalidate [formGroup]="editForm">
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -81,7 +81,7 @@
             </div>
         </form>
         <div>
-            <div class="table-responsive" *ngIf="supportingDocuments?.length > 0">
+            <div class="table-responsive" *ngIf="supportingDocumentsOthers?.length > 0">
                 <table class="table table-striped" aria-describedby="page-heading">
                     <thead>
                         <tr>
@@ -103,7 +103,7 @@
                                         <span class="d-none d-md-inline">Download</span>
                                     </button>
                                 </ng-template>
-                                <button type="submit" (click)="deleteDoc(supportingDocument, batch.id)" class="btn btn-outline-danger btn-sm">
+                                <button type="submit" (click)="deleteDoc(supportingDocument)" class="btn btn-outline-danger btn-sm">
                                     <fa-icon [icon]="'times'"></fa-icon>
                                     <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                                 </button>
@@ -112,7 +112,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>            
+        </div>
         <!-- <form name="createNewSupportDoc" class="form-inline">
             <input type="hidden" name="batch_id" id="batch_id">
             <div class="input-group w-100 mt-3">

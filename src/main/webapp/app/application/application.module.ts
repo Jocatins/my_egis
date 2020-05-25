@@ -13,7 +13,7 @@ import { PropertyComponent } from './property/property.component';
 import { PartyComponent } from './party/party.component';
 import { PartyUpdateComponent } from './ext/party/party-update.component';
 import { SupportingDocumentUpdateComponent } from './ext/supporting-document/supporting-document-update.component';
-import { BatchUpdateComponent } from './ext/batch-old/batch-update.component';
+import { BatchUpdateComponent } from './ext/batch/batch-update.component';
 import { TranslandingComponent } from './trans-landing/trans-landing.component';
 import { ParcelUpdateComponent } from './ext/parcel/parcel-update.component';
 import { SupportingDocumentDeleteDialogComponent } from './ext/supporting-document/supporting-document-delete-dialog.component';

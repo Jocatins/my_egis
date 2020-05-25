@@ -1,82 +1,98 @@
-import { Moment } from 'moment';
-import { IAddress } from 'app/shared/model/address.model';
 import { IDictionary } from 'app/shared/model/dictionary.model';
 import { ITransaction } from 'app/shared/model/transaction.model';
 
 export interface IParcel {
   id?: number;
-  label?: string;
+  propertyNumber?: string;
+  parcelLineage?: string;
+  surveyPlanNumber?: string;
+  propertyDescription?: string;
   area?: number;
-  registrationOfficeDictionary?: string;
-  surveyDate?: Moment;
-  accommodation?: string;
   description?: string;
   propertyArea?: number;
   planNumber?: string;
-  premiumValue?: string;
+  premiumValue?: number;
   coordinateN?: number;
-  coordinateS?: number;
+  coordinateE?: number;
   lagosSheetNumber?: string;
-  allocation?: string;
-  location1?: number;
   unitNumber?: string;
-  name?: string;
-  valuation?: string;
+  valuationAmount?: number;
   comments?: string;
-  legalDescription?: string;
-  address?: IAddress;
-  spatialUnitType?: IDictionary;
-  surveyType?: IDictionary;
-  propertyType?: IDictionary;
-  tenureType?: IDictionary;
+  streetNumber?: string;
+  streetName?: string;
+  blockNumber?: string;
+  plotNumber?: string;
+  ward?: string;
+  town?: string;
+  district?: string;
+  village?: string;
+  upin?: string;
+  comment?: string;
   location?: IDictionary;
   builtUpAreaType?: IDictionary;
   measurementUnitType?: IDictionary;
   landUseCategory?: IDictionary;
   landUseType?: IDictionary;
   developmentStatus?: IDictionary;
-  registerType?: IDictionary;
-  meansOfAcq?: IDictionary;
-  region?: IDictionary;
+  governmentStatus?: IDictionary;
+  propertyType?: IDictionary;
+  streetType?: IDictionary;
+  estateName?: IDictionary;
+  schemeName?: IDictionary;
+  state?: IDictionary;
+  localGovernmentArea?: IDictionary;
+  locationofLand?: IDictionary;
+  typeOfAccommodation?: IDictionary;
+  tenureType?: IDictionary;
+  allocationName?: IDictionary;
   transactions?: ITransaction[];
 }
 
 export class Parcel implements IParcel {
   constructor(
     public id?: number,
-    public label?: string,
+    public propertyNumber?: string,
+    public parcelLineage?: string,
+    public surveyPlanNumber?: string,
+    public propertyDescription?: string,
     public area?: number,
-    public registrationOfficeDictionary?: string,
-    public surveyDate?: Moment,
-    public accommodation?: string,
     public description?: string,
     public propertyArea?: number,
     public planNumber?: string,
-    public premiumValue?: string,
+    public premiumValue?: number,
     public coordinateN?: number,
-    public coordinateS?: number,
+    public coordinateE?: number,
     public lagosSheetNumber?: string,
-    public allocation?: string,
-    public location1?: number,
     public unitNumber?: string,
-    public name?: string,
-    public valuation?: string,
+    public valuationAmount?: number,
     public comments?: string,
-    public legalDescription?: string,
-    public address?: IAddress,
-    public spatialUnitType?: IDictionary,
-    public surveyType?: IDictionary,
-    public propertyType?: IDictionary,
-    public tenureType?: IDictionary,
+    public streetNumber?: string,
+    public streetName?: string,
+    public blockNumber?: string,
+    public plotNumber?: string,
+    public ward?: string,
+    public town?: string,
+    public district?: string,
+    public village?: string,
+    public upin?: string,
+    public comment?: string,
     public location?: IDictionary,
     public builtUpAreaType?: IDictionary,
     public measurementUnitType?: IDictionary,
     public landUseCategory?: IDictionary,
     public landUseType?: IDictionary,
     public developmentStatus?: IDictionary,
-    public registerType?: IDictionary,
-    public meansOfAcq?: IDictionary,
-    public region?: IDictionary,
+    public governmentStatus?: IDictionary,
+    public propertyType?: IDictionary,
+    public streetType?: IDictionary,
+    public estateName?: IDictionary,
+    public schemeName?: IDictionary,
+    public state?: IDictionary,
+    public localGovernmentArea?: IDictionary,
+    public locationofLand?: IDictionary,
+    public typeOfAccommodation?: IDictionary,
+    public tenureType?: IDictionary,
+    public allocationName?: IDictionary,
     public transactions?: ITransaction[]
   ) {}
 }

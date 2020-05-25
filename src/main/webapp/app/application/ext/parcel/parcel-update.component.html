@@ -1,4 +1,4 @@
-<h5 class="sub-header mt-4 mb-4" id="jhi-party-heading" jhiTranslate="egisexternalApp.parcel.home.createOrEditLabel">Create (or Edit) Property</h5>            
+<h5 class="sub-header mt-4 mb-4" id="jhi-party-heading" jhiTranslate="egisexternalApp.parcel.home.createOrEditLabel">Create (or Edit) Property</h5>
 <div class="row">
     <div class="col-12">
         <blockquote class="blockquote">
@@ -14,38 +14,56 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label class="form-control-label">Government Status</label>
-                    <select class="form-control" name="" formControlName="" disabled>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.governmentStatus" for="field_governmentStatus">Government Status</label>
+                    <select class="form-control" id="field_governmentStatus" name="governmentStatus" formControlName="governmentStatus">
                         <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('governmentStatus').value?.id ? editForm.get('governmentStatus').value : dictionaryOption" *ngFor="let dictionaryOption of governmentStatuses; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4 required">
-                    <label class="form-control-label">Property Type</label>
-                    <select class="form-control" name="" formControlName="" disabled>
-                        <option [ngValue]="null"></option>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.propertyType" for="field_propertyType">Property Type</label>
+                    <select class="form-control" id="field_propertyType" name="propertyType" formControlName="propertyType">
+                        <option *ngIf="!editForm.get('propertyType').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('propertyType').value?.id ? editForm.get('propertyType').value : dictionaryOption" *ngFor="let dictionaryOption of propertyTypes; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
                     </select>
                 </div>
             </div>
             <h6 class="sub-header-style-2 pt-3"><span>Property Address/Location</span></h6>
             <div class="form-row">
                 <div class="form-group col-md-8">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.description" for="field_description">Property Description</label>
-                    <textarea class="form-control" name="description" id="field_description" formControlName="description" rows="4"></textarea>
+
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.description" for="field_comments">Property Description</label>
+                    <textarea class="form-control" name="comments" id="field_comments" formControlName="comments" rows="4"></textarea>
                     <small class="form-text text-danger">Total number of character allowed is 250.</small>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.unitNumber" for="field_unitNumber">Unit Number</label>
-                    <input type="text" class="form-control" name="unitNumber" id="field_unitNumber" formControlName="unitNumber"/>
+                    <input type="text" class="form-control" name="unitNumber" id="field_unitNumber"
+                           formControlName="unitNumber"/>
                 </div>
                 <div class="form-group col-md-2 required">
-                    <label class="form-control-label">Block Number</label>
-                    <input type="text" class="form-control" disabled>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.blockNumber" for="field_blockNumber">Block Number</label>
+                    <input type="text" class="form-control" name="blockNumber" id="field_blockNumber"
+                           formControlName="blockNumber"/>
+                    <div *ngIf="editForm.get('blockNumber').invalid && (editForm.get('blockNumber').dirty || editForm.get('blockNumber').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('blockNumber').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group col-md-2 required">
-                    <label class="form-control-label">Plot Number</label>
-                    <input type="text" class="form-control" disabled>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.plotNumber" for="field_plotNumber">Plot Number</label>
+                    <input type="text" class="form-control" name="plotNumber" id="field_plotNumber"
+                           formControlName="plotNumber"/>
+                    <div *ngIf="editForm.get('plotNumber').invalid && (editForm.get('plotNumber').dirty || editForm.get('plotNumber').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('plotNumber').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group col-md-4 required">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.location" for="field_location">Location of Land</label>
@@ -54,89 +72,99 @@
                         <option [ngValue]="dictionaryOption.id === editForm.get('location').value?.id ? editForm.get('location').value : dictionaryOption" *ngFor="let dictionaryOption of locationOfLands; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
                     </select>
                 </div>
-            </div>   
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-2">
-                    <label class="form-control-label">Street Number</label>
-                    <input type="text" class="form-control" disabled>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.streetNumber" for="field_streetNumber">Street Number</label>
+                    <input type="text" class="form-control" name="streetNumber" id="field_streetNumber"
+                           formControlName="streetNumber"/>
                 </div>
                 <div class="form-group col-md-8">
-                    <label class="form-control-label">Street Name</label>
-                    <input type="text" class="form-control" disabled>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.streetName" for="field_streetName">Street Name</label>
+                    <input type="text" class="form-control" name="streetName" id="field_streetName"
+                           formControlName="streetName"/>
                 </div>
                 <div class="form-group col-md-2">
-                    <label class="form-control-label">Street Type</label>
-                    <select class="form-control" disabled>
-                        <option></option>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.streetType" for="field_streetType">Street Type</label>
+                    <select class="form-control" id="field_streetType" name="streetType" formControlName="streetType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('streetType').value?.id ? editForm.get('streetType').value : dictionaryOption" *ngFor="let dictionaryOption of streetTypes; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
                     </select>
                 </div>
-            </div>   
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label class="form-control-label">Estate Name</label>
-                    <select class="form-control" disabled>
-                        <option></option>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.estateName" for="field_estateName">Estate Name</label>
+                    <select class="form-control" id="field_estateName" name="estateName" formControlName="estateName">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('estateName').value?.id ? editForm.get('estateName').value : dictionaryOption" *ngFor="let dictionaryOption of estates; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label class="form-control-label">Scheme Name</label>
-                    <select class="form-control" disabled>
-                        <option></option>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.schemeName" for="field_schemeName">Scheme Name</label>
+                    <select class="form-control" id="field_schemeName" name="schemeName" formControlName="schemeName">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('schemeName').value?.id ? editForm.get('schemeName').value : dictionaryOption" *ngFor="let dictionaryOption of schemes; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label class="form-control-label">Ward</label>
-                    <input type="text" class="form-control" disabled>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.ward" for="field_ward">Ward</label>
+                    <input type="text" class="form-control" name="ward" id="field_ward"
+                           formControlName="ward"/>
                 </div>
-            </div>   
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label class="form-control-label">Town</label>
-                    <input type="text" class="form-control" disabled>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.town" for="field_town">Town</label>
+                    <input type="text" class="form-control" name="town" id="field_town"
+                           formControlName="town"/>
                 </div>
                 <div class="form-group col-md-4">
-                    <label class="form-control-label">District</label>                    
-                    <select class="form-control" disabled>
-                        <option></option>
-                    </select>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.district" for="field_district">District</label>
+                    <input type="text" class="form-control" name="district" id="field_district"
+                           formControlName="district"/>
                 </div>
                 <div class="form-group col-md-4">
-                    <label class="form-control-label">Village</label>
-                    <input type="text" class="form-control" disabled>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.village" for="field_village">Village</label>
+                    <input type="text" class="form-control" name="village" id="field_village"
+                           formControlName="village"/>
                 </div>
-            </div>   
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-4 required">
-                    <label class="form-control-label">Local Government Area</label>
-                    <select class="form-control" disabled>
-                        <option></option>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.localGovernmentArea" for="field_localGovernmentArea">Local Government Area</label>
+                    <select class="form-control" id="field_localGovernmentArea" name="localGovernmentArea" formControlName="localGovernmentArea">
+                        <option *ngIf="!editForm.get('localGovernmentArea').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('localGovernmentArea').value?.id ? editForm.get('localGovernmentArea').value : dictionaryOption" *ngFor="let dictionaryOption of lgas; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4 required">
-                    <label class="form-control-label">State</label>
-                    <select class="form-control" disabled>
-                        <option>Lagos</option>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.state" for="field_state">State</label>
+                    <select class="form-control" id="field_state" name="state" formControlName="state">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('state').value?.id ? editForm.get('state').value : dictionaryOption" *ngFor="let dictionaryOption of states; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
                     </select>
                 </div>
             </div>
             <h6 class="sub-header-style-2 pt-3"><span>Valuation Details</span></h6>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.valuation" for="field_valuation">Valuation Amount</label>
-                    <input type="text" class="form-control" name="valuation" id="field_valuation" formControlName="valuation"/>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.valuationAmount" for="field_valuationAmount">Valuation Amount</label>
+                    <input type="number" class="form-control" name="valuationAmount" id="field_valuationAmount"
+                           formControlName="valuationAmount"/>
                 </div>
                 <div class="form-group col-md-4">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.accommodation" for="field_accommodation">Type of Accommodation</label>
-                    <select class="form-control" name="accommodation" id="field_accommodation" formControlName="accommodation">
-                        <option></option>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.typeOfAccommodation" for="field_typeOfAccommodation">Type Of Accommodation</label>
+                    <select class="form-control" id="field_typeOfAccommodation" name="typeOfAccommodation" formControlName="typeOfAccommodation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('typeOfAccommodation').value?.id ? editForm.get('typeOfAccommodation').value : dictionaryOption" *ngFor="let dictionaryOption of accommodationTypes; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
                     </select>
-                    <!-- @wadetiba -->
                 </div>
                 <div class="form-group col-md-4">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.premiumValue" for="field_premiumValue">Premium Value</label>
                     <input type="text" class="form-control" name="premiumValue" id="field_premiumValue" formControlName="premiumValue"/>
                 </div>
-            </div>   
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.landUseCategory" for="field_landUseCategory">Land Use Category</label>
@@ -152,12 +180,18 @@
                         <option [ngValue]="dictionaryOption.id === editForm.get('landUseType').value?.id ? editForm.get('landUseType').value : dictionaryOption" *ngFor="let dictionaryOption of landUseTypes; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
                     </select>
                 </div>
-            </div>   
+            </div>
             <h6 class="sub-header-style-2 pt-3"><span>Survey Details</span></h6>
             <div class="form-row">
                 <div class="form-group col-md-4 required">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.area" for="field_area">Area</label>
                     <input type="number" class="form-control" name="area" id="field_area" formControlName="area"/>
+                    <div *ngIf="editForm.get('area').invalid && (editForm.get('area').dirty || editForm.get('area').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('area').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group col-md-4 required">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.measurementUnitType" for="field_measurementUnitType">Measurement Unit Type</label>
@@ -167,18 +201,20 @@
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label class="form-control-label">UPIN</label>
-                    <input type="text" class="form-control" disabled>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.upin" for="field_upin">Upin</label>
+                    <input type="text" class="form-control" name="upin" id="field_upin"
+                           formControlName="upin"/>
                 </div>
-            </div>   
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.coordinateN" for="field_coordinateN">Coordinate N</label>
                     <input type="number" class="form-control" name="coordinateN" id="field_coordinateN" formControlName="coordinateN"/>
                 </div>
                 <div class="form-group col-md-2">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.coordinateS" for="field_coordinateS">Coordinate E</label>
-                    <input type="number" class="form-control" name="coordinateS" id="field_coordinateS" formControlName="coordinateS"/>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.coordinateE" for="field_coordinateE">Coordinate E</label>
+                    <input type="number" class="form-control" name="coordinateE" id="field_coordinateE"
+                           formControlName="coordinateE"/>
                 </div>
                 <div class="form-group col-md-4">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.developmentStatus" for="field_developmentStatus">Development Status</label>
@@ -194,7 +230,7 @@
                         <option [ngValue]="dictionaryOption.id === editForm.get('tenureType').value?.id ? editForm.get('tenureType').value : dictionaryOption" *ngFor="let dictionaryOption of tenureTypes; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
                     </select>
                 </div>
-            </div>   
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.builtUpAreaType" for="field_builtUpAreaType">Built Up Area Type</label>
@@ -208,13 +244,13 @@
                     <input type="text" class="form-control" name="lagosSheetNumber" id="field_lagosSheetNumber" formControlName="lagosSheetNumber"/>
                 </div>
                 <div class="form-group col-md-4">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.allocation" for="field_allocation">Allocation</label>
-                    <select class="form-control" name="allocation" id="field_allocation"  formControlName="allocation">
-                        <option></option>
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.allocationName" for="field_allocationName">Allocation Name</label>
+                    <select class="form-control" id="field_allocationName" name="allocationName" formControlName="allocationName">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('allocationName').value?.id ? editForm.get('allocationName').value : dictionaryOption" *ngFor="let dictionaryOption of dictionaries; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
                     </select>
-                    <!-- @wadetiba -->
                 </div>
-            </div>   
+            </div>
             <div class="form-row">
                 <!-- <div class="form-group col-md-4">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.propertyArea" for="field_propertyArea">Property Area</label>

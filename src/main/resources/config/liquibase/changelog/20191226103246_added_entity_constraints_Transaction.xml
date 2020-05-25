@@ -38,6 +38,12 @@
                                  referencedColumnNames="id"
                                  referencedTableName="dictionary"/>
 
+        <addForeignKeyConstraint baseColumnNames="transaction_code_id"
+                                 baseTableName="transaction"
+                                 constraintName="fk_transaction_transaction_code_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="metadata"/>
+
         <addForeignKeyConstraint baseColumnNames="transaction_id"
                                  baseTableName="transaction_party"
                                  constraintName="fk_transaction_party_transaction_id"

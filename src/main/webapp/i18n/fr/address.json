@@ -28,18 +28,7 @@
       "town": "Town",
       "ward": "Ward",
       "blockNumber": "Block Number",
-      "plotNumber": "Plot Number",
-      "country": "Country",
-      "region": "Region",
-      "district": "District",
-      "state": "State",
-      "estateName": "Estate Name",
-      "localGovernmentArea": "Local Government Area",
-      "localCouncilArea": "Local Council Area",
-      "streetType": "Street Type",
-      "stateOfOrigin": "State Of Origin",
-      "schemeName": "Scheme Name",
-      "category": "Category"
+      "plotNumber": "Plot Number"
     }
   }
 }

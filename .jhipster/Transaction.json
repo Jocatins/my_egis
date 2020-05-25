@@ -32,10 +32,6 @@
         {
             "fieldName": "batchId",
             "fieldType": "Integer"
-        },
-        {
-            "fieldName": "transactionCode",
-            "fieldType": "String"
         }
     ],
     "relationships": [
@@ -73,6 +69,13 @@
             "otherEntityName": "dictionary",
             "otherEntityRelationshipName": "transaction",
             "relationshipName": "tenureType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "metadata",
+            "otherEntityRelationshipName": "transaction",
+            "relationshipName": "transactionCode",
             "otherEntityField": "id"
         },
         {

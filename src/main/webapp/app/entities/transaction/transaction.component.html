@@ -42,12 +42,12 @@
             <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.startDate">Start Date</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.completeDate">Complete Date</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.batchId">Batch Id</span></th>
-            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.transactionCode">Transaction Code</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.ext">Ext</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.transactionType">Transaction Type</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.transactionSubType">Transaction Sub Type</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.ownershipType">Ownership Type</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.tenureType">Tenure Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.transactionCode">Transaction Code</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.party">Party</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.parcel">Parcel</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.transaction.docs">Docs</span></th>
@@ -65,7 +65,6 @@
                 <td>{{transaction.startDate | date:'mediumDate'}}</td>
                 <td>{{transaction.completeDate | date:'mediumDate'}}</td>
                 <td>{{transaction.batchId}}</td>
-                <td>{{transaction.transactionCode}}</td>
                 <td>
                     <div *ngIf="transaction.ext">
                         <a [routerLink]="['/transaction-ext', transaction.ext?.id, 'view' ]" >{{transaction.ext?.id}}</a>
@@ -89,6 +88,11 @@
                 <td>
                     <div *ngIf="transaction.tenureType">
                         <a [routerLink]="['/dictionary', transaction.tenureType?.id, 'view' ]" >{{transaction.tenureType?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transaction.transactionCode">
+                        <a [routerLink]="['/metadata', transaction.transactionCode?.id, 'view' ]" >{{transaction.transactionCode?.id}}</a>
                     </div>
                 </td>
                 <td>

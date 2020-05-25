@@ -25,8 +25,13 @@
                 <tr *ngFor="let batch of batches ;trackBy: trackId">
                     <td><a [routerLink]="['/batch', batch.id, 'view' ]">{{batch.id}}</a></td>
                     <td>{{batch.batchNumber}} </td>
-                    <td>{{batch.batchStatus.label}}</td>
-                    <td>{{  batch.transactions[0].comments }}</td>
+                    <td>
+                        <span ng-if="batch.batchStatus">{{batch.batchStatus.label}}</span>
+                    </td>
+                    <td>
+                        <span ng-if=" batch.transactions[0].transactionCode">
+                        </span>{{  batch.transactions[0].transactionCode.code }} - {{  batch.transactions[0].transactionCode.label }}
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

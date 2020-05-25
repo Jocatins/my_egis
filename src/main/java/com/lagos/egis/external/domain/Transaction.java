@@ -53,9 +53,6 @@ public class Transaction implements Serializable {
     @Column(name = "batch_id")
     private Integer batchId;
 
-    @Column(name = "transaction_code")
-    private String transactionCode;
-
     @OneToOne
     @JoinColumn(unique = true)
     private TransactionExt ext;
@@ -76,21 +73,26 @@ public class Transaction implements Serializable {
     @JsonIgnoreProperties("transactions")
     private Dictionary tenureType;
 
-    @ManyToMany ( fetch = FetchType.EAGER)
+    @ManyToOne
+    @JsonIgnoreProperties("transactions")
+    private Metadata transactionCode;
+
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "transaction_party",
                joinColumns = @JoinColumn(name = "transaction_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "party_id", referencedColumnName = "id"))
     private Set<Party> parties = new HashSet<>();
 
-    @ManyToMany ( fetch = FetchType.EAGER)
+
+    @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "transaction_parcel",
                joinColumns = @JoinColumn(name = "transaction_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "parcel_id", referencedColumnName = "id"))
     private Set<Parcel> parcels = new HashSet<>();
 
-    @ManyToMany ( fetch = FetchType.EAGER)
+    @ManyToMany  (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "transaction_docs",
                joinColumns = @JoinColumn(name = "transaction_id", referencedColumnName = "id"),
@@ -215,19 +217,6 @@ public class Transaction implements Serializable {
         this.batchId = batchId;
     }
 
-    public String getTransactionCode() {
-        return transactionCode;
-    }
-
-    public Transaction transactionCode(String transactionCode) {
-        this.transactionCode = transactionCode;
-        return this;
-    }
-
-    public void setTransactionCode(String transactionCode) {
-        this.transactionCode = transactionCode;
-    }
-
     public TransactionExt getExt() {
         return ext;
     }
@@ -291,6 +280,19 @@ public class Transaction implements Serializable {
 
     public void setTenureType(Dictionary dictionary) {
         this.tenureType = dictionary;
+    }
+
+    public Metadata getTransactionCode() {
+        return transactionCode;
+    }
+
+    public Transaction transactionCode(Metadata metadata) {
+        this.transactionCode = metadata;
+        return this;
+    }
+
+    public void setTransactionCode(Metadata metadata) {
+        this.transactionCode = metadata;
     }
 
     public Set<Party> getParties() {
@@ -422,7 +424,6 @@ public class Transaction implements Serializable {
             ", startDate='" + getStartDate() + "'" +
             ", completeDate='" + getCompleteDate() + "'" +
             ", batchId=" + getBatchId() +
-            ", transactionCode='" + getTransactionCode() + "'" +
             "}";
     }
 }

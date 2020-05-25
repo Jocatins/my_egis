@@ -67,9 +67,6 @@ public class TransactionResourceIT {
     private static final Integer DEFAULT_BATCH_ID = 1;
     private static final Integer UPDATED_BATCH_ID = 2;
 
-    private static final String DEFAULT_TRANSACTION_CODE = "AAAAAAAAAA";
-    private static final String UPDATED_TRANSACTION_CODE = "BBBBBBBBBB";
-
     @Autowired
     private TransactionRepository transactionRepository;
 
@@ -130,8 +127,7 @@ public class TransactionResourceIT {
             .createDate(DEFAULT_CREATE_DATE)
             .startDate(DEFAULT_START_DATE)
             .completeDate(DEFAULT_COMPLETE_DATE)
-            .batchId(DEFAULT_BATCH_ID)
-            .transactionCode(DEFAULT_TRANSACTION_CODE);
+            .batchId(DEFAULT_BATCH_ID);
         return transaction;
     }
     /**
@@ -149,8 +145,7 @@ public class TransactionResourceIT {
             .createDate(UPDATED_CREATE_DATE)
             .startDate(UPDATED_START_DATE)
             .completeDate(UPDATED_COMPLETE_DATE)
-            .batchId(UPDATED_BATCH_ID)
-            .transactionCode(UPDATED_TRANSACTION_CODE);
+            .batchId(UPDATED_BATCH_ID);
         return transaction;
     }
 
@@ -182,7 +177,6 @@ public class TransactionResourceIT {
         assertThat(testTransaction.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testTransaction.getCompleteDate()).isEqualTo(DEFAULT_COMPLETE_DATE);
         assertThat(testTransaction.getBatchId()).isEqualTo(DEFAULT_BATCH_ID);
-        assertThat(testTransaction.getTransactionCode()).isEqualTo(DEFAULT_TRANSACTION_CODE);
 
         // Validate the Transaction in Elasticsearch
         verify(mockTransactionSearchRepository, times(1)).save(testTransaction);
@@ -229,8 +223,7 @@ public class TransactionResourceIT {
             .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].completeDate").value(hasItem(DEFAULT_COMPLETE_DATE.toString())))
-            .andExpect(jsonPath("$.[*].batchId").value(hasItem(DEFAULT_BATCH_ID)))
-            .andExpect(jsonPath("$.[*].transactionCode").value(hasItem(DEFAULT_TRANSACTION_CODE)));
+            .andExpect(jsonPath("$.[*].batchId").value(hasItem(DEFAULT_BATCH_ID)));
     }
     
     @SuppressWarnings({"unchecked"})
@@ -284,8 +277,7 @@ public class TransactionResourceIT {
             .andExpect(jsonPath("$.createDate").value(DEFAULT_CREATE_DATE.toString()))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
             .andExpect(jsonPath("$.completeDate").value(DEFAULT_COMPLETE_DATE.toString()))
-            .andExpect(jsonPath("$.batchId").value(DEFAULT_BATCH_ID))
-            .andExpect(jsonPath("$.transactionCode").value(DEFAULT_TRANSACTION_CODE));
+            .andExpect(jsonPath("$.batchId").value(DEFAULT_BATCH_ID));
     }
 
     @Test
@@ -316,8 +308,7 @@ public class TransactionResourceIT {
             .createDate(UPDATED_CREATE_DATE)
             .startDate(UPDATED_START_DATE)
             .completeDate(UPDATED_COMPLETE_DATE)
-            .batchId(UPDATED_BATCH_ID)
-            .transactionCode(UPDATED_TRANSACTION_CODE);
+            .batchId(UPDATED_BATCH_ID);
 
         restTransactionMockMvc.perform(put("/api/transactions")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -336,7 +327,6 @@ public class TransactionResourceIT {
         assertThat(testTransaction.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testTransaction.getCompleteDate()).isEqualTo(UPDATED_COMPLETE_DATE);
         assertThat(testTransaction.getBatchId()).isEqualTo(UPDATED_BATCH_ID);
-        assertThat(testTransaction.getTransactionCode()).isEqualTo(UPDATED_TRANSACTION_CODE);
 
         // Validate the Transaction in Elasticsearch
         verify(mockTransactionSearchRepository, times(1)).save(testTransaction);
@@ -403,7 +393,6 @@ public class TransactionResourceIT {
             .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].completeDate").value(hasItem(DEFAULT_COMPLETE_DATE.toString())))
-            .andExpect(jsonPath("$.[*].batchId").value(hasItem(DEFAULT_BATCH_ID)))
-            .andExpect(jsonPath("$.[*].transactionCode").value(hasItem(DEFAULT_TRANSACTION_CODE)));
+            .andExpect(jsonPath("$.[*].batchId").value(hasItem(DEFAULT_BATCH_ID)));
     }
 }

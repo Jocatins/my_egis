@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { Router, ActivatedRoute, } from '@angular/router';
 import { IBatch, Batch } from 'app/shared/model/batch.model';
 import { IParty, Party } from 'app/shared/model/party.model';
 import { ISupportingDocument, SupportingDocument } from 'app/shared/model/supporting-document.model';
@@ -10,7 +10,7 @@ import { SupportingDocumentDeleteDialogComponent } from '../ext/supporting-docum
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 import { PartyDeleteDialogComponent } from '../party/party-delete-dialog.component';
-import { BatchService } from '../ext/batch-old/batch.service';
+import { BatchService } from '../ext/batch/batch.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -91,7 +91,7 @@ export class TranslandingComponent implements OnInit, OnDestroy {
     return blob;
   }
 
-  deleteDoc(supportingDocument: SupportingDocument, batchId: number) {
+  deleteDoc(supportingDocument: SupportingDocument) {
     const modalRef = this.modalService.open(SupportingDocumentDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.supportingDocument = supportingDocument;
     this.eventManager.subscribe('supportingDocumentListModification', () => {

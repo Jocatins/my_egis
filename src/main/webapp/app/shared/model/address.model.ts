@@ -1,5 +1,3 @@
-import { IDictionary } from 'app/shared/model/dictionary.model';
-
 export interface IAddress {
   id?: number;
   addressAreaName?: string;
@@ -14,17 +12,6 @@ export interface IAddress {
   ward?: string;
   blockNumber?: string;
   plotNumber?: string;
-  country?: IDictionary;
-  region?: IDictionary;
-  district?: IDictionary;
-  state?: IDictionary;
-  estateName?: IDictionary;
-  localGovernmentArea?: IDictionary;
-  localCouncilArea?: IDictionary;
-  streetType?: IDictionary;
-  stateOfOrigin?: IDictionary;
-  schemeName?: IDictionary;
-  category?: IDictionary;
 }
 
 export class Address implements IAddress {
@@ -41,17 +28,6 @@ export class Address implements IAddress {
     public town?: string,
     public ward?: string,
     public blockNumber?: string,
-    public plotNumber?: string,
-    public country?: IDictionary,
-    public region?: IDictionary,
-    public district?: IDictionary,
-    public state?: IDictionary,
-    public estateName?: IDictionary,
-    public localGovernmentArea?: IDictionary,
-    public localCouncilArea?: IDictionary,
-    public streetType?: IDictionary,
-    public stateOfOrigin?: IDictionary,
-    public schemeName?: IDictionary,
-    public category?: IDictionary
+    public plotNumber?: string
   ) {}
 }

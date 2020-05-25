@@ -5,12 +5,15 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.lagos.egis.external.domain.enumeration.YesOrNo;
 
 /**
  * A Party.
@@ -29,28 +32,12 @@ public class Party implements Serializable {
     @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
     private Long id;
 
-    @Column(name = "party_name")
-    private String partyName;
+    @NotNull
+    @Column(name = "email_address", nullable = false)
+    private String emailAddress;
 
-    @Column(name = "share_nominator")
-    private String shareNominator;
-
-    @Column(name = "share_denominator")
-    private String shareDenominator;
-
-    @Column(name = "tax_exempt")
-    private String taxExempt;
-
-    @Column(name = "other_name")
-    private String otherName;
-
-    @Column(name = "fax")
-    private String fax;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "phone_number")
+    @NotNull
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
     @Column(name = "payer_id")
@@ -58,6 +45,9 @@ public class Party implements Serializable {
 
     @Column(name = "tax_payer_number")
     private String taxPayerNumber;
+
+    @Column(name = "paye_number")
+    private String payeNumber;
 
     @Column(name = "comments")
     private String comments;
@@ -74,9 +64,6 @@ public class Party implements Serializable {
     @Column(name = "organization")
     private String organization;
 
-    @Column(name = "business_nature")
-    private String businessNature;
-
     @Column(name = "birth_place")
     private String birthPlace;
 
@@ -92,48 +79,81 @@ public class Party implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "driver_licence")
-    private String driverLicence;
-
-    @Column(name = "profession_reg_no")
-    private String professionRegNo;
-
     @Column(name = "occupation")
     private String occupation;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Address address;
+    @Column(name = "unit_number")
+    private String unitNumber;
 
-    @ManyToOne
+    @Column(name = "block_number")
+    private String blockNumber;
+
+    @Column(name = "plot_number")
+    private String plotNumber;
+
+    @Column(name = "street_number")
+    private String streetNumber;
+
+    @Column(name = "street_name")
+    private String streetName;
+
+    @Column(name = "building_name")
+    private String buildingName;
+
+    @Column(name = "building_number")
+    private String buildingNumber;
+
+    @Column(name = "postal_code")
+    private String postalCode;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "village")
+    private String village;
+
+    @Column(name = "long_address")
+    private String longAddress;
+
+    @Column(name = "town")
+    private String town;
+
+    @Column(name = "ward")
+    private String ward;
+
+    @Column(name = "next_of_kin_phone")
+    private String nextOfKinPhone;
+
+    @Column(name = "i_d_document_issued_date")
+    private LocalDate iDDocumentIssuedDate;
+
+    @Column(name = "i_d_document_expiration_date")
+    private LocalDate iDDocumentExpirationDate;
+
+    @Column(name = "i_d_document_number")
+    private String iDDocumentNumber;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "primary_party", nullable = false)
+    private YesOrNo primaryParty;
+
+    @ManyToOne(optional = false)
+    @NotNull
     @JsonIgnoreProperties("parties")
     private Dictionary partyType;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     @JsonIgnoreProperties("parties")
     private Dictionary partyRoleType;
 
     @ManyToOne
     @JsonIgnoreProperties("parties")
-    private Dictionary partySubRoleType;
-
-    @ManyToOne
-    @JsonIgnoreProperties("parties")
-    private Dictionary deliveryType;
-
-    @ManyToOne
-    @JsonIgnoreProperties("parties")
-    private Dictionary primaryParty;
-
-    @ManyToOne
-    @JsonIgnoreProperties("parties")
-    private Dictionary personIdType;
-
-    @ManyToOne
-    @JsonIgnoreProperties("parties")
     private Dictionary personType;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     @JsonIgnoreProperties("parties")
     private Dictionary emailType;
 
@@ -159,7 +179,69 @@ public class Party implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("parties")
-    private Dictionary representativeId;
+    private Dictionary businessNature;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("parties")
+    private Dictionary phoneCategory;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary nextOfKinPhoneCategory;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary emailCategory;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary addressCategory;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary iDDocumentType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary iDDocumentIssuedBy;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary suffixTitle;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary stateofOrigin;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary maritalStatus;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary streetType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary estateName;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary schemeName;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary district;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parties")
+    private Dictionary localGovernmentArea;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("parties")
+    private Dictionary country;
 
     @ManyToMany(mappedBy = "parties")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -180,95 +262,17 @@ public class Party implements Serializable {
         this.id = id;
     }
 
-    public String getPartyName() {
-        return partyName;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public Party partyName(String partyName) {
-        this.partyName = partyName;
+    public Party emailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
         return this;
     }
 
-    public void setPartyName(String partyName) {
-        this.partyName = partyName;
-    }
-
-    public String getShareNominator() {
-        return shareNominator;
-    }
-
-    public Party shareNominator(String shareNominator) {
-        this.shareNominator = shareNominator;
-        return this;
-    }
-
-    public void setShareNominator(String shareNominator) {
-        this.shareNominator = shareNominator;
-    }
-
-    public String getShareDenominator() {
-        return shareDenominator;
-    }
-
-    public Party shareDenominator(String shareDenominator) {
-        this.shareDenominator = shareDenominator;
-        return this;
-    }
-
-    public void setShareDenominator(String shareDenominator) {
-        this.shareDenominator = shareDenominator;
-    }
-
-    public String getTaxExempt() {
-        return taxExempt;
-    }
-
-    public Party taxExempt(String taxExempt) {
-        this.taxExempt = taxExempt;
-        return this;
-    }
-
-    public void setTaxExempt(String taxExempt) {
-        this.taxExempt = taxExempt;
-    }
-
-    public String getOtherName() {
-        return otherName;
-    }
-
-    public Party otherName(String otherName) {
-        this.otherName = otherName;
-        return this;
-    }
-
-    public void setOtherName(String otherName) {
-        this.otherName = otherName;
-    }
-
-    public String getFax() {
-        return fax;
-    }
-
-    public Party fax(String fax) {
-        this.fax = fax;
-        return this;
-    }
-
-    public void setFax(String fax) {
-        this.fax = fax;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public Party email(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public String getPhoneNumber() {
@@ -308,6 +312,19 @@ public class Party implements Serializable {
 
     public void setTaxPayerNumber(String taxPayerNumber) {
         this.taxPayerNumber = taxPayerNumber;
+    }
+
+    public String getPayeNumber() {
+        return payeNumber;
+    }
+
+    public Party payeNumber(String payeNumber) {
+        this.payeNumber = payeNumber;
+        return this;
+    }
+
+    public void setPayeNumber(String payeNumber) {
+        this.payeNumber = payeNumber;
     }
 
     public String getComments() {
@@ -375,19 +392,6 @@ public class Party implements Serializable {
         this.organization = organization;
     }
 
-    public String getBusinessNature() {
-        return businessNature;
-    }
-
-    public Party businessNature(String businessNature) {
-        this.businessNature = businessNature;
-        return this;
-    }
-
-    public void setBusinessNature(String businessNature) {
-        this.businessNature = businessNature;
-    }
-
     public String getBirthPlace() {
         return birthPlace;
     }
@@ -453,32 +457,6 @@ public class Party implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getDriverLicence() {
-        return driverLicence;
-    }
-
-    public Party driverLicence(String driverLicence) {
-        this.driverLicence = driverLicence;
-        return this;
-    }
-
-    public void setDriverLicence(String driverLicence) {
-        this.driverLicence = driverLicence;
-    }
-
-    public String getProfessionRegNo() {
-        return professionRegNo;
-    }
-
-    public Party professionRegNo(String professionRegNo) {
-        this.professionRegNo = professionRegNo;
-        return this;
-    }
-
-    public void setProfessionRegNo(String professionRegNo) {
-        this.professionRegNo = professionRegNo;
-    }
-
     public String getOccupation() {
         return occupation;
     }
@@ -492,17 +470,238 @@ public class Party implements Serializable {
         this.occupation = occupation;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getUnitNumber() {
+        return unitNumber;
     }
 
-    public Party address(Address address) {
-        this.address = address;
+    public Party unitNumber(String unitNumber) {
+        this.unitNumber = unitNumber;
         return this;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setUnitNumber(String unitNumber) {
+        this.unitNumber = unitNumber;
+    }
+
+    public String getBlockNumber() {
+        return blockNumber;
+    }
+
+    public Party blockNumber(String blockNumber) {
+        this.blockNumber = blockNumber;
+        return this;
+    }
+
+    public void setBlockNumber(String blockNumber) {
+        this.blockNumber = blockNumber;
+    }
+
+    public String getPlotNumber() {
+        return plotNumber;
+    }
+
+    public Party plotNumber(String plotNumber) {
+        this.plotNumber = plotNumber;
+        return this;
+    }
+
+    public void setPlotNumber(String plotNumber) {
+        this.plotNumber = plotNumber;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public Party streetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+        return this;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public Party streetName(String streetName) {
+        this.streetName = streetName;
+        return this;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getBuildingName() {
+        return buildingName;
+    }
+
+    public Party buildingName(String buildingName) {
+        this.buildingName = buildingName;
+        return this;
+    }
+
+    public void setBuildingName(String buildingName) {
+        this.buildingName = buildingName;
+    }
+
+    public String getBuildingNumber() {
+        return buildingNumber;
+    }
+
+    public Party buildingNumber(String buildingNumber) {
+        this.buildingNumber = buildingNumber;
+        return this;
+    }
+
+    public void setBuildingNumber(String buildingNumber) {
+        this.buildingNumber = buildingNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public Party postalCode(String postalCode) {
+        this.postalCode = postalCode;
+        return this;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public Party city(String city) {
+        this.city = city;
+        return this;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getVillage() {
+        return village;
+    }
+
+    public Party village(String village) {
+        this.village = village;
+        return this;
+    }
+
+    public void setVillage(String village) {
+        this.village = village;
+    }
+
+    public String getLongAddress() {
+        return longAddress;
+    }
+
+    public Party longAddress(String longAddress) {
+        this.longAddress = longAddress;
+        return this;
+    }
+
+    public void setLongAddress(String longAddress) {
+        this.longAddress = longAddress;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public Party town(String town) {
+        this.town = town;
+        return this;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    public String getWard() {
+        return ward;
+    }
+
+    public Party ward(String ward) {
+        this.ward = ward;
+        return this;
+    }
+
+    public void setWard(String ward) {
+        this.ward = ward;
+    }
+
+    public String getNextOfKinPhone() {
+        return nextOfKinPhone;
+    }
+
+    public Party nextOfKinPhone(String nextOfKinPhone) {
+        this.nextOfKinPhone = nextOfKinPhone;
+        return this;
+    }
+
+    public void setNextOfKinPhone(String nextOfKinPhone) {
+        this.nextOfKinPhone = nextOfKinPhone;
+    }
+
+    public LocalDate getiDDocumentIssuedDate() {
+        return iDDocumentIssuedDate;
+    }
+
+    public Party iDDocumentIssuedDate(LocalDate iDDocumentIssuedDate) {
+        this.iDDocumentIssuedDate = iDDocumentIssuedDate;
+        return this;
+    }
+
+    public void setiDDocumentIssuedDate(LocalDate iDDocumentIssuedDate) {
+        this.iDDocumentIssuedDate = iDDocumentIssuedDate;
+    }
+
+    public LocalDate getiDDocumentExpirationDate() {
+        return iDDocumentExpirationDate;
+    }
+
+    public Party iDDocumentExpirationDate(LocalDate iDDocumentExpirationDate) {
+        this.iDDocumentExpirationDate = iDDocumentExpirationDate;
+        return this;
+    }
+
+    public void setiDDocumentExpirationDate(LocalDate iDDocumentExpirationDate) {
+        this.iDDocumentExpirationDate = iDDocumentExpirationDate;
+    }
+
+    public String getiDDocumentNumber() {
+        return iDDocumentNumber;
+    }
+
+    public Party iDDocumentNumber(String iDDocumentNumber) {
+        this.iDDocumentNumber = iDDocumentNumber;
+        return this;
+    }
+
+    public void setiDDocumentNumber(String iDDocumentNumber) {
+        this.iDDocumentNumber = iDDocumentNumber;
+    }
+
+    public YesOrNo getPrimaryParty() {
+        return primaryParty;
+    }
+
+    public Party primaryParty(YesOrNo primaryParty) {
+        this.primaryParty = primaryParty;
+        return this;
+    }
+
+    public void setPrimaryParty(YesOrNo primaryParty) {
+        this.primaryParty = primaryParty;
     }
 
     public Dictionary getPartyType() {
@@ -529,58 +728,6 @@ public class Party implements Serializable {
 
     public void setPartyRoleType(Dictionary dictionary) {
         this.partyRoleType = dictionary;
-    }
-
-    public Dictionary getPartySubRoleType() {
-        return partySubRoleType;
-    }
-
-    public Party partySubRoleType(Dictionary dictionary) {
-        this.partySubRoleType = dictionary;
-        return this;
-    }
-
-    public void setPartySubRoleType(Dictionary dictionary) {
-        this.partySubRoleType = dictionary;
-    }
-
-    public Dictionary getDeliveryType() {
-        return deliveryType;
-    }
-
-    public Party deliveryType(Dictionary dictionary) {
-        this.deliveryType = dictionary;
-        return this;
-    }
-
-    public void setDeliveryType(Dictionary dictionary) {
-        this.deliveryType = dictionary;
-    }
-
-    public Dictionary getPrimaryParty() {
-        return primaryParty;
-    }
-
-    public Party primaryParty(Dictionary dictionary) {
-        this.primaryParty = dictionary;
-        return this;
-    }
-
-    public void setPrimaryParty(Dictionary dictionary) {
-        this.primaryParty = dictionary;
-    }
-
-    public Dictionary getPersonIdType() {
-        return personIdType;
-    }
-
-    public Party personIdType(Dictionary dictionary) {
-        this.personIdType = dictionary;
-        return this;
-    }
-
-    public void setPersonIdType(Dictionary dictionary) {
-        this.personIdType = dictionary;
     }
 
     public Dictionary getPersonType() {
@@ -674,17 +821,212 @@ public class Party implements Serializable {
         this.driverLicenseRegion = dictionary;
     }
 
-    public Dictionary getRepresentativeId() {
-        return representativeId;
+    public Dictionary getBusinessNature() {
+        return businessNature;
     }
 
-    public Party representativeId(Dictionary dictionary) {
-        this.representativeId = dictionary;
+    public Party businessNature(Dictionary dictionary) {
+        this.businessNature = dictionary;
         return this;
     }
 
-    public void setRepresentativeId(Dictionary dictionary) {
-        this.representativeId = dictionary;
+    public void setBusinessNature(Dictionary dictionary) {
+        this.businessNature = dictionary;
+    }
+
+    public Dictionary getPhoneCategory() {
+        return phoneCategory;
+    }
+
+    public Party phoneCategory(Dictionary dictionary) {
+        this.phoneCategory = dictionary;
+        return this;
+    }
+
+    public void setPhoneCategory(Dictionary dictionary) {
+        this.phoneCategory = dictionary;
+    }
+
+    public Dictionary getNextOfKinPhoneCategory() {
+        return nextOfKinPhoneCategory;
+    }
+
+    public Party nextOfKinPhoneCategory(Dictionary dictionary) {
+        this.nextOfKinPhoneCategory = dictionary;
+        return this;
+    }
+
+    public void setNextOfKinPhoneCategory(Dictionary dictionary) {
+        this.nextOfKinPhoneCategory = dictionary;
+    }
+
+    public Dictionary getEmailCategory() {
+        return emailCategory;
+    }
+
+    public Party emailCategory(Dictionary dictionary) {
+        this.emailCategory = dictionary;
+        return this;
+    }
+
+    public void setEmailCategory(Dictionary dictionary) {
+        this.emailCategory = dictionary;
+    }
+
+    public Dictionary getAddressCategory() {
+        return addressCategory;
+    }
+
+    public Party addressCategory(Dictionary dictionary) {
+        this.addressCategory = dictionary;
+        return this;
+    }
+
+    public void setAddressCategory(Dictionary dictionary) {
+        this.addressCategory = dictionary;
+    }
+
+    public Dictionary getIDDocumentType() {
+        return iDDocumentType;
+    }
+
+    public Party iDDocumentType(Dictionary dictionary) {
+        this.iDDocumentType = dictionary;
+        return this;
+    }
+
+    public void setIDDocumentType(Dictionary dictionary) {
+        this.iDDocumentType = dictionary;
+    }
+
+    public Dictionary getIDDocumentIssuedBy() {
+        return iDDocumentIssuedBy;
+    }
+
+    public Party iDDocumentIssuedBy(Dictionary dictionary) {
+        this.iDDocumentIssuedBy = dictionary;
+        return this;
+    }
+
+    public void setIDDocumentIssuedBy(Dictionary dictionary) {
+        this.iDDocumentIssuedBy = dictionary;
+    }
+
+    public Dictionary getSuffixTitle() {
+        return suffixTitle;
+    }
+
+    public Party suffixTitle(Dictionary dictionary) {
+        this.suffixTitle = dictionary;
+        return this;
+    }
+
+    public void setSuffixTitle(Dictionary dictionary) {
+        this.suffixTitle = dictionary;
+    }
+
+    public Dictionary getStateofOrigin() {
+        return stateofOrigin;
+    }
+
+    public Party stateofOrigin(Dictionary dictionary) {
+        this.stateofOrigin = dictionary;
+        return this;
+    }
+
+    public void setStateofOrigin(Dictionary dictionary) {
+        this.stateofOrigin = dictionary;
+    }
+
+    public Dictionary getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public Party maritalStatus(Dictionary dictionary) {
+        this.maritalStatus = dictionary;
+        return this;
+    }
+
+    public void setMaritalStatus(Dictionary dictionary) {
+        this.maritalStatus = dictionary;
+    }
+
+    public Dictionary getStreetType() {
+        return streetType;
+    }
+
+    public Party streetType(Dictionary dictionary) {
+        this.streetType = dictionary;
+        return this;
+    }
+
+    public void setStreetType(Dictionary dictionary) {
+        this.streetType = dictionary;
+    }
+
+    public Dictionary getEstateName() {
+        return estateName;
+    }
+
+    public Party estateName(Dictionary dictionary) {
+        this.estateName = dictionary;
+        return this;
+    }
+
+    public void setEstateName(Dictionary dictionary) {
+        this.estateName = dictionary;
+    }
+
+    public Dictionary getSchemeName() {
+        return schemeName;
+    }
+
+    public Party schemeName(Dictionary dictionary) {
+        this.schemeName = dictionary;
+        return this;
+    }
+
+    public void setSchemeName(Dictionary dictionary) {
+        this.schemeName = dictionary;
+    }
+
+    public Dictionary getDistrict() {
+        return district;
+    }
+
+    public Party district(Dictionary dictionary) {
+        this.district = dictionary;
+        return this;
+    }
+
+    public void setDistrict(Dictionary dictionary) {
+        this.district = dictionary;
+    }
+
+    public Dictionary getLocalGovernmentArea() {
+        return localGovernmentArea;
+    }
+
+    public Party localGovernmentArea(Dictionary dictionary) {
+        this.localGovernmentArea = dictionary;
+        return this;
+    }
+
+    public void setLocalGovernmentArea(Dictionary dictionary) {
+        this.localGovernmentArea = dictionary;
+    }
+
+    public Dictionary getCountry() {
+        return country;
+    }
+
+    public Party country(Dictionary dictionary) {
+        this.country = dictionary;
+        return this;
+    }
+
+    public void setCountry(Dictionary dictionary) {
+        this.country = dictionary;
     }
 
     public Set<Batch> getBatches() {
@@ -758,30 +1100,40 @@ public class Party implements Serializable {
     public String toString() {
         return "Party{" +
             "id=" + getId() +
-            ", partyName='" + getPartyName() + "'" +
-            ", shareNominator='" + getShareNominator() + "'" +
-            ", shareDenominator='" + getShareDenominator() + "'" +
-            ", taxExempt='" + getTaxExempt() + "'" +
-            ", otherName='" + getOtherName() + "'" +
-            ", fax='" + getFax() + "'" +
-            ", email='" + getEmail() + "'" +
+            ", emailAddress='" + getEmailAddress() + "'" +
             ", phoneNumber='" + getPhoneNumber() + "'" +
             ", payerId='" + getPayerId() + "'" +
             ", taxPayerNumber='" + getTaxPayerNumber() + "'" +
+            ", payeNumber='" + getPayeNumber() + "'" +
             ", comments='" + getComments() + "'" +
             ", personIdDate='" + getPersonIdDate() + "'" +
             ", personIdExpirationDate='" + getPersonIdExpirationDate() + "'" +
             ", rcNumber='" + getRcNumber() + "'" +
             ", organization='" + getOrganization() + "'" +
-            ", businessNature='" + getBusinessNature() + "'" +
             ", birthPlace='" + getBirthPlace() + "'" +
             ", birthDate='" + getBirthDate() + "'" +
             ", firstName='" + getFirstName() + "'" +
             ", middleName='" + getMiddleName() + "'" +
             ", lastName='" + getLastName() + "'" +
-            ", driverLicence='" + getDriverLicence() + "'" +
-            ", professionRegNo='" + getProfessionRegNo() + "'" +
             ", occupation='" + getOccupation() + "'" +
+            ", unitNumber='" + getUnitNumber() + "'" +
+            ", blockNumber='" + getBlockNumber() + "'" +
+            ", plotNumber='" + getPlotNumber() + "'" +
+            ", streetNumber='" + getStreetNumber() + "'" +
+            ", streetName='" + getStreetName() + "'" +
+            ", buildingName='" + getBuildingName() + "'" +
+            ", buildingNumber='" + getBuildingNumber() + "'" +
+            ", postalCode='" + getPostalCode() + "'" +
+            ", city='" + getCity() + "'" +
+            ", village='" + getVillage() + "'" +
+            ", longAddress='" + getLongAddress() + "'" +
+            ", town='" + getTown() + "'" +
+            ", ward='" + getWard() + "'" +
+            ", nextOfKinPhone='" + getNextOfKinPhone() + "'" +
+            ", iDDocumentIssuedDate='" + getiDDocumentIssuedDate() + "'" +
+            ", iDDocumentExpirationDate='" + getiDDocumentExpirationDate() + "'" +
+            ", iDDocumentNumber='" + getiDDocumentNumber() + "'" +
+            ", primaryParty='" + getPrimaryParty() + "'" +
             "}";
     }
 }

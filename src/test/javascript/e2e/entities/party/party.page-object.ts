@@ -26,37 +26,42 @@ export class PartyUpdatePage {
   pageTitle = element(by.id('jhi-party-heading'));
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
-  partyNameInput = element(by.id('field_partyName'));
-  shareNominatorInput = element(by.id('field_shareNominator'));
-  shareDenominatorInput = element(by.id('field_shareDenominator'));
-  taxExemptInput = element(by.id('field_taxExempt'));
-  otherNameInput = element(by.id('field_otherName'));
-  faxInput = element(by.id('field_fax'));
-  emailInput = element(by.id('field_email'));
+  emailAddressInput = element(by.id('field_emailAddress'));
   phoneNumberInput = element(by.id('field_phoneNumber'));
   payerIdInput = element(by.id('field_payerId'));
   taxPayerNumberInput = element(by.id('field_taxPayerNumber'));
+  payeNumberInput = element(by.id('field_payeNumber'));
   commentsInput = element(by.id('field_comments'));
   personIdDateInput = element(by.id('field_personIdDate'));
   personIdExpirationDateInput = element(by.id('field_personIdExpirationDate'));
   rcNumberInput = element(by.id('field_rcNumber'));
   organizationInput = element(by.id('field_organization'));
-  businessNatureInput = element(by.id('field_businessNature'));
   birthPlaceInput = element(by.id('field_birthPlace'));
   birthDateInput = element(by.id('field_birthDate'));
   firstNameInput = element(by.id('field_firstName'));
   middleNameInput = element(by.id('field_middleName'));
   lastNameInput = element(by.id('field_lastName'));
-  driverLicenceInput = element(by.id('field_driverLicence'));
-  professionRegNoInput = element(by.id('field_professionRegNo'));
   occupationInput = element(by.id('field_occupation'));
-  addressSelect = element(by.id('field_address'));
+  unitNumberInput = element(by.id('field_unitNumber'));
+  blockNumberInput = element(by.id('field_blockNumber'));
+  plotNumberInput = element(by.id('field_plotNumber'));
+  streetNumberInput = element(by.id('field_streetNumber'));
+  streetNameInput = element(by.id('field_streetName'));
+  buildingNameInput = element(by.id('field_buildingName'));
+  buildingNumberInput = element(by.id('field_buildingNumber'));
+  postalCodeInput = element(by.id('field_postalCode'));
+  cityInput = element(by.id('field_city'));
+  villageInput = element(by.id('field_village'));
+  longAddressInput = element(by.id('field_longAddress'));
+  townInput = element(by.id('field_town'));
+  wardInput = element(by.id('field_ward'));
+  nextOfKinPhoneInput = element(by.id('field_nextOfKinPhone'));
+  iDDocumentIssuedDateInput = element(by.id('field_iDDocumentIssuedDate'));
+  iDDocumentExpirationDateInput = element(by.id('field_iDDocumentExpirationDate'));
+  iDDocumentNumberInput = element(by.id('field_iDDocumentNumber'));
+  primaryPartySelect = element(by.id('field_primaryParty'));
   partyTypeSelect = element(by.id('field_partyType'));
   partyRoleTypeSelect = element(by.id('field_partyRoleType'));
-  partySubRoleTypeSelect = element(by.id('field_partySubRoleType'));
-  deliveryTypeSelect = element(by.id('field_deliveryType'));
-  primaryPartySelect = element(by.id('field_primaryParty'));
-  personIdTypeSelect = element(by.id('field_personIdType'));
   personTypeSelect = element(by.id('field_personType'));
   emailTypeSelect = element(by.id('field_emailType'));
   personIdIssuedBySelect = element(by.id('field_personIdIssuedBy'));
@@ -64,66 +69,33 @@ export class PartyUpdatePage {
   genderSelect = element(by.id('field_gender'));
   civilStateSelect = element(by.id('field_civilState'));
   driverLicenseRegionSelect = element(by.id('field_driverLicenseRegion'));
-  representativeIdSelect = element(by.id('field_representativeId'));
+  businessNatureSelect = element(by.id('field_businessNature'));
+  phoneCategorySelect = element(by.id('field_phoneCategory'));
+  nextOfKinPhoneCategorySelect = element(by.id('field_nextOfKinPhoneCategory'));
+  emailCategorySelect = element(by.id('field_emailCategory'));
+  addressCategorySelect = element(by.id('field_addressCategory'));
+  iDDocumentTypeSelect = element(by.id('field_iDDocumentType'));
+  iDDocumentIssuedBySelect = element(by.id('field_iDDocumentIssuedBy'));
+  suffixTitleSelect = element(by.id('field_suffixTitle'));
+  stateofOriginSelect = element(by.id('field_stateofOrigin'));
+  maritalStatusSelect = element(by.id('field_maritalStatus'));
+  streetTypeSelect = element(by.id('field_streetType'));
+  estateNameSelect = element(by.id('field_estateName'));
+  schemeNameSelect = element(by.id('field_schemeName'));
+  districtSelect = element(by.id('field_district'));
+  localGovernmentAreaSelect = element(by.id('field_localGovernmentArea'));
+  countrySelect = element(by.id('field_country'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
   }
 
-  async setPartyNameInput(partyName) {
-    await this.partyNameInput.sendKeys(partyName);
+  async setEmailAddressInput(emailAddress) {
+    await this.emailAddressInput.sendKeys(emailAddress);
   }
 
-  async getPartyNameInput() {
-    return await this.partyNameInput.getAttribute('value');
-  }
-
-  async setShareNominatorInput(shareNominator) {
-    await this.shareNominatorInput.sendKeys(shareNominator);
-  }
-
-  async getShareNominatorInput() {
-    return await this.shareNominatorInput.getAttribute('value');
-  }
-
-  async setShareDenominatorInput(shareDenominator) {
-    await this.shareDenominatorInput.sendKeys(shareDenominator);
-  }
-
-  async getShareDenominatorInput() {
-    return await this.shareDenominatorInput.getAttribute('value');
-  }
-
-  async setTaxExemptInput(taxExempt) {
-    await this.taxExemptInput.sendKeys(taxExempt);
-  }
-
-  async getTaxExemptInput() {
-    return await this.taxExemptInput.getAttribute('value');
-  }
-
-  async setOtherNameInput(otherName) {
-    await this.otherNameInput.sendKeys(otherName);
-  }
-
-  async getOtherNameInput() {
-    return await this.otherNameInput.getAttribute('value');
-  }
-
-  async setFaxInput(fax) {
-    await this.faxInput.sendKeys(fax);
-  }
-
-  async getFaxInput() {
-    return await this.faxInput.getAttribute('value');
-  }
-
-  async setEmailInput(email) {
-    await this.emailInput.sendKeys(email);
-  }
-
-  async getEmailInput() {
-    return await this.emailInput.getAttribute('value');
+  async getEmailAddressInput() {
+    return await this.emailAddressInput.getAttribute('value');
   }
 
   async setPhoneNumberInput(phoneNumber) {
@@ -148,6 +120,14 @@ export class PartyUpdatePage {
 
   async getTaxPayerNumberInput() {
     return await this.taxPayerNumberInput.getAttribute('value');
+  }
+
+  async setPayeNumberInput(payeNumber) {
+    await this.payeNumberInput.sendKeys(payeNumber);
+  }
+
+  async getPayeNumberInput() {
+    return await this.payeNumberInput.getAttribute('value');
   }
 
   async setCommentsInput(comments) {
@@ -190,14 +170,6 @@ export class PartyUpdatePage {
     return await this.organizationInput.getAttribute('value');
   }
 
-  async setBusinessNatureInput(businessNature) {
-    await this.businessNatureInput.sendKeys(businessNature);
-  }
-
-  async getBusinessNatureInput() {
-    return await this.businessNatureInput.getAttribute('value');
-  }
-
   async setBirthPlaceInput(birthPlace) {
     await this.birthPlaceInput.sendKeys(birthPlace);
   }
@@ -238,22 +210,6 @@ export class PartyUpdatePage {
     return await this.lastNameInput.getAttribute('value');
   }
 
-  async setDriverLicenceInput(driverLicence) {
-    await this.driverLicenceInput.sendKeys(driverLicence);
-  }
-
-  async getDriverLicenceInput() {
-    return await this.driverLicenceInput.getAttribute('value');
-  }
-
-  async setProfessionRegNoInput(professionRegNo) {
-    await this.professionRegNoInput.sendKeys(professionRegNo);
-  }
-
-  async getProfessionRegNoInput() {
-    return await this.professionRegNoInput.getAttribute('value');
-  }
-
   async setOccupationInput(occupation) {
     await this.occupationInput.sendKeys(occupation);
   }
@@ -262,23 +218,155 @@ export class PartyUpdatePage {
     return await this.occupationInput.getAttribute('value');
   }
 
-  async addressSelectLastOption() {
-    await this.addressSelect
+  async setUnitNumberInput(unitNumber) {
+    await this.unitNumberInput.sendKeys(unitNumber);
+  }
+
+  async getUnitNumberInput() {
+    return await this.unitNumberInput.getAttribute('value');
+  }
+
+  async setBlockNumberInput(blockNumber) {
+    await this.blockNumberInput.sendKeys(blockNumber);
+  }
+
+  async getBlockNumberInput() {
+    return await this.blockNumberInput.getAttribute('value');
+  }
+
+  async setPlotNumberInput(plotNumber) {
+    await this.plotNumberInput.sendKeys(plotNumber);
+  }
+
+  async getPlotNumberInput() {
+    return await this.plotNumberInput.getAttribute('value');
+  }
+
+  async setStreetNumberInput(streetNumber) {
+    await this.streetNumberInput.sendKeys(streetNumber);
+  }
+
+  async getStreetNumberInput() {
+    return await this.streetNumberInput.getAttribute('value');
+  }
+
+  async setStreetNameInput(streetName) {
+    await this.streetNameInput.sendKeys(streetName);
+  }
+
+  async getStreetNameInput() {
+    return await this.streetNameInput.getAttribute('value');
+  }
+
+  async setBuildingNameInput(buildingName) {
+    await this.buildingNameInput.sendKeys(buildingName);
+  }
+
+  async getBuildingNameInput() {
+    return await this.buildingNameInput.getAttribute('value');
+  }
+
+  async setBuildingNumberInput(buildingNumber) {
+    await this.buildingNumberInput.sendKeys(buildingNumber);
+  }
+
+  async getBuildingNumberInput() {
+    return await this.buildingNumberInput.getAttribute('value');
+  }
+
+  async setPostalCodeInput(postalCode) {
+    await this.postalCodeInput.sendKeys(postalCode);
+  }
+
+  async getPostalCodeInput() {
+    return await this.postalCodeInput.getAttribute('value');
+  }
+
+  async setCityInput(city) {
+    await this.cityInput.sendKeys(city);
+  }
+
+  async getCityInput() {
+    return await this.cityInput.getAttribute('value');
+  }
+
+  async setVillageInput(village) {
+    await this.villageInput.sendKeys(village);
+  }
+
+  async getVillageInput() {
+    return await this.villageInput.getAttribute('value');
+  }
+
+  async setLongAddressInput(longAddress) {
+    await this.longAddressInput.sendKeys(longAddress);
+  }
+
+  async getLongAddressInput() {
+    return await this.longAddressInput.getAttribute('value');
+  }
+
+  async setTownInput(town) {
+    await this.townInput.sendKeys(town);
+  }
+
+  async getTownInput() {
+    return await this.townInput.getAttribute('value');
+  }
+
+  async setWardInput(ward) {
+    await this.wardInput.sendKeys(ward);
+  }
+
+  async getWardInput() {
+    return await this.wardInput.getAttribute('value');
+  }
+
+  async setNextOfKinPhoneInput(nextOfKinPhone) {
+    await this.nextOfKinPhoneInput.sendKeys(nextOfKinPhone);
+  }
+
+  async getNextOfKinPhoneInput() {
+    return await this.nextOfKinPhoneInput.getAttribute('value');
+  }
+
+  async setIDDocumentIssuedDateInput(iDDocumentIssuedDate) {
+    await this.iDDocumentIssuedDateInput.sendKeys(iDDocumentIssuedDate);
+  }
+
+  async getIDDocumentIssuedDateInput() {
+    return await this.iDDocumentIssuedDateInput.getAttribute('value');
+  }
+
+  async setIDDocumentExpirationDateInput(iDDocumentExpirationDate) {
+    await this.iDDocumentExpirationDateInput.sendKeys(iDDocumentExpirationDate);
+  }
+
+  async getIDDocumentExpirationDateInput() {
+    return await this.iDDocumentExpirationDateInput.getAttribute('value');
+  }
+
+  async setIDDocumentNumberInput(iDDocumentNumber) {
+    await this.iDDocumentNumberInput.sendKeys(iDDocumentNumber);
+  }
+
+  async getIDDocumentNumberInput() {
+    return await this.iDDocumentNumberInput.getAttribute('value');
+  }
+
+  async setPrimaryPartySelect(primaryParty) {
+    await this.primaryPartySelect.sendKeys(primaryParty);
+  }
+
+  async getPrimaryPartySelect() {
+    return await this.primaryPartySelect.element(by.css('option:checked')).getText();
+  }
+
+  async primaryPartySelectLastOption() {
+    await this.primaryPartySelect
       .all(by.tagName('option'))
       .last()
       .click();
-  }
-
-  async addressSelectOption(option) {
-    await this.addressSelect.sendKeys(option);
-  }
-
-  getAddressSelect(): ElementFinder {
-    return this.addressSelect;
-  }
-
-  async getAddressSelectedOption() {
-    return await this.addressSelect.element(by.css('option:checked')).getText();
   }
 
   async partyTypeSelectLastOption() {
@@ -317,82 +405,6 @@ export class PartyUpdatePage {
 
   async getPartyRoleTypeSelectedOption() {
     return await this.partyRoleTypeSelect.element(by.css('option:checked')).getText();
-  }
-
-  async partySubRoleTypeSelectLastOption() {
-    await this.partySubRoleTypeSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async partySubRoleTypeSelectOption(option) {
-    await this.partySubRoleTypeSelect.sendKeys(option);
-  }
-
-  getPartySubRoleTypeSelect(): ElementFinder {
-    return this.partySubRoleTypeSelect;
-  }
-
-  async getPartySubRoleTypeSelectedOption() {
-    return await this.partySubRoleTypeSelect.element(by.css('option:checked')).getText();
-  }
-
-  async deliveryTypeSelectLastOption() {
-    await this.deliveryTypeSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async deliveryTypeSelectOption(option) {
-    await this.deliveryTypeSelect.sendKeys(option);
-  }
-
-  getDeliveryTypeSelect(): ElementFinder {
-    return this.deliveryTypeSelect;
-  }
-
-  async getDeliveryTypeSelectedOption() {
-    return await this.deliveryTypeSelect.element(by.css('option:checked')).getText();
-  }
-
-  async primaryPartySelectLastOption() {
-    await this.primaryPartySelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async primaryPartySelectOption(option) {
-    await this.primaryPartySelect.sendKeys(option);
-  }
-
-  getPrimaryPartySelect(): ElementFinder {
-    return this.primaryPartySelect;
-  }
-
-  async getPrimaryPartySelectedOption() {
-    return await this.primaryPartySelect.element(by.css('option:checked')).getText();
-  }
-
-  async personIdTypeSelectLastOption() {
-    await this.personIdTypeSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async personIdTypeSelectOption(option) {
-    await this.personIdTypeSelect.sendKeys(option);
-  }
-
-  getPersonIdTypeSelect(): ElementFinder {
-    return this.personIdTypeSelect;
-  }
-
-  async getPersonIdTypeSelectedOption() {
-    return await this.personIdTypeSelect.element(by.css('option:checked')).getText();
   }
 
   async personTypeSelectLastOption() {
@@ -528,23 +540,308 @@ export class PartyUpdatePage {
     return await this.driverLicenseRegionSelect.element(by.css('option:checked')).getText();
   }
 
-  async representativeIdSelectLastOption() {
-    await this.representativeIdSelect
+  async businessNatureSelectLastOption() {
+    await this.businessNatureSelect
       .all(by.tagName('option'))
       .last()
       .click();
   }
 
-  async representativeIdSelectOption(option) {
-    await this.representativeIdSelect.sendKeys(option);
+  async businessNatureSelectOption(option) {
+    await this.businessNatureSelect.sendKeys(option);
   }
 
-  getRepresentativeIdSelect(): ElementFinder {
-    return this.representativeIdSelect;
+  getBusinessNatureSelect(): ElementFinder {
+    return this.businessNatureSelect;
   }
 
-  async getRepresentativeIdSelectedOption() {
-    return await this.representativeIdSelect.element(by.css('option:checked')).getText();
+  async getBusinessNatureSelectedOption() {
+    return await this.businessNatureSelect.element(by.css('option:checked')).getText();
+  }
+
+  async phoneCategorySelectLastOption() {
+    await this.phoneCategorySelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async phoneCategorySelectOption(option) {
+    await this.phoneCategorySelect.sendKeys(option);
+  }
+
+  getPhoneCategorySelect(): ElementFinder {
+    return this.phoneCategorySelect;
+  }
+
+  async getPhoneCategorySelectedOption() {
+    return await this.phoneCategorySelect.element(by.css('option:checked')).getText();
+  }
+
+  async nextOfKinPhoneCategorySelectLastOption() {
+    await this.nextOfKinPhoneCategorySelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async nextOfKinPhoneCategorySelectOption(option) {
+    await this.nextOfKinPhoneCategorySelect.sendKeys(option);
+  }
+
+  getNextOfKinPhoneCategorySelect(): ElementFinder {
+    return this.nextOfKinPhoneCategorySelect;
+  }
+
+  async getNextOfKinPhoneCategorySelectedOption() {
+    return await this.nextOfKinPhoneCategorySelect.element(by.css('option:checked')).getText();
+  }
+
+  async emailCategorySelectLastOption() {
+    await this.emailCategorySelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async emailCategorySelectOption(option) {
+    await this.emailCategorySelect.sendKeys(option);
+  }
+
+  getEmailCategorySelect(): ElementFinder {
+    return this.emailCategorySelect;
+  }
+
+  async getEmailCategorySelectedOption() {
+    return await this.emailCategorySelect.element(by.css('option:checked')).getText();
+  }
+
+  async addressCategorySelectLastOption() {
+    await this.addressCategorySelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async addressCategorySelectOption(option) {
+    await this.addressCategorySelect.sendKeys(option);
+  }
+
+  getAddressCategorySelect(): ElementFinder {
+    return this.addressCategorySelect;
+  }
+
+  async getAddressCategorySelectedOption() {
+    return await this.addressCategorySelect.element(by.css('option:checked')).getText();
+  }
+
+  async iDDocumentTypeSelectLastOption() {
+    await this.iDDocumentTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async iDDocumentTypeSelectOption(option) {
+    await this.iDDocumentTypeSelect.sendKeys(option);
+  }
+
+  getIDDocumentTypeSelect(): ElementFinder {
+    return this.iDDocumentTypeSelect;
+  }
+
+  async getIDDocumentTypeSelectedOption() {
+    return await this.iDDocumentTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async iDDocumentIssuedBySelectLastOption() {
+    await this.iDDocumentIssuedBySelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async iDDocumentIssuedBySelectOption(option) {
+    await this.iDDocumentIssuedBySelect.sendKeys(option);
+  }
+
+  getIDDocumentIssuedBySelect(): ElementFinder {
+    return this.iDDocumentIssuedBySelect;
+  }
+
+  async getIDDocumentIssuedBySelectedOption() {
+    return await this.iDDocumentIssuedBySelect.element(by.css('option:checked')).getText();
+  }
+
+  async suffixTitleSelectLastOption() {
+    await this.suffixTitleSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async suffixTitleSelectOption(option) {
+    await this.suffixTitleSelect.sendKeys(option);
+  }
+
+  getSuffixTitleSelect(): ElementFinder {
+    return this.suffixTitleSelect;
+  }
+
+  async getSuffixTitleSelectedOption() {
+    return await this.suffixTitleSelect.element(by.css('option:checked')).getText();
+  }
+
+  async stateofOriginSelectLastOption() {
+    await this.stateofOriginSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async stateofOriginSelectOption(option) {
+    await this.stateofOriginSelect.sendKeys(option);
+  }
+
+  getStateofOriginSelect(): ElementFinder {
+    return this.stateofOriginSelect;
+  }
+
+  async getStateofOriginSelectedOption() {
+    return await this.stateofOriginSelect.element(by.css('option:checked')).getText();
+  }
+
+  async maritalStatusSelectLastOption() {
+    await this.maritalStatusSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async maritalStatusSelectOption(option) {
+    await this.maritalStatusSelect.sendKeys(option);
+  }
+
+  getMaritalStatusSelect(): ElementFinder {
+    return this.maritalStatusSelect;
+  }
+
+  async getMaritalStatusSelectedOption() {
+    return await this.maritalStatusSelect.element(by.css('option:checked')).getText();
+  }
+
+  async streetTypeSelectLastOption() {
+    await this.streetTypeSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async streetTypeSelectOption(option) {
+    await this.streetTypeSelect.sendKeys(option);
+  }
+
+  getStreetTypeSelect(): ElementFinder {
+    return this.streetTypeSelect;
+  }
+
+  async getStreetTypeSelectedOption() {
+    return await this.streetTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async estateNameSelectLastOption() {
+    await this.estateNameSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async estateNameSelectOption(option) {
+    await this.estateNameSelect.sendKeys(option);
+  }
+
+  getEstateNameSelect(): ElementFinder {
+    return this.estateNameSelect;
+  }
+
+  async getEstateNameSelectedOption() {
+    return await this.estateNameSelect.element(by.css('option:checked')).getText();
+  }
+
+  async schemeNameSelectLastOption() {
+    await this.schemeNameSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async schemeNameSelectOption(option) {
+    await this.schemeNameSelect.sendKeys(option);
+  }
+
+  getSchemeNameSelect(): ElementFinder {
+    return this.schemeNameSelect;
+  }
+
+  async getSchemeNameSelectedOption() {
+    return await this.schemeNameSelect.element(by.css('option:checked')).getText();
+  }
+
+  async districtSelectLastOption() {
+    await this.districtSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async districtSelectOption(option) {
+    await this.districtSelect.sendKeys(option);
+  }
+
+  getDistrictSelect(): ElementFinder {
+    return this.districtSelect;
+  }
+
+  async getDistrictSelectedOption() {
+    return await this.districtSelect.element(by.css('option:checked')).getText();
+  }
+
+  async localGovernmentAreaSelectLastOption() {
+    await this.localGovernmentAreaSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async localGovernmentAreaSelectOption(option) {
+    await this.localGovernmentAreaSelect.sendKeys(option);
+  }
+
+  getLocalGovernmentAreaSelect(): ElementFinder {
+    return this.localGovernmentAreaSelect;
+  }
+
+  async getLocalGovernmentAreaSelectedOption() {
+    return await this.localGovernmentAreaSelect.element(by.css('option:checked')).getText();
+  }
+
+  async countrySelectLastOption() {
+    await this.countrySelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async countrySelectOption(option) {
+    await this.countrySelect.sendKeys(option);
+  }
+
+  getCountrySelect(): ElementFinder {
+    return this.countrySelect;
+  }
+
+  async getCountrySelectedOption() {
+    return await this.countrySelect.element(by.css('option:checked')).getText();
   }
 
   async save() {

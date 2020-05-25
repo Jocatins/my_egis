@@ -5,9 +5,9 @@ import { EgisexternalSharedModule } from '../shared/shared.module';
 
 import { DASHBOARD_ROUTE, DashboardComponent } from './';
 import { BatchPipe } from 'app/batch.pipe';
-import { ParcelResolve } from 'app/application/ext/parcel-old/parcel.route';
+import { ParcelResolve } from 'app/application/ext/parcel/parcel.route';
 import { LoaderService } from '../interceptor/loader.service'
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, } from '@angular/common/http';
 import { LoaderInterceptor } from '../interceptor/loader.interceptor'
 
 

@@ -25,10 +25,6 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./party/party.module').then(m => m.EgisexternalPartyModule)
       },
       {
-        path: 'address',
-        loadChildren: () => import('./address/address.module').then(m => m.EgisexternalAddressModule)
-      },
-      {
         path: 'parcel',
         loadChildren: () => import('./parcel/parcel.module').then(m => m.EgisexternalParcelModule)
       },

@@ -5,7 +5,7 @@ import { TransInfo } from '../model/transinfo.model';
 import { IBatch, Batch } from 'app/shared/model/batch.model';
 import { TransactionService } from 'app/entities/transaction/transaction.service';
 import { ISupportingDocument, SupportingDocument } from 'app/shared/model/supporting-document.model';
-import { BatchService } from '../ext/batch-old/batch.service';
+import { BatchService } from '../ext/batch/batch.service';
 import { DashboardService } from 'app/dashboard/dashboard.service';
 import { MandatoryDocument } from 'app/shared/model/ext/document.model';
 import { IEGISDIctionary } from '../model/egisdictionary.model';
@@ -15,7 +15,6 @@ import { Observable } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SupportingDocumentDeleteDialogComponent } from '../ext/supporting-document/supporting-document-delete-dialog.component';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
 import { IDictionary } from 'app/shared/model/dictionary.model';
 
@@ -37,7 +36,6 @@ export class SupportingDocsComponent implements OnInit {
   form: boolean;
   supportingDocuments: ISupportingDocument[];
   supportingDocumentsOthers: ISupportingDocument[];
-  batchId: number;
   mandatoryDocs: MandatoryDocument[];
   documentTypes: IEGISDIctionary[];
   madatorySupportingDocuments: Array<IEGISDIctionary> = [];
@@ -49,6 +47,9 @@ export class SupportingDocsComponent implements OnInit {
   content: any;
   map = new Map();
   typeOfDoc: string;
+  batchId: number;
+  iDocumentTypes: IDictionary[];
+
 
   @ViewChild('fileUploader', { static: false }) fileUploader: ElementRef;
   @ViewChild('fileUploaderOthers', { static: false }) fileUploaderOthers: ElementRef;
@@ -196,13 +197,25 @@ export class SupportingDocsComponent implements OnInit {
       data => {
         this.batch = data.body;
 
-        this.code_ = this.batch.transactions[0].transactionCode;
+        this.code_ = this.batch.transactions[0].transactionCode.code;
         this.dashboardService.getMandatorySupportDocs(this.code_).subscribe(data1 => {
           this.mandatoryDocs = data1.body;
 
           // Get the list of all the support docs
+          // this.dictionaryService.query({'category.equals':'document_type'}).subscribe(
+          //   dataDict => {
+          //     this.iDocumentTypes =  dataDict.body;
+          //     this.documentTypes.forEach(x => {
+          //       this.map.set(x.id, x);
+          //     });
+
+          //   }
+          // )
+
+
           this.dashboardService.fetchDictionaryValuesObj('document_type').subscribe(
             dataDocs => {
+              dataDocs.body
               this.documentTypes = JSON.parse(dataDocs.body.category);
 
               this.documentTypes.forEach(x => {
@@ -217,8 +230,7 @@ export class SupportingDocsComponent implements OnInit {
               });
               this.otherSupportingDocuments = this.documentTypes.filter(x => !this.madatorySupportingDocuments.includes(x));
               this.refreshDocument(this.batch);
-            },
-            err => {}
+            }
           );
         });
       },
@@ -233,7 +245,7 @@ export class SupportingDocsComponent implements OnInit {
         this.supportingDocuments = allDocs.filter(x => x.provided === 'Y');
         this.supportingDocumentsOthers = allDocs.filter(x => x.provided !== 'Y');
 
-        //this.addMoreDetailDocument();
+        // this.addMoreDetailDocument();
       },
       () => {
         // alert()
@@ -299,7 +311,7 @@ export class SupportingDocsComponent implements OnInit {
     }
   }
 
-  onChange(event) {
+  onChange() {
     this.fileUploader.nativeElement.value = null;
   }
 
@@ -307,7 +319,7 @@ export class SupportingDocsComponent implements OnInit {
     this.fileUploader.nativeElement.value = null;
   }
 
-  deleteDoc(supportingDocument: SupportingDocument, batchId: number) {
+  deleteDoc(supportingDocument: SupportingDocument) {
     const modalRef = this.modalService.open(SupportingDocumentDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.supportingDocument = supportingDocument;
     this.eventManager.subscribe('supportingDocumentListModification', () => {
@@ -372,5 +384,5 @@ export class SupportingDocsComponent implements OnInit {
 }
 
 export class TabDisplay {
-  constructor(show1: boolean) {}
+  constructor( ) {}
 }

@@ -2,24 +2,24 @@
     "name": "Parcel",
     "fields": [
         {
-            "fieldName": "label",
+            "fieldName": "propertyNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "parcelLineage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "surveyPlanNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "propertyDescription",
             "fieldType": "String"
         },
         {
             "fieldName": "area",
             "fieldType": "Double"
-        },
-        {
-            "fieldName": "registrationOfficeDictionary",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "surveyDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "accommodation",
-            "fieldType": "String"
         },
         {
             "fieldName": "description",
@@ -35,14 +35,14 @@
         },
         {
             "fieldName": "premiumValue",
-            "fieldType": "String"
+            "fieldType": "Double"
         },
         {
             "fieldName": "coordinateN",
             "fieldType": "Integer"
         },
         {
-            "fieldName": "coordinateS",
+            "fieldName": "coordinateE",
             "fieldType": "Integer"
         },
         {
@@ -50,71 +50,65 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "allocation",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "location1",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "unitNumber",
             "fieldType": "String"
         },
         {
-            "fieldName": "name",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "valuation",
-            "fieldType": "String"
+            "fieldName": "valuationAmount",
+            "fieldType": "Double"
         },
         {
             "fieldName": "comments",
             "fieldType": "String"
         },
         {
-            "fieldName": "legalDescription",
+            "fieldName": "streetNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "streetName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "blockNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "plotNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ward",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "town",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "district",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "village",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "upin",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comment",
             "fieldType": "String"
         }
     ],
     "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "address",
-            "otherEntityRelationshipName": "parcel",
-            "relationshipName": "address",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "dictionary",
-            "otherEntityRelationshipName": "parcel",
-            "relationshipName": "spatialUnitType",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "dictionary",
-            "otherEntityRelationshipName": "parcel",
-            "relationshipName": "surveyType",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "dictionary",
-            "otherEntityRelationshipName": "parcel",
-            "relationshipName": "propertyType",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "dictionary",
-            "otherEntityRelationshipName": "parcel",
-            "relationshipName": "tenureType",
-            "otherEntityField": "id"
-        },
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "dictionary",
@@ -133,6 +127,7 @@
             "relationshipType": "many-to-one",
             "otherEntityName": "dictionary",
             "otherEntityRelationshipName": "parcel",
+            "relationshipValidateRules": "required",
             "relationshipName": "measurementUnitType",
             "otherEntityField": "id"
         },
@@ -161,21 +156,79 @@
             "relationshipType": "many-to-one",
             "otherEntityName": "dictionary",
             "otherEntityRelationshipName": "parcel",
-            "relationshipName": "registerType",
+            "relationshipName": "governmentStatus",
             "otherEntityField": "id"
         },
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "dictionary",
             "otherEntityRelationshipName": "parcel",
-            "relationshipName": "meansOfAcq",
+            "relationshipValidateRules": "required",
+            "relationshipName": "propertyType",
             "otherEntityField": "id"
         },
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "dictionary",
             "otherEntityRelationshipName": "parcel",
-            "relationshipName": "region",
+            "relationshipName": "streetType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "estateName",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "schemeName",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "state",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipValidateRules": "required",
+            "relationshipName": "localGovernmentArea",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "locationofLand",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "typeOfAccommodation",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "tenureType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "allocationName",
             "otherEntityField": "id"
         },
         {

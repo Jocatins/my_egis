@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Transaction(0, 'AAAAAAA', currentDate, currentDate, 'AAAAAAA', currentDate, currentDate, currentDate, 0, 'AAAAAAA');
+      elemDefault = new Transaction(0, 'AAAAAAA', currentDate, currentDate, 'AAAAAAA', currentDate, currentDate, currentDate, 0);
     });
 
     describe('Service methods', () => {
@@ -90,8 +90,7 @@ describe('Service Tests', () => {
             createDate: currentDate.format(DATE_FORMAT),
             startDate: currentDate.format(DATE_FORMAT),
             completeDate: currentDate.format(DATE_FORMAT),
-            batchId: 1,
-            transactionCode: 'BBBBBB'
+            batchId: 1
           },
           elemDefault
         );
@@ -125,8 +124,7 @@ describe('Service Tests', () => {
             createDate: currentDate.format(DATE_FORMAT),
             startDate: currentDate.format(DATE_FORMAT),
             completeDate: currentDate.format(DATE_FORMAT),
-            batchId: 1,
-            transactionCode: 'BBBBBB'
+            batchId: 1
           },
           elemDefault
         );

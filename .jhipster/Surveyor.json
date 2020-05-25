@@ -22,16 +22,7 @@
             "fieldType": "String"
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "address",
-            "otherEntityRelationshipName": "surveyor",
-            "relationshipName": "address",
-            "otherEntityField": "id",
-            "ownerSide": true
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20191226103253",
     "entityTableName": "surveyor",
     "dto": "no",

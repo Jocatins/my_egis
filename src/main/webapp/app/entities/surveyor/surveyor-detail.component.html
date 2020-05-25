@@ -25,12 +25,6 @@
                 <dd>
                     <span>{{surveyor.status}}</span>
                 </dd>
-                <dt><span jhiTranslate="egisexternalApp.surveyor.address">Address</span></dt>
-                <dd>
-                    <div *ngIf="surveyor.address">
-                        <a [routerLink]="['/address', surveyor.address?.id, 'view']">{{surveyor.address?.id}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

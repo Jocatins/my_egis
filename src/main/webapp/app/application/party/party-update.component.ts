@@ -9,8 +9,6 @@ import * as moment from 'moment';
 import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
 import { IParty, Party } from 'app/shared/model/party.model';
 import { PartyService } from './party.service';
-import { IAddress, Address } from 'app/shared/model/address.model';
-import { AddressService } from 'app/entities/address/address.service';
 import { IBatch } from 'app/shared/model/batch.model';
 import { BatchService } from 'app/entities/batch/batch.service';
 import { ITransaction } from 'app/shared/model/transaction.model';
@@ -25,8 +23,6 @@ import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
 })
 export class PartyExtUpdateComponent implements OnInit {
   isSaving: boolean;
-
-  addresses: IAddress[];
 
   batches: IBatch[];
   batchId: number;
@@ -95,9 +91,6 @@ export class PartyExtUpdateComponent implements OnInit {
     professionRegNo: [],
     occupation: [],
 
-    address: [],
-    addressId: [],
-    addressAreaName: [],
     streetName: [],
     buildingName: [],
     buildingNumber: [],
@@ -125,7 +118,6 @@ export class PartyExtUpdateComponent implements OnInit {
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected partyService: PartyService,
-    protected addressService: AddressService,
     protected batchService: BatchService,
     protected transactionService: TransactionService,
     protected activatedRoute: ActivatedRoute,
@@ -145,23 +137,8 @@ export class PartyExtUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ party }) => {
       alert(party)
       this.updateForm(party);
-      //this.updateAddressForm(party.address);
     });
-    // this.addressService.query({ filter: 'party-is-null' }).subscribe(
-    //   (res: HttpResponse<IAddress[]>) => {
-    //     if (!this.editForm.get('address').value || !this.editForm.get('address').value.id) {
-    //       this.addresses = res.body;
-    //     } else {
-    //       this.addressService
-    //         .find(this.editForm.get('address').value.id)
-    //         .subscribe(
-    //           (subRes: HttpResponse<IAddress>) => (this.addresses = [subRes.body].concat(res.body)),
-    //           (subRes: HttpErrorResponse) => this.onError(subRes.message)
-    //         );
-    //     }
-    //   },
-    //   (res: HttpErrorResponse) => this.onError(res.message)
-    // );
+
     this.batchService
       .query()
       .subscribe((res: HttpResponse<IBatch[]>) => (this.batches = res.body), (res: HttpErrorResponse) => this.onError(res.message));
@@ -193,18 +170,8 @@ export class PartyExtUpdateComponent implements OnInit {
       id: party.id,
       partyType: party.partyType,
       partyRoleType: party.partyRoleType,
-      partySubRoleType: party.partySubRoleType,
-      deliveryType: party.deliveryType,
-      partyName: party.partyName,
-      shareNominator: party.shareNominator,
-      shareDenominator: party.shareDenominator,
-      taxExempt: party.taxExempt,
       primaryParty: party.primaryParty,
-      otherName: party.otherName,
-      personIdType: party.personIdType,
       personType: party.personType,
-      fax: party.fax,
-      email: party.email,
       emailType: party.emailType,
       phoneNumber: party.phoneNumber,
       payerId: party.payerId,
@@ -225,73 +192,12 @@ export class PartyExtUpdateComponent implements OnInit {
       lastName: party.lastName,
       civilState: party.civilState,
       driverLicenseRegion: party.driverLicenseRegion,
-      driverLicence: party.driverLicence,
-      representativeId: party.representativeId,
-      professionRegNo: party.professionRegNo,
       occupation: party.occupation,
-      address: party.address
     });
   }
 
-  updateAddressForm(address: IAddress) {
-    // alert()
-    this.editForm.patchValue({
-      // addressId: address.id,
-      // addressAreaName: address.addressAreaName,
-      streetName: address.streetName,
-      buildingName: address.buildingName,
-      buildingNumber: address.buildingNumber,
-      postalCode: address.postalCode,
-      city: address.city,
-      // country: address.country,
-      // region: address.region,
-      // district: address.district,
-      // village: address.village,
-      // state: address.state,
-      // estateName: address.estateName,
-      // localGovernmentArea: address.localGovernmentArea,
-      // localCouncilArea: address.localCouncilArea,
-      // streetNumber: address.streetNumber,
-      // streetType: address.streetType,
-      // town: address.town,
-      // ward: address.ward,
-      // category: address.category,
-      // stateOfOrigin: address.stateOfOrigin,
-      // schemeName: address.schemeName,
-      // blockNumber: address.blockNumber,
-      // plotNumber: address.plotNumber
-    });
-  }
 
-  private createAddressFromForm(): IAddress {
-    return {
-      ...new Address(),
-      id: this.editForm.get(['addressId']).value,
-      addressAreaName: this.editForm.get(['addressAreaName']).value,
-      streetName: this.editForm.get(['streetName']).value,
-      buildingName: this.editForm.get(['buildingName']).value,
-      buildingNumber: this.editForm.get(['buildingNumber']).value,
-      postalCode: this.editForm.get(['postalCode']).value,
-      city: this.editForm.get(['city']).value,
-      country: this.editForm.get(['country']).value,
-      region: this.editForm.get(['region']).value,
-      district: this.editForm.get(['district']).value,
-      village: this.editForm.get(['village']).value,
-      state: this.editForm.get(['state']).value,
-      estateName: this.editForm.get(['estateName']).value,
-      localGovernmentArea: this.editForm.get(['localGovernmentArea']).value,
-      localCouncilArea: this.editForm.get(['localCouncilArea']).value,
-      streetNumber: this.editForm.get(['streetNumber']).value,
-      streetType: this.editForm.get(['streetType']).value,
-      town: this.editForm.get(['town']).value,
-      ward: this.editForm.get(['ward']).value,
-      category: this.editForm.get(['category']).value,
-      stateOfOrigin: this.editForm.get(['stateOfOrigin']).value,
-      schemeName: this.editForm.get(['schemeName']).value,
-      blockNumber: this.editForm.get(['blockNumber']).value,
-      plotNumber: this.editForm.get(['plotNumber']).value
-    };
-  }
+
 
   previousState() {
     this.router.navigate(['/application/applicants', this.batchId]);
@@ -315,25 +221,12 @@ export class PartyExtUpdateComponent implements OnInit {
         party.id = this.editForm.get(['id']).value
         party.partyType = all.filter(x => x.id === this.editForm.get(['partyType']).value)[0]
         party.partyRoleType = all.filter(x => x.id === this.editForm.get(['partyRoleType']).value)[0]
-        party.partySubRoleType = all.filter(x => x.id === this.editForm.get(['partySubRoleType']).value)[0]
-        party.deliveryType = all.filter(x => x.id === this.editForm.get(['deliveryType']).value)[0]
-        party.partyName = this.editForm.get(['partyName']).value
-        party.shareNominator = this.editForm.get(['shareNominator']).value
-        party.shareDenominator = this.editForm.get(['shareDenominator']).value
-        party.taxExempt = this.editForm.get(['taxExempt']).value
         party.primaryParty = this.editForm.get(['primaryParty']).value
-        party.otherName = this.editForm.get(['otherName']).value
-        party.personIdType = all.filter(x => x.id === this.editForm.get(['personIdType']).value)[0]
         party.personType = all.filter(x => x.id === this.editForm.get(['personType']).value)[0]
-        party.fax = this.editForm.get(['fax']).value
-        party.email = this.editForm.get(['email']).value
         party.emailType = all.filter(x => x.id === this.editForm.get(['emailType']).value)[0]
         party.phoneNumber = this.editForm.get(['phoneNumber']).value
         party.payerId = this.editForm.get(['payerId']).value
         party.taxPayerNumber = this.editForm.get(['taxPayerNumber']).value
-        // party.partyRoleType = all.filter(x => x.id === this.editForm.get(['partyRoleType']).value)[0]
-        // party.partyRoleType = all.filter(x => x.id === this.editForm.get(['partyRoleType']).value)[0]
-        party.address = this.editForm.get(['address']).value
         return party
       }
     )
@@ -379,7 +272,6 @@ export class PartyExtUpdateComponent implements OnInit {
       // representativeId: this.editForm.get(['representativeId']).value,
       // professionRegNo: this.editForm.get(['professionRegNo']).value,
       // occupation: this.editForm.get(['occupation']).value,
-      // address: this.editForm.get(['address']).value
     };
   }
 
@@ -429,9 +321,6 @@ export class PartyExtUpdateComponent implements OnInit {
     this.jhiAlertService.error(errorMessage, null, null);
   }
 
-  trackAddressById(index: number, item: IAddress) {
-    return item.id;
-  }
 
   trackBatchById(index: number, item: IBatch) {
     return item.id;

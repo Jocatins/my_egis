@@ -5,12 +5,9 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import * as moment from 'moment';
 import { JhiAlertService } from 'ng-jhipster';
 import { IParcel, Parcel } from 'app/shared/model/parcel.model';
 import { ParcelService } from './parcel.service';
-import { IAddress } from 'app/shared/model/address.model';
-import { AddressService } from 'app/entities/address/address.service';
 import { IDictionary } from 'app/shared/model/dictionary.model';
 import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
 import { ITransaction } from 'app/shared/model/transaction.model';
@@ -23,54 +20,59 @@ import { TransactionService } from 'app/entities/transaction/transaction.service
 export class ParcelUpdateComponent implements OnInit {
   isSaving: boolean;
 
-  addresses: IAddress[];
-
   dictionaries: IDictionary[];
 
   transactions: ITransaction[];
-  surveyDateDp: any;
 
   editForm = this.fb.group({
     id: [],
-    label: [],
+    propertyNumber: [],
+    parcelLineage: [],
+    surveyPlanNumber: [],
+    propertyDescription: [],
     area: [],
-    registrationOfficeDictionary: [],
-    surveyDate: [],
-    accommodation: [],
     description: [],
     propertyArea: [],
     planNumber: [],
     premiumValue: [],
     coordinateN: [],
-    coordinateS: [],
+    coordinateE: [],
     lagosSheetNumber: [],
-    allocation: [],
-    location1: [],
     unitNumber: [],
-    name: [],
-    valuation: [],
+    valuationAmount: [],
     comments: [],
-    legalDescription: [],
-    address: [],
-    spatialUnitType: [],
-    surveyType: [],
-    propertyType: [],
-    tenureType: [],
+    streetNumber: [],
+    streetName: [],
+    blockNumber: [null, [Validators.required]],
+    plotNumber: [null, [Validators.required]],
+    ward: [],
+    town: [],
+    district: [],
+    village: [],
+    upin: [],
+    comment: [],
     location: [],
     builtUpAreaType: [],
-    measurementUnitType: [],
+    measurementUnitType: [null, Validators.required],
     landUseCategory: [],
     landUseType: [],
     developmentStatus: [],
-    registerType: [],
-    meansOfAcq: [],
-    region: []
+    governmentStatus: [],
+    propertyType: [null, Validators.required],
+    streetType: [],
+    estateName: [],
+    schemeName: [],
+    state: [],
+    localGovernmentArea: [null, Validators.required],
+    locationofLand: [],
+    typeOfAccommodation: [],
+    tenureType: [],
+    allocationName: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected parcelService: ParcelService,
-    protected addressService: AddressService,
     protected dictionaryService: DictionaryService,
     protected transactionService: TransactionService,
     protected activatedRoute: ActivatedRoute,
@@ -82,21 +84,6 @@ export class ParcelUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ parcel }) => {
       this.updateForm(parcel);
     });
-    this.addressService.query({ filter: 'parcel-is-null' }).subscribe(
-      (res: HttpResponse<IAddress[]>) => {
-        if (!this.editForm.get('address').value || !this.editForm.get('address').value.id) {
-          this.addresses = res.body;
-        } else {
-          this.addressService
-            .find(this.editForm.get('address').value.id)
-            .subscribe(
-              (subRes: HttpResponse<IAddress>) => (this.addresses = [subRes.body].concat(res.body)),
-              (subRes: HttpErrorResponse) => this.onError(subRes.message)
-            );
-        }
-      },
-      (res: HttpErrorResponse) => this.onError(res.message)
-    );
     this.dictionaryService
       .query()
       .subscribe(
@@ -114,39 +101,48 @@ export class ParcelUpdateComponent implements OnInit {
   updateForm(parcel: IParcel) {
     this.editForm.patchValue({
       id: parcel.id,
-      label: parcel.label,
+      propertyNumber: parcel.propertyNumber,
+      parcelLineage: parcel.parcelLineage,
+      surveyPlanNumber: parcel.surveyPlanNumber,
+      propertyDescription: parcel.propertyDescription,
       area: parcel.area,
-      registrationOfficeDictionary: parcel.registrationOfficeDictionary,
-      surveyDate: parcel.surveyDate,
-      accommodation: parcel.accommodation,
       description: parcel.description,
       propertyArea: parcel.propertyArea,
       planNumber: parcel.planNumber,
       premiumValue: parcel.premiumValue,
       coordinateN: parcel.coordinateN,
-      coordinateS: parcel.coordinateS,
+      coordinateE: parcel.coordinateE,
       lagosSheetNumber: parcel.lagosSheetNumber,
-      allocation: parcel.allocation,
-      location1: parcel.location1,
       unitNumber: parcel.unitNumber,
-      name: parcel.name,
-      valuation: parcel.valuation,
+      valuationAmount: parcel.valuationAmount,
       comments: parcel.comments,
-      legalDescription: parcel.legalDescription,
-      address: parcel.address,
-      spatialUnitType: parcel.spatialUnitType,
-      surveyType: parcel.surveyType,
-      propertyType: parcel.propertyType,
-      tenureType: parcel.tenureType,
+      streetNumber: parcel.streetNumber,
+      streetName: parcel.streetName,
+      blockNumber: parcel.blockNumber,
+      plotNumber: parcel.plotNumber,
+      ward: parcel.ward,
+      town: parcel.town,
+      district: parcel.district,
+      village: parcel.village,
+      upin: parcel.upin,
+      comment: parcel.comment,
       location: parcel.location,
       builtUpAreaType: parcel.builtUpAreaType,
       measurementUnitType: parcel.measurementUnitType,
       landUseCategory: parcel.landUseCategory,
       landUseType: parcel.landUseType,
       developmentStatus: parcel.developmentStatus,
-      registerType: parcel.registerType,
-      meansOfAcq: parcel.meansOfAcq,
-      region: parcel.region
+      governmentStatus: parcel.governmentStatus,
+      propertyType: parcel.propertyType,
+      streetType: parcel.streetType,
+      estateName: parcel.estateName,
+      schemeName: parcel.schemeName,
+      state: parcel.state,
+      localGovernmentArea: parcel.localGovernmentArea,
+      locationofLand: parcel.locationofLand,
+      typeOfAccommodation: parcel.typeOfAccommodation,
+      tenureType: parcel.tenureType,
+      allocationName: parcel.allocationName
     });
   }
 
@@ -168,39 +164,48 @@ export class ParcelUpdateComponent implements OnInit {
     return {
       ...new Parcel(),
       id: this.editForm.get(['id']).value,
-      label: this.editForm.get(['label']).value,
+      propertyNumber: this.editForm.get(['propertyNumber']).value,
+      parcelLineage: this.editForm.get(['parcelLineage']).value,
+      surveyPlanNumber: this.editForm.get(['surveyPlanNumber']).value,
+      propertyDescription: this.editForm.get(['propertyDescription']).value,
       area: this.editForm.get(['area']).value,
-      registrationOfficeDictionary: this.editForm.get(['registrationOfficeDictionary']).value,
-      surveyDate: this.editForm.get(['surveyDate']).value,
-      accommodation: this.editForm.get(['accommodation']).value,
       description: this.editForm.get(['description']).value,
       propertyArea: this.editForm.get(['propertyArea']).value,
       planNumber: this.editForm.get(['planNumber']).value,
       premiumValue: this.editForm.get(['premiumValue']).value,
       coordinateN: this.editForm.get(['coordinateN']).value,
-      coordinateS: this.editForm.get(['coordinateS']).value,
+      coordinateE: this.editForm.get(['coordinateE']).value,
       lagosSheetNumber: this.editForm.get(['lagosSheetNumber']).value,
-      allocation: this.editForm.get(['allocation']).value,
-      location1: this.editForm.get(['location1']).value,
       unitNumber: this.editForm.get(['unitNumber']).value,
-      name: this.editForm.get(['name']).value,
-      valuation: this.editForm.get(['valuation']).value,
+      valuationAmount: this.editForm.get(['valuationAmount']).value,
       comments: this.editForm.get(['comments']).value,
-      legalDescription: this.editForm.get(['legalDescription']).value,
-      address: this.editForm.get(['address']).value,
-      spatialUnitType: this.editForm.get(['spatialUnitType']).value,
-      surveyType: this.editForm.get(['surveyType']).value,
-      propertyType: this.editForm.get(['propertyType']).value,
-      tenureType: this.editForm.get(['tenureType']).value,
+      streetNumber: this.editForm.get(['streetNumber']).value,
+      streetName: this.editForm.get(['streetName']).value,
+      blockNumber: this.editForm.get(['blockNumber']).value,
+      plotNumber: this.editForm.get(['plotNumber']).value,
+      ward: this.editForm.get(['ward']).value,
+      town: this.editForm.get(['town']).value,
+      district: this.editForm.get(['district']).value,
+      village: this.editForm.get(['village']).value,
+      upin: this.editForm.get(['upin']).value,
+      comment: this.editForm.get(['comment']).value,
       location: this.editForm.get(['location']).value,
       builtUpAreaType: this.editForm.get(['builtUpAreaType']).value,
       measurementUnitType: this.editForm.get(['measurementUnitType']).value,
       landUseCategory: this.editForm.get(['landUseCategory']).value,
       landUseType: this.editForm.get(['landUseType']).value,
       developmentStatus: this.editForm.get(['developmentStatus']).value,
-      registerType: this.editForm.get(['registerType']).value,
-      meansOfAcq: this.editForm.get(['meansOfAcq']).value,
-      region: this.editForm.get(['region']).value
+      governmentStatus: this.editForm.get(['governmentStatus']).value,
+      propertyType: this.editForm.get(['propertyType']).value,
+      streetType: this.editForm.get(['streetType']).value,
+      estateName: this.editForm.get(['estateName']).value,
+      schemeName: this.editForm.get(['schemeName']).value,
+      state: this.editForm.get(['state']).value,
+      localGovernmentArea: this.editForm.get(['localGovernmentArea']).value,
+      locationofLand: this.editForm.get(['locationofLand']).value,
+      typeOfAccommodation: this.editForm.get(['typeOfAccommodation']).value,
+      tenureType: this.editForm.get(['tenureType']).value,
+      allocationName: this.editForm.get(['allocationName']).value
     };
   }
 
@@ -218,10 +223,6 @@ export class ParcelUpdateComponent implements OnInit {
   }
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
-  }
-
-  trackAddressById(index: number, item: IAddress) {
-    return item.id;
   }
 
   trackDictionaryById(index: number, item: IDictionary) {

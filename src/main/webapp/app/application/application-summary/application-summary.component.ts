@@ -74,6 +74,8 @@ export class ApplicationSummaryComponent implements OnInit {
       this.batch = batch;
       this.parcel = this.batch.transactions[0].parcels[0];
       this.parties = this.batch.parties;
+
+
     });
   }
 }

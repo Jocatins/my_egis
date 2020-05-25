@@ -1,42 +1,47 @@
 import { Moment } from 'moment';
-import { IAddress } from 'app/shared/model/address.model';
 import { IDictionary } from 'app/shared/model/dictionary.model';
 import { IBatch } from 'app/shared/model/batch.model';
 import { ITransaction } from 'app/shared/model/transaction.model';
+import { YesOrNo } from 'app/shared/model/enumerations/yes-or-no.model';
 
 export interface IParty {
   id?: number;
-  partyName?: string;
-  shareNominator?: string;
-  shareDenominator?: string;
-  taxExempt?: string;
-  otherName?: string;
-  fax?: string;
-  email?: string;
+  emailAddress?: string;
   phoneNumber?: string;
   payerId?: string;
   taxPayerNumber?: string;
+  payeNumber?: string;
   comments?: string;
   personIdDate?: Moment;
   personIdExpirationDate?: Moment;
   rcNumber?: string;
   organization?: string;
-  businessNature?: string;
   birthPlace?: string;
   birthDate?: Moment;
   firstName?: string;
   middleName?: string;
   lastName?: string;
-  driverLicence?: string;
-  professionRegNo?: string;
   occupation?: string;
-  address?: IAddress;
+  unitNumber?: string;
+  blockNumber?: string;
+  plotNumber?: string;
+  streetNumber?: string;
+  streetName?: string;
+  buildingName?: string;
+  buildingNumber?: string;
+  postalCode?: string;
+  city?: string;
+  village?: string;
+  longAddress?: string;
+  town?: string;
+  ward?: string;
+  nextOfKinPhone?: string;
+  iDDocumentIssuedDate?: Moment;
+  iDDocumentExpirationDate?: Moment;
+  iDDocumentNumber?: string;
+  primaryParty?: YesOrNo;
   partyType?: IDictionary;
   partyRoleType?: IDictionary;
-  partySubRoleType?: IDictionary;
-  deliveryType?: IDictionary;
-  primaryParty?: IDictionary;
-  personIdType?: IDictionary;
   personType?: IDictionary;
   emailType?: IDictionary;
   personIdIssuedBy?: IDictionary;
@@ -44,7 +49,22 @@ export interface IParty {
   gender?: IDictionary;
   civilState?: IDictionary;
   driverLicenseRegion?: IDictionary;
-  representativeId?: IDictionary;
+  businessNature?: IDictionary;
+  phoneCategory?: IDictionary;
+  nextOfKinPhoneCategory?: IDictionary;
+  emailCategory?: IDictionary;
+  addressCategory?: IDictionary;
+  iDDocumentType?: IDictionary;
+  iDDocumentIssuedBy?: IDictionary;
+  suffixTitle?: IDictionary;
+  stateofOrigin?: IDictionary;
+  maritalStatus?: IDictionary;
+  streetType?: IDictionary;
+  estateName?: IDictionary;
+  schemeName?: IDictionary;
+  district?: IDictionary;
+  localGovernmentArea?: IDictionary;
+  country?: IDictionary;
   batches?: IBatch[];
   transactions?: ITransaction[];
 }
@@ -52,37 +72,42 @@ export interface IParty {
 export class Party implements IParty {
   constructor(
     public id?: number,
-    public partyName?: string,
-    public shareNominator?: string,
-    public shareDenominator?: string,
-    public taxExempt?: string,
-    public otherName?: string,
-    public fax?: string,
-    public email?: string,
+    public emailAddress?: string,
     public phoneNumber?: string,
     public payerId?: string,
     public taxPayerNumber?: string,
+    public payeNumber?: string,
     public comments?: string,
     public personIdDate?: Moment,
     public personIdExpirationDate?: Moment,
     public rcNumber?: string,
     public organization?: string,
-    public businessNature?: string,
     public birthPlace?: string,
     public birthDate?: Moment,
     public firstName?: string,
     public middleName?: string,
     public lastName?: string,
-    public driverLicence?: string,
-    public professionRegNo?: string,
     public occupation?: string,
-    public address?: IAddress,
+    public unitNumber?: string,
+    public blockNumber?: string,
+    public plotNumber?: string,
+    public streetNumber?: string,
+    public streetName?: string,
+    public buildingName?: string,
+    public buildingNumber?: string,
+    public postalCode?: string,
+    public city?: string,
+    public village?: string,
+    public longAddress?: string,
+    public town?: string,
+    public ward?: string,
+    public nextOfKinPhone?: string,
+    public iDDocumentIssuedDate?: Moment,
+    public iDDocumentExpirationDate?: Moment,
+    public iDDocumentNumber?: string,
+    public primaryParty?: YesOrNo,
     public partyType?: IDictionary,
     public partyRoleType?: IDictionary,
-    public partySubRoleType?: IDictionary,
-    public deliveryType?: IDictionary,
-    public primaryParty?: IDictionary,
-    public personIdType?: IDictionary,
     public personType?: IDictionary,
     public emailType?: IDictionary,
     public personIdIssuedBy?: IDictionary,
@@ -90,7 +115,22 @@ export class Party implements IParty {
     public gender?: IDictionary,
     public civilState?: IDictionary,
     public driverLicenseRegion?: IDictionary,
-    public representativeId?: IDictionary,
+    public businessNature?: IDictionary,
+    public phoneCategory?: IDictionary,
+    public nextOfKinPhoneCategory?: IDictionary,
+    public emailCategory?: IDictionary,
+    public addressCategory?: IDictionary,
+    public iDDocumentType?: IDictionary,
+    public iDDocumentIssuedBy?: IDictionary,
+    public suffixTitle?: IDictionary,
+    public stateofOrigin?: IDictionary,
+    public maritalStatus?: IDictionary,
+    public streetType?: IDictionary,
+    public estateName?: IDictionary,
+    public schemeName?: IDictionary,
+    public district?: IDictionary,
+    public localGovernmentArea?: IDictionary,
+    public country?: IDictionary,
     public batches?: IBatch[],
     public transactions?: ITransaction[]
   ) {}

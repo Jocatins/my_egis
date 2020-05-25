@@ -1,7 +1,11 @@
-import { browser, ExpectedConditions as ec, promise } from 'protractor';
+import { browser, ExpectedConditions as ec /* , promise */ } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
-import { ParcelComponentsPage, ParcelDeleteDialog, ParcelUpdatePage } from './parcel.page-object';
+import {
+  ParcelComponentsPage,
+  /* ParcelDeleteDialog,
+   */ ParcelUpdatePage
+} from './parcel.page-object';
 
 const expect = chai.expect;
 
@@ -10,7 +14,7 @@ describe('Parcel e2e test', () => {
   let signInPage: SignInPage;
   let parcelComponentsPage: ParcelComponentsPage;
   let parcelUpdatePage: ParcelUpdatePage;
-  let parcelDeleteDialog: ParcelDeleteDialog;
+  /* let parcelDeleteDialog: ParcelDeleteDialog; */
 
   before(async () => {
     await browser.get('/');
@@ -34,92 +38,96 @@ describe('Parcel e2e test', () => {
     await parcelUpdatePage.cancel();
   });
 
-  it('should create and save Parcels', async () => {
-    const nbButtonsBeforeCreate = await parcelComponentsPage.countDeleteButtons();
+  /*  it('should create and save Parcels', async () => {
+        const nbButtonsBeforeCreate = await parcelComponentsPage.countDeleteButtons();
 
-    await parcelComponentsPage.clickOnCreateButton();
-    await promise.all([
-      parcelUpdatePage.setLabelInput('label'),
-      parcelUpdatePage.setAreaInput('5'),
-      parcelUpdatePage.setRegistrationOfficeDictionaryInput('registrationOfficeDictionary'),
-      parcelUpdatePage.setSurveyDateInput('2000-12-31'),
-      parcelUpdatePage.setAccommodationInput('accommodation'),
-      parcelUpdatePage.setDescriptionInput('description'),
-      parcelUpdatePage.setPropertyAreaInput('5'),
-      parcelUpdatePage.setPlanNumberInput('planNumber'),
-      parcelUpdatePage.setPremiumValueInput('premiumValue'),
-      parcelUpdatePage.setCoordinateNInput('5'),
-      parcelUpdatePage.setCoordinateSInput('5'),
-      parcelUpdatePage.setLagosSheetNumberInput('lagosSheetNumber'),
-      parcelUpdatePage.setAllocationInput('allocation'),
-      parcelUpdatePage.setLocation1Input('5'),
-      parcelUpdatePage.setUnitNumberInput('unitNumber'),
-      parcelUpdatePage.setNameInput('name'),
-      parcelUpdatePage.setValuationInput('valuation'),
-      parcelUpdatePage.setCommentsInput('comments'),
-      parcelUpdatePage.setLegalDescriptionInput('legalDescription'),
-      parcelUpdatePage.addressSelectLastOption(),
-      parcelUpdatePage.spatialUnitTypeSelectLastOption(),
-      parcelUpdatePage.surveyTypeSelectLastOption(),
-      parcelUpdatePage.propertyTypeSelectLastOption(),
-      parcelUpdatePage.tenureTypeSelectLastOption(),
-      parcelUpdatePage.locationSelectLastOption(),
-      parcelUpdatePage.builtUpAreaTypeSelectLastOption(),
-      parcelUpdatePage.measurementUnitTypeSelectLastOption(),
-      parcelUpdatePage.landUseCategorySelectLastOption(),
-      parcelUpdatePage.landUseTypeSelectLastOption(),
-      parcelUpdatePage.developmentStatusSelectLastOption(),
-      parcelUpdatePage.registerTypeSelectLastOption(),
-      parcelUpdatePage.meansOfAcqSelectLastOption(),
-      parcelUpdatePage.regionSelectLastOption()
-    ]);
-    expect(await parcelUpdatePage.getLabelInput()).to.eq('label', 'Expected Label value to be equals to label');
-    expect(await parcelUpdatePage.getAreaInput()).to.eq('5', 'Expected area value to be equals to 5');
-    expect(await parcelUpdatePage.getRegistrationOfficeDictionaryInput()).to.eq(
-      'registrationOfficeDictionary',
-      'Expected RegistrationOfficeDictionary value to be equals to registrationOfficeDictionary'
-    );
-    expect(await parcelUpdatePage.getSurveyDateInput()).to.eq('2000-12-31', 'Expected surveyDate value to be equals to 2000-12-31');
-    expect(await parcelUpdatePage.getAccommodationInput()).to.eq(
-      'accommodation',
-      'Expected Accommodation value to be equals to accommodation'
-    );
-    expect(await parcelUpdatePage.getDescriptionInput()).to.eq('description', 'Expected Description value to be equals to description');
-    expect(await parcelUpdatePage.getPropertyAreaInput()).to.eq('5', 'Expected propertyArea value to be equals to 5');
-    expect(await parcelUpdatePage.getPlanNumberInput()).to.eq('planNumber', 'Expected PlanNumber value to be equals to planNumber');
-    expect(await parcelUpdatePage.getPremiumValueInput()).to.eq('premiumValue', 'Expected PremiumValue value to be equals to premiumValue');
-    expect(await parcelUpdatePage.getCoordinateNInput()).to.eq('5', 'Expected coordinateN value to be equals to 5');
-    expect(await parcelUpdatePage.getCoordinateSInput()).to.eq('5', 'Expected coordinateS value to be equals to 5');
-    expect(await parcelUpdatePage.getLagosSheetNumberInput()).to.eq(
-      'lagosSheetNumber',
-      'Expected LagosSheetNumber value to be equals to lagosSheetNumber'
-    );
-    expect(await parcelUpdatePage.getAllocationInput()).to.eq('allocation', 'Expected Allocation value to be equals to allocation');
-    expect(await parcelUpdatePage.getLocation1Input()).to.eq('5', 'Expected location1 value to be equals to 5');
-    expect(await parcelUpdatePage.getUnitNumberInput()).to.eq('unitNumber', 'Expected UnitNumber value to be equals to unitNumber');
-    expect(await parcelUpdatePage.getNameInput()).to.eq('name', 'Expected Name value to be equals to name');
-    expect(await parcelUpdatePage.getValuationInput()).to.eq('valuation', 'Expected Valuation value to be equals to valuation');
-    expect(await parcelUpdatePage.getCommentsInput()).to.eq('comments', 'Expected Comments value to be equals to comments');
-    expect(await parcelUpdatePage.getLegalDescriptionInput()).to.eq(
-      'legalDescription',
-      'Expected LegalDescription value to be equals to legalDescription'
-    );
-    await parcelUpdatePage.save();
-    expect(await parcelUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
+        await parcelComponentsPage.clickOnCreateButton();
+        await promise.all([
+            parcelUpdatePage.setPropertyNumberInput('propertyNumber'),
+            parcelUpdatePage.setParcelLineageInput('parcelLineage'),
+            parcelUpdatePage.setSurveyPlanNumberInput('surveyPlanNumber'),
+            parcelUpdatePage.setPropertyDescriptionInput('propertyDescription'),
+            parcelUpdatePage.setAreaInput('5'),
+            parcelUpdatePage.setDescriptionInput('description'),
+            parcelUpdatePage.setPropertyAreaInput('5'),
+            parcelUpdatePage.setPlanNumberInput('planNumber'),
+            parcelUpdatePage.setPremiumValueInput('5'),
+            parcelUpdatePage.setCoordinateNInput('5'),
+            parcelUpdatePage.setCoordinateEInput('5'),
+            parcelUpdatePage.setLagosSheetNumberInput('lagosSheetNumber'),
+            parcelUpdatePage.setUnitNumberInput('unitNumber'),
+            parcelUpdatePage.setValuationAmountInput('5'),
+            parcelUpdatePage.setCommentsInput('comments'),
+            parcelUpdatePage.setStreetNumberInput('streetNumber'),
+            parcelUpdatePage.setStreetNameInput('streetName'),
+            parcelUpdatePage.setBlockNumberInput('blockNumber'),
+            parcelUpdatePage.setPlotNumberInput('plotNumber'),
+            parcelUpdatePage.setWardInput('ward'),
+            parcelUpdatePage.setTownInput('town'),
+            parcelUpdatePage.setDistrictInput('district'),
+            parcelUpdatePage.setVillageInput('village'),
+            parcelUpdatePage.setUpinInput('upin'),
+            parcelUpdatePage.setCommentInput('comment'),
+            parcelUpdatePage.locationSelectLastOption(),
+            parcelUpdatePage.builtUpAreaTypeSelectLastOption(),
+            parcelUpdatePage.measurementUnitTypeSelectLastOption(),
+            parcelUpdatePage.landUseCategorySelectLastOption(),
+            parcelUpdatePage.landUseTypeSelectLastOption(),
+            parcelUpdatePage.developmentStatusSelectLastOption(),
+            parcelUpdatePage.governmentStatusSelectLastOption(),
+            parcelUpdatePage.propertyTypeSelectLastOption(),
+            parcelUpdatePage.streetTypeSelectLastOption(),
+            parcelUpdatePage.estateNameSelectLastOption(),
+            parcelUpdatePage.schemeNameSelectLastOption(),
+            parcelUpdatePage.stateSelectLastOption(),
+            parcelUpdatePage.localGovernmentAreaSelectLastOption(),
+            parcelUpdatePage.locationofLandSelectLastOption(),
+            parcelUpdatePage.typeOfAccommodationSelectLastOption(),
+            parcelUpdatePage.tenureTypeSelectLastOption(),
+            parcelUpdatePage.allocationNameSelectLastOption(),
+        ]);
+        expect(await parcelUpdatePage.getPropertyNumberInput()).to.eq('propertyNumber', 'Expected PropertyNumber value to be equals to propertyNumber');
+        expect(await parcelUpdatePage.getParcelLineageInput()).to.eq('parcelLineage', 'Expected ParcelLineage value to be equals to parcelLineage');
+        expect(await parcelUpdatePage.getSurveyPlanNumberInput()).to.eq('surveyPlanNumber', 'Expected SurveyPlanNumber value to be equals to surveyPlanNumber');
+        expect(await parcelUpdatePage.getPropertyDescriptionInput()).to.eq('propertyDescription', 'Expected PropertyDescription value to be equals to propertyDescription');
+        expect(await parcelUpdatePage.getAreaInput()).to.eq('5', 'Expected area value to be equals to 5');
+        expect(await parcelUpdatePage.getDescriptionInput()).to.eq('description', 'Expected Description value to be equals to description');
+        expect(await parcelUpdatePage.getPropertyAreaInput()).to.eq('5', 'Expected propertyArea value to be equals to 5');
+        expect(await parcelUpdatePage.getPlanNumberInput()).to.eq('planNumber', 'Expected PlanNumber value to be equals to planNumber');
+        expect(await parcelUpdatePage.getPremiumValueInput()).to.eq('5', 'Expected premiumValue value to be equals to 5');
+        expect(await parcelUpdatePage.getCoordinateNInput()).to.eq('5', 'Expected coordinateN value to be equals to 5');
+        expect(await parcelUpdatePage.getCoordinateEInput()).to.eq('5', 'Expected coordinateE value to be equals to 5');
+        expect(await parcelUpdatePage.getLagosSheetNumberInput()).to.eq('lagosSheetNumber', 'Expected LagosSheetNumber value to be equals to lagosSheetNumber');
+        expect(await parcelUpdatePage.getUnitNumberInput()).to.eq('unitNumber', 'Expected UnitNumber value to be equals to unitNumber');
+        expect(await parcelUpdatePage.getValuationAmountInput()).to.eq('5', 'Expected valuationAmount value to be equals to 5');
+        expect(await parcelUpdatePage.getCommentsInput()).to.eq('comments', 'Expected Comments value to be equals to comments');
+        expect(await parcelUpdatePage.getStreetNumberInput()).to.eq('streetNumber', 'Expected StreetNumber value to be equals to streetNumber');
+        expect(await parcelUpdatePage.getStreetNameInput()).to.eq('streetName', 'Expected StreetName value to be equals to streetName');
+        expect(await parcelUpdatePage.getBlockNumberInput()).to.eq('blockNumber', 'Expected BlockNumber value to be equals to blockNumber');
+        expect(await parcelUpdatePage.getPlotNumberInput()).to.eq('plotNumber', 'Expected PlotNumber value to be equals to plotNumber');
+        expect(await parcelUpdatePage.getWardInput()).to.eq('ward', 'Expected Ward value to be equals to ward');
+        expect(await parcelUpdatePage.getTownInput()).to.eq('town', 'Expected Town value to be equals to town');
+        expect(await parcelUpdatePage.getDistrictInput()).to.eq('district', 'Expected District value to be equals to district');
+        expect(await parcelUpdatePage.getVillageInput()).to.eq('village', 'Expected Village value to be equals to village');
+        expect(await parcelUpdatePage.getUpinInput()).to.eq('upin', 'Expected Upin value to be equals to upin');
+        expect(await parcelUpdatePage.getCommentInput()).to.eq('comment', 'Expected Comment value to be equals to comment');
+        await parcelUpdatePage.save();
+        expect(await parcelUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 
-    expect(await parcelComponentsPage.countDeleteButtons()).to.eq(nbButtonsBeforeCreate + 1, 'Expected one more entry in the table');
-  });
+        expect(await parcelComponentsPage.countDeleteButtons()).to.eq(nbButtonsBeforeCreate + 1, 'Expected one more entry in the table');
+    }); */
 
-  it('should delete last Parcel', async () => {
-    const nbButtonsBeforeDelete = await parcelComponentsPage.countDeleteButtons();
-    await parcelComponentsPage.clickOnLastDeleteButton();
+  /*  it('should delete last Parcel', async () => {
+        const nbButtonsBeforeDelete = await parcelComponentsPage.countDeleteButtons();
+        await parcelComponentsPage.clickOnLastDeleteButton();
 
-    parcelDeleteDialog = new ParcelDeleteDialog();
-    expect(await parcelDeleteDialog.getDialogTitle()).to.eq('egisexternalApp.parcel.delete.question');
-    await parcelDeleteDialog.clickOnConfirmButton();
+        parcelDeleteDialog = new ParcelDeleteDialog();
+        expect(await parcelDeleteDialog.getDialogTitle())
+            .to.eq('egisexternalApp.parcel.delete.question');
+        await parcelDeleteDialog.clickOnConfirmButton();
 
-    expect(await parcelComponentsPage.countDeleteButtons()).to.eq(nbButtonsBeforeDelete - 1);
-  });
+        expect(await parcelComponentsPage.countDeleteButtons()).to.eq(nbButtonsBeforeDelete - 1);
+    }); */
 
   after(async () => {
     await navBarPage.autoSignOut();

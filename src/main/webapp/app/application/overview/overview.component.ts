@@ -11,6 +11,7 @@ import { Transaction } from 'app/shared/model/transaction.model';
 import { IUser } from 'app/core/user/user.model';
 import { Dictionary } from 'app/shared/model/dictionary.model';
 import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
+import { MetadataService } from 'app/entities/metadata/metadata.service';
 
 @Component({
   selector: 'jhi-overview',
@@ -29,8 +30,9 @@ export class OverviewComponent implements OnInit {
   associated: boolean;
   form: boolean;
   currentUser: IUser;
-  batch: Batch;
-  description: string;
+  batchId: number;
+  description: string;;
+  batch: Batch
 
   restrictions: string;
   posts: any[];
@@ -49,7 +51,8 @@ export class OverviewComponent implements OnInit {
     private transService: TransactionService,
     private accountService: AccountService,
     private userService: UserService,
-    private dictionaryService: DictionaryService
+    private dictionaryService: DictionaryService,
+    private metadata: MetadataService
   ) {
     this.message = 'TransDetailComponent message';
   }
@@ -60,14 +63,30 @@ export class OverviewComponent implements OnInit {
     const params = this.route.snapshot.paramMap;
     this.transCode = params.get('transCode');
     this.getTransactionInfo('SS_APPLICATION_NAME'),
-      this.getTransactionInfo('SS_DESCRIPTION'),
-      this.getTransactionInfo('SS_RESTRICTIONS'),
-      this.getTransactionInfo('SS_EXPIRATION'),
-      this.getTransactionInfo('SS_DOCUMENT_RECEIVED'),
-      this.getTransactionInfo('SS_PREREQUISITE_DOCUMENTS'),
-      this.getTransactionInfo('SS_PREREQUISITE_TRANSACTIONS'),
-      this.getTransactionInfo('SS_PROCEDURE'),
-      this.getTransactionInfo('SS_ASSOCIATED_FEES');
+    this.getTransactionInfo('SS_DESCRIPTION'),
+    this.getTransactionInfo('SS_RESTRICTIONS'),
+    this.getTransactionInfo('SS_EXPIRATION'),
+    this.getTransactionInfo('SS_DOCUMENT_RECEIVED'),
+    this.getTransactionInfo('SS_PREREQUISITE_DOCUMENTS'),
+    this.getTransactionInfo('SS_PREREQUISITE_TRANSACTIONS'),
+    this.getTransactionInfo('SS_PROCEDURE'),
+    this.getTransactionInfo('SS_ASSOCIATED_FEES');
+    this.showContinue = false;
+    this.showActivate = true;
+
+    this.batchService.find( Number(this.transCode)).subscribe(
+
+      data=>{
+        if ( data.body !== null && data.body !== undefined){
+          this.showContinue = true;
+          this.showActivate = false;
+          this.batchId = data.body.id;
+          this.batch = data.body
+
+        }
+      }
+
+    )
 
     this.accountService.identity().subscribe(acct => {
       this.userService.find(acct.login).subscribe(
@@ -79,19 +98,19 @@ export class OverviewComponent implements OnInit {
     });
 
     this.transInfo = new TransInfo();
-    this.transInfo.associatedfees = 'Testing ';
-    this.restrictions = 'uwjewj ehjwejew ehjwekjejke ';
+    this.transInfo.associatedfees = 'Associated Fees here ... ';
+    this.restrictions = 'Restriction Restrinction here ... ';
 
-    this.showContinue = false;
-    this.showActivate = true;
 
-    this.route.data.subscribe(({ batch }) => {
-      this.batch = batch;
-      if (batch !== undefined && this.batch.id !== null) {
-        this.showContinue = true;
-        this.showActivate = false;
-      }
-    });
+
+
+    // this.route.data.subscribe(({ batch }) => {
+    //   this.batch = batch;
+    //   if (batch !== undefined && this.batch.id !== null) {
+    //     this.showContinue = true;
+    //     this.showActivate = false;
+    //   }
+    // });
   }
 
   pupulateTransInfo() {}
@@ -101,60 +120,78 @@ export class OverviewComponent implements OnInit {
   }
 
   initiateTransaction(transCode: string) {
-    const criteria =    [
-    {key: 'category.equals', value: 'application_status'},
-    {key: 'code.equals', value: 'application_lodged'}
-    ];
+    // const criteria =    [
+    // {key: 'category.equals', value: 'application_status'},
+    // {key: 'code.equals', value: 'application_lodged'}
+    // ];
 
    this.predicate = 'id';
    this.reverse = true;
 
-    let batchStatus = new Dictionary();
-    this.dictionaryService.query({
-      page: 1,
-      size: 2,
-      sort: this.sort(),
-      criteria
-    }).subscribe(
-      data =>{
-        batchStatus =  data.body.filter(x => x.category === 'application_status')
-        .filter(x1 =>x1.code === 'application_lodged')[0]
-        this.batch = new Batch();
-        this.batch.officeId = 1;
-        this.batch.batchStatus = batchStatus
-        this.batch.user = this.currentUser;
-        this.batch.transactions = [];
+    const batchStatus = new Dictionary();
+    this.dictionaryService.find(9900).subscribe(
+      data1 =>{
 
-        const tran = new Transaction();
+        const batch = new Batch();
+        batch.officeId = 1;
+        batch.batchStatus = batchStatus
+        batch.user = this.currentUser;
+        batch.transactions = [];
+        this.metadata.getByCode(transCode).subscribe(
+          data =>{
 
-        tran.transactionCode = transCode;
-        this.batch.transactions.push(tran);
+            const tran = new Transaction();
+            tran.transactionCode = data.body[0]
 
-        this.batchService.create(this.batch).subscribe(
-          (data1: HttpResponse<IBatch>) => {
-            this.batch = data1.body;
-            this.router.navigate(['/application/applicants', this.batch.id]);
-          },
-          () => alert('Error creating batch')
-        );
+            batch.transactions.push(tran);
+            batch.batchStatus = data1.body
+            batch.user =this.currentUser;
+
+            this.batchService.create(batch).subscribe(
+              (data2: HttpResponse<IBatch>) => {
+                // this.batch = data2.body;
+                this.router.navigate(['/application/applicants', data2.body.id]);
+              },
+              () => alert('Error creating batch')
+            );
+          }
+
+        )
       }
+
     )
 
+
+
+
+    // this.dictionaryService.query({
+    //   page: 1,
+    //   size: 2,
+    //   sort: this.sort(),
+    //   criteria
+    // }).subscribe(
+    //   data =>{
+    //     batchStatus =  data.body.filter(x => x.category === 'application_status')
+    //     .filter(x1 =>x1.code === 'application_lodged')[0]
+
+    //   }
+    // )
+
   }
 
-  createTransaction(batch: IBatch, transCode: string) {
-    const tran = new Transaction();
-    tran.batches = [batch];
-    tran.transactionCode = transCode;
-    // tran.transactionType = 1;
-    this.transService.create(tran).subscribe(
-      (data: HttpResponse<Transaction>) => {
-        batch.transactions = [data.body];
-        this.batchService.update(batch).subscribe(uBatch => {}, () => alert('problem updating batch after creation'));
-      },
-      () => alert('Error creating transaction')
-    );
-  }
+  // createTransaction(batch: IBatch, transCode: string) {
+  //   const tran = new Transaction();
+  //   tran.batches = [batch];
+  //   // tran.transactionCode = transCode;
+  //   // tran.transactionType = 1;
+  //   this.transService.create(tran).subscribe(
+  //     (data: HttpResponse<Transaction>) => {
+  //       batch.transactions = [data.body];
+  //       this.batchService.update(batch).subscribe(uBatch => {}, () => alert('problem updating batch after creation'));
+  //     },
+  //     () => alert('Error creating transaction')
+  //   );
+  // }
 
   // initiateTransactionOLD() {
   //   this.batch = new Batch();
@@ -175,7 +212,7 @@ export class OverviewComponent implements OnInit {
     const resourceUrl = 'http://localhost:7777' + '/transinfo/';
     const callResp = this.httpClient.get<TransInfo>(
       `${
-        resourceUrl //this.httpClient.get('http://jsonplaceholder.typicode.com/posts');
+        resourceUrl // this.httpClient.get('http://jsonplaceholder.typicode.com/posts');
       }/${this.transCode}/${param}`
     );
 
@@ -233,5 +270,5 @@ export class OverviewComponent implements OnInit {
 }
 
 export class TabDisplay {
-  constructor(show1: boolean) {}
+  constructor( ) {}
 }

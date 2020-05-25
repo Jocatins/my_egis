@@ -8,12 +8,6 @@
     -->
     <changeSet id="20191226103249-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="address_id"
-                                 baseTableName="party"
-                                 constraintName="fk_party_address_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="address"/>
-
         <addForeignKeyConstraint baseColumnNames="party_type_id"
                                  baseTableName="party"
                                  constraintName="fk_party_party_type_id"
@@ -23,30 +17,6 @@
         <addForeignKeyConstraint baseColumnNames="party_role_type_id"
                                  baseTableName="party"
                                  constraintName="fk_party_party_role_type_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="dictionary"/>
-
-        <addForeignKeyConstraint baseColumnNames="party_sub_role_type_id"
-                                 baseTableName="party"
-                                 constraintName="fk_party_party_sub_role_type_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="dictionary"/>
-
-        <addForeignKeyConstraint baseColumnNames="delivery_type_id"
-                                 baseTableName="party"
-                                 constraintName="fk_party_delivery_type_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="dictionary"/>
-
-        <addForeignKeyConstraint baseColumnNames="primary_party_id"
-                                 baseTableName="party"
-                                 constraintName="fk_party_primary_party_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="dictionary"/>
-
-        <addForeignKeyConstraint baseColumnNames="person_id_type_id"
-                                 baseTableName="party"
-                                 constraintName="fk_party_person_id_type_id"
                                  referencedColumnNames="id"
                                  referencedTableName="dictionary"/>
 
@@ -92,9 +62,99 @@
                                  referencedColumnNames="id"
                                  referencedTableName="dictionary"/>
 
-        <addForeignKeyConstraint baseColumnNames="representative_id_id"
+        <addForeignKeyConstraint baseColumnNames="business_nature_id"
                                  baseTableName="party"
-                                 constraintName="fk_party_representative_id_id"
+                                 constraintName="fk_party_business_nature_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="phone_category_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_phone_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="next_of_kin_phone_category_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_next_of_kin_phone_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="email_category_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_email_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="address_category_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_address_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="iddocument_type_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_iddocument_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="iddocument_issued_by_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_iddocument_issued_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="suffix_title_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_suffix_title_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="stateof_origin_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_stateof_origin_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="marital_status_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_marital_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="street_type_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_street_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="estate_name_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_estate_name_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="scheme_name_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_scheme_name_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="district_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_district_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="local_government_area_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_local_government_area_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
+        <addForeignKeyConstraint baseColumnNames="country_id"
+                                 baseTableName="party"
+                                 constraintName="fk_party_country_id"
                                  referencedColumnNames="id"
                                  referencedTableName="dictionary"/>
 

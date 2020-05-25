@@ -51,6 +51,7 @@ public class Batch implements Serializable {
     @JsonIgnoreProperties("batches")
     private Dictionary batchStatus;
 
+
     @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "batch_transaction",

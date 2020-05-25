@@ -32,15 +32,15 @@ export const OVERVIEW: Route = {
   canActivate: [UserRouteAccessService]
 };
 
-export const OVERVIEW_BATCH: Route = {
-  path: 'overview/:transCode/:id',
-  component: OverviewComponent,
-  resolve: {
-    batch: BatchExtResolve
-  },
-  data: {
-    authorities: [],
-    pageTitle: 'overview.title'
-  },
-  canActivate: [UserRouteAccessService]
-};
+// export const OVERVIEW_BATCH: Route = {
+//   path: 'overview/:transCode/:id',
+//   component: OverviewComponent,
+//   resolve: {
+//     batch: BatchExtResolve
+//   },
+//   data: {
+//     authorities: [],
+//     pageTitle: 'overview.title'
+//   },
+//   canActivate: [UserRouteAccessService]
+// };

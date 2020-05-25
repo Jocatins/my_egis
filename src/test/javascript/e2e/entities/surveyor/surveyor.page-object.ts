@@ -31,7 +31,6 @@ export class SurveyorUpdatePage {
   registrationNumberInput = element(by.id('field_registrationNumber'));
   phoneInput = element(by.id('field_phone'));
   statusInput = element(by.id('field_status'));
-  addressSelect = element(by.id('field_address'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -75,25 +74,6 @@ export class SurveyorUpdatePage {
 
   async getStatusInput() {
     return await this.statusInput.getAttribute('value');
-  }
-
-  async addressSelectLastOption() {
-    await this.addressSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async addressSelectOption(option) {
-    await this.addressSelect.sendKeys(option);
-  }
-
-  getAddressSelect(): ElementFinder {
-    return this.addressSelect;
-  }
-
-  async getAddressSelectedOption() {
-    return await this.addressSelect.element(by.css('option:checked')).getText();
   }
 
   async save() {
