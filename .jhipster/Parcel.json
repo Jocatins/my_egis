@@ -228,6 +228,13 @@
             "relationshipType": "many-to-one",
             "otherEntityName": "dictionary",
             "otherEntityRelationshipName": "parcel",
+            "relationshipName": "district",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dictionary",
+            "otherEntityRelationshipName": "parcel",
             "relationshipName": "allocationName",
             "otherEntityField": "id"
         },

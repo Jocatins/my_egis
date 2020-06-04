@@ -84,6 +84,7 @@ describe('Parcel e2e test', () => {
             parcelUpdatePage.locationofLandSelectLastOption(),
             parcelUpdatePage.typeOfAccommodationSelectLastOption(),
             parcelUpdatePage.tenureTypeSelectLastOption(),
+            parcelUpdatePage.districtSelectLastOption(),
             parcelUpdatePage.allocationNameSelectLastOption(),
         ]);
         expect(await parcelUpdatePage.getPropertyNumberInput()).to.eq('propertyNumber', 'Expected PropertyNumber value to be equals to propertyNumber');

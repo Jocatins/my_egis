@@ -5,6 +5,10 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.party.primaryParty">Primary Party</span></dt>
+                <dd>
+                    <span>{{party.primaryParty}}</span>
+                </dd>
                 <dt><span jhiTranslate="egisexternalApp.party.emailAddress">Email Address</span></dt>
                 <dd>
                     <span>{{party.emailAddress}}</span>
@@ -136,10 +140,6 @@
                 <dt><span jhiTranslate="egisexternalApp.party.iDDocumentNumber">I D Document Number</span></dt>
                 <dd>
                     <span>{{party.iDDocumentNumber}}</span>
-                </dd>
-                <dt><span jhiTranslate="egisexternalApp.party.primaryParty">Primary Party</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'egisexternalApp.YesOrNo.' + party.primaryParty}}">{{party.primaryParty}}</span>
                 </dd>
                 <dt><span jhiTranslate="egisexternalApp.party.partyType">Party Type</span></dt>
                 <dd>

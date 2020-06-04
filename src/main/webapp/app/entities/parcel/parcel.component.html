@@ -75,6 +75,7 @@
             <th scope="col" ><span jhiTranslate="egisexternalApp.parcel.locationofLand">Locationof Land</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.parcel.typeOfAccommodation">Type Of Accommodation</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.parcel.tenureType">Tenure Type</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.parcel.district">District</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.parcel.allocationName">Allocation Name</span></th>
             <th scope="col"></th>
             </tr>
@@ -185,6 +186,11 @@
                 <td>
                     <div *ngIf="parcel.tenureType">
                         <a [routerLink]="['/dictionary', parcel.tenureType?.id, 'view' ]" >{{parcel.tenureType?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="parcel.district">
+                        <a [routerLink]="['/dictionary', parcel.district?.id, 'view' ]" >{{parcel.district?.id}}</a>
                     </div>
                 </td>
                 <td>

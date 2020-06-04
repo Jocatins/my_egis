@@ -36,6 +36,7 @@ export class PartyUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    primaryParty: [],
     emailAddress: [null, [Validators.required]],
     phoneNumber: [null, [Validators.required]],
     payerId: [],
@@ -69,7 +70,6 @@ export class PartyUpdateComponent implements OnInit {
     iDDocumentIssuedDate: [],
     iDDocumentExpirationDate: [],
     iDDocumentNumber: [],
-    primaryParty: [null, [Validators.required]],
     partyType: [null, Validators.required],
     partyRoleType: [null, Validators.required],
     personType: [],
@@ -132,6 +132,7 @@ export class PartyUpdateComponent implements OnInit {
   updateForm(party: IParty) {
     this.editForm.patchValue({
       id: party.id,
+      primaryParty: party.primaryParty,
       emailAddress: party.emailAddress,
       phoneNumber: party.phoneNumber,
       payerId: party.payerId,
@@ -165,7 +166,6 @@ export class PartyUpdateComponent implements OnInit {
       iDDocumentIssuedDate: party.iDDocumentIssuedDate,
       iDDocumentExpirationDate: party.iDDocumentExpirationDate,
       iDDocumentNumber: party.iDDocumentNumber,
-      primaryParty: party.primaryParty,
       partyType: party.partyType,
       partyRoleType: party.partyRoleType,
       personType: party.personType,
@@ -212,6 +212,7 @@ export class PartyUpdateComponent implements OnInit {
     return {
       ...new Party(),
       id: this.editForm.get(['id']).value,
+      primaryParty: this.editForm.get(['primaryParty']).value,
       emailAddress: this.editForm.get(['emailAddress']).value,
       phoneNumber: this.editForm.get(['phoneNumber']).value,
       payerId: this.editForm.get(['payerId']).value,
@@ -245,7 +246,6 @@ export class PartyUpdateComponent implements OnInit {
       iDDocumentIssuedDate: this.editForm.get(['iDDocumentIssuedDate']).value,
       iDDocumentExpirationDate: this.editForm.get(['iDDocumentExpirationDate']).value,
       iDDocumentNumber: this.editForm.get(['iDDocumentNumber']).value,
-      primaryParty: this.editForm.get(['primaryParty']).value,
       partyType: this.editForm.get(['partyType']).value,
       partyRoleType: this.editForm.get(['partyRoleType']).value,
       personType: this.editForm.get(['personType']).value,

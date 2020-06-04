@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import io.github.jhipster.web.util.HeaderUtil;
+
 import java.net.*;
 
 import java.io.BufferedReader;
@@ -56,6 +58,33 @@ public class BatchExtResource {
     public List<Batch> getAllBatches(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Batches");
         return batchRepository.findByUserIsCurrentUser();
+    }
+
+    /**
+     * {@code PUT  /batches} : Updates an existing batch.
+     *
+     * @param batch the batch to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated batch,
+     * or with status {@code 400 (Bad Request)} if the batch is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the batch couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PutMapping("/batches/pushBatch")
+    public ResponseEntity<Batch> updateBatch(@RequestBody Long batchId) throws URISyntaxException {
+        log.debug("REST request to update Batch : {}", batchId);
+        // if (batch.getId() == null) {
+        //     throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        // }
+
+        Batch batch = batchSearchRepository.findById(batchId).get();
+
+        Batch result = batchRepository.save(batch);
+        batchSearchRepository.save(result);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, batch.getId().toString()))
+            .body(result);
+
+
     }
 
 }

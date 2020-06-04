@@ -45,7 +45,6 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
-        'AAAAAAA',
         'AAAAAAA'
       );
     });
@@ -104,7 +103,6 @@ describe('Service Tests', () => {
             plotNumber: 'BBBBBB',
             ward: 'BBBBBB',
             town: 'BBBBBB',
-            district: 'BBBBBB',
             village: 'BBBBBB',
             upin: 'BBBBBB',
             comment: 'BBBBBB'
@@ -146,7 +144,6 @@ describe('Service Tests', () => {
             plotNumber: 'BBBBBB',
             ward: 'BBBBBB',
             town: 'BBBBBB',
-            district: 'BBBBBB',
             village: 'BBBBBB',
             upin: 'BBBBBB',
             comment: 'BBBBBB'

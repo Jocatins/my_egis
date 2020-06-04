@@ -15,6 +15,9 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="primary_party" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="email_address" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
@@ -114,9 +117,6 @@
             <column name="i_d_document_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="primary_party" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
             <column name="party_type_id" type="bigint">
                 <constraints nullable="false" />
             </column>
@@ -215,6 +215,7 @@
                   separator=";"
                   tableName="party">
             <column name="id" type="numeric"/>
+            <column name="primary_party" type="string"/>
             <column name="email_address" type="string"/>
             <column name="phone_number" type="string"/>
             <column name="payer_id" type="string"/>
@@ -248,7 +249,6 @@
             <column name="i_d_document_issued_date" type="date"/>
             <column name="i_d_document_expiration_date" type="date"/>
             <column name="i_d_document_number" type="string"/>
-            <column name="primary_party" type="string"/>
             <column name="party_type_id" type="numeric"/>
             <column name="party_role_type_id" type="numeric"/>
             <column name="email_type_id" type="numeric"/>

@@ -17,6 +17,7 @@
       "detail": {
         "title": "Party"
       },
+      "primaryParty": "Primary Party",
       "emailAddress": "Email Address",
       "phoneNumber": "Phone Number",
       "payerId": "Payer Id",
@@ -50,7 +51,6 @@
       "iDDocumentIssuedDate": "I D Document Issued Date",
       "iDDocumentExpirationDate": "I D Document Expiration Date",
       "iDDocumentNumber": "I D Document Number",
-      "primaryParty": "Primary Party",
       "partyType": "Party Type",
       "partyRoleType": "Party Role Type",
       "personType": "Person Type",

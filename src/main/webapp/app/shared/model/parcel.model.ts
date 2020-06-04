@@ -24,7 +24,6 @@ export interface IParcel {
   plotNumber?: string;
   ward?: string;
   town?: string;
-  district?: string;
   village?: string;
   upin?: string;
   comment?: string;
@@ -44,6 +43,7 @@ export interface IParcel {
   locationofLand?: IDictionary;
   typeOfAccommodation?: IDictionary;
   tenureType?: IDictionary;
+  district?: IDictionary;
   allocationName?: IDictionary;
   transactions?: ITransaction[];
 }
@@ -72,7 +72,6 @@ export class Parcel implements IParcel {
     public plotNumber?: string,
     public ward?: string,
     public town?: string,
-    public district?: string,
     public village?: string,
     public upin?: string,
     public comment?: string,
@@ -92,6 +91,7 @@ export class Parcel implements IParcel {
     public locationofLand?: IDictionary,
     public typeOfAccommodation?: IDictionary,
     public tenureType?: IDictionary,
+    public district?: IDictionary,
     public allocationName?: IDictionary,
     public transactions?: ITransaction[]
   ) {}

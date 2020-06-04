@@ -2,6 +2,10 @@
     "name": "Party",
     "fields": [
         {
+            "fieldName": "primaryParty",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "emailAddress",
             "fieldType": "String",
             "fieldValidateRules": [
@@ -138,14 +142,6 @@
         {
             "fieldName": "iDDocumentNumber",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "primaryParty",
-            "fieldType": "YesOrNo",
-            "fieldValues": "Y,N",
-            "fieldValidateRules": [
-                "required"
-            ]
         }
     ],
     "relationships": [

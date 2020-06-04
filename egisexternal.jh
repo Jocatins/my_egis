@@ -1,6 +1,6 @@
 
 
-entity Dictionary{
+entity  Dictionary{
 	code String ,
     label String,
     descr String,
@@ -146,8 +146,6 @@ entity Parcel{
     village String,
     upin String,
     comment String
-
-
 }
 
 relationship ManyToOne{
@@ -167,6 +165,7 @@ relationship ManyToOne{
     Parcel{locationofLand} to Dictionary,
     Parcel{typeOfAccommodation} to Dictionary,
     Parcel{tenureType} to Dictionary,
+    Parcel{district} to Dictionary,
     Parcel{AllocationName} to Dictionary
 }
 
@@ -271,6 +270,8 @@ relationship OneToOne{
 //paginate Batch with infinite-scroll
 //paginate Party with pagination
 paginate Surveyor, SurveyTransaction with pagination
+
+filter Dictionary
 
 
 

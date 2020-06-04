@@ -26,6 +26,7 @@ export class PartyUpdatePage {
   pageTitle = element(by.id('jhi-party-heading'));
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
+  primaryPartyInput = element(by.id('field_primaryParty'));
   emailAddressInput = element(by.id('field_emailAddress'));
   phoneNumberInput = element(by.id('field_phoneNumber'));
   payerIdInput = element(by.id('field_payerId'));
@@ -59,7 +60,6 @@ export class PartyUpdatePage {
   iDDocumentIssuedDateInput = element(by.id('field_iDDocumentIssuedDate'));
   iDDocumentExpirationDateInput = element(by.id('field_iDDocumentExpirationDate'));
   iDDocumentNumberInput = element(by.id('field_iDDocumentNumber'));
-  primaryPartySelect = element(by.id('field_primaryParty'));
   partyTypeSelect = element(by.id('field_partyType'));
   partyRoleTypeSelect = element(by.id('field_partyRoleType'));
   personTypeSelect = element(by.id('field_personType'));
@@ -88,6 +88,14 @@ export class PartyUpdatePage {
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
+  }
+
+  async setPrimaryPartyInput(primaryParty) {
+    await this.primaryPartyInput.sendKeys(primaryParty);
+  }
+
+  async getPrimaryPartyInput() {
+    return await this.primaryPartyInput.getAttribute('value');
   }
 
   async setEmailAddressInput(emailAddress) {
@@ -352,21 +360,6 @@ export class PartyUpdatePage {
 
   async getIDDocumentNumberInput() {
     return await this.iDDocumentNumberInput.getAttribute('value');
-  }
-
-  async setPrimaryPartySelect(primaryParty) {
-    await this.primaryPartySelect.sendKeys(primaryParty);
-  }
-
-  async getPrimaryPartySelect() {
-    return await this.primaryPartySelect.element(by.css('option:checked')).getText();
-  }
-
-  async primaryPartySelectLastOption() {
-    await this.primaryPartySelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
   }
 
   async partyTypeSelectLastOption() {

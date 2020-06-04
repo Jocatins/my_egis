@@ -72,6 +72,7 @@ class PartyGatlingTest extends Simulation {
             .headers(headers_http_authenticated)
             .body(StringBody("""{
                 "id":null
+                , "primaryParty":"SAMPLE_TEXT"
                 , "emailAddress":"SAMPLE_TEXT"
                 , "phoneNumber":"SAMPLE_TEXT"
                 , "payerId":"SAMPLE_TEXT"
@@ -105,7 +106,6 @@ class PartyGatlingTest extends Simulation {
                 , "iDDocumentIssuedDate":"2020-01-01T00:00:00.000Z"
                 , "iDDocumentExpirationDate":"2020-01-01T00:00:00.000Z"
                 , "iDDocumentNumber":"SAMPLE_TEXT"
-                , "primaryParty":"Y"
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_party_url"))).exitHereIfFailed

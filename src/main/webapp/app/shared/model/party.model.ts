@@ -2,10 +2,10 @@ import { Moment } from 'moment';
 import { IDictionary } from 'app/shared/model/dictionary.model';
 import { IBatch } from 'app/shared/model/batch.model';
 import { ITransaction } from 'app/shared/model/transaction.model';
-import { YesOrNo } from 'app/shared/model/enumerations/yes-or-no.model';
 
 export interface IParty {
   id?: number;
+  primaryParty?: string;
   emailAddress?: string;
   phoneNumber?: string;
   payerId?: string;
@@ -39,7 +39,6 @@ export interface IParty {
   iDDocumentIssuedDate?: Moment;
   iDDocumentExpirationDate?: Moment;
   iDDocumentNumber?: string;
-  primaryParty?: YesOrNo;
   partyType?: IDictionary;
   partyRoleType?: IDictionary;
   personType?: IDictionary;
@@ -72,6 +71,7 @@ export interface IParty {
 export class Party implements IParty {
   constructor(
     public id?: number,
+    public primaryParty?: string,
     public emailAddress?: string,
     public phoneNumber?: string,
     public payerId?: string,
@@ -105,7 +105,6 @@ export class Party implements IParty {
     public iDDocumentIssuedDate?: Moment,
     public iDDocumentExpirationDate?: Moment,
     public iDDocumentNumber?: string,
-    public primaryParty?: YesOrNo,
     public partyType?: IDictionary,
     public partyRoleType?: IDictionary,
     public personType?: IDictionary,

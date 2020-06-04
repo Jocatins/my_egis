@@ -38,8 +38,8 @@ export class SupportingDocsComponent implements OnInit {
   supportingDocumentsOthers: ISupportingDocument[];
   mandatoryDocs: MandatoryDocument[];
   documentTypes: IEGISDIctionary[];
-  madatorySupportingDocuments: Array<IEGISDIctionary> = [];
-  otherSupportingDocuments: IEGISDIctionary[];
+  madatorySupportingDocuments: Array<IDictionary> = [];
+  otherSupportingDocuments: IDictionary[];
   selectedFile: File;
   fileName: string;
   fileNameOthers: string;
@@ -208,27 +208,27 @@ export class SupportingDocsComponent implements OnInit {
           //     this.documentTypes.forEach(x => {
           //       this.map.set(x.id, x);
           //     });
-
           //   }
           // )
 
 
-          this.dashboardService.fetchDictionaryValuesObj('document_type').subscribe(
+          this.dictionaryService.query({'category.equals':'document_type'}).subscribe(
             dataDocs => {
-              dataDocs.body
-              this.documentTypes = JSON.parse(dataDocs.body.category);
-
-              this.documentTypes.forEach(x => {
-                this.map.set(x.id, x);
-              });
+              const xDicts = dataDocs.body
               this.mandatoryDocs.forEach(mandatoryDoc => {
-                this.documentTypes.forEach(documentType => {
-                  if (mandatoryDoc.document_code === documentType.code) {
-                    this.madatorySupportingDocuments.push(documentType);
+                xDicts.forEach(xDict => {
+                  if (mandatoryDoc.document_code === xDict.code) {
+                    this.madatorySupportingDocuments.push(xDict);
                   }
                 });
               });
-              this.otherSupportingDocuments = this.documentTypes.filter(x => !this.madatorySupportingDocuments.includes(x));
+
+              if (this.madatorySupportingDocuments.length === 0){
+                this.madatorySupportingDocuments =  xDicts.slice(0,5);
+              }
+
+
+              this.otherSupportingDocuments = xDicts.filter(x => !this.madatorySupportingDocuments.includes(x));
               this.refreshDocument(this.batch);
             }
           );

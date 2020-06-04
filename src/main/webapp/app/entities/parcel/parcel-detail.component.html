@@ -201,6 +201,12 @@
                         <a [routerLink]="['/dictionary', parcel.tenureType?.id, 'view']">{{parcel.tenureType?.id}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="egisexternalApp.parcel.district">District</span></dt>
+                <dd>
+                    <div *ngIf="parcel.district">
+                        <a [routerLink]="['/dictionary', parcel.district?.id, 'view']">{{parcel.district?.id}}</a>
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="egisexternalApp.parcel.allocationName">Allocation Name</span></dt>
                 <dd>
                     <div *ngIf="parcel.allocationName">

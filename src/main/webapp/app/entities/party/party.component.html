@@ -34,6 +34,7 @@
             <thead>
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="egisexternalApp.party.primaryParty">Primary Party</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.party.emailAddress">Email Address</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.party.phoneNumber">Phone Number</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.party.payerId">Payer Id</span></th>
@@ -67,7 +68,6 @@
             <th scope="col" ><span jhiTranslate="egisexternalApp.party.iDDocumentIssuedDate">I D Document Issued Date</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.party.iDDocumentExpirationDate">I D Document Expiration Date</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.party.iDDocumentNumber">I D Document Number</span></th>
-            <th scope="col" ><span jhiTranslate="egisexternalApp.party.primaryParty">Primary Party</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.party.partyType">Party Type</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.party.partyRoleType">Party Role Type</span></th>
             <th scope="col" ><span jhiTranslate="egisexternalApp.party.personType">Person Type</span></th>
@@ -99,6 +99,7 @@
             <tbody>
             <tr *ngFor="let party of parties ;trackBy: trackId">
                 <td><a [routerLink]="['/party', party.id, 'view' ]">{{party.id}}</a></td>
+                <td>{{party.primaryParty}}</td>
                 <td>{{party.emailAddress}}</td>
                 <td>{{party.phoneNumber}}</td>
                 <td>{{party.payerId}}</td>
@@ -132,7 +133,6 @@
                 <td>{{party.iDDocumentIssuedDate | date:'mediumDate'}}</td>
                 <td>{{party.iDDocumentExpirationDate | date:'mediumDate'}}</td>
                 <td>{{party.iDDocumentNumber}}</td>
-                <td jhiTranslate="{{'egisexternalApp.YesOrNo.' + party.primaryParty}}">{{party.primaryParty}}</td>
                 <td>
                     <div *ngIf="party.partyType">
                         <a [routerLink]="['/dictionary', party.partyType?.id, 'view' ]" >{{party.partyType?.id}}</a>

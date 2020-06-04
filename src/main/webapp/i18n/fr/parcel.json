@@ -58,6 +58,7 @@
       "locationofLand": "Locationof Land",
       "typeOfAccommodation": "Type Of Accommodation",
       "tenureType": "Tenure Type",
+      "district": "District",
       "allocationName": "Allocation Name",
       "transaction": "Transaction"
     }

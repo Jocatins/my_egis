@@ -10,6 +10,11 @@
                         readonly />
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.primaryParty" for="field_primaryParty">Primary Party</label>
+                    <input type="text" class="form-control" name="primaryParty" id="field_primaryParty"
+                           formControlName="primaryParty"/>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.emailAddress" for="field_emailAddress">Email Address</label>
                     <input type="text" class="form-control" name="emailAddress" id="field_emailAddress"
                            formControlName="emailAddress"/>
@@ -205,21 +210,6 @@
                     <label class="form-control-label" jhiTranslate="egisexternalApp.party.iDDocumentNumber" for="field_iDDocumentNumber">I D Document Number</label>
                     <input type="text" class="form-control" name="iDDocumentNumber" id="field_iDDocumentNumber"
                            formControlName="iDDocumentNumber"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="egisexternalApp.party.primaryParty" for="field_primaryParty">Primary Party</label>
-                    <select class="form-control" name="primaryParty" formControlName="primaryParty" id="field_primaryParty">
-                        <option value="">Please choose </option>
-                        <option value="Y">I am the primary Applicant</option>
-                        <option value="N">I am NOT the primary Applicant</option>
-                    </select>
-
-                    <div *ngIf="editForm.get('primaryParty').invalid && (editForm.get('primaryParty').dirty || editForm.get('primaryParty').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('primaryParty').errors.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
                 </div>
 
                 <div class="form-group">

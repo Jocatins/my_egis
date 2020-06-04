@@ -94,9 +94,6 @@ public class Parcel implements Serializable {
     @Column(name = "town")
     private String town;
 
-    @Column(name = "district")
-    private String district;
-
     @Column(name = "village")
     private String village;
 
@@ -172,6 +169,10 @@ public class Parcel implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("parcels")
     private Dictionary tenureType;
+
+    @ManyToOne
+    @JsonIgnoreProperties("parcels")
+    private Dictionary district;
 
     @ManyToOne
     @JsonIgnoreProperties("parcels")
@@ -464,19 +465,6 @@ public class Parcel implements Serializable {
         this.town = town;
     }
 
-    public String getDistrict() {
-        return district;
-    }
-
-    public Parcel district(String district) {
-        this.district = district;
-        return this;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
     public String getVillage() {
         return village;
     }
@@ -722,6 +710,19 @@ public class Parcel implements Serializable {
 
     public void setTenureType(Dictionary dictionary) {
         this.tenureType = dictionary;
+    }
+
+    public Dictionary getDistrict() {
+        return district;
+    }
+
+    public Parcel district(Dictionary dictionary) {
+        this.district = dictionary;
+        return this;
+    }
+
+    public void setDistrict(Dictionary dictionary) {
+        this.district = dictionary;
     }
 
     public Dictionary getAllocationName() {

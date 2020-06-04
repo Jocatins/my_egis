@@ -47,7 +47,6 @@ export class ParcelUpdateComponent implements OnInit {
     plotNumber: [null, [Validators.required]],
     ward: [],
     town: [],
-    district: [],
     village: [],
     upin: [],
     comment: [],
@@ -67,6 +66,7 @@ export class ParcelUpdateComponent implements OnInit {
     locationofLand: [],
     typeOfAccommodation: [],
     tenureType: [],
+    district: [],
     allocationName: []
   });
 
@@ -122,7 +122,6 @@ export class ParcelUpdateComponent implements OnInit {
       plotNumber: parcel.plotNumber,
       ward: parcel.ward,
       town: parcel.town,
-      district: parcel.district,
       village: parcel.village,
       upin: parcel.upin,
       comment: parcel.comment,
@@ -142,6 +141,7 @@ export class ParcelUpdateComponent implements OnInit {
       locationofLand: parcel.locationofLand,
       typeOfAccommodation: parcel.typeOfAccommodation,
       tenureType: parcel.tenureType,
+      district: parcel.district,
       allocationName: parcel.allocationName
     });
   }
@@ -185,7 +185,6 @@ export class ParcelUpdateComponent implements OnInit {
       plotNumber: this.editForm.get(['plotNumber']).value,
       ward: this.editForm.get(['ward']).value,
       town: this.editForm.get(['town']).value,
-      district: this.editForm.get(['district']).value,
       village: this.editForm.get(['village']).value,
       upin: this.editForm.get(['upin']).value,
       comment: this.editForm.get(['comment']).value,
@@ -205,6 +204,7 @@ export class ParcelUpdateComponent implements OnInit {
       locationofLand: this.editForm.get(['locationofLand']).value,
       typeOfAccommodation: this.editForm.get(['typeOfAccommodation']).value,
       tenureType: this.editForm.get(['tenureType']).value,
+      district: this.editForm.get(['district']).value,
       allocationName: this.editForm.get(['allocationName']).value
     };
   }

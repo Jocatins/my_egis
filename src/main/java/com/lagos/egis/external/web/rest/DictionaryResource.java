@@ -1,9 +1,10 @@
 package com.lagos.egis.external.web.rest;
 
 import com.lagos.egis.external.domain.Dictionary;
-import com.lagos.egis.external.repository.DictionaryRepository;
-import com.lagos.egis.external.repository.search.DictionarySearchRepository;
+import com.lagos.egis.external.service.DictionaryService;
 import com.lagos.egis.external.web.rest.errors.BadRequestAlertException;
+import com.lagos.egis.external.service.dto.DictionaryCriteria;
+import com.lagos.egis.external.service.DictionaryQueryService;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -11,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional; 
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -19,7 +19,6 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -29,7 +28,6 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
  */
 @RestController
 @RequestMapping("/api")
-@Transactional
 public class DictionaryResource {
 
     private final Logger log = LoggerFactory.getLogger(DictionaryResource.class);
@@ -39,13 +37,13 @@ public class DictionaryResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final DictionaryRepository dictionaryRepository;
+    private final DictionaryService dictionaryService;
 
-    private final DictionarySearchRepository dictionarySearchRepository;
+    private final DictionaryQueryService dictionaryQueryService;
 
-    public DictionaryResource(DictionaryRepository dictionaryRepository, DictionarySearchRepository dictionarySearchRepository) {
-        this.dictionaryRepository = dictionaryRepository;
-        this.dictionarySearchRepository = dictionarySearchRepository;
+    public DictionaryResource(DictionaryService dictionaryService, DictionaryQueryService dictionaryQueryService) {
+        this.dictionaryService = dictionaryService;
+        this.dictionaryQueryService = dictionaryQueryService;
     }
 
     /**
@@ -61,8 +59,7 @@ public class DictionaryResource {
         if (dictionary.getId() != null) {
             throw new BadRequestAlertException("A new dictionary cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Dictionary result = dictionaryRepository.save(dictionary);
-        dictionarySearchRepository.save(result);
+        Dictionary result = dictionaryService.save(dictionary);
         return ResponseEntity.created(new URI("/api/dictionaries/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -83,8 +80,7 @@ public class DictionaryResource {
         if (dictionary.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Dictionary result = dictionaryRepository.save(dictionary);
-        dictionarySearchRepository.save(result);
+        Dictionary result = dictionaryService.save(dictionary);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, dictionary.getId().toString()))
             .body(result);
@@ -94,12 +90,26 @@ public class DictionaryResource {
      * {@code GET  /dictionaries} : get all the dictionaries.
      *
 
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of dictionaries in body.
      */
     @GetMapping("/dictionaries")
-    public List<Dictionary> getAllDictionaries() {
-        log.debug("REST request to get all Dictionaries");
-        return dictionaryRepository.findAll();
+    public ResponseEntity<List<Dictionary>> getAllDictionaries(DictionaryCriteria criteria) {
+        log.debug("REST request to get Dictionaries by criteria: {}", criteria);
+        List<Dictionary> entityList = dictionaryQueryService.findByCriteria(criteria);
+        return ResponseEntity.ok().body(entityList);
+    }
+
+    /**
+    * {@code GET  /dictionaries/count} : count all the dictionaries.
+    *
+    * @param criteria the criteria which the requested entities should match.
+    * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+    */
+    @GetMapping("/dictionaries/count")
+    public ResponseEntity<Long> countDictionaries(DictionaryCriteria criteria) {
+        log.debug("REST request to count Dictionaries by criteria: {}", criteria);
+        return ResponseEntity.ok().body(dictionaryQueryService.countByCriteria(criteria));
     }
 
     /**
@@ -111,7 +121,7 @@ public class DictionaryResource {
     @GetMapping("/dictionaries/{id}")
     public ResponseEntity<Dictionary> getDictionary(@PathVariable Long id) {
         log.debug("REST request to get Dictionary : {}", id);
-        Optional<Dictionary> dictionary = dictionaryRepository.findById(id);
+        Optional<Dictionary> dictionary = dictionaryService.findOne(id);
         return ResponseUtil.wrapOrNotFound(dictionary);
     }
 
@@ -124,8 +134,7 @@ public class DictionaryResource {
     @DeleteMapping("/dictionaries/{id}")
     public ResponseEntity<Void> deleteDictionary(@PathVariable Long id) {
         log.debug("REST request to delete Dictionary : {}", id);
-        dictionaryRepository.deleteById(id);
-        dictionarySearchRepository.deleteById(id);
+        dictionaryService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 
@@ -139,8 +148,6 @@ public class DictionaryResource {
     @GetMapping("/_search/dictionaries")
     public List<Dictionary> searchDictionaries(@RequestParam String query) {
         log.debug("REST request to search Dictionaries for query {}", query);
-        return StreamSupport
-            .stream(dictionarySearchRepository.search(queryStringQuery(query)).spliterator(), false)
-            .collect(Collectors.toList());
+        return dictionaryService.search(query);
     }
 }

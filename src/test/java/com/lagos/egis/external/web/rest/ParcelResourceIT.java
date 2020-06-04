@@ -184,7 +184,7 @@ public class ParcelResourceIT {
             .plotNumber(DEFAULT_PLOT_NUMBER)
             .ward(DEFAULT_WARD)
             .town(DEFAULT_TOWN)
-            .district(DEFAULT_DISTRICT)
+         //   .district(DEFAULT_DISTRICT)
             .village(DEFAULT_VILLAGE)
             .upin(DEFAULT_UPIN)
             .comment(DEFAULT_COMMENT);
@@ -233,7 +233,7 @@ public class ParcelResourceIT {
             .plotNumber(UPDATED_PLOT_NUMBER)
             .ward(UPDATED_WARD)
             .town(UPDATED_TOWN)
-            .district(UPDATED_DISTRICT)
+           // .district(UPDATED_DISTRICT)
             .village(UPDATED_VILLAGE)
             .upin(UPDATED_UPIN)
             .comment(UPDATED_COMMENT);
@@ -295,7 +295,7 @@ public class ParcelResourceIT {
         assertThat(testParcel.getPlotNumber()).isEqualTo(DEFAULT_PLOT_NUMBER);
         assertThat(testParcel.getWard()).isEqualTo(DEFAULT_WARD);
         assertThat(testParcel.getTown()).isEqualTo(DEFAULT_TOWN);
-        assertThat(testParcel.getDistrict()).isEqualTo(DEFAULT_DISTRICT);
+       // assertThat(testParcel.getDistrict()).isEqualTo(DEFAULT_DISTRICT);
         assertThat(testParcel.getVillage()).isEqualTo(DEFAULT_VILLAGE);
         assertThat(testParcel.getUpin()).isEqualTo(DEFAULT_UPIN);
         assertThat(testParcel.getComment()).isEqualTo(DEFAULT_COMMENT);
@@ -400,7 +400,7 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.[*].upin").value(hasItem(DEFAULT_UPIN)))
             .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT)));
     }
-    
+
     @Test
     @Transactional
     public void getParcel() throws Exception {
@@ -481,7 +481,7 @@ public class ParcelResourceIT {
             .plotNumber(UPDATED_PLOT_NUMBER)
             .ward(UPDATED_WARD)
             .town(UPDATED_TOWN)
-            .district(UPDATED_DISTRICT)
+         //   .district(UPDATED_DISTRICT)
             .village(UPDATED_VILLAGE)
             .upin(UPDATED_UPIN)
             .comment(UPDATED_COMMENT);

@@ -5,7 +5,6 @@ import * as moment from 'moment';
 import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { PartyService } from 'app/entities/party/party.service';
 import { IParty, Party } from 'app/shared/model/party.model';
-import { YesOrNo } from 'app/shared/model/enumerations/yes-or-no.model';
 
 describe('Service Tests', () => {
   describe('Party Service', () => {
@@ -33,34 +32,34 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
-        currentDate,
-        currentDate,
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        currentDate,
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
         'AAAAAAA',
         currentDate,
         currentDate,
         'AAAAAAA',
-        YesOrNo.Y
+        'AAAAAAA',
+        'AAAAAAA',
+        currentDate,
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        currentDate,
+        currentDate,
+        'AAAAAAA'
       );
     });
 
@@ -120,6 +119,7 @@ describe('Service Tests', () => {
       it('should update a Party', () => {
         const returnedFromService = Object.assign(
           {
+            primaryParty: 'BBBBBB',
             emailAddress: 'BBBBBB',
             phoneNumber: 'BBBBBB',
             payerId: 'BBBBBB',
@@ -152,8 +152,7 @@ describe('Service Tests', () => {
             nextOfKinPhone: 'BBBBBB',
             iDDocumentIssuedDate: currentDate.format(DATE_FORMAT),
             iDDocumentExpirationDate: currentDate.format(DATE_FORMAT),
-            iDDocumentNumber: 'BBBBBB',
-            primaryParty: 'BBBBBB'
+            iDDocumentNumber: 'BBBBBB'
           },
           elemDefault
         );
@@ -180,6 +179,7 @@ describe('Service Tests', () => {
       it('should return a list of Party', () => {
         const returnedFromService = Object.assign(
           {
+            primaryParty: 'BBBBBB',
             emailAddress: 'BBBBBB',
             phoneNumber: 'BBBBBB',
             payerId: 'BBBBBB',
@@ -212,8 +212,7 @@ describe('Service Tests', () => {
             nextOfKinPhone: 'BBBBBB',
             iDDocumentIssuedDate: currentDate.format(DATE_FORMAT),
             iDDocumentExpirationDate: currentDate.format(DATE_FORMAT),
-            iDDocumentNumber: 'BBBBBB',
-            primaryParty: 'BBBBBB'
+            iDDocumentNumber: 'BBBBBB'
           },
           elemDefault
         );

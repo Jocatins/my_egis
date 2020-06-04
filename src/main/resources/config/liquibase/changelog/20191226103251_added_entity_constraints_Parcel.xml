@@ -104,6 +104,12 @@
                                  referencedColumnNames="id"
                                  referencedTableName="dictionary"/>
 
+        <addForeignKeyConstraint baseColumnNames="district_id"
+                                 baseTableName="parcel"
+                                 constraintName="fk_parcel_district_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dictionary"/>
+
         <addForeignKeyConstraint baseColumnNames="allocation_name_id"
                                  baseTableName="parcel"
                                  constraintName="fk_parcel_allocation_name_id"

@@ -67,6 +67,7 @@ export class ParcelUpdatePage {
   locationofLandSelect = element(by.id('field_locationofLand'));
   typeOfAccommodationSelect = element(by.id('field_typeOfAccommodation'));
   tenureTypeSelect = element(by.id('field_tenureType'));
+  districtSelect = element(by.id('field_district'));
   allocationNameSelect = element(by.id('field_allocationName'));
 
   async getPageTitle() {
@@ -575,6 +576,25 @@ export class ParcelUpdatePage {
 
   async getTenureTypeSelectedOption() {
     return await this.tenureTypeSelect.element(by.css('option:checked')).getText();
+  }
+
+  async districtSelectLastOption() {
+    await this.districtSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async districtSelectOption(option) {
+    await this.districtSelect.sendKeys(option);
+  }
+
+  getDistrictSelect(): ElementFinder {
+    return this.districtSelect;
+  }
+
+  async getDistrictSelectedOption() {
+    return await this.districtSelect.element(by.css('option:checked')).getText();
   }
 
   async allocationNameSelectLastOption() {

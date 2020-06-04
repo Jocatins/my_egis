@@ -13,8 +13,6 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.lagos.egis.external.domain.enumeration.YesOrNo;
-
 /**
  * A Party.
  */
@@ -31,6 +29,9 @@ public class Party implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
     private Long id;
+
+    @Column(name = "primary_party")
+    private String primaryParty;
 
     @NotNull
     @Column(name = "email_address", nullable = false)
@@ -132,11 +133,6 @@ public class Party implements Serializable {
 
     @Column(name = "i_d_document_number")
     private String iDDocumentNumber;
-
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "primary_party", nullable = false)
-    private YesOrNo primaryParty;
 
     @ManyToOne(optional = false)
     @NotNull
@@ -260,6 +256,19 @@ public class Party implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPrimaryParty() {
+        return primaryParty;
+    }
+
+    public Party primaryParty(String primaryParty) {
+        this.primaryParty = primaryParty;
+        return this;
+    }
+
+    public void setPrimaryParty(String primaryParty) {
+        this.primaryParty = primaryParty;
     }
 
     public String getEmailAddress() {
@@ -691,19 +700,6 @@ public class Party implements Serializable {
         this.iDDocumentNumber = iDDocumentNumber;
     }
 
-    public YesOrNo getPrimaryParty() {
-        return primaryParty;
-    }
-
-    public Party primaryParty(YesOrNo primaryParty) {
-        this.primaryParty = primaryParty;
-        return this;
-    }
-
-    public void setPrimaryParty(YesOrNo primaryParty) {
-        this.primaryParty = primaryParty;
-    }
-
     public Dictionary getPartyType() {
         return partyType;
     }
@@ -1100,6 +1096,7 @@ public class Party implements Serializable {
     public String toString() {
         return "Party{" +
             "id=" + getId() +
+            ", primaryParty='" + getPrimaryParty() + "'" +
             ", emailAddress='" + getEmailAddress() + "'" +
             ", phoneNumber='" + getPhoneNumber() + "'" +
             ", payerId='" + getPayerId() + "'" +
@@ -1133,7 +1130,6 @@ public class Party implements Serializable {
             ", iDDocumentIssuedDate='" + getiDDocumentIssuedDate() + "'" +
             ", iDDocumentExpirationDate='" + getiDDocumentExpirationDate() + "'" +
             ", iDDocumentNumber='" + getiDDocumentNumber() + "'" +
-            ", primaryParty='" + getPrimaryParty() + "'" +
             "}";
     }
 }

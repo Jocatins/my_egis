@@ -43,6 +43,7 @@ describe('Party e2e test', () => {
 
         await partyComponentsPage.clickOnCreateButton();
         await promise.all([
+            partyUpdatePage.setPrimaryPartyInput('primaryParty'),
             partyUpdatePage.setEmailAddressInput('emailAddress'),
             partyUpdatePage.setPhoneNumberInput('phoneNumber'),
             partyUpdatePage.setPayerIdInput('payerId'),
@@ -76,7 +77,6 @@ describe('Party e2e test', () => {
             partyUpdatePage.setIDDocumentIssuedDateInput('2000-12-31'),
             partyUpdatePage.setIDDocumentExpirationDateInput('2000-12-31'),
             partyUpdatePage.setIDDocumentNumberInput('iDDocumentNumber'),
-            partyUpdatePage.primaryPartySelectLastOption(),
             partyUpdatePage.partyTypeSelectLastOption(),
             partyUpdatePage.partyRoleTypeSelectLastOption(),
             partyUpdatePage.personTypeSelectLastOption(),
@@ -103,6 +103,7 @@ describe('Party e2e test', () => {
             partyUpdatePage.localGovernmentAreaSelectLastOption(),
             partyUpdatePage.countrySelectLastOption(),
         ]);
+        expect(await partyUpdatePage.getPrimaryPartyInput()).to.eq('primaryParty', 'Expected PrimaryParty value to be equals to primaryParty');
         expect(await partyUpdatePage.getEmailAddressInput()).to.eq('emailAddress', 'Expected EmailAddress value to be equals to emailAddress');
         expect(await partyUpdatePage.getPhoneNumberInput()).to.eq('phoneNumber', 'Expected PhoneNumber value to be equals to phoneNumber');
         expect(await partyUpdatePage.getPayerIdInput()).to.eq('payerId', 'Expected PayerId value to be equals to payerId');

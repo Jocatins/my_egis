@@ -121,8 +121,10 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.district" for="field_district">District</label>
-                    <input type="text" class="form-control" name="district" id="field_district"
-                           formControlName="district"/>
+                    <select class="form-control" id="field_district" name="district" formControlName="district">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dictionaryOption.id === editForm.get('district').value?.id ? editForm.get('district').value : dictionaryOption" *ngFor="let dictionaryOption of districts; trackBy: trackDictionaryById">{{dictionaryOption.label}}</option>
+                    </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label class="form-control-label" jhiTranslate="egisexternalApp.parcel.village" for="field_village">Village</label>

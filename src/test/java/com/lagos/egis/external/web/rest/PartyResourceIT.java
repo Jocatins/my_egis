@@ -34,12 +34,14 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.lagos.egis.external.domain.enumeration.YesOrNo;
 /**
  * Integration tests for the {@link PartyResource} REST controller.
  */
 @SpringBootTest(classes = EgisexternalApp.class)
 public class PartyResourceIT {
+
+    private static final String DEFAULT_PRIMARY_PARTY = "AAAAAAAAAA";
+    private static final String UPDATED_PRIMARY_PARTY = "BBBBBBBBBB";
 
     private static final String DEFAULT_EMAIL_ADDRESS = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL_ADDRESS = "BBBBBBBBBB";
@@ -140,9 +142,6 @@ public class PartyResourceIT {
     private static final String DEFAULT_I_D_DOCUMENT_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_I_D_DOCUMENT_NUMBER = "BBBBBBBBBB";
 
-    private static final YesOrNo DEFAULT_PRIMARY_PARTY = YesOrNo.Y;
-    private static final YesOrNo UPDATED_PRIMARY_PARTY = YesOrNo.N;
-
     @Autowired
     private PartyRepository partyRepository;
 
@@ -193,6 +192,7 @@ public class PartyResourceIT {
      */
     public static Party createEntity(EntityManager em) {
         Party party = new Party()
+            .primaryParty(DEFAULT_PRIMARY_PARTY)
             .emailAddress(DEFAULT_EMAIL_ADDRESS)
             .phoneNumber(DEFAULT_PHONE_NUMBER)
             .payerId(DEFAULT_PAYER_ID)
@@ -225,8 +225,7 @@ public class PartyResourceIT {
             .nextOfKinPhone(DEFAULT_NEXT_OF_KIN_PHONE)
             .iDDocumentIssuedDate(DEFAULT_I_D_DOCUMENT_ISSUED_DATE)
             .iDDocumentExpirationDate(DEFAULT_I_D_DOCUMENT_EXPIRATION_DATE)
-            .iDDocumentNumber(DEFAULT_I_D_DOCUMENT_NUMBER)
-            .primaryParty(DEFAULT_PRIMARY_PARTY);
+            .iDDocumentNumber(DEFAULT_I_D_DOCUMENT_NUMBER);
         // Add required entity
         Dictionary dictionary;
         if (TestUtil.findAll(em, Dictionary.class).isEmpty()) {
@@ -255,6 +254,7 @@ public class PartyResourceIT {
      */
     public static Party createUpdatedEntity(EntityManager em) {
         Party party = new Party()
+            .primaryParty(UPDATED_PRIMARY_PARTY)
             .emailAddress(UPDATED_EMAIL_ADDRESS)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .payerId(UPDATED_PAYER_ID)
@@ -287,8 +287,7 @@ public class PartyResourceIT {
             .nextOfKinPhone(UPDATED_NEXT_OF_KIN_PHONE)
             .iDDocumentIssuedDate(UPDATED_I_D_DOCUMENT_ISSUED_DATE)
             .iDDocumentExpirationDate(UPDATED_I_D_DOCUMENT_EXPIRATION_DATE)
-            .iDDocumentNumber(UPDATED_I_D_DOCUMENT_NUMBER)
-            .primaryParty(UPDATED_PRIMARY_PARTY);
+            .iDDocumentNumber(UPDATED_I_D_DOCUMENT_NUMBER);
         // Add required entity
         Dictionary dictionary;
         if (TestUtil.findAll(em, Dictionary.class).isEmpty()) {
@@ -330,6 +329,7 @@ public class PartyResourceIT {
         List<Party> partyList = partyRepository.findAll();
         assertThat(partyList).hasSize(databaseSizeBeforeCreate + 1);
         Party testParty = partyList.get(partyList.size() - 1);
+        assertThat(testParty.getPrimaryParty()).isEqualTo(DEFAULT_PRIMARY_PARTY);
         assertThat(testParty.getEmailAddress()).isEqualTo(DEFAULT_EMAIL_ADDRESS);
         assertThat(testParty.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
         assertThat(testParty.getPayerId()).isEqualTo(DEFAULT_PAYER_ID);
@@ -363,7 +363,6 @@ public class PartyResourceIT {
         assertThat(testParty.getiDDocumentIssuedDate()).isEqualTo(DEFAULT_I_D_DOCUMENT_ISSUED_DATE);
         assertThat(testParty.getiDDocumentExpirationDate()).isEqualTo(DEFAULT_I_D_DOCUMENT_EXPIRATION_DATE);
         assertThat(testParty.getiDDocumentNumber()).isEqualTo(DEFAULT_I_D_DOCUMENT_NUMBER);
-        assertThat(testParty.getPrimaryParty()).isEqualTo(DEFAULT_PRIMARY_PARTY);
 
         // Validate the Party in Elasticsearch
         verify(mockPartySearchRepository, times(1)).save(testParty);
@@ -430,24 +429,6 @@ public class PartyResourceIT {
 
     @Test
     @Transactional
-    public void checkPrimaryPartyIsRequired() throws Exception {
-        int databaseSizeBeforeTest = partyRepository.findAll().size();
-        // set the field null
-        party.setPrimaryParty(null);
-
-        // Create the Party, which fails.
-
-        restPartyMockMvc.perform(post("/api/parties")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(party)))
-            .andExpect(status().isBadRequest());
-
-        List<Party> partyList = partyRepository.findAll();
-        assertThat(partyList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllParties() throws Exception {
         // Initialize the database
         partyRepository.saveAndFlush(party);
@@ -457,6 +438,7 @@ public class PartyResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(party.getId().intValue())))
+            .andExpect(jsonPath("$.[*].primaryParty").value(hasItem(DEFAULT_PRIMARY_PARTY)))
             .andExpect(jsonPath("$.[*].emailAddress").value(hasItem(DEFAULT_EMAIL_ADDRESS)))
             .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER)))
             .andExpect(jsonPath("$.[*].payerId").value(hasItem(DEFAULT_PAYER_ID)))
@@ -489,8 +471,7 @@ public class PartyResourceIT {
             .andExpect(jsonPath("$.[*].nextOfKinPhone").value(hasItem(DEFAULT_NEXT_OF_KIN_PHONE)))
             .andExpect(jsonPath("$.[*].iDDocumentIssuedDate").value(hasItem(DEFAULT_I_D_DOCUMENT_ISSUED_DATE.toString())))
             .andExpect(jsonPath("$.[*].iDDocumentExpirationDate").value(hasItem(DEFAULT_I_D_DOCUMENT_EXPIRATION_DATE.toString())))
-            .andExpect(jsonPath("$.[*].iDDocumentNumber").value(hasItem(DEFAULT_I_D_DOCUMENT_NUMBER)))
-            .andExpect(jsonPath("$.[*].primaryParty").value(hasItem(DEFAULT_PRIMARY_PARTY.toString())));
+            .andExpect(jsonPath("$.[*].iDDocumentNumber").value(hasItem(DEFAULT_I_D_DOCUMENT_NUMBER)));
     }
     
     @Test
@@ -504,6 +485,7 @@ public class PartyResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(party.getId().intValue()))
+            .andExpect(jsonPath("$.primaryParty").value(DEFAULT_PRIMARY_PARTY))
             .andExpect(jsonPath("$.emailAddress").value(DEFAULT_EMAIL_ADDRESS))
             .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER))
             .andExpect(jsonPath("$.payerId").value(DEFAULT_PAYER_ID))
@@ -536,8 +518,7 @@ public class PartyResourceIT {
             .andExpect(jsonPath("$.nextOfKinPhone").value(DEFAULT_NEXT_OF_KIN_PHONE))
             .andExpect(jsonPath("$.iDDocumentIssuedDate").value(DEFAULT_I_D_DOCUMENT_ISSUED_DATE.toString()))
             .andExpect(jsonPath("$.iDDocumentExpirationDate").value(DEFAULT_I_D_DOCUMENT_EXPIRATION_DATE.toString()))
-            .andExpect(jsonPath("$.iDDocumentNumber").value(DEFAULT_I_D_DOCUMENT_NUMBER))
-            .andExpect(jsonPath("$.primaryParty").value(DEFAULT_PRIMARY_PARTY.toString()));
+            .andExpect(jsonPath("$.iDDocumentNumber").value(DEFAULT_I_D_DOCUMENT_NUMBER));
     }
 
     @Test
@@ -561,6 +542,7 @@ public class PartyResourceIT {
         // Disconnect from session so that the updates on updatedParty are not directly saved in db
         em.detach(updatedParty);
         updatedParty
+            .primaryParty(UPDATED_PRIMARY_PARTY)
             .emailAddress(UPDATED_EMAIL_ADDRESS)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .payerId(UPDATED_PAYER_ID)
@@ -593,8 +575,7 @@ public class PartyResourceIT {
             .nextOfKinPhone(UPDATED_NEXT_OF_KIN_PHONE)
             .iDDocumentIssuedDate(UPDATED_I_D_DOCUMENT_ISSUED_DATE)
             .iDDocumentExpirationDate(UPDATED_I_D_DOCUMENT_EXPIRATION_DATE)
-            .iDDocumentNumber(UPDATED_I_D_DOCUMENT_NUMBER)
-            .primaryParty(UPDATED_PRIMARY_PARTY);
+            .iDDocumentNumber(UPDATED_I_D_DOCUMENT_NUMBER);
 
         restPartyMockMvc.perform(put("/api/parties")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -605,6 +586,7 @@ public class PartyResourceIT {
         List<Party> partyList = partyRepository.findAll();
         assertThat(partyList).hasSize(databaseSizeBeforeUpdate);
         Party testParty = partyList.get(partyList.size() - 1);
+        assertThat(testParty.getPrimaryParty()).isEqualTo(UPDATED_PRIMARY_PARTY);
         assertThat(testParty.getEmailAddress()).isEqualTo(UPDATED_EMAIL_ADDRESS);
         assertThat(testParty.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
         assertThat(testParty.getPayerId()).isEqualTo(UPDATED_PAYER_ID);
@@ -638,7 +620,6 @@ public class PartyResourceIT {
         assertThat(testParty.getiDDocumentIssuedDate()).isEqualTo(UPDATED_I_D_DOCUMENT_ISSUED_DATE);
         assertThat(testParty.getiDDocumentExpirationDate()).isEqualTo(UPDATED_I_D_DOCUMENT_EXPIRATION_DATE);
         assertThat(testParty.getiDDocumentNumber()).isEqualTo(UPDATED_I_D_DOCUMENT_NUMBER);
-        assertThat(testParty.getPrimaryParty()).isEqualTo(UPDATED_PRIMARY_PARTY);
 
         // Validate the Party in Elasticsearch
         verify(mockPartySearchRepository, times(1)).save(testParty);
@@ -698,6 +679,7 @@ public class PartyResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(party.getId().intValue())))
+            .andExpect(jsonPath("$.[*].primaryParty").value(hasItem(DEFAULT_PRIMARY_PARTY)))
             .andExpect(jsonPath("$.[*].emailAddress").value(hasItem(DEFAULT_EMAIL_ADDRESS)))
             .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER)))
             .andExpect(jsonPath("$.[*].payerId").value(hasItem(DEFAULT_PAYER_ID)))
@@ -730,7 +712,6 @@ public class PartyResourceIT {
             .andExpect(jsonPath("$.[*].nextOfKinPhone").value(hasItem(DEFAULT_NEXT_OF_KIN_PHONE)))
             .andExpect(jsonPath("$.[*].iDDocumentIssuedDate").value(hasItem(DEFAULT_I_D_DOCUMENT_ISSUED_DATE.toString())))
             .andExpect(jsonPath("$.[*].iDDocumentExpirationDate").value(hasItem(DEFAULT_I_D_DOCUMENT_EXPIRATION_DATE.toString())))
-            .andExpect(jsonPath("$.[*].iDDocumentNumber").value(hasItem(DEFAULT_I_D_DOCUMENT_NUMBER)))
-            .andExpect(jsonPath("$.[*].primaryParty").value(hasItem(DEFAULT_PRIMARY_PARTY.toString())));
+            .andExpect(jsonPath("$.[*].iDDocumentNumber").value(hasItem(DEFAULT_I_D_DOCUMENT_NUMBER)));
     }
 }

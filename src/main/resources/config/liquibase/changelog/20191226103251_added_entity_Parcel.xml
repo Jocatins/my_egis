@@ -138,6 +138,9 @@
             <column name="tenure_type_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="district_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <column name="allocation_name_id" type="bigint">
                 <constraints nullable="true" />
             </column>
