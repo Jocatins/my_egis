@@ -1,0 +1,49 @@
+{
+    "name": "YearSubscription",
+    "fields": [
+        {
+            "fieldName": "year",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "requestDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "processedDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "surveyor",
+            "otherEntityRelationshipName": "yearSubscription",
+            "relationshipName": "surveyor",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "subscriptionDocs",
+            "otherEntityRelationshipName": "yearSubscription",
+            "relationshipName": "subscriptionDocs",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200608210913",
+    "entityTableName": "year_subscription",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

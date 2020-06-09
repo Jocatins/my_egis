@@ -22,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Collections;
 import java.util.List;
 
@@ -53,6 +55,12 @@ public class SurveyorResourceIT {
 
     private static final String DEFAULT_STATUS = "AAAAAAAAAA";
     private static final String UPDATED_STATUS = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_REQUEST_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_REQUEST_DATE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_PROCESSED_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_PROCESSED_DATE = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private SurveyorRepository surveyorRepository;
@@ -108,7 +116,9 @@ public class SurveyorResourceIT {
             .surconNumber(DEFAULT_SURCON_NUMBER)
             .registrationNumber(DEFAULT_REGISTRATION_NUMBER)
             .phone(DEFAULT_PHONE)
-            .status(DEFAULT_STATUS);
+            .status(DEFAULT_STATUS)
+            .requestDate(DEFAULT_REQUEST_DATE)
+            .processedDate(DEFAULT_PROCESSED_DATE);
         return surveyor;
     }
     /**
@@ -123,7 +133,9 @@ public class SurveyorResourceIT {
             .surconNumber(UPDATED_SURCON_NUMBER)
             .registrationNumber(UPDATED_REGISTRATION_NUMBER)
             .phone(UPDATED_PHONE)
-            .status(UPDATED_STATUS);
+            .status(UPDATED_STATUS)
+            .requestDate(UPDATED_REQUEST_DATE)
+            .processedDate(UPDATED_PROCESSED_DATE);
         return surveyor;
     }
 
@@ -152,6 +164,8 @@ public class SurveyorResourceIT {
         assertThat(testSurveyor.getRegistrationNumber()).isEqualTo(DEFAULT_REGISTRATION_NUMBER);
         assertThat(testSurveyor.getPhone()).isEqualTo(DEFAULT_PHONE);
         assertThat(testSurveyor.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testSurveyor.getRequestDate()).isEqualTo(DEFAULT_REQUEST_DATE);
+        assertThat(testSurveyor.getProcessedDate()).isEqualTo(DEFAULT_PROCESSED_DATE);
 
         // Validate the Surveyor in Elasticsearch
         verify(mockSurveyorSearchRepository, times(1)).save(testSurveyor);
@@ -195,7 +209,9 @@ public class SurveyorResourceIT {
             .andExpect(jsonPath("$.[*].surconNumber").value(hasItem(DEFAULT_SURCON_NUMBER)))
             .andExpect(jsonPath("$.[*].registrationNumber").value(hasItem(DEFAULT_REGISTRATION_NUMBER)))
             .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE)))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)));
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
+            .andExpect(jsonPath("$.[*].requestDate").value(hasItem(DEFAULT_REQUEST_DATE.toString())))
+            .andExpect(jsonPath("$.[*].processedDate").value(hasItem(DEFAULT_PROCESSED_DATE.toString())));
     }
     
     @Test
@@ -213,7 +229,9 @@ public class SurveyorResourceIT {
             .andExpect(jsonPath("$.surconNumber").value(DEFAULT_SURCON_NUMBER))
             .andExpect(jsonPath("$.registrationNumber").value(DEFAULT_REGISTRATION_NUMBER))
             .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS));
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
+            .andExpect(jsonPath("$.requestDate").value(DEFAULT_REQUEST_DATE.toString()))
+            .andExpect(jsonPath("$.processedDate").value(DEFAULT_PROCESSED_DATE.toString()));
     }
 
     @Test
@@ -241,7 +259,9 @@ public class SurveyorResourceIT {
             .surconNumber(UPDATED_SURCON_NUMBER)
             .registrationNumber(UPDATED_REGISTRATION_NUMBER)
             .phone(UPDATED_PHONE)
-            .status(UPDATED_STATUS);
+            .status(UPDATED_STATUS)
+            .requestDate(UPDATED_REQUEST_DATE)
+            .processedDate(UPDATED_PROCESSED_DATE);
 
         restSurveyorMockMvc.perform(put("/api/surveyors")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -257,6 +277,8 @@ public class SurveyorResourceIT {
         assertThat(testSurveyor.getRegistrationNumber()).isEqualTo(UPDATED_REGISTRATION_NUMBER);
         assertThat(testSurveyor.getPhone()).isEqualTo(UPDATED_PHONE);
         assertThat(testSurveyor.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testSurveyor.getRequestDate()).isEqualTo(UPDATED_REQUEST_DATE);
+        assertThat(testSurveyor.getProcessedDate()).isEqualTo(UPDATED_PROCESSED_DATE);
 
         // Validate the Surveyor in Elasticsearch
         verify(mockSurveyorSearchRepository, times(1)).save(testSurveyor);
@@ -320,6 +342,8 @@ public class SurveyorResourceIT {
             .andExpect(jsonPath("$.[*].surconNumber").value(hasItem(DEFAULT_SURCON_NUMBER)))
             .andExpect(jsonPath("$.[*].registrationNumber").value(hasItem(DEFAULT_REGISTRATION_NUMBER)))
             .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE)))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)));
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
+            .andExpect(jsonPath("$.[*].requestDate").value(hasItem(DEFAULT_REQUEST_DATE.toString())))
+            .andExpect(jsonPath("$.[*].processedDate").value(hasItem(DEFAULT_PROCESSED_DATE.toString())));
     }
 }

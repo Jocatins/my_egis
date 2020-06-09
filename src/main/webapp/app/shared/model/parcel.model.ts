@@ -9,7 +9,6 @@ export interface IParcel {
   propertyDescription?: string;
   area?: number;
   description?: string;
-  propertyArea?: number;
   planNumber?: string;
   premiumValue?: number;
   coordinateN?: number;
@@ -24,6 +23,7 @@ export interface IParcel {
   plotNumber?: string;
   ward?: string;
   town?: string;
+  propertyArea?: number;
   village?: string;
   upin?: string;
   comment?: string;
@@ -57,7 +57,6 @@ export class Parcel implements IParcel {
     public propertyDescription?: string,
     public area?: number,
     public description?: string,
-    public propertyArea?: number,
     public planNumber?: string,
     public premiumValue?: number,
     public coordinateN?: number,
@@ -72,6 +71,7 @@ export class Parcel implements IParcel {
     public plotNumber?: string,
     public ward?: string,
     public town?: string,
+    public propertyArea?: number,
     public village?: string,
     public upin?: string,
     public comment?: string,

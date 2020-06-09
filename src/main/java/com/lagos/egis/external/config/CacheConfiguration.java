@@ -63,6 +63,14 @@ public class CacheConfiguration {
             createCache(cm, com.lagos.egis.external.domain.SurveyTransaction.class.getName());
             createCache(cm, com.lagos.egis.external.domain.Dictionary.class.getName());
             createCache(cm, com.lagos.egis.external.domain.Metadata.class.getName());
+            createCache(cm, com.lagos.egis.external.domain.Surveyor.class.getName() + ".yearSubscriptions");
+            createCache(cm, com.lagos.egis.external.domain.EscalateContact.class.getName());
+            createCache(cm, com.lagos.egis.external.domain.Escalation.class.getName());
+            createCache(cm, com.lagos.egis.external.domain.YearSubscription.class.getName());
+            createCache(cm, com.lagos.egis.external.domain.YearSubscription.class.getName() + ".surveyors");
+            createCache(cm, com.lagos.egis.external.domain.YearSubscription.class.getName() + ".subscriptionDocs");
+            createCache(cm, com.lagos.egis.external.domain.SubscriptionDocs.class.getName());
+            createCache(cm, com.lagos.egis.external.domain.SubscriptionDocs.class.getName() + ".yearSubscriptions");
             // jhipster-needle-ehcache-add-entry
         };
     }

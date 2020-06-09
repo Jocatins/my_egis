@@ -7,7 +7,7 @@ export interface ISupportingDocument {
   documentNumber?: string;
   ownershipArea?: string;
   pageCount?: number;
-  status?: string;
+  status?: number;
   provided?: string;
   type?: number;
   name?: string;
@@ -20,7 +20,6 @@ export interface ISupportingDocument {
   documentType?: IDictionary;
   issuedBy?: IDictionary;
   transactions?: ITransaction[];
-  description?: string;
 }
 
 export class SupportingDocument implements ISupportingDocument {
@@ -29,7 +28,7 @@ export class SupportingDocument implements ISupportingDocument {
     public documentNumber?: string,
     public ownershipArea?: string,
     public pageCount?: number,
-    public status?: string,
+    public status?: number,
     public provided?: string,
     public type?: number,
     public name?: string,
@@ -41,7 +40,6 @@ export class SupportingDocument implements ISupportingDocument {
     public documentSubType?: IDictionary,
     public documentType?: IDictionary,
     public issuedBy?: IDictionary,
-    public transactions?: ITransaction[],
-    public description?: string
+    public transactions?: ITransaction[]
   ) {}
 }

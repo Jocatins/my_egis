@@ -49,7 +49,6 @@ describe('Parcel e2e test', () => {
             parcelUpdatePage.setPropertyDescriptionInput('propertyDescription'),
             parcelUpdatePage.setAreaInput('5'),
             parcelUpdatePage.setDescriptionInput('description'),
-            parcelUpdatePage.setPropertyAreaInput('5'),
             parcelUpdatePage.setPlanNumberInput('planNumber'),
             parcelUpdatePage.setPremiumValueInput('5'),
             parcelUpdatePage.setCoordinateNInput('5'),
@@ -64,7 +63,7 @@ describe('Parcel e2e test', () => {
             parcelUpdatePage.setPlotNumberInput('plotNumber'),
             parcelUpdatePage.setWardInput('ward'),
             parcelUpdatePage.setTownInput('town'),
-            parcelUpdatePage.setDistrictInput('district'),
+            parcelUpdatePage.setPropertyAreaInput('5'),
             parcelUpdatePage.setVillageInput('village'),
             parcelUpdatePage.setUpinInput('upin'),
             parcelUpdatePage.setCommentInput('comment'),
@@ -93,7 +92,6 @@ describe('Parcel e2e test', () => {
         expect(await parcelUpdatePage.getPropertyDescriptionInput()).to.eq('propertyDescription', 'Expected PropertyDescription value to be equals to propertyDescription');
         expect(await parcelUpdatePage.getAreaInput()).to.eq('5', 'Expected area value to be equals to 5');
         expect(await parcelUpdatePage.getDescriptionInput()).to.eq('description', 'Expected Description value to be equals to description');
-        expect(await parcelUpdatePage.getPropertyAreaInput()).to.eq('5', 'Expected propertyArea value to be equals to 5');
         expect(await parcelUpdatePage.getPlanNumberInput()).to.eq('planNumber', 'Expected PlanNumber value to be equals to planNumber');
         expect(await parcelUpdatePage.getPremiumValueInput()).to.eq('5', 'Expected premiumValue value to be equals to 5');
         expect(await parcelUpdatePage.getCoordinateNInput()).to.eq('5', 'Expected coordinateN value to be equals to 5');
@@ -108,7 +106,7 @@ describe('Parcel e2e test', () => {
         expect(await parcelUpdatePage.getPlotNumberInput()).to.eq('plotNumber', 'Expected PlotNumber value to be equals to plotNumber');
         expect(await parcelUpdatePage.getWardInput()).to.eq('ward', 'Expected Ward value to be equals to ward');
         expect(await parcelUpdatePage.getTownInput()).to.eq('town', 'Expected Town value to be equals to town');
-        expect(await parcelUpdatePage.getDistrictInput()).to.eq('district', 'Expected District value to be equals to district');
+        expect(await parcelUpdatePage.getPropertyAreaInput()).to.eq('5', 'Expected propertyArea value to be equals to 5');
         expect(await parcelUpdatePage.getVillageInput()).to.eq('village', 'Expected Village value to be equals to village');
         expect(await parcelUpdatePage.getUpinInput()).to.eq('upin', 'Expected Upin value to be equals to upin');
         expect(await parcelUpdatePage.getCommentInput()).to.eq('comment', 'Expected Comment value to be equals to comment');

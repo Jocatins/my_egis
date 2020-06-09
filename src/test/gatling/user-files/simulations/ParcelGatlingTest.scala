@@ -78,7 +78,6 @@ class ParcelGatlingTest extends Simulation {
                 , "propertyDescription":"SAMPLE_TEXT"
                 , "area":null
                 , "description":"SAMPLE_TEXT"
-                , "propertyArea":null
                 , "planNumber":"SAMPLE_TEXT"
                 , "premiumValue":null
                 , "coordinateN":"0"
@@ -93,7 +92,7 @@ class ParcelGatlingTest extends Simulation {
                 , "plotNumber":"SAMPLE_TEXT"
                 , "ward":"SAMPLE_TEXT"
                 , "town":"SAMPLE_TEXT"
-                , "district":"SAMPLE_TEXT"
+                , "propertyArea":null
                 , "village":"SAMPLE_TEXT"
                 , "upin":"SAMPLE_TEXT"
                 , "comment":"SAMPLE_TEXT"

@@ -97,9 +97,6 @@ public class PartyResourceIT {
     private static final String DEFAULT_BLOCK_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_BLOCK_NUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PLOT_NUMBER = "AAAAAAAAAA";
-    private static final String UPDATED_PLOT_NUMBER = "BBBBBBBBBB";
-
     private static final String DEFAULT_STREET_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_STREET_NUMBER = "BBBBBBBBBB";
 
@@ -129,6 +126,9 @@ public class PartyResourceIT {
 
     private static final String DEFAULT_WARD = "AAAAAAAAAA";
     private static final String UPDATED_WARD = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PLOT_NUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_PLOT_NUMBER = "BBBBBBBBBB";
 
     private static final String DEFAULT_NEXT_OF_KIN_PHONE = "AAAAAAAAAA";
     private static final String UPDATED_NEXT_OF_KIN_PHONE = "BBBBBBBBBB";
@@ -211,7 +211,6 @@ public class PartyResourceIT {
             .occupation(DEFAULT_OCCUPATION)
             .unitNumber(DEFAULT_UNIT_NUMBER)
             .blockNumber(DEFAULT_BLOCK_NUMBER)
-            .plotNumber(DEFAULT_PLOT_NUMBER)
             .streetNumber(DEFAULT_STREET_NUMBER)
             .streetName(DEFAULT_STREET_NAME)
             .buildingName(DEFAULT_BUILDING_NAME)
@@ -222,6 +221,7 @@ public class PartyResourceIT {
             .longAddress(DEFAULT_LONG_ADDRESS)
             .town(DEFAULT_TOWN)
             .ward(DEFAULT_WARD)
+            .plotNumber(DEFAULT_PLOT_NUMBER)
             .nextOfKinPhone(DEFAULT_NEXT_OF_KIN_PHONE)
             .iDDocumentIssuedDate(DEFAULT_I_D_DOCUMENT_ISSUED_DATE)
             .iDDocumentExpirationDate(DEFAULT_I_D_DOCUMENT_EXPIRATION_DATE)
@@ -273,7 +273,6 @@ public class PartyResourceIT {
             .occupation(UPDATED_OCCUPATION)
             .unitNumber(UPDATED_UNIT_NUMBER)
             .blockNumber(UPDATED_BLOCK_NUMBER)
-            .plotNumber(UPDATED_PLOT_NUMBER)
             .streetNumber(UPDATED_STREET_NUMBER)
             .streetName(UPDATED_STREET_NAME)
             .buildingName(UPDATED_BUILDING_NAME)
@@ -284,6 +283,7 @@ public class PartyResourceIT {
             .longAddress(UPDATED_LONG_ADDRESS)
             .town(UPDATED_TOWN)
             .ward(UPDATED_WARD)
+            .plotNumber(UPDATED_PLOT_NUMBER)
             .nextOfKinPhone(UPDATED_NEXT_OF_KIN_PHONE)
             .iDDocumentIssuedDate(UPDATED_I_D_DOCUMENT_ISSUED_DATE)
             .iDDocumentExpirationDate(UPDATED_I_D_DOCUMENT_EXPIRATION_DATE)
@@ -348,7 +348,6 @@ public class PartyResourceIT {
         assertThat(testParty.getOccupation()).isEqualTo(DEFAULT_OCCUPATION);
         assertThat(testParty.getUnitNumber()).isEqualTo(DEFAULT_UNIT_NUMBER);
         assertThat(testParty.getBlockNumber()).isEqualTo(DEFAULT_BLOCK_NUMBER);
-        assertThat(testParty.getPlotNumber()).isEqualTo(DEFAULT_PLOT_NUMBER);
         assertThat(testParty.getStreetNumber()).isEqualTo(DEFAULT_STREET_NUMBER);
         assertThat(testParty.getStreetName()).isEqualTo(DEFAULT_STREET_NAME);
         assertThat(testParty.getBuildingName()).isEqualTo(DEFAULT_BUILDING_NAME);
@@ -359,6 +358,7 @@ public class PartyResourceIT {
         assertThat(testParty.getLongAddress()).isEqualTo(DEFAULT_LONG_ADDRESS);
         assertThat(testParty.getTown()).isEqualTo(DEFAULT_TOWN);
         assertThat(testParty.getWard()).isEqualTo(DEFAULT_WARD);
+        assertThat(testParty.getPlotNumber()).isEqualTo(DEFAULT_PLOT_NUMBER);
         assertThat(testParty.getNextOfKinPhone()).isEqualTo(DEFAULT_NEXT_OF_KIN_PHONE);
         assertThat(testParty.getiDDocumentIssuedDate()).isEqualTo(DEFAULT_I_D_DOCUMENT_ISSUED_DATE);
         assertThat(testParty.getiDDocumentExpirationDate()).isEqualTo(DEFAULT_I_D_DOCUMENT_EXPIRATION_DATE);
@@ -457,7 +457,6 @@ public class PartyResourceIT {
             .andExpect(jsonPath("$.[*].occupation").value(hasItem(DEFAULT_OCCUPATION)))
             .andExpect(jsonPath("$.[*].unitNumber").value(hasItem(DEFAULT_UNIT_NUMBER)))
             .andExpect(jsonPath("$.[*].blockNumber").value(hasItem(DEFAULT_BLOCK_NUMBER)))
-            .andExpect(jsonPath("$.[*].plotNumber").value(hasItem(DEFAULT_PLOT_NUMBER)))
             .andExpect(jsonPath("$.[*].streetNumber").value(hasItem(DEFAULT_STREET_NUMBER)))
             .andExpect(jsonPath("$.[*].streetName").value(hasItem(DEFAULT_STREET_NAME)))
             .andExpect(jsonPath("$.[*].buildingName").value(hasItem(DEFAULT_BUILDING_NAME)))
@@ -468,6 +467,7 @@ public class PartyResourceIT {
             .andExpect(jsonPath("$.[*].longAddress").value(hasItem(DEFAULT_LONG_ADDRESS)))
             .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN)))
             .andExpect(jsonPath("$.[*].ward").value(hasItem(DEFAULT_WARD)))
+            .andExpect(jsonPath("$.[*].plotNumber").value(hasItem(DEFAULT_PLOT_NUMBER)))
             .andExpect(jsonPath("$.[*].nextOfKinPhone").value(hasItem(DEFAULT_NEXT_OF_KIN_PHONE)))
             .andExpect(jsonPath("$.[*].iDDocumentIssuedDate").value(hasItem(DEFAULT_I_D_DOCUMENT_ISSUED_DATE.toString())))
             .andExpect(jsonPath("$.[*].iDDocumentExpirationDate").value(hasItem(DEFAULT_I_D_DOCUMENT_EXPIRATION_DATE.toString())))
@@ -504,7 +504,6 @@ public class PartyResourceIT {
             .andExpect(jsonPath("$.occupation").value(DEFAULT_OCCUPATION))
             .andExpect(jsonPath("$.unitNumber").value(DEFAULT_UNIT_NUMBER))
             .andExpect(jsonPath("$.blockNumber").value(DEFAULT_BLOCK_NUMBER))
-            .andExpect(jsonPath("$.plotNumber").value(DEFAULT_PLOT_NUMBER))
             .andExpect(jsonPath("$.streetNumber").value(DEFAULT_STREET_NUMBER))
             .andExpect(jsonPath("$.streetName").value(DEFAULT_STREET_NAME))
             .andExpect(jsonPath("$.buildingName").value(DEFAULT_BUILDING_NAME))
@@ -515,6 +514,7 @@ public class PartyResourceIT {
             .andExpect(jsonPath("$.longAddress").value(DEFAULT_LONG_ADDRESS))
             .andExpect(jsonPath("$.town").value(DEFAULT_TOWN))
             .andExpect(jsonPath("$.ward").value(DEFAULT_WARD))
+            .andExpect(jsonPath("$.plotNumber").value(DEFAULT_PLOT_NUMBER))
             .andExpect(jsonPath("$.nextOfKinPhone").value(DEFAULT_NEXT_OF_KIN_PHONE))
             .andExpect(jsonPath("$.iDDocumentIssuedDate").value(DEFAULT_I_D_DOCUMENT_ISSUED_DATE.toString()))
             .andExpect(jsonPath("$.iDDocumentExpirationDate").value(DEFAULT_I_D_DOCUMENT_EXPIRATION_DATE.toString()))
@@ -561,7 +561,6 @@ public class PartyResourceIT {
             .occupation(UPDATED_OCCUPATION)
             .unitNumber(UPDATED_UNIT_NUMBER)
             .blockNumber(UPDATED_BLOCK_NUMBER)
-            .plotNumber(UPDATED_PLOT_NUMBER)
             .streetNumber(UPDATED_STREET_NUMBER)
             .streetName(UPDATED_STREET_NAME)
             .buildingName(UPDATED_BUILDING_NAME)
@@ -572,6 +571,7 @@ public class PartyResourceIT {
             .longAddress(UPDATED_LONG_ADDRESS)
             .town(UPDATED_TOWN)
             .ward(UPDATED_WARD)
+            .plotNumber(UPDATED_PLOT_NUMBER)
             .nextOfKinPhone(UPDATED_NEXT_OF_KIN_PHONE)
             .iDDocumentIssuedDate(UPDATED_I_D_DOCUMENT_ISSUED_DATE)
             .iDDocumentExpirationDate(UPDATED_I_D_DOCUMENT_EXPIRATION_DATE)
@@ -605,7 +605,6 @@ public class PartyResourceIT {
         assertThat(testParty.getOccupation()).isEqualTo(UPDATED_OCCUPATION);
         assertThat(testParty.getUnitNumber()).isEqualTo(UPDATED_UNIT_NUMBER);
         assertThat(testParty.getBlockNumber()).isEqualTo(UPDATED_BLOCK_NUMBER);
-        assertThat(testParty.getPlotNumber()).isEqualTo(UPDATED_PLOT_NUMBER);
         assertThat(testParty.getStreetNumber()).isEqualTo(UPDATED_STREET_NUMBER);
         assertThat(testParty.getStreetName()).isEqualTo(UPDATED_STREET_NAME);
         assertThat(testParty.getBuildingName()).isEqualTo(UPDATED_BUILDING_NAME);
@@ -616,6 +615,7 @@ public class PartyResourceIT {
         assertThat(testParty.getLongAddress()).isEqualTo(UPDATED_LONG_ADDRESS);
         assertThat(testParty.getTown()).isEqualTo(UPDATED_TOWN);
         assertThat(testParty.getWard()).isEqualTo(UPDATED_WARD);
+        assertThat(testParty.getPlotNumber()).isEqualTo(UPDATED_PLOT_NUMBER);
         assertThat(testParty.getNextOfKinPhone()).isEqualTo(UPDATED_NEXT_OF_KIN_PHONE);
         assertThat(testParty.getiDDocumentIssuedDate()).isEqualTo(UPDATED_I_D_DOCUMENT_ISSUED_DATE);
         assertThat(testParty.getiDDocumentExpirationDate()).isEqualTo(UPDATED_I_D_DOCUMENT_EXPIRATION_DATE);
@@ -698,7 +698,6 @@ public class PartyResourceIT {
             .andExpect(jsonPath("$.[*].occupation").value(hasItem(DEFAULT_OCCUPATION)))
             .andExpect(jsonPath("$.[*].unitNumber").value(hasItem(DEFAULT_UNIT_NUMBER)))
             .andExpect(jsonPath("$.[*].blockNumber").value(hasItem(DEFAULT_BLOCK_NUMBER)))
-            .andExpect(jsonPath("$.[*].plotNumber").value(hasItem(DEFAULT_PLOT_NUMBER)))
             .andExpect(jsonPath("$.[*].streetNumber").value(hasItem(DEFAULT_STREET_NUMBER)))
             .andExpect(jsonPath("$.[*].streetName").value(hasItem(DEFAULT_STREET_NAME)))
             .andExpect(jsonPath("$.[*].buildingName").value(hasItem(DEFAULT_BUILDING_NAME)))
@@ -709,6 +708,7 @@ public class PartyResourceIT {
             .andExpect(jsonPath("$.[*].longAddress").value(hasItem(DEFAULT_LONG_ADDRESS)))
             .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN)))
             .andExpect(jsonPath("$.[*].ward").value(hasItem(DEFAULT_WARD)))
+            .andExpect(jsonPath("$.[*].plotNumber").value(hasItem(DEFAULT_PLOT_NUMBER)))
             .andExpect(jsonPath("$.[*].nextOfKinPhone").value(hasItem(DEFAULT_NEXT_OF_KIN_PHONE)))
             .andExpect(jsonPath("$.[*].iDDocumentIssuedDate").value(hasItem(DEFAULT_I_D_DOCUMENT_ISSUED_DATE.toString())))
             .andExpect(jsonPath("$.[*].iDDocumentExpirationDate").value(hasItem(DEFAULT_I_D_DOCUMENT_EXPIRATION_DATE.toString())))

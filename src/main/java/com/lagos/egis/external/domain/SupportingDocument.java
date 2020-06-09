@@ -39,7 +39,7 @@ public class SupportingDocument implements Serializable {
     private Integer pageCount;
 
     @Column(name = "status")
-    private String status;
+    private Integer status;
 
     @Column(name = "provided")
     private String provided;
@@ -130,16 +130,16 @@ public class SupportingDocument implements Serializable {
         this.pageCount = pageCount;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public SupportingDocument status(String status) {
+    public SupportingDocument status(Integer status) {
         this.status = status;
         return this;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -335,7 +335,7 @@ public class SupportingDocument implements Serializable {
             ", documentNumber='" + getDocumentNumber() + "'" +
             ", ownershipArea='" + getOwnershipArea() + "'" +
             ", pageCount=" + getPageCount() +
-            ", status='" + getStatus() + "'" +
+            ", status=" + getStatus() +
             ", provided='" + getProvided() + "'" +
             ", type=" + getType() +
             ", name='" + getName() + "'" +

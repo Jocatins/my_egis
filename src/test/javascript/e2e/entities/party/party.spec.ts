@@ -62,7 +62,6 @@ describe('Party e2e test', () => {
             partyUpdatePage.setOccupationInput('occupation'),
             partyUpdatePage.setUnitNumberInput('unitNumber'),
             partyUpdatePage.setBlockNumberInput('blockNumber'),
-            partyUpdatePage.setPlotNumberInput('plotNumber'),
             partyUpdatePage.setStreetNumberInput('streetNumber'),
             partyUpdatePage.setStreetNameInput('streetName'),
             partyUpdatePage.setBuildingNameInput('buildingName'),
@@ -73,6 +72,7 @@ describe('Party e2e test', () => {
             partyUpdatePage.setLongAddressInput('longAddress'),
             partyUpdatePage.setTownInput('town'),
             partyUpdatePage.setWardInput('ward'),
+            partyUpdatePage.setPlotNumberInput('plotNumber'),
             partyUpdatePage.setNextOfKinPhoneInput('nextOfKinPhone'),
             partyUpdatePage.setIDDocumentIssuedDateInput('2000-12-31'),
             partyUpdatePage.setIDDocumentExpirationDateInput('2000-12-31'),
@@ -122,7 +122,6 @@ describe('Party e2e test', () => {
         expect(await partyUpdatePage.getOccupationInput()).to.eq('occupation', 'Expected Occupation value to be equals to occupation');
         expect(await partyUpdatePage.getUnitNumberInput()).to.eq('unitNumber', 'Expected UnitNumber value to be equals to unitNumber');
         expect(await partyUpdatePage.getBlockNumberInput()).to.eq('blockNumber', 'Expected BlockNumber value to be equals to blockNumber');
-        expect(await partyUpdatePage.getPlotNumberInput()).to.eq('plotNumber', 'Expected PlotNumber value to be equals to plotNumber');
         expect(await partyUpdatePage.getStreetNumberInput()).to.eq('streetNumber', 'Expected StreetNumber value to be equals to streetNumber');
         expect(await partyUpdatePage.getStreetNameInput()).to.eq('streetName', 'Expected StreetName value to be equals to streetName');
         expect(await partyUpdatePage.getBuildingNameInput()).to.eq('buildingName', 'Expected BuildingName value to be equals to buildingName');
@@ -133,6 +132,7 @@ describe('Party e2e test', () => {
         expect(await partyUpdatePage.getLongAddressInput()).to.eq('longAddress', 'Expected LongAddress value to be equals to longAddress');
         expect(await partyUpdatePage.getTownInput()).to.eq('town', 'Expected Town value to be equals to town');
         expect(await partyUpdatePage.getWardInput()).to.eq('ward', 'Expected Ward value to be equals to ward');
+        expect(await partyUpdatePage.getPlotNumberInput()).to.eq('plotNumber', 'Expected PlotNumber value to be equals to plotNumber');
         expect(await partyUpdatePage.getNextOfKinPhoneInput()).to.eq('nextOfKinPhone', 'Expected NextOfKinPhone value to be equals to nextOfKinPhone');
         expect(await partyUpdatePage.getIDDocumentIssuedDateInput()).to.eq('2000-12-31', 'Expected iDDocumentIssuedDate value to be equals to 2000-12-31');
         expect(await partyUpdatePage.getIDDocumentExpirationDateInput()).to.eq('2000-12-31', 'Expected iDDocumentExpirationDate value to be equals to 2000-12-31');

@@ -89,9 +89,6 @@ public class Party implements Serializable {
     @Column(name = "block_number")
     private String blockNumber;
 
-    @Column(name = "plot_number")
-    private String plotNumber;
-
     @Column(name = "street_number")
     private String streetNumber;
 
@@ -121,6 +118,9 @@ public class Party implements Serializable {
 
     @Column(name = "ward")
     private String ward;
+
+    @Column(name = "plot_number")
+    private String plotNumber;
 
     @Column(name = "next_of_kin_phone")
     private String nextOfKinPhone;
@@ -505,19 +505,6 @@ public class Party implements Serializable {
         this.blockNumber = blockNumber;
     }
 
-    public String getPlotNumber() {
-        return plotNumber;
-    }
-
-    public Party plotNumber(String plotNumber) {
-        this.plotNumber = plotNumber;
-        return this;
-    }
-
-    public void setPlotNumber(String plotNumber) {
-        this.plotNumber = plotNumber;
-    }
-
     public String getStreetNumber() {
         return streetNumber;
     }
@@ -646,6 +633,19 @@ public class Party implements Serializable {
 
     public void setWard(String ward) {
         this.ward = ward;
+    }
+
+    public String getPlotNumber() {
+        return plotNumber;
+    }
+
+    public Party plotNumber(String plotNumber) {
+        this.plotNumber = plotNumber;
+        return this;
+    }
+
+    public void setPlotNumber(String plotNumber) {
+        this.plotNumber = plotNumber;
     }
 
     public String getNextOfKinPhone() {
@@ -1115,7 +1115,6 @@ public class Party implements Serializable {
             ", occupation='" + getOccupation() + "'" +
             ", unitNumber='" + getUnitNumber() + "'" +
             ", blockNumber='" + getBlockNumber() + "'" +
-            ", plotNumber='" + getPlotNumber() + "'" +
             ", streetNumber='" + getStreetNumber() + "'" +
             ", streetName='" + getStreetName() + "'" +
             ", buildingName='" + getBuildingName() + "'" +
@@ -1126,6 +1125,7 @@ public class Party implements Serializable {
             ", longAddress='" + getLongAddress() + "'" +
             ", town='" + getTown() + "'" +
             ", ward='" + getWard() + "'" +
+            ", plotNumber='" + getPlotNumber() + "'" +
             ", nextOfKinPhone='" + getNextOfKinPhone() + "'" +
             ", iDDocumentIssuedDate='" + getiDDocumentIssuedDate() + "'" +
             ", iDDocumentExpirationDate='" + getiDDocumentExpirationDate() + "'" +

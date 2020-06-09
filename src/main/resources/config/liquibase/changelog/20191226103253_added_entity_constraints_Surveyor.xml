@@ -7,12 +7,7 @@
         Added the constraints for entity Surveyor.
     -->
     <changeSet id="20191226103253-2" author="jhipster">
-        
-        <addForeignKeyConstraint baseColumnNames="address_id"
-                                 baseTableName="surveyor"
-                                 constraintName="fk_surveyor_address_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="address"/>
+
 
     </changeSet>
 </databaseChangeLog>

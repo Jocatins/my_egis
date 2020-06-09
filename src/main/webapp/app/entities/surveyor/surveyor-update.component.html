@@ -34,6 +34,24 @@
                     <input type="text" class="form-control" name="status" id="field_status"
                            formControlName="status"/>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.surveyor.requestDate" for="field_requestDate">Request Date</label>
+                    <div class="input-group">
+                        <input id="field_requestDate" type="text" class="form-control" name="requestDate" ngbDatepicker  #requestDateDp="ngbDatepicker" formControlName="requestDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="requestDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.surveyor.processedDate" for="field_processedDate">Processed Date</label>
+                    <div class="input-group">
+                        <input id="field_processedDate" type="text" class="form-control" name="processedDate" ngbDatepicker  #processedDateDp="ngbDatepicker" formControlName="processedDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="processedDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
 
             </div>
             <div>

@@ -36,6 +36,10 @@
         "organization": "Organization",
         "dictionary": "Dictionary",
         "metadata": "Metadata",
+        "escalateContact": "Escalate Contact",
+        "escalation": "Escalation",
+        "yearSubscription": "Year Subscription",
+        "subscriptionDocs": "Subscription Docs",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,23 @@
+{
+  "egisexternalApp": {
+    "escalation": {
+      "home": {
+        "title": "Escalations",
+        "createLabel": "Créer un nouveau Escalation",
+        "createOrEditLabel": "Créer ou éditer un Escalation",
+        "search": "Recherche pour Escalation",
+        "notFound": "Aucun Escalation trouvé"
+      },
+      "created": "Un nouveau Escalation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Escalation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Escalation avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Escalation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Escalation"
+      },
+      "escalateDate": "Escalate Date"
+    }
+  }
+}

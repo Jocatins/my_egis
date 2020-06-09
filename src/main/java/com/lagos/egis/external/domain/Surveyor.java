@@ -1,4 +1,5 @@
 package com.lagos.egis.external.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -6,6 +7,9 @@ import javax.persistence.*;
 
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Surveyor.
@@ -38,6 +42,17 @@ public class Surveyor implements Serializable {
 
     @Column(name = "status")
     private String status;
+
+    @Column(name = "request_date")
+    private LocalDate requestDate;
+
+    @Column(name = "processed_date")
+    private LocalDate processedDate;
+
+    @ManyToMany(mappedBy = "surveyors")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JsonIgnore
+    private Set<YearSubscription> yearSubscriptions = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -112,6 +127,57 @@ public class Surveyor implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public LocalDate getRequestDate() {
+        return requestDate;
+    }
+
+    public Surveyor requestDate(LocalDate requestDate) {
+        this.requestDate = requestDate;
+        return this;
+    }
+
+    public void setRequestDate(LocalDate requestDate) {
+        this.requestDate = requestDate;
+    }
+
+    public LocalDate getProcessedDate() {
+        return processedDate;
+    }
+
+    public Surveyor processedDate(LocalDate processedDate) {
+        this.processedDate = processedDate;
+        return this;
+    }
+
+    public void setProcessedDate(LocalDate processedDate) {
+        this.processedDate = processedDate;
+    }
+
+    public Set<YearSubscription> getYearSubscriptions() {
+        return yearSubscriptions;
+    }
+
+    public Surveyor yearSubscriptions(Set<YearSubscription> yearSubscriptions) {
+        this.yearSubscriptions = yearSubscriptions;
+        return this;
+    }
+
+    public Surveyor addYearSubscription(YearSubscription yearSubscription) {
+        this.yearSubscriptions.add(yearSubscription);
+        yearSubscription.getSurveyors().add(this);
+        return this;
+    }
+
+    public Surveyor removeYearSubscription(YearSubscription yearSubscription) {
+        this.yearSubscriptions.remove(yearSubscription);
+        yearSubscription.getSurveyors().remove(this);
+        return this;
+    }
+
+    public void setYearSubscriptions(Set<YearSubscription> yearSubscriptions) {
+        this.yearSubscriptions = yearSubscriptions;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -139,6 +205,8 @@ public class Surveyor implements Serializable {
             ", registrationNumber='" + getRegistrationNumber() + "'" +
             ", phone='" + getPhone() + "'" +
             ", status='" + getStatus() + "'" +
+            ", requestDate='" + getRequestDate() + "'" +
+            ", processedDate='" + getProcessedDate() + "'" +
             "}";
     }
 }

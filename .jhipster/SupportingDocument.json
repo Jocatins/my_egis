@@ -15,7 +15,7 @@
         },
         {
             "fieldName": "status",
-            "fieldType": "String"
+            "fieldType": "Integer"
         },
         {
             "fieldName": "provided",

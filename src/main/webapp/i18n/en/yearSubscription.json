@@ -1,0 +1,28 @@
+{
+  "egisexternalApp": {
+    "yearSubscription": {
+      "home": {
+        "title": "Year Subscriptions",
+        "createLabel": "Create a new Year Subscription",
+        "createOrEditLabel": "Create or edit a Year Subscription",
+        "search": "Search for Year Subscription",
+        "notFound": "No Year Subscriptions found"
+      },
+      "created": "A new Year Subscription is created with identifier {{ param }}",
+      "updated": "A Year Subscription is updated with identifier {{ param }}",
+      "deleted": "A Year Subscription is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Year Subscription {{ id }}?"
+      },
+      "detail": {
+        "title": "Year Subscription"
+      },
+      "year": "Year",
+      "status": "Status",
+      "requestDate": "Request Date",
+      "processedDate": "Processed Date",
+      "surveyor": "Surveyor",
+      "subscriptionDocs": "Subscription Docs"
+    }
+  }
+}

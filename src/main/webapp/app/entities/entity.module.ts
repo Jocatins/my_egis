@@ -47,6 +47,22 @@ import { RouterModule } from '@angular/router';
       {
         path: 'metadata',
         loadChildren: () => import('./metadata/metadata.module').then(m => m.EgisexternalMetadataModule)
+      },
+      {
+        path: 'escalate-contact',
+        loadChildren: () => import('./escalate-contact/escalate-contact.module').then(m => m.EgisexternalEscalateContactModule)
+      },
+      {
+        path: 'escalation',
+        loadChildren: () => import('./escalation/escalation.module').then(m => m.EgisexternalEscalationModule)
+      },
+      {
+        path: 'year-subscription',
+        loadChildren: () => import('./year-subscription/year-subscription.module').then(m => m.EgisexternalYearSubscriptionModule)
+      },
+      {
+        path: 'subscription-docs',
+        loadChildren: () => import('./subscription-docs/subscription-docs.module').then(m => m.EgisexternalSubscriptionDocsModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

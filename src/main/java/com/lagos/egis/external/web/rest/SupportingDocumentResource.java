@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.Transactional; 
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -124,7 +124,7 @@ public class SupportingDocumentResource {
     @DeleteMapping("/supporting-documents/{id}")
     public ResponseEntity<Void> deleteSupportingDocument(@PathVariable Long id) {
         log.debug("REST request to delete SupportingDocument : {}", id);
-        supportingDocumentRepository.deleteBySuppDocId(id);
+        supportingDocumentRepository.deleteById(id);
         supportingDocumentSearchRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }

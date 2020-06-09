@@ -31,6 +31,8 @@ export class SurveyorUpdatePage {
   registrationNumberInput = element(by.id('field_registrationNumber'));
   phoneInput = element(by.id('field_phone'));
   statusInput = element(by.id('field_status'));
+  requestDateInput = element(by.id('field_requestDate'));
+  processedDateInput = element(by.id('field_processedDate'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -74,6 +76,22 @@ export class SurveyorUpdatePage {
 
   async getStatusInput() {
     return await this.statusInput.getAttribute('value');
+  }
+
+  async setRequestDateInput(requestDate) {
+    await this.requestDateInput.sendKeys(requestDate);
+  }
+
+  async getRequestDateInput() {
+    return await this.requestDateInput.getAttribute('value');
+  }
+
+  async setProcessedDateInput(processedDate) {
+    await this.processedDateInput.sendKeys(processedDate);
+  }
+
+  async getProcessedDateInput() {
+    return await this.processedDateInput.getAttribute('value');
   }
 
   async save() {

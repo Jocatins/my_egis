@@ -1,0 +1,26 @@
+{
+  "egisexternalApp": {
+    "subscriptionDocs": {
+      "home": {
+        "title": "SubscriptionDocs",
+        "createLabel": "Créer un nouveau Subscription Docs",
+        "createOrEditLabel": "Créer ou éditer un Subscription Docs",
+        "search": "Recherche pour Subscription Docs",
+        "notFound": "Aucun Subscription Docs trouvé"
+      },
+      "created": "Un nouveau Subscription Docs a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Subscription Docs avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Subscription Docs avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Subscription Docs {{ id }} ?"
+      },
+      "detail": {
+        "title": "Subscription Docs"
+      },
+      "content": "Content",
+      "type": "Type",
+      "filename": "Filename",
+      "yearSubscription": "Year Subscription"
+    }
+  }
+}

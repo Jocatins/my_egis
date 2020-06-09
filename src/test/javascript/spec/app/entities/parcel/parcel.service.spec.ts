@@ -28,7 +28,6 @@ describe('Service Tests', () => {
         'AAAAAAA',
         0,
         'AAAAAAA',
-        0,
         'AAAAAAA',
         0,
         0,
@@ -43,6 +42,7 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
+        0,
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA'
@@ -88,7 +88,6 @@ describe('Service Tests', () => {
             propertyDescription: 'BBBBBB',
             area: 1,
             description: 'BBBBBB',
-            propertyArea: 1,
             planNumber: 'BBBBBB',
             premiumValue: 1,
             coordinateN: 1,
@@ -103,6 +102,7 @@ describe('Service Tests', () => {
             plotNumber: 'BBBBBB',
             ward: 'BBBBBB',
             town: 'BBBBBB',
+            propertyArea: 1,
             village: 'BBBBBB',
             upin: 'BBBBBB',
             comment: 'BBBBBB'
@@ -129,7 +129,6 @@ describe('Service Tests', () => {
             propertyDescription: 'BBBBBB',
             area: 1,
             description: 'BBBBBB',
-            propertyArea: 1,
             planNumber: 'BBBBBB',
             premiumValue: 1,
             coordinateN: 1,
@@ -144,6 +143,7 @@ describe('Service Tests', () => {
             plotNumber: 'BBBBBB',
             ward: 'BBBBBB',
             town: 'BBBBBB',
+            propertyArea: 1,
             village: 'BBBBBB',
             upin: 'BBBBBB',
             comment: 'BBBBBB'

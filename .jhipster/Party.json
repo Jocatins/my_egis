@@ -84,10 +84,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "plotNumber",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "streetNumber",
             "fieldType": "String"
         },
@@ -125,6 +121,10 @@
         },
         {
             "fieldName": "ward",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "plotNumber",
             "fieldType": "String"
         },
         {

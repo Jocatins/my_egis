@@ -39,6 +39,8 @@
             <th scope="col"  jhiSortBy="registrationNumber"><span jhiTranslate="egisexternalApp.surveyor.registrationNumber">Registration Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="phone"><span jhiTranslate="egisexternalApp.surveyor.phone">Phone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="status"><span jhiTranslate="egisexternalApp.surveyor.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="requestDate"><span jhiTranslate="egisexternalApp.surveyor.requestDate">Request Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="processedDate"><span jhiTranslate="egisexternalApp.surveyor.processedDate">Processed Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -50,6 +52,8 @@
                 <td>{{surveyor.registrationNumber}}</td>
                 <td>{{surveyor.phone}}</td>
                 <td>{{surveyor.status}}</td>
+                <td>{{surveyor.requestDate | date:'mediumDate'}}</td>
+                <td>{{surveyor.processedDate | date:'mediumDate'}}</td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

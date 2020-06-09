@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="yearSubscription">
+            <h2><span jhiTranslate="egisexternalApp.yearSubscription.detail.title">Year Subscription</span> {{yearSubscription.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.yearSubscription.year">Year</span></dt>
+                <dd>
+                    <span>{{yearSubscription.year}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.yearSubscription.status">Status</span></dt>
+                <dd>
+                    <span>{{yearSubscription.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.yearSubscription.requestDate">Request Date</span></dt>
+                <dd>
+                    <span>{{yearSubscription.requestDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.yearSubscription.processedDate">Processed Date</span></dt>
+                <dd>
+                    <span>{{yearSubscription.processedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.yearSubscription.surveyor">Surveyor</span></dt>
+                <dd>
+                    <span *ngFor="let surveyor of yearSubscription.surveyors; let last = last">
+                        <a [routerLink]="['/surveyor', surveyor?.id, 'view' ]">{{surveyor.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.yearSubscription.subscriptionDocs">Subscription Docs</span></dt>
+                <dd>
+                    <span *ngFor="let subscriptionDocs of yearSubscription.subscriptionDocs; let last = last">
+                        <a [routerLink]="['/subscription-docs', subscriptionDocs?.id, 'view' ]">{{subscriptionDocs.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/year-subscription', yearSubscription.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -45,7 +45,6 @@ export class PartyUpdatePage {
   occupationInput = element(by.id('field_occupation'));
   unitNumberInput = element(by.id('field_unitNumber'));
   blockNumberInput = element(by.id('field_blockNumber'));
-  plotNumberInput = element(by.id('field_plotNumber'));
   streetNumberInput = element(by.id('field_streetNumber'));
   streetNameInput = element(by.id('field_streetName'));
   buildingNameInput = element(by.id('field_buildingName'));
@@ -56,6 +55,7 @@ export class PartyUpdatePage {
   longAddressInput = element(by.id('field_longAddress'));
   townInput = element(by.id('field_town'));
   wardInput = element(by.id('field_ward'));
+  plotNumberInput = element(by.id('field_plotNumber'));
   nextOfKinPhoneInput = element(by.id('field_nextOfKinPhone'));
   iDDocumentIssuedDateInput = element(by.id('field_iDDocumentIssuedDate'));
   iDDocumentExpirationDateInput = element(by.id('field_iDDocumentExpirationDate'));
@@ -242,14 +242,6 @@ export class PartyUpdatePage {
     return await this.blockNumberInput.getAttribute('value');
   }
 
-  async setPlotNumberInput(plotNumber) {
-    await this.plotNumberInput.sendKeys(plotNumber);
-  }
-
-  async getPlotNumberInput() {
-    return await this.plotNumberInput.getAttribute('value');
-  }
-
   async setStreetNumberInput(streetNumber) {
     await this.streetNumberInput.sendKeys(streetNumber);
   }
@@ -328,6 +320,14 @@ export class PartyUpdatePage {
 
   async getWardInput() {
     return await this.wardInput.getAttribute('value');
+  }
+
+  async setPlotNumberInput(plotNumber) {
+    await this.plotNumberInput.sendKeys(plotNumber);
+  }
+
+  async getPlotNumberInput() {
+    return await this.plotNumberInput.getAttribute('value');
   }
 
   async setNextOfKinPhoneInput(nextOfKinPhone) {

@@ -1,94 +1,219 @@
 
 
 entity  Dictionary{
-	code String ,
-    label String,
-    descr String,
+	code String
+    label String
+    descr String
     category String
 }
 
 entity Batch{
-	batchNumber Integer,
-    invoiceNumber String,
-    createDate LocalDate,
-    deliveryDate LocalDate,
+	batchNumber Integer
+    invoiceNumber String
+    createDate LocalDate
+    deliveryDate LocalDate
     officeId Integer
 }
 
 entity Transaction{
-    transactionNumber String,
-    applicationDate LocalDate,
-    transactionStartDate LocalDate,
-    comments String,
-    createDate LocalDate,
-    startDate LocalDate,
-    completeDate LocalDate,
+    transactionNumber String
+    applicationDate LocalDate
+    transactionStartDate LocalDate
+    comments String
+    createDate LocalDate
+    startDate LocalDate
+    completeDate LocalDate
     batchId Integer
 }
 
 entity TransactionExt{
-    extensionKey String,
+    extensionKey String
     extensionValue String
 }
 
 entity SupportingDocument{
-    documentNumber String,
-    ownershipArea String,
-    pageCount Integer,
-    status Integer,
-    provided String,
-    status String,
-    type Integer,
-    name String,
-    fileSize Integer,
-    content String,
-    contentUrl String,
-    image String,
+    documentNumber String
+    ownershipArea String
+    pageCount Integer
+    status Integer
+    provided String
+    type Integer
+    name String
+    fileSize Integer
+    content String
+    contentUrl String
+    image String
     date LocalDate
 }
 
 
 entity Party{
-    primaryParty String,
-    emailAddress String required,
-    phoneNumber String required,
-    payerId String,
-    taxPayerNumber String,
-    payeNumber String ,
-    comments String,
-    personIdDate LocalDate,
-    personIdExpirationDate LocalDate,
-    rcNumber String ,
-    organization String ,
-    birthPlace String ,
-    birthDate LocalDate ,
-    firstName String,
-    middleName String,
-    lastName String,
-    occupation String,
-    unitNumber String,
-    blockNumber String,
-    plotNumber String,
-    streetNumber String,
-    streetName String,
-    buildingName String,
-    buildingNumber String,
-    postalCode String,
-    city String,
-    village String,
-    longAddress String,
-    town String,
-    ward String,
-    blockNumber String,
-    plotNumber String,
-    nextOfKinPhone String,
-    iDDocumentIssuedDate LocalDate,
-    iDDocumentExpirationDate LocalDate,
-    iDDocumentNumber String,
+    primaryParty String
+    emailAddress String required
+    phoneNumber String required
+    payerId String
+    taxPayerNumber String
+    payeNumber String
+    comments String
+    personIdDate LocalDate
+    personIdExpirationDate LocalDate
+    rcNumber String
+    organization String
+    birthPlace String
+    birthDate LocalDate
+    firstName String
+    middleName String
+    lastName String
+    occupation String
+    unitNumber String
+    blockNumber String
+    streetNumber String
+    streetName String
+    buildingName String
+    buildingNumber String
+    postalCode String
+    city String
+    village String
+    longAddress String
+    town String
+    ward String
+    plotNumber String
+    nextOfKinPhone String
+    iDDocumentIssuedDate LocalDate
+    iDDocumentExpirationDate LocalDate
+    iDDocumentNumber String
 
 }
 
+
+entity Parcel{
+	propertyNumber String
+    parcelLineage String
+    surveyPlanNumber String
+    propertyDescription String
+    area  Double
+    description String
+    planNumber String
+    premiumValue Double
+    coordinateN Integer
+    coordinateE Integer
+    lagosSheetNumber String
+	unitNumber String
+    valuationAmount Double
+    comments String
+    streetNumber String
+    streetName String
+    blockNumber String required
+    plotNumber String required
+    ward String
+    town String
+    propertyArea Double
+    village String
+    upin String
+    comment String
+}
+
+
+entity Metadata{
+    id  String
+    hjtype  String
+    code  String
+    label  String
+    descr  String
+    category  String
+    generalTerm  String
+    sortOrder  String
+    hidden  String
+    groupName  String
+    workflow  String
+    groupCode  String
+    normalDuration  String
+    lapsedDuration  String
+    maxDuration  String
+    rightType  String
+    rightTypeMultiple  String
+    rightTypeOther  String
+    createNewRrs  String
+    modifyActiveRrrs  String
+    relatedActiveRrrs  String
+    dischargeActiveRrrs  String
+    blockedActiveRrrs  String
+    metaType  String
+    sourcePartyType  String
+    targetPartyType  String
+    otherPartyType  String
+    relatedTransactionCode  String
+    cashierTransactionCode  String
+    feePaymentCodes  String
+    mandatoryDocsCodes  String
+    mandatoryScanOutgoingDocsCodes  String
+    createMutateProperty  String
+    referencedProperties  String
+    priorRequiredTransactions  String
+    createNewParty  String
+    partyBusinessRules  String
+    reportTemplates  String
+    detachable  String
+    parentTransactionType  String
+    internalCode  String
+    version  String
+    beginLifespanVersion  String
+    endLifespanVersion  String
+    tranIndex String
+}
+
+entity UserExt{
+    payerId String
+    phoneNumber String
+}
+
+entity Surveyor{
+    email String
+    surconNumber String
+    registrationNumber String
+    phone String
+    status String
+    requestDate LocalDate
+    processedDate LocalDate
+}
+
+entity SurveyTransaction{
+	transCode	String
+    comment String
+}
+
+entity EscalateContact{
+    contact String
+}
+
+entity Escalation{
+    escalateDate LocalDate
+}
+
+entity YearSubscription{
+    year Integer
+    status String
+    requestDate LocalDate
+    processedDate LocalDate
+}
+
+entity SubscriptionDocs{
+    content TextBlob
+    type String
+    filename String
+}
+
 relationship ManyToOne{
+    Batch{user} to User,
+	Batch{batchStatus} to Dictionary,
+    Transaction{transactionType} to Dictionary,
+    Transaction{transactionSubType} to Dictionary,
+    Transaction{ownershipType} to Dictionary,
+    Transaction{tenureType} to Dictionary,
+    Transaction{transactionCode} to Metadata,
+    SupportingDocument{documentSubType} to Dictionary,
+    SupportingDocument{documentType} to Dictionary,
+    SupportingDocument{issuedBy} to Dictionary,
     Party{partyType required} to Dictionary,
     Party{partyRoleType required} to Dictionary,
     Party{personType} to Dictionary,
@@ -115,40 +240,6 @@ relationship ManyToOne{
     Party{district} to Dictionary,
     Party{localGovernmentArea} to Dictionary,
     Party{country required} to Dictionary
-}
-
-
-entity Parcel{
-	propertyNumber String,
-    parcelLineage String,
-    surveyPlanNumber String,
-    propertyDescription String,
-    area  Double,
-    description String,
-    propertyArea Double,
-    planNumber String,
-    premiumValue Double,
-    coordinateN Integer,
-    coordinateE Integer,
-    lagosSheetNumber String,
-	unitNumber String,
-    valuationAmount Double,
-    comments String,
-    unitNumber String,
-    streetNumber String,
-    streetName String,
-    blockNumber String required,
-    plotNumber String required,
-    ward String,
-    town String,
-    district String,
-    propertyArea Double,
-    village String,
-    upin String,
-    comment String
-}
-
-relationship ManyToOne{
     Parcel{location} to Dictionary,
     Parcel{builtUpAreaType} to Dictionary,
     Parcel{measurementUnitType required} to Dictionary
@@ -169,95 +260,17 @@ relationship ManyToOne{
     Parcel{AllocationName} to Dictionary
 }
 
-entity Metadata{
-    id  String,
-    hjtype  String,
-    code  String,
-    label  String,
-    descr  String,
-    category  String,
-    generalTerm  String,
-    sortOrder  String,
-    hidden  String,
-    groupName  String,
-    workflow  String,
-    groupCode  String,
-    normalDuration  String,
-    lapsedDuration  String,
-    maxDuration  String,
-    rightType  String,
-    rightTypeMultiple  String,
-    rightTypeOther  String,
-    createNewRrs  String,
-    modifyActiveRrrs  String,
-    relatedActiveRrrs  String,
-    dischargeActiveRrrs  String,
-    blockedActiveRrrs  String,
-    metaType  String,
-    sourcePartyType  String,
-    targetPartyType  String,
-    otherPartyType  String,
-    relatedTransactionCode  String,
-    cashierTransactionCode  String,
-    feePaymentCodes  String,
-    mandatoryDocsCodes  String,
-    mandatoryScanOutgoingDocsCodes  String,
-    createMutateProperty  String,
-    referencedProperties  String,
-    priorRequiredTransactions  String,
-    createNewParty  String,
-    partyBusinessRules  String,
-    reportTemplates  String,
-    detachable  String,
-    parentTransactionType  String,
-    internalCode  String,
-    version  String,
-    beginLifespanVersion  String,
-    endLifespanVersion  String,
-    tranIndex String
-}
-
-relationship ManyToOne{
-    Batch{user} to User
-	Batch{batchStatus} to Dictionary,
-    Transaction{transactionType} to Dictionary,
-    Transaction{transactionSubType} to Dictionary,
-    Transaction{ownershipType} to Dictionary,
-    Transaction{tenureType} to Dictionary,
-    Transaction{transactionCode} to Metadata,
-    SupportingDocument{documentSubType} to Dictionary,
-    SupportingDocument{documentType} to Dictionary,
-    SupportingDocument{issuedBy} to Dictionary,
-
-}
-
-
-
-entity UserExt{
-    payerId String,
-    phoneNumber String
-}
-
-entity Surveyor{
-    email String,
-    surconNumber String,
-    registrationNumber String,
-    phone String,
-    status String
-}
-
-entity SurveyTransaction{
-	transCode	String,
-    comment String
-}
 
 relationship ManyToMany{
     Batch{transaction}  to Transaction{batch}, //batch can have many transactions
     Batch{party}  to Party{batch},
     Transaction{party}  to Party{transaction},
     Transaction{parcel} to Parcel{transaction},
-	Transaction{docs} to SupportingDocument{transaction}
+	Transaction{docs} to SupportingDocument{transaction},
+    YearSubscription to Surveyor,
+    YearSubscription to SubscriptionDocs
 }
+
 
 
 relationship OneToOne{

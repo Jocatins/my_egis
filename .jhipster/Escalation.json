@@ -1,0 +1,20 @@
+{
+    "name": "Escalation",
+    "fields": [
+        {
+            "fieldName": "escalateDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200608210912",
+    "entityTableName": "escalation",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

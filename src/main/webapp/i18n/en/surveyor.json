@@ -21,7 +21,10 @@
       "surconNumber": "Surcon Number",
       "registrationNumber": "Registration Number",
       "phone": "Phone",
-      "status": "Status"
+      "status": "Status",
+      "requestDate": "Request Date",
+      "processedDate": "Processed Date",
+      "yearSubscription": "Year Subscription"
     }
   }
 }

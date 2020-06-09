@@ -33,9 +33,6 @@
             <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="property_area" type="double">
-                <constraints nullable="true" />
-            </column>
             <column name="plan_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -78,7 +75,7 @@
             <column name="town" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="district" type="varchar(255)">
+            <column name="property_area" type="double">
                 <constraints nullable="true" />
             </column>
             <column name="village" type="varchar(255)">
@@ -173,7 +170,6 @@
             <column name="property_description" type="string"/>
             <column name="area" type="numeric"/>
             <column name="description" type="string"/>
-            <column name="property_area" type="numeric"/>
             <column name="plan_number" type="string"/>
             <column name="premium_value" type="numeric"/>
             <column name="coordinate_n" type="numeric"/>
@@ -188,7 +184,7 @@
             <column name="plot_number" type="string"/>
             <column name="ward" type="string"/>
             <column name="town" type="string"/>
-            <column name="district" type="string"/>
+            <column name="property_area" type="numeric"/>
             <column name="village" type="string"/>
             <column name="upin" type="string"/>
             <column name="comment" type="string"/>

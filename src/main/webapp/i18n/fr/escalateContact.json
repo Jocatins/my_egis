@@ -1,0 +1,23 @@
+{
+  "egisexternalApp": {
+    "escalateContact": {
+      "home": {
+        "title": "EscalateContacts",
+        "createLabel": "Créer un nouveau Escalate Contact",
+        "createOrEditLabel": "Créer ou éditer un Escalate Contact",
+        "search": "Recherche pour Escalate Contact",
+        "notFound": "Aucun Escalate Contact trouvé"
+      },
+      "created": "Un nouveau Escalate Contact a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Escalate Contact avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Escalate Contact avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Escalate Contact {{ id }} ?"
+      },
+      "detail": {
+        "title": "Escalate Contact"
+      },
+      "contact": "Contact"
+    }
+  }
+}

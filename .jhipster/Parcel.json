@@ -26,10 +26,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "propertyArea",
-            "fieldType": "Double"
-        },
-        {
             "fieldName": "planNumber",
             "fieldType": "String"
         },
@@ -92,8 +88,8 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "district",
-            "fieldType": "String"
+            "fieldName": "propertyArea",
+            "fieldType": "Double"
         },
         {
             "fieldName": "village",

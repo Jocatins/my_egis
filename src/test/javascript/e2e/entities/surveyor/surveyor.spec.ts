@@ -43,7 +43,9 @@ describe('Surveyor e2e test', () => {
       surveyorUpdatePage.setSurconNumberInput('surconNumber'),
       surveyorUpdatePage.setRegistrationNumberInput('registrationNumber'),
       surveyorUpdatePage.setPhoneInput('phone'),
-      surveyorUpdatePage.setStatusInput('status')
+      surveyorUpdatePage.setStatusInput('status'),
+      surveyorUpdatePage.setRequestDateInput('2000-12-31'),
+      surveyorUpdatePage.setProcessedDateInput('2000-12-31')
     ]);
     expect(await surveyorUpdatePage.getEmailInput()).to.eq('email', 'Expected Email value to be equals to email');
     expect(await surveyorUpdatePage.getSurconNumberInput()).to.eq(
@@ -56,6 +58,8 @@ describe('Surveyor e2e test', () => {
     );
     expect(await surveyorUpdatePage.getPhoneInput()).to.eq('phone', 'Expected Phone value to be equals to phone');
     expect(await surveyorUpdatePage.getStatusInput()).to.eq('status', 'Expected Status value to be equals to status');
+    expect(await surveyorUpdatePage.getRequestDateInput()).to.eq('2000-12-31', 'Expected requestDate value to be equals to 2000-12-31');
+    expect(await surveyorUpdatePage.getProcessedDateInput()).to.eq('2000-12-31', 'Expected processedDate value to be equals to 2000-12-31');
     await surveyorUpdatePage.save();
     expect(await surveyorUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

@@ -46,7 +46,7 @@ describe('SupportingDocument e2e test', () => {
       supportingDocumentUpdatePage.setDocumentNumberInput('documentNumber'),
       supportingDocumentUpdatePage.setOwnershipAreaInput('ownershipArea'),
       supportingDocumentUpdatePage.setPageCountInput('5'),
-      supportingDocumentUpdatePage.setStatusInput('status'),
+      supportingDocumentUpdatePage.setStatusInput('5'),
       supportingDocumentUpdatePage.setProvidedInput('provided'),
       supportingDocumentUpdatePage.setTypeInput('5'),
       supportingDocumentUpdatePage.setNameInput('name'),
@@ -68,7 +68,7 @@ describe('SupportingDocument e2e test', () => {
       'Expected OwnershipArea value to be equals to ownershipArea'
     );
     expect(await supportingDocumentUpdatePage.getPageCountInput()).to.eq('5', 'Expected pageCount value to be equals to 5');
-    expect(await supportingDocumentUpdatePage.getStatusInput()).to.eq('status', 'Expected Status value to be equals to status');
+    expect(await supportingDocumentUpdatePage.getStatusInput()).to.eq('5', 'Expected status value to be equals to 5');
     expect(await supportingDocumentUpdatePage.getProvidedInput()).to.eq('provided', 'Expected Provided value to be equals to provided');
     expect(await supportingDocumentUpdatePage.getTypeInput()).to.eq('5', 'Expected type value to be equals to 5');
     expect(await supportingDocumentUpdatePage.getNameInput()).to.eq('name', 'Expected Name value to be equals to name');

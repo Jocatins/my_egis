@@ -1,0 +1,26 @@
+{
+  "egisexternalApp": {
+    "subscriptionDocs": {
+      "home": {
+        "title": "Subscription Docs",
+        "createLabel": "Create a new Subscription Docs",
+        "createOrEditLabel": "Create or edit a Subscription Docs",
+        "search": "Search for Subscription Docs",
+        "notFound": "No Subscription Docs found"
+      },
+      "created": "A new Subscription Docs is created with identifier {{ param }}",
+      "updated": "A Subscription Docs is updated with identifier {{ param }}",
+      "deleted": "A Subscription Docs is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Subscription Docs {{ id }}?"
+      },
+      "detail": {
+        "title": "Subscription Docs"
+      },
+      "content": "Content",
+      "type": "Type",
+      "filename": "Filename",
+      "yearSubscription": "Year Subscription"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-year-subscription-heading" jhiTranslate="egisexternalApp.yearSubscription.home.createOrEditLabel">Create or edit a Year Subscription</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.yearSubscription.year" for="field_year">Year</label>
+                    <input type="number" class="form-control" name="year" id="field_year"
+                           formControlName="year"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.yearSubscription.status" for="field_status">Status</label>
+                    <input type="text" class="form-control" name="status" id="field_status"
+                           formControlName="status"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.yearSubscription.requestDate" for="field_requestDate">Request Date</label>
+                    <div class="input-group">
+                        <input id="field_requestDate" type="text" class="form-control" name="requestDate" ngbDatepicker  #requestDateDp="ngbDatepicker" formControlName="requestDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="requestDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.yearSubscription.processedDate" for="field_processedDate">Processed Date</label>
+                    <div class="input-group">
+                        <input id="field_processedDate" type="text" class="form-control" name="processedDate" ngbDatepicker  #processedDateDp="ngbDatepicker" formControlName="processedDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="processedDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="egisexternalApp.yearSubscription.surveyor" for="field_surveyors">Surveyor</label>
+                    <select class="form-control" id="field_surveyors" multiple name="surveyors" formControlName="surveyors">
+                        <option [ngValue]="getSelected(editForm.get('surveyors').value, surveyorOption)" *ngFor="let surveyorOption of surveyors; trackBy: trackSurveyorById">{{surveyorOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="egisexternalApp.yearSubscription.subscriptionDocs" for="field_subscriptionDocs">Subscription Docs</label>
+                    <select class="form-control" id="field_subscriptionDocs" multiple name="subscriptionDocs" formControlName="subscriptionDocs">
+                        <option [ngValue]="getSelected(editForm.get('subscriptionDocs').value, subscriptionDocsOption)" *ngFor="let subscriptionDocsOption of subscriptiondocs; trackBy: trackSubscriptionDocsById">{{subscriptionDocsOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

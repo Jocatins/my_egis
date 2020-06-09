@@ -24,7 +24,6 @@ export interface IParty {
   occupation?: string;
   unitNumber?: string;
   blockNumber?: string;
-  plotNumber?: string;
   streetNumber?: string;
   streetName?: string;
   buildingName?: string;
@@ -35,6 +34,7 @@ export interface IParty {
   longAddress?: string;
   town?: string;
   ward?: string;
+  plotNumber?: string;
   nextOfKinPhone?: string;
   iDDocumentIssuedDate?: Moment;
   iDDocumentExpirationDate?: Moment;
@@ -90,7 +90,6 @@ export class Party implements IParty {
     public occupation?: string,
     public unitNumber?: string,
     public blockNumber?: string,
-    public plotNumber?: string,
     public streetNumber?: string,
     public streetName?: string,
     public buildingName?: string,
@@ -101,6 +100,7 @@ export class Party implements IParty {
     public longAddress?: string,
     public town?: string,
     public ward?: string,
+    public plotNumber?: string,
     public nextOfKinPhone?: string,
     public iDDocumentIssuedDate?: Moment,
     public iDDocumentExpirationDate?: Moment,

@@ -48,8 +48,8 @@ public class SupportingDocumentResourceIT {
     private static final Integer DEFAULT_PAGE_COUNT = 1;
     private static final Integer UPDATED_PAGE_COUNT = 2;
 
-    private static final String DEFAULT_STATUS = "AAAAAAAAAA";
-    private static final String UPDATED_STATUS = "BBBBBBBBBB";
+    private static final Integer DEFAULT_STATUS = 1;
+    private static final Integer UPDATED_STATUS = 2;
 
     private static final String DEFAULT_PROVIDED = "AAAAAAAAAA";
     private static final String UPDATED_PROVIDED = "BBBBBBBBBB";

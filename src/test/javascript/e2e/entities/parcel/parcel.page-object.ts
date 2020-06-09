@@ -32,7 +32,6 @@ export class ParcelUpdatePage {
   propertyDescriptionInput = element(by.id('field_propertyDescription'));
   areaInput = element(by.id('field_area'));
   descriptionInput = element(by.id('field_description'));
-  propertyAreaInput = element(by.id('field_propertyArea'));
   planNumberInput = element(by.id('field_planNumber'));
   premiumValueInput = element(by.id('field_premiumValue'));
   coordinateNInput = element(by.id('field_coordinateN'));
@@ -47,7 +46,7 @@ export class ParcelUpdatePage {
   plotNumberInput = element(by.id('field_plotNumber'));
   wardInput = element(by.id('field_ward'));
   townInput = element(by.id('field_town'));
-  districtInput = element(by.id('field_district'));
+  propertyAreaInput = element(by.id('field_propertyArea'));
   villageInput = element(by.id('field_village'));
   upinInput = element(by.id('field_upin'));
   commentInput = element(by.id('field_comment'));
@@ -120,14 +119,6 @@ export class ParcelUpdatePage {
 
   async getDescriptionInput() {
     return await this.descriptionInput.getAttribute('value');
-  }
-
-  async setPropertyAreaInput(propertyArea) {
-    await this.propertyAreaInput.sendKeys(propertyArea);
-  }
-
-  async getPropertyAreaInput() {
-    return await this.propertyAreaInput.getAttribute('value');
   }
 
   async setPlanNumberInput(planNumber) {
@@ -242,12 +233,12 @@ export class ParcelUpdatePage {
     return await this.townInput.getAttribute('value');
   }
 
-  async setDistrictInput(district) {
-    await this.districtInput.sendKeys(district);
+  async setPropertyAreaInput(propertyArea) {
+    await this.propertyAreaInput.sendKeys(propertyArea);
   }
 
-  async getDistrictInput() {
-    return await this.districtInput.getAttribute('value');
+  async getPropertyAreaInput() {
+    return await this.propertyAreaInput.getAttribute('value');
   }
 
   async setVillageInput(village) {

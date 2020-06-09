@@ -56,9 +56,6 @@ public class ParcelResourceIT {
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_PROPERTY_AREA = 1D;
-    private static final Double UPDATED_PROPERTY_AREA = 2D;
-
     private static final String DEFAULT_PLAN_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_PLAN_NUMBER = "BBBBBBBBBB";
 
@@ -101,8 +98,8 @@ public class ParcelResourceIT {
     private static final String DEFAULT_TOWN = "AAAAAAAAAA";
     private static final String UPDATED_TOWN = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DISTRICT = "AAAAAAAAAA";
-    private static final String UPDATED_DISTRICT = "BBBBBBBBBB";
+    private static final Double DEFAULT_PROPERTY_AREA = 1D;
+    private static final Double UPDATED_PROPERTY_AREA = 2D;
 
     private static final String DEFAULT_VILLAGE = "AAAAAAAAAA";
     private static final String UPDATED_VILLAGE = "BBBBBBBBBB";
@@ -169,7 +166,6 @@ public class ParcelResourceIT {
             .propertyDescription(DEFAULT_PROPERTY_DESCRIPTION)
             .area(DEFAULT_AREA)
             .description(DEFAULT_DESCRIPTION)
-            .propertyArea(DEFAULT_PROPERTY_AREA)
             .planNumber(DEFAULT_PLAN_NUMBER)
             .premiumValue(DEFAULT_PREMIUM_VALUE)
             .coordinateN(DEFAULT_COORDINATE_N)
@@ -184,7 +180,7 @@ public class ParcelResourceIT {
             .plotNumber(DEFAULT_PLOT_NUMBER)
             .ward(DEFAULT_WARD)
             .town(DEFAULT_TOWN)
-         //   .district(DEFAULT_DISTRICT)
+            .propertyArea(DEFAULT_PROPERTY_AREA)
             .village(DEFAULT_VILLAGE)
             .upin(DEFAULT_UPIN)
             .comment(DEFAULT_COMMENT);
@@ -218,7 +214,6 @@ public class ParcelResourceIT {
             .propertyDescription(UPDATED_PROPERTY_DESCRIPTION)
             .area(UPDATED_AREA)
             .description(UPDATED_DESCRIPTION)
-            .propertyArea(UPDATED_PROPERTY_AREA)
             .planNumber(UPDATED_PLAN_NUMBER)
             .premiumValue(UPDATED_PREMIUM_VALUE)
             .coordinateN(UPDATED_COORDINATE_N)
@@ -233,7 +228,7 @@ public class ParcelResourceIT {
             .plotNumber(UPDATED_PLOT_NUMBER)
             .ward(UPDATED_WARD)
             .town(UPDATED_TOWN)
-           // .district(UPDATED_DISTRICT)
+            .propertyArea(UPDATED_PROPERTY_AREA)
             .village(UPDATED_VILLAGE)
             .upin(UPDATED_UPIN)
             .comment(UPDATED_COMMENT);
@@ -280,7 +275,6 @@ public class ParcelResourceIT {
         assertThat(testParcel.getPropertyDescription()).isEqualTo(DEFAULT_PROPERTY_DESCRIPTION);
         assertThat(testParcel.getArea()).isEqualTo(DEFAULT_AREA);
         assertThat(testParcel.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testParcel.getPropertyArea()).isEqualTo(DEFAULT_PROPERTY_AREA);
         assertThat(testParcel.getPlanNumber()).isEqualTo(DEFAULT_PLAN_NUMBER);
         assertThat(testParcel.getPremiumValue()).isEqualTo(DEFAULT_PREMIUM_VALUE);
         assertThat(testParcel.getCoordinateN()).isEqualTo(DEFAULT_COORDINATE_N);
@@ -295,7 +289,7 @@ public class ParcelResourceIT {
         assertThat(testParcel.getPlotNumber()).isEqualTo(DEFAULT_PLOT_NUMBER);
         assertThat(testParcel.getWard()).isEqualTo(DEFAULT_WARD);
         assertThat(testParcel.getTown()).isEqualTo(DEFAULT_TOWN);
-       // assertThat(testParcel.getDistrict()).isEqualTo(DEFAULT_DISTRICT);
+        assertThat(testParcel.getPropertyArea()).isEqualTo(DEFAULT_PROPERTY_AREA);
         assertThat(testParcel.getVillage()).isEqualTo(DEFAULT_VILLAGE);
         assertThat(testParcel.getUpin()).isEqualTo(DEFAULT_UPIN);
         assertThat(testParcel.getComment()).isEqualTo(DEFAULT_COMMENT);
@@ -380,7 +374,6 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.[*].propertyDescription").value(hasItem(DEFAULT_PROPERTY_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].area").value(hasItem(DEFAULT_AREA.doubleValue())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].propertyArea").value(hasItem(DEFAULT_PROPERTY_AREA.doubleValue())))
             .andExpect(jsonPath("$.[*].planNumber").value(hasItem(DEFAULT_PLAN_NUMBER)))
             .andExpect(jsonPath("$.[*].premiumValue").value(hasItem(DEFAULT_PREMIUM_VALUE.doubleValue())))
             .andExpect(jsonPath("$.[*].coordinateN").value(hasItem(DEFAULT_COORDINATE_N)))
@@ -395,12 +388,12 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.[*].plotNumber").value(hasItem(DEFAULT_PLOT_NUMBER)))
             .andExpect(jsonPath("$.[*].ward").value(hasItem(DEFAULT_WARD)))
             .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN)))
-            .andExpect(jsonPath("$.[*].district").value(hasItem(DEFAULT_DISTRICT)))
+            .andExpect(jsonPath("$.[*].propertyArea").value(hasItem(DEFAULT_PROPERTY_AREA.doubleValue())))
             .andExpect(jsonPath("$.[*].village").value(hasItem(DEFAULT_VILLAGE)))
             .andExpect(jsonPath("$.[*].upin").value(hasItem(DEFAULT_UPIN)))
             .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT)));
     }
-
+    
     @Test
     @Transactional
     public void getParcel() throws Exception {
@@ -418,7 +411,6 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.propertyDescription").value(DEFAULT_PROPERTY_DESCRIPTION))
             .andExpect(jsonPath("$.area").value(DEFAULT_AREA.doubleValue()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.propertyArea").value(DEFAULT_PROPERTY_AREA.doubleValue()))
             .andExpect(jsonPath("$.planNumber").value(DEFAULT_PLAN_NUMBER))
             .andExpect(jsonPath("$.premiumValue").value(DEFAULT_PREMIUM_VALUE.doubleValue()))
             .andExpect(jsonPath("$.coordinateN").value(DEFAULT_COORDINATE_N))
@@ -433,7 +425,7 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.plotNumber").value(DEFAULT_PLOT_NUMBER))
             .andExpect(jsonPath("$.ward").value(DEFAULT_WARD))
             .andExpect(jsonPath("$.town").value(DEFAULT_TOWN))
-            .andExpect(jsonPath("$.district").value(DEFAULT_DISTRICT))
+            .andExpect(jsonPath("$.propertyArea").value(DEFAULT_PROPERTY_AREA.doubleValue()))
             .andExpect(jsonPath("$.village").value(DEFAULT_VILLAGE))
             .andExpect(jsonPath("$.upin").value(DEFAULT_UPIN))
             .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT));
@@ -466,7 +458,6 @@ public class ParcelResourceIT {
             .propertyDescription(UPDATED_PROPERTY_DESCRIPTION)
             .area(UPDATED_AREA)
             .description(UPDATED_DESCRIPTION)
-            .propertyArea(UPDATED_PROPERTY_AREA)
             .planNumber(UPDATED_PLAN_NUMBER)
             .premiumValue(UPDATED_PREMIUM_VALUE)
             .coordinateN(UPDATED_COORDINATE_N)
@@ -481,7 +472,7 @@ public class ParcelResourceIT {
             .plotNumber(UPDATED_PLOT_NUMBER)
             .ward(UPDATED_WARD)
             .town(UPDATED_TOWN)
-         //   .district(UPDATED_DISTRICT)
+            .propertyArea(UPDATED_PROPERTY_AREA)
             .village(UPDATED_VILLAGE)
             .upin(UPDATED_UPIN)
             .comment(UPDATED_COMMENT);
@@ -501,7 +492,6 @@ public class ParcelResourceIT {
         assertThat(testParcel.getPropertyDescription()).isEqualTo(UPDATED_PROPERTY_DESCRIPTION);
         assertThat(testParcel.getArea()).isEqualTo(UPDATED_AREA);
         assertThat(testParcel.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testParcel.getPropertyArea()).isEqualTo(UPDATED_PROPERTY_AREA);
         assertThat(testParcel.getPlanNumber()).isEqualTo(UPDATED_PLAN_NUMBER);
         assertThat(testParcel.getPremiumValue()).isEqualTo(UPDATED_PREMIUM_VALUE);
         assertThat(testParcel.getCoordinateN()).isEqualTo(UPDATED_COORDINATE_N);
@@ -516,7 +506,7 @@ public class ParcelResourceIT {
         assertThat(testParcel.getPlotNumber()).isEqualTo(UPDATED_PLOT_NUMBER);
         assertThat(testParcel.getWard()).isEqualTo(UPDATED_WARD);
         assertThat(testParcel.getTown()).isEqualTo(UPDATED_TOWN);
-        assertThat(testParcel.getDistrict()).isEqualTo(UPDATED_DISTRICT);
+        assertThat(testParcel.getPropertyArea()).isEqualTo(UPDATED_PROPERTY_AREA);
         assertThat(testParcel.getVillage()).isEqualTo(UPDATED_VILLAGE);
         assertThat(testParcel.getUpin()).isEqualTo(UPDATED_UPIN);
         assertThat(testParcel.getComment()).isEqualTo(UPDATED_COMMENT);
@@ -585,7 +575,6 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.[*].propertyDescription").value(hasItem(DEFAULT_PROPERTY_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].area").value(hasItem(DEFAULT_AREA.doubleValue())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].propertyArea").value(hasItem(DEFAULT_PROPERTY_AREA.doubleValue())))
             .andExpect(jsonPath("$.[*].planNumber").value(hasItem(DEFAULT_PLAN_NUMBER)))
             .andExpect(jsonPath("$.[*].premiumValue").value(hasItem(DEFAULT_PREMIUM_VALUE.doubleValue())))
             .andExpect(jsonPath("$.[*].coordinateN").value(hasItem(DEFAULT_COORDINATE_N)))
@@ -600,7 +589,7 @@ public class ParcelResourceIT {
             .andExpect(jsonPath("$.[*].plotNumber").value(hasItem(DEFAULT_PLOT_NUMBER)))
             .andExpect(jsonPath("$.[*].ward").value(hasItem(DEFAULT_WARD)))
             .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN)))
-            .andExpect(jsonPath("$.[*].district").value(hasItem(DEFAULT_DISTRICT)))
+            .andExpect(jsonPath("$.[*].propertyArea").value(hasItem(DEFAULT_PROPERTY_AREA.doubleValue())))
             .andExpect(jsonPath("$.[*].village").value(hasItem(DEFAULT_VILLAGE)))
             .andExpect(jsonPath("$.[*].upin").value(hasItem(DEFAULT_UPIN)))
             .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT)));

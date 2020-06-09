@@ -24,7 +24,7 @@
             <column name="page_count" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="status" type="varchar(255)">
+            <column name="status" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="provided" type="varchar(255)">
@@ -86,7 +86,7 @@
             <column name="document_number" type="string"/>
             <column name="ownership_area" type="string"/>
             <column name="page_count" type="numeric"/>
-            <column name="status" type="string"/>
+            <column name="status" type="numeric"/>
             <column name="provided" type="string"/>
             <column name="type" type="numeric"/>
             <column name="name" type="string"/>

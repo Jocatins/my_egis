@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity YearSubscription.
+    -->
+    <changeSet id="20200608210913-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="year_subscription_id"
+                                 baseTableName="year_subscription_surveyor"
+                                 constraintName="fk_year_subscription_surveyor_year_subscription_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="year_subscription"/>
+
+        <addForeignKeyConstraint baseColumnNames="surveyor_id"
+                                 baseTableName="year_subscription_surveyor"
+                                 constraintName="fk_year_subscription_surveyor_surveyor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="surveyor"/>
+        
+        <addForeignKeyConstraint baseColumnNames="year_subscription_id"
+                                 baseTableName="year_subscription_subscription_docs"
+                                 constraintName="fk_year_subscription_subscription_docs_year_subscription_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="year_subscription"/>
+
+        <addForeignKeyConstraint baseColumnNames="subscription_docs_id"
+                                 baseTableName="year_subscription_subscription_docs"
+                                 constraintName="fk_year_subscription_subscription_docs_subscription_docs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="subscription_docs"/>
+        
+    </changeSet>
+</databaseChangeLog>

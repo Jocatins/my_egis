@@ -20,9 +20,26 @@
         {
             "fieldName": "status",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "requestDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "processedDate",
+            "fieldType": "LocalDate"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "yearSubscription",
+            "otherEntityRelationshipName": "surveyor",
+            "relationshipName": "yearSubscription",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
     "changelogDate": "20191226103253",
     "entityTableName": "surveyor",
     "dto": "no",

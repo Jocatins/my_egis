@@ -72,9 +72,6 @@
             <column name="block_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="plot_number" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="street_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -103,6 +100,9 @@
                 <constraints nullable="true" />
             </column>
             <column name="ward" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="plot_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="next_of_kin_phone" type="varchar(255)">
@@ -234,7 +234,6 @@
             <column name="occupation" type="string"/>
             <column name="unit_number" type="string"/>
             <column name="block_number" type="string"/>
-            <column name="plot_number" type="string"/>
             <column name="street_number" type="string"/>
             <column name="street_name" type="string"/>
             <column name="building_name" type="string"/>
@@ -245,6 +244,7 @@
             <column name="long_address" type="string"/>
             <column name="town" type="string"/>
             <column name="ward" type="string"/>
+            <column name="plot_number" type="string"/>
             <column name="next_of_kin_phone" type="string"/>
             <column name="i_d_document_issued_date" type="date"/>
             <column name="i_d_document_expiration_date" type="date"/>

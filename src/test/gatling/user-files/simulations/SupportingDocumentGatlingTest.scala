@@ -75,7 +75,7 @@ class SupportingDocumentGatlingTest extends Simulation {
                 , "documentNumber":"SAMPLE_TEXT"
                 , "ownershipArea":"SAMPLE_TEXT"
                 , "pageCount":"0"
-                , "status":"SAMPLE_TEXT"
+                , "status":"0"
                 , "provided":"SAMPLE_TEXT"
                 , "type":"0"
                 , "name":"SAMPLE_TEXT"

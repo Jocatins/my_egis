@@ -77,6 +77,8 @@ class SurveyorGatlingTest extends Simulation {
                 , "registrationNumber":"SAMPLE_TEXT"
                 , "phone":"SAMPLE_TEXT"
                 , "status":"SAMPLE_TEXT"
+                , "requestDate":"2020-01-01T00:00:00.000Z"
+                , "processedDate":"2020-01-01T00:00:00.000Z"
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_surveyor_url"))).exitHereIfFailed

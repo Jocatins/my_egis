@@ -1,0 +1,23 @@
+{
+  "egisexternalApp": {
+    "escalation": {
+      "home": {
+        "title": "Escalations",
+        "createLabel": "Create a new Escalation",
+        "createOrEditLabel": "Create or edit a Escalation",
+        "search": "Search for Escalation",
+        "notFound": "No Escalations found"
+      },
+      "created": "A new Escalation is created with identifier {{ param }}",
+      "updated": "A Escalation is updated with identifier {{ param }}",
+      "deleted": "A Escalation is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Escalation {{ id }}?"
+      },
+      "detail": {
+        "title": "Escalation"
+      },
+      "escalateDate": "Escalate Date"
+    }
+  }
+}

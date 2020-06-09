@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="subscriptionDocs">
+            <h2><span jhiTranslate="egisexternalApp.subscriptionDocs.detail.title">Subscription Docs</span> {{subscriptionDocs.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.subscriptionDocs.content">Content</span></dt>
+                <dd>
+                    <span>{{subscriptionDocs.content}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.subscriptionDocs.type">Type</span></dt>
+                <dd>
+                    <span>{{subscriptionDocs.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.subscriptionDocs.filename">Filename</span></dt>
+                <dd>
+                    <span>{{subscriptionDocs.filename}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/subscription-docs', subscriptionDocs.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

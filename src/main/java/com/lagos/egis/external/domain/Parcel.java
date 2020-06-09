@@ -47,9 +47,6 @@ public class Parcel implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "property_area")
-    private Double propertyArea;
-
     @Column(name = "plan_number")
     private String planNumber;
 
@@ -93,6 +90,9 @@ public class Parcel implements Serializable {
 
     @Column(name = "town")
     private String town;
+
+    @Column(name = "property_area")
+    private Double propertyArea;
 
     @Column(name = "village")
     private String village;
@@ -268,19 +268,6 @@ public class Parcel implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Double getPropertyArea() {
-        return propertyArea;
-    }
-
-    public Parcel propertyArea(Double propertyArea) {
-        this.propertyArea = propertyArea;
-        return this;
-    }
-
-    public void setPropertyArea(Double propertyArea) {
-        this.propertyArea = propertyArea;
     }
 
     public String getPlanNumber() {
@@ -463,6 +450,19 @@ public class Parcel implements Serializable {
 
     public void setTown(String town) {
         this.town = town;
+    }
+
+    public Double getPropertyArea() {
+        return propertyArea;
+    }
+
+    public Parcel propertyArea(Double propertyArea) {
+        this.propertyArea = propertyArea;
+        return this;
+    }
+
+    public void setPropertyArea(Double propertyArea) {
+        this.propertyArea = propertyArea;
     }
 
     public String getVillage() {
@@ -790,7 +790,6 @@ public class Parcel implements Serializable {
             ", propertyDescription='" + getPropertyDescription() + "'" +
             ", area=" + getArea() +
             ", description='" + getDescription() + "'" +
-            ", propertyArea=" + getPropertyArea() +
             ", planNumber='" + getPlanNumber() + "'" +
             ", premiumValue=" + getPremiumValue() +
             ", coordinateN=" + getCoordinateN() +
@@ -805,7 +804,7 @@ public class Parcel implements Serializable {
             ", plotNumber='" + getPlotNumber() + "'" +
             ", ward='" + getWard() + "'" +
             ", town='" + getTown() + "'" +
-            ", district='" + getDistrict() + "'" +
+            ", propertyArea=" + getPropertyArea() +
             ", village='" + getVillage() + "'" +
             ", upin='" + getUpin() + "'" +
             ", comment='" + getComment() + "'" +

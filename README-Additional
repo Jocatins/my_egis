@@ -33,3 +33,5 @@ Error fix  - liquibase could not start correctly
 https://stackoverflow.com/questions/41019034/check-sum-error-in-jhipster-when-editing-an-existing-entity-generated-using-the
 UPDATE databasechangelog SET md5sum = null
 
+JSON to Java Object
+http://www.jsonschema2pojo.org/
