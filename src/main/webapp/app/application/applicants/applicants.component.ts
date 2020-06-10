@@ -30,6 +30,8 @@ export class ApplicantsComponent implements OnInit {
   form: boolean;
   parties: IParty[];
 
+  transactionDescription: string;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -47,6 +49,13 @@ export class ApplicantsComponent implements OnInit {
     this.eventManager.subscribe("partyListModification", () => {
       this.refreshParty(Number(params.get('batchId')));
     })
+
+
+    this.eventManager.subscribe('transactionDescription', (data) => {
+      this.transactionDescription = data.content
+    }
+    );
+
     this.refreshParty(Number(params.get('batchId')));
   }
 

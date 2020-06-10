@@ -4,14 +4,14 @@
             <div>
                 <p>
                     The committee is charged with the sole responsibility of advising the Governor on Land Administration and Management Matters. It vested the power to Administer, Manage and Control State Land in the Governor of the State.
-                </p> 
-                <div class="row application-list"> 
-                    <div class="col-lg-12">  
+                </p>
+                <div class="row application-list">
+                    <div class="col-lg-12">
                         <ul>
-                            <li *ngFor="let tran of transLuac"><a [routerLink]="['/application/overview', tran.code_]"><fa-icon icon="chevron-right"></fa-icon> {{tran.param_value}}</a></li>
-                        </ul> 
-                    </div> 
-                </div>                              
+                            <li *ngFor="let tran of transLuac"><a (click)="gotoOverview(tran.code_, tran.param_value )"><fa-icon icon="chevron-right"></fa-icon> {{tran.param_value}}</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </ng-template>
     </ngb-panel>
@@ -21,13 +21,13 @@
                 <p>
                     The Land Registry Directorate is a very sensitive part of the Bureau that is saddled with the responsibility of keeping an up-to-date record of all land transactions in the State.
                 </p>
-                <div class="row application-list"> 
-                    <div class="col-lg-12">  
+                <div class="row application-list">
+                    <div class="col-lg-12">
                         <ul>
-                            <li *ngFor="let tran of transRegistry"><a [routerLink]="['/application/overview', tran.code_]"><fa-icon icon="chevron-right"></fa-icon> {{tran.param_value}}</a></li>
-                        </ul> 
-                    </div> 
-                </div>                              
+                            <li *ngFor="let tran of transRegistry"><a (click)="gotoOverview(tran.code_, tran.param_value )"><fa-icon icon="chevron-right"></fa-icon> {{tran.param_value}}</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </ng-template>
     </ngb-panel>
@@ -37,13 +37,13 @@
                 <p>
                     DLR is responsible for the regularisation of title to land is the process of granting title to those who have erroneously purchased uncommitted Government acquisition.
                 </p>
-                <div class="row application-list"> 
-                    <div class="col-lg-12">  
+                <div class="row application-list">
+                    <div class="col-lg-12">
                         <ul>
-                            <li *ngFor="let tran of transDlr"><a [routerLink]="['/application/overview', tran.code_]"><fa-icon icon="chevron-right"></fa-icon> {{tran.param_value}}</a></li>
-                        </ul> 
-                    </div> 
-                </div> 
+                            <li *ngFor="let tran of transDlr"><a (click)="gotoOverview(tran.code_, tran.param_value )"><fa-icon icon="chevron-right"></fa-icon> {{tran.param_value}}</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </ng-template>
     </ngb-panel>
@@ -53,13 +53,13 @@
                 <p>
                     DLS is a key component of Lagos State Lands Bureau for processing application for Governor’s Consent to subsequent transactions (Assignments, Subleases, Power of Attorney, Gifts and Mortgages) on land in line with the provisions of the Land Use Act, 1978; as well as Acquisition/Revocation matters, Compensation matters, Village/Settlement Excisions, amongst others.
                 </p>
-                <div class="row application-list"> 
-                    <div class="col-lg-12">  
+                <div class="row application-list">
+                    <div class="col-lg-12">
                         <ul>
-                            <li *ngFor="let tran of transDls"><a [routerLink]="['/application/overview', tran.code_]"><fa-icon icon="chevron-right"></fa-icon> {{tran.param_value}}</a></li>
-                        </ul> 
-                    </div> 
-                </div> 
+                            <li *ngFor="let tran of transDls"><a (click)="gotoOverview(tran.code_, tran.param_value )"><fa-icon icon="chevron-right"></fa-icon> {{tran.param_value}}</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </ng-template>
     </ngb-panel>
@@ -67,21 +67,21 @@
         <ng-template ngbPanelContent>
             <div>
                 <p>
-                    
+
                 </p>
-                <div class="row application-list"> 
-                    <div class="col-lg-12">  
+                <div class="row application-list">
+                    <div class="col-lg-12">
                         <ul>
-                            <li *ngFor="let tran of transDlt"><a [routerLink]="['/application/overview', tran.code_]"><fa-icon icon="chevron-right"></fa-icon> {{tran.param_value}}</a></li>
-                        </ul> 
-                    </div> 
-                </div> 
+                            <li *ngFor="let tran of transDlt"><a (click)="gotoOverview(tran.code_, tran.param_value )" ><fa-icon icon="chevron-right"></fa-icon> {{tran.param_value}}</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </ng-template>
     </ngb-panel>
 </ngb-accordion>
 <div class="row">
-    <div class="col-lg-9">  
+    <div class="col-lg-9">
         <div class="aa">
             <div>
                 <h3>Can’t find what the transaction you are interested in?</h3>

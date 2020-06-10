@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
   swaggerEnabled: boolean;
   modalRef: NgbModalRef;
   version: string;
+  account: Account
 
   constructor(
     private loginService: LoginService,
@@ -42,7 +43,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.languages = this.languageHelper.getAll();
     this.accountService.identity().subscribe((account: Account) => {
-      // alert(JSON.stringify(account))
+       this.account = account
     });
     // if(this.accountService.isAuthenticated()){
 

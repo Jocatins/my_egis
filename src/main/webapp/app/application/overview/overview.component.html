@@ -4,13 +4,13 @@
 <!-- <p class="text-justify" jhiTranslate="/applicationtransdetail.content"></p> -->
 
 
-<h1>{{this.batch.transactions[0].transactionCode.code}} - {{this.batch.transactions[0].transactionCode.label}} </h1>
 
-<h5 class="sub-header mt-4 mb-4">{{transInfo.applicationname}}</h5>
+<!-- <h5 class="sub-header mt-4 mb-4">{{transInfo.applicationname}}</h5> -->
 
 <!-- @oojekwe
 if not signed in, hide. display if signed in -->
 <p>
+    <br>
     <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="initiateTransaction(transCode)">Click here to Initiate Transaction <fa-icon icon="chevron-right"></fa-icon></button>
 
     <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batchId)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>

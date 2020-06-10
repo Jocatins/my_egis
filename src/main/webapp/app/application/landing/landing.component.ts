@@ -5,6 +5,8 @@ import { timeout, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Trans } from '../model/trans.model';
+import { Router } from '@angular/router';
+import { JhiEventManager } from 'ng-jhipster';
 
 @Component({
   selector: 'jhi-landing',
@@ -34,7 +36,9 @@ export class LandingComponent implements OnInit {
 
   public resourceUrl = 'http://localhost:7777' + '/transinfoWithGroup/';
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+    protected eventManager: JhiEventManager,
+    private router: Router) {
     this.message = 'LandingComponent message';
 
     const callResp = this.find('REGISTRY');
@@ -123,7 +127,9 @@ export class LandingComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.eventManager.destroy( this.eventManager.subscribe( 'transactionDescription',()=>{}));
+  }
 
   /*
   private getTransactionInfoByGroup(group: string){
@@ -139,6 +145,15 @@ export class LandingComponent implements OnInit {
 
     }
   */
+
+ gotoOverview(code_: string, descr: string){
+  this.eventManager.broadcast({
+    name: 'transactionDescription',
+    content: code_ + " - " + descr
+  });
+
+  this.router.navigate(['/application/overview', code_]);
+ }
 
   find(group: string): Observable<Trans> {
     const response = this.httpClient.get<Trans>(`${this.resourceUrl}/${group}`);

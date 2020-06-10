@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/user/account.model';
+import { JhiEventManager } from 'ng-jhipster';
 
 @Component({
   selector: 'jhi-application',
@@ -10,15 +11,23 @@ import { Account } from 'app/core/user/account.model';
 export class ApplicationComponent implements OnInit {
   message: string;
   account: Account;
+  transactionDescription: string
 
-  constructor(private accountService: AccountService) {
+
+  constructor(private accountService: AccountService,
+    protected eventManager: JhiEventManager
+    ) {
     this.message = 'ApplicationComponent message';
   }
 
   ngOnInit() {
     this.accountService.identity().subscribe(account => {
-      //  alert(JSON.stringify(account));
       this.account = account;
+
+    });
+
+    this.eventManager.subscribe('transactionDescription', (data) => {
+      this.transactionDescription = data.content
     });
   }
 }
