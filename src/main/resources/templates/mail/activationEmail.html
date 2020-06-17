@@ -1,28 +1,3 @@
-<!-- <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}" lang="en">
-    <head>
-        <title th:text="#{email.activation.title}">JHipster activation</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
-    </head>
-    <body>
-        <p th:text="#{email.activation.greeting(${user.login})}">
-            Dear
-        </p>
-        <p th:text="#{email.activation.text1}">
-            Your JHipster account has been created, please click on the URL below to activate it:
-        </p>
-        <p>
-            <a th:with="url=(@{|${baseUrl}/account/activate?key=${user.activationKey}|})" th:href="${url}"
-            th:text="${url}">Activation link</a>
-        </p>
-        <p>
-            <span th:text="#{email.activation.text2}">Regards, </span>
-            <br/>
-            <em th:text="#{email.signature}">JHipster.</em>
-        </p>
-    </body>
-</html> -->
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}" lang="en">
@@ -77,7 +52,7 @@
 			.mh-auto { height: auto !important; }
 			.mw-auto { width: auto !important; }
 
-			.fluid-img img { width: 100% !important; max-width: 100% !important; height: auto !important; }
+			.fluid-img img { width: 100% !important; max-width: 100% !important; height: auto !important;}
 
 			.column,
 			.column-top,
@@ -122,7 +97,7 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-            <a href="#" target="_blank"><img src="content/images/lagos-logo.png" width="112" height="43" border="0" alt="" /></a>
+            <a href="#" target="_blank"><img src="('../images/logo-jhipster.png')" width="112" height="43" border="0" alt="" /></a>
         </td>
     </tr>
 </table>
@@ -139,7 +114,7 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
     <td class="fluid-img img-center pb-50" style="font-size:0pt; line-height:0pt; text-align:center; padding-bottom: 50px;">
-        <img src="content/images/lagos-logo.png" width="253" height="300" border="0" alt="" />
+        <img src="@{|${baseUrl}/content/images/lagos-logo.png|}" width="253" height="300" border="0" alt="" />
     </td>
 </tr>
 <tr>
@@ -149,30 +124,12 @@
     </td>
 </tr>
 <tr>
-    <!-- <td class="text-16 lh-26 a-center pb-25" style="font-size:16px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 26px; text-align:center; padding-bottom: 25px;" *ngIf="success">
-        <span th:text="#{email.activation.greeting(${user.login})}"><strong>Dear.</strong></span>
-        
-    </td> -->
     <td class="text-16 lh-26 a-center pb-25" style="font-size:16px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 26px; text-align:center; padding-bottom: 25px;" *ngIf="success">
         <span th:text="#{email.activation.text1}">
             <strong>Your JHipster account has been created:</strong> Please click on the URL below to activate it: </span>
     </td>
 
-    <!-- <p th:text="#{email.activation.greeting(${user.login})}">
-        Dear
-    </p>
-    <p th:text="#{email.activation.text1}">
-        Your JHipster account has been created, please click on the URL below to activate it:
-    </p>
-    <p>
-        <a th:with="url=(@{|${baseUrl}/account/activate?key=${user.activationKey}|})" th:href="${url}"
-        th:text="${url}">Activation link</a>
-    </p> -->
-
-    <!-- <div class="alert alert-success" *ngIf="success">
-        <span jhiTranslate="activate.messages.success"><strong>Your user account has been activated.</strong> Please </span>
-        <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a>.
-    </div> -->
+  
 </tr>
 <tr>
     <td align="center">
@@ -181,7 +138,7 @@
             <tr>
                 <td class="btn-16 c-white l-white" bgcolor="#f3189e" style="font-size:16px; line-height:20px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; border-radius:25px; min-width:auto !important; color:#ffffff;">
                     <a th:with="url=(@{|${baseUrl}/account/activate?key=${user.activationKey}|})" th:href="${url}" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
-                        <span class="link c-white" style="text-decoration:none; color:#ffffff;" th:text="${url}">Activation link guy</span>
+                        <span class="link c-white" style="text-decoration:none; color:#ffffff;" th:text="${url}">Activation link </span>
                     </a>
                 </td>
             </tr>
