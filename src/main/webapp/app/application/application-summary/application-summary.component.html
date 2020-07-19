@@ -459,11 +459,15 @@
             <button type="submit" (click)="previousState()" class="btn btn-outline-secondary">
                 <fa-icon icon="chevron-left"></fa-icon> <span jhiTranslate="entity.action.back"> Back</span>
             </button>
-            <button type="button" [routerLink]="['/parcel', parcel.id, 'edit']" class="btn btn-outline-secondary">
+            <!-- <button type="button" [routerLink]="['/parcel', parcel.id, 'edit']" class="btn btn-outline-secondary">
                 <fa-icon icon="pencil-alt"></fa-icon> <span jhiTranslate="entity.action.edit"> Edit</span>
+            </button> -->
+
+            <button   type="submit" (click)="submitTransaction(batch.id)" class="btn btn-primary">
+                <fa-icon [icon]="'paper-plane'"></fa-icon>  Submit Transaction
             </button>
+
+            <div class="value"  *ngIf="canPush"></div>
         </div>
-
-
     </div>
 </div>

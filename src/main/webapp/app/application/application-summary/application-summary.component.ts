@@ -10,6 +10,8 @@ import { IParcel } from 'app/shared/model/parcel.model';
 import { DashboardService } from 'app/dashboard/dashboard.service';
 import { IParty } from 'app/shared/model/party.model';
 import { ISupportingDocument } from 'app/shared/model/supporting-document.model';
+import { BatchService } from 'app/entities/batch/batch.service';
+import { DictionaryService } from 'app/entities/dictionary/dictionary.service';
 
 @Component({
   selector: 'jhi-trans-detail',
@@ -28,7 +30,9 @@ export class ApplicationSummaryComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     protected dashboardService: DashboardService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    protected batchService: BatchService,
+    protected dictionaryService: DictionaryService
   ) {
     this.message = 'ApplicationSummaryComponent message';
   }
@@ -45,6 +49,18 @@ export class ApplicationSummaryComponent implements OnInit {
       this.supportingDocumentsOthers = allDocs.filter(x => x.provided !== 'Y');
       this.supportingDocuments = allDocs.filter(x => x.provided === 'Y');
     });
+  }
+
+  submitTransaction(batchId: number): void {
+    this.batchService.find(batchId).subscribe(data =>{
+      this.batch = data.body;
+      this.dictionaryService.query({ 'category.equals': 'application_status', 'code.equals': 'application_submitted' }).subscribe(data1 => {
+        this.batch.batchStatus = data1.body[0];
+        this.batchService.update(this.batch).subscribe(() => {
+          alert('Application successfully submitted');
+        });
+      });
+    })
   }
 }
 

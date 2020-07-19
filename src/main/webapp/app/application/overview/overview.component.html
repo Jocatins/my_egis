@@ -9,12 +9,17 @@
 
 <!-- @oojekwe
 if not signed in, hide. display if signed in -->
-<p>
-    <br>
-    <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="initiateTransaction(transCode)">Click here to Initiate Transaction <fa-icon icon="chevron-right"></fa-icon></button>
 
-    <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batchId)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
-</p>
+<div *ngIf="setup">
+    <p>
+        <br>
+        <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="initiateTransaction(transCode)">Click here to Initiate Transaction <fa-icon icon="chevron-right"></fa-icon></button>
+
+        <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batchId)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
+    </p>
+
+</div>
+
 
 <!-- Fetch value from .xlx config sheet -->
 <!-- {{transInfo.description}}  -->
@@ -70,8 +75,12 @@ if not signed in, hide. display if signed in -->
         </li>
     </ol>
 </p>
-<p>
-    <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="initiateTransaction(transCode)">Click here to Initiate Transaction <fa-icon icon="chevron-right"></fa-icon></button>
 
-    <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batchId)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
-</p>
+<div *ngIf="setup">
+    <p>
+        <button *ngIf="showActivate" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="initiateTransaction(transCode)">Click here to Initiate Transaction <fa-icon icon="chevron-right"></fa-icon></button>
+
+        <button *ngIf="showContinue" type="submit" id="jh-create-entity" class="btn btn-outline-secondary jh-create-entity create-address" (click)="continueTransaction(batchId)">Continue A Transaction <fa-icon icon="chevron-right"></fa-icon></button>
+    </p>
+</div>
+

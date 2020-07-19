@@ -44,6 +44,9 @@ export class OverviewComponent implements OnInit {
 
   predicate: any;
   reverse: any;
+  workflows: any []
+  setup: boolean
+
 
 
 
@@ -65,39 +68,90 @@ export class OverviewComponent implements OnInit {
   linkClick() {}
 
   ngOnInit() {
+
+    this.workflows = ['LUAC Allocation of State Land',
+                'Land Registry Lodgement External',
+                'DLT Governors Consent',
+                'Backfile Indexing and Scanning',
+                'Cadastral topographic update'];
+
     const params = this.route.snapshot.paramMap;
     this.transCode = params.get('transCode');
-    this.getTransactionInfo('SS_APPLICATION_NAME'),
-    this.getTransactionInfo('SS_DESCRIPTION'),
-    this.getTransactionInfo('SS_RESTRICTIONS'),
-    this.getTransactionInfo('SS_EXPIRATION'),
-    this.getTransactionInfo('SS_DOCUMENT_RECEIVED'),
-    this.getTransactionInfo('SS_PREREQUISITE_DOCUMENTS'),
-    this.getTransactionInfo('SS_PREREQUISITE_TRANSACTIONS'),
-    this.getTransactionInfo('SS_PROCEDURE'),
-    this.getTransactionInfo('SS_ASSOCIATED_FEES');
-    this.showContinue = false;
-    this.showActivate = true;
 
-    this.batchService.find( Number(this.transCode)).subscribe(
+    if (Number(this.transCode)){
+      this.batchService.find( Number(this.transCode)).subscribe(
 
-      data=>{
-        if ( data.body !== null && data.body !== undefined){
-          this.showContinue = true;
-          this.showActivate = false;
-          this.batchId = data.body.id;
-          this.batch = data.body
+        data=>{
+          if ( data.body !== null && data.body !== undefined){
+            this.showContinue = true;
+            this.showActivate = false;
+            this.batchId = data.body.id;
+            this.batch = data.body
 
-         this.eventManager.broadcast({
-            name: 'transactionDescription',
-            content: this.batch.transactions[0].transactionCode.code + " - " + this.batch.transactions[0].transactionCode.label
-          });
+           this.eventManager.broadcast({
+              name: 'transactionDescription',
+              content: this.batch.transactions[0].transactionCode.code + " - " + this.batch.transactions[0].transactionCode.label
+            });
+
+            this.transCode = this.batch.transactions[0].transactionCode.code;
+            this.getTransactionInfo('SS_APPLICATION_NAME'),
+            this.getTransactionInfo('SS_DESCRIPTION'),
+            this.getTransactionInfo('SS_RESTRICTIONS'),
+            this.getTransactionInfo('SS_EXPIRATION'),
+            this.getTransactionInfo('SS_DOCUMENT_RECEIVED'),
+            this.getTransactionInfo('SS_PREREQUISITE_DOCUMENTS'),
+            this.getTransactionInfo('SS_PREREQUISITE_TRANSACTIONS'),
+            this.getTransactionInfo('SS_PROCEDURE'),
+            this.getTransactionInfo('SS_ASSOCIATED_FEES');
+
+             // check if the workflow is implemented
+            this.metadata.getByCode(this.batch.transactions[0].transactionCode.code).subscribe(
+              data2 =>{
+                const workflow = data2.body[0].workflow
+                const findresult = this.workflows.filter(dd => dd === workflow );
+
+                if ( findresult.length === 0){
+                  this.setup = false;
+                  alert("The worflow for the transaction is yet to be setup")
+                }else{
+                  this.setup = true
+                }
+              },
+              () => alert('Error retrieving current user')
+            )
+          }
         }
-      }
+      )
 
-    )
+    }else{
+      this.getTransactionInfo('SS_APPLICATION_NAME'),
+      this.getTransactionInfo('SS_DESCRIPTION'),
+      this.getTransactionInfo('SS_RESTRICTIONS'),
+      this.getTransactionInfo('SS_EXPIRATION'),
+      this.getTransactionInfo('SS_DOCUMENT_RECEIVED'),
+      this.getTransactionInfo('SS_PREREQUISITE_DOCUMENTS'),
+      this.getTransactionInfo('SS_PREREQUISITE_TRANSACTIONS'),
+      this.getTransactionInfo('SS_PROCEDURE'),
+      this.getTransactionInfo('SS_ASSOCIATED_FEES');
+      this.showContinue = false;
+      this.showActivate = true;
 
+      // check if the workflow is implemented
+      this.metadata.getByCode(this.transCode).subscribe(
+        data2 =>{
+          const workflow = data2.body[0].workflow
+          const findresult = this.workflows.filter(dd => dd === workflow );
 
+          if ( findresult.length === 0){
+            this.setup = false;
+            alert("The worflow for the transaction is yet to be setup")
+          }else{
+            this.setup = true
+          }
+        },
+        () => alert('Error retrieving current user')
+      )
+    }
 
     this.accountService.identity().subscribe(acct => {
       this.userService.find(acct.login).subscribe(
@@ -117,6 +171,8 @@ export class OverviewComponent implements OnInit {
   pupulateTransInfo() {}
 
   continueTransaction(batchId: number) {
+    //save the transaction first
+
     this.router.navigate(['/application/applicants', batchId]);
   }
 

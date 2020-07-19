@@ -1,6 +1,11 @@
 package com.lagos.egis.external.web.rest.ext;
 
 
+import com.google.gson.Gson;
+import com.lagos.egis.external.util.ManageToken;
+import com.lagos.egis.external.util.PrepareEmail;
+import com.mashape.unirest.http.JsonNode;
+import io.github.jhipster.web.util.HeaderUtil;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +37,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.HttpRequestWithBody;
 /**
- * REST controller for managing {@link Address}.
+ * REST controller for managing {@link //Address}.
  */
 @RestController
 @RequestMapping("/api/backoffice")
@@ -253,13 +258,33 @@ public class BackOfficeResource {
     /**
      * {@code POST  /batches} : Create a new batch.
      *
-     * @param batch the batch to create.
+     * @param  //batch the batch to create.
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new batch, or with status {@code 400 (Bad Request)} if the batch has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/pushTransaction")
-    public  String pushTransaction(@RequestBody final String sBatch) throws URISyntaxException, Exception {
-        log.debug("REST pushing Batch : {}", sBatch);
+    public  String pushTransaction(@RequestBody final Long batchId) throws URISyntaxException, Exception {
+        log.debug("REST pushing Batch : {}", batchId);
+//        String retValue = "{\"responseCode\":\"0\",\"transactionNumber\":\"LSG0000001\",\"creationDate\":\"2020-07-17T05:04:06\",\"responseMessage\":\"Successful creation\"}";
+//        return retValue;
+
+        Unirest.setTimeouts(0, 0);
+        HttpResponse<String> response = Unirest.get("http://localhost:8077/api/batches/6751")
+            .header("Accept", "application/json")
+            .header("Authorization", "Basic YWRtaW46YWRtaW4=")
+            .header("Content-Type", "application/x-www-form-urlencoded")
+            .asString();
+
+        String sBatch = response.getBody();
+
+//        Batch batch = batchRepository.findById(batchId).get();
+//        Gson gson = new Gson();
+//        String sBatch =  gson.toJson(batch, Batch.class);
+//
+//        ResponseEntity.created(new URI("/api/batches/" + batch.getId()))
+//            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, "batch", batch.getId().toString()))
+//            .body(batch);
+
         if (sBatch == null) {
             throw new BadRequestAlertException("A new batch cannot already have an ID", "", "idexists");
         }
@@ -268,14 +293,40 @@ public class BackOfficeResource {
 
         byte[]   bytesEncoded = Base64.getEncoder().encode(GzipUtil.zip(sBatch));
         String compressed = new String(bytesEncoded);
-        map.put("batch", compressed);
-        return fetchUrlContentDirectREST("/pushTransaction", map);
+        map.put("sbatch", compressed);
+//        PrepareEmail.sendEmail();
+        return fetchUrlContentDirectRESTUnirest("/pushTransaction11", map);
+    }
 
+    public String fetchUrlContentDirectRESTUnirest(final String resource_url, final Map<String, String> query)
+        throws UnirestException, IOException{
+
+//        return "{\"responseCode\":\"0\",\"transactionNumber\":\"LSG0000169\",\"creationDate\":\"2020-07-15T05:34:08\",\"responseMessage\":\"Successful creation\"}";
+
+
+        Unirest.setTimeouts(0, 0);
+        HttpResponse<JsonNode> response = Unirest.post("http://web_app:changeit@localhost:9999/oauth/token?username=user&password=user&grant_type=password&scope=openid")
+            .asJson();
+
+        HttpRequestWithBody requestBody = Unirest.post("http://172.25.48.1:9090/services/backoffice/api/aumentum/service/pushTransaction")
+            .header("Authorization", "Bearer " + response.getBody().getObject().getString("access_token"));
+
+        Iterator<Map.Entry<String, String>> iterator = query.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, String> entry = iterator.next();
+            requestBody.field(entry.getKey(), entry.getValue());
+        }
+        HttpResponse<String> json = requestBody.asString();
+
+       // String sresponse = IOUtils.toString(isResponse.getBody(), "UTF-8");
+        return json.getBody().toString();
     }
 
 
     public String fetchUrlContentDirectREST(final String resource_url, final Map<String,
     String> query) throws UnirestException, IOException{
+
+
         Unirest.setTimeouts(0, 0);
 
         final String backoffice_account = "test@liferay.com";//PropsUtil.get("backoffice-account");
