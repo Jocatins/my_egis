@@ -25,6 +25,7 @@ export class ApplicationSummaryComponent implements OnInit {
   parties: IParty[];
   supportingDocuments: ISupportingDocument[];
   supportingDocumentsOthers: ISupportingDocument[];
+  canPush: boolean;
 
   constructor(
     private router: Router,
@@ -48,6 +49,12 @@ export class ApplicationSummaryComponent implements OnInit {
 
       this.supportingDocumentsOthers = allDocs.filter(x => x.provided !== 'Y');
       this.supportingDocuments = allDocs.filter(x => x.provided === 'Y');
+
+      if (this.batch.batchStatus.label === 'new'){
+        this.canPush = true
+      }else{
+        this.canPush = false;
+      }
     });
   }
 

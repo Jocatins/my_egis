@@ -5,6 +5,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FormDataService } from '../data/formData.service';
 import { CustomEncoderComponent } from './customencoder.component';
 import { Router } from '@angular/router';
+import { MetadataService } from 'app/entities/metadata/metadata.service';
 
 @Component({
   selector: 'jhi-complete',
@@ -28,6 +29,7 @@ export class CompleteComponent implements OnInit {
 // @ViewChild('downloadZipLink') private downloadZipLink: ElementRef;
 
   constructor(private router: Router,
+    private metadata: MetadataService,
     private dashboard: DashboardService,
     private sanitizer:  DomSanitizer,
     protected http: HttpClient,
@@ -45,17 +47,20 @@ export class CompleteComponent implements OnInit {
     const usrMultiInd = this.formDataService.getParameters().noIndividual
     const srMutliOrg =this.formDataService.getParameters().noOrganization
 
+    alert("1")
     this.dashboard.downloadWithMore(code,
       laApplication , laAgent, usrMultiInd, srMutliOrg).subscribe(
       (data)=>{
         this.blob = data.body.form
+        // alert(this.blob)
 
-        this.dashboard.getTransMetadata
-       (this.formDataService.getApplication().code_).subscribe(
-         (data1) =>{
-          this.downloadName = JSON.parse(data1.body.metadata).label
-         }
-       )
+        this.metadata.getByCode(code).subscribe(
+          data1 =>{
+            this.downloadName = data1.body[0].descr
+             // alert(JSON.stringify(data1.body))
+             // alert(data1.body.descr)
+          }
+        )
       }
     );
   }

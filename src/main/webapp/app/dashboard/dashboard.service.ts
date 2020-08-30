@@ -38,7 +38,8 @@ export class DashboardService {
 
   public resourceUrl = SERVER_API_URL + 'api/batches';
   public resourceSearchUrl = SERVER_API_URL + 'api/_search/batches';
-  public serverApiURL = SERVER_API_URL + 'GET /api/backoffice/';
+  public serverApiURL = '/api/backoffice/';
+  public serverFormDownload = 'http://localhost:7777/';
 
   constructor(protected http: HttpClient
     ) {
@@ -51,22 +52,18 @@ export class DashboardService {
   }
 
   getTransMetadata(code: string) {
-    this.serverApiURL = '/api/metadata/';
     return this.http.get<any>(`${this.serverApiURL + 'getByCode'}/?code=${code}`, { observe: 'response' });
   }
 
   public fetchDictionaryValuesObj(category: string) {
-    this.serverApiURL = '/api/backoffice/';
     return this.http.get<any>(`${this.serverApiURL + 'fetchDictionaryValuesObj'}?category=${category}`, { observe: 'response' });
   }
 
   public transinfoWithGroup(group: string) {
-    this.serverApiURL = '/api/backoffice/';
     return this.http.get<any>(`${this.serverApiURL + 'transinfoWithGroup'}?group=${group}`, { observe: 'response' });
   }
 
   public getMandatorySupportDocs(code: string) {
-    this.serverApiURL = '/api/backoffice/';
     return this.http.get<any>(`${this.serverApiURL + 'getMandatorySupportDocs'}?code=${code}`, { observe: 'response' });
   }
 
@@ -79,7 +76,6 @@ export class DashboardService {
   }
 
   public downloadForm(transCode: string, complexParam: string) {
-    this.serverApiURL = '/api/backoffice/';
 
     const strUrl = `${this.serverApiURL + 'download'}?param=${complexParam}&transCode=${transCode}`;
     //const strUrl =`/api/backoffice/download?param=LA_APPLICATION_TYPE%255EIndividual%257CLA_AGENT%255Etrue%257CUSR_MULTIPARTY_INDIVIDUAL_COUNT%255E2%257CUSR_MULTIPARTY_ORGANISATION_COUNT%255E2&transCode=AOSL`;

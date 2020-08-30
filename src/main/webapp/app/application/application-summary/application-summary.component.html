@@ -456,18 +456,25 @@
             <label class="alert alert-secondary mt-4">
                 I attest that all information entered are accurate and have been reviewed by me. I also declare that I am liable for all information entered above. By clicking the "Submit" button, Asides form submitting of this application for processing, it also implies that I agree to abide by the terms and conditions that may be imposed as a result of this application and to any subsequent amendment of existing laws thereto.
             </label>
-            <button type="submit" (click)="previousState()" class="btn btn-outline-secondary">
-                <fa-icon icon="chevron-left"></fa-icon> <span jhiTranslate="entity.action.back"> Back</span>
-            </button>
+            <div class="value"  *ngIf="!canPush">
+                <button type="submit" (click)="previousState()" class="btn btn-outline-secondary">
+                    <fa-icon icon="chevron-left"></fa-icon> <span jhiTranslate="entity.action.back"> Back</span>
+                </button>
+            </div>
+
             <!-- <button type="button" [routerLink]="['/parcel', parcel.id, 'edit']" class="btn btn-outline-secondary">
                 <fa-icon icon="pencil-alt"></fa-icon> <span jhiTranslate="entity.action.edit"> Edit</span>
             </button> -->
 
-            <button   type="submit" (click)="submitTransaction(batch.id)" class="btn btn-primary">
-                <fa-icon [icon]="'paper-plane'"></fa-icon>  Submit Transaction
-            </button>
+            <div class="value"  *ngIf="canPush">
+                <button type="submit" (click)="previousState()" class="btn btn-outline-secondary">
+                    <fa-icon icon="chevron-left"></fa-icon> <span jhiTranslate="entity.action.back"> Back</span>
+                </button>
 
-            <div class="value"  *ngIf="canPush"></div>
+                <button   type="submit" (click)="submitTransaction(batch.id)" class="btn btn-primary">
+                    <fa-icon [icon]="'paper-plane'"></fa-icon>  Submit Transaction
+                </button>
+            </div>
         </div>
     </div>
 </div>

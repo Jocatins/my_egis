@@ -371,9 +371,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.konghq</groupId>
-            <artifactId>unirest-java</artifactId>
-            <version>3.7.04</version>
+            <groupId>com.teqbridge</groupId>
+            <artifactId>PortalGlobalDomain</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 

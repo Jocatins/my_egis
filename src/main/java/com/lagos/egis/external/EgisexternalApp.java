@@ -3,6 +3,7 @@ package com.lagos.egis.external;
 import com.lagos.egis.external.config.ApplicationProperties;
 import com.lagos.egis.external.config.DefaultProfileUtil;
 
+import com.teqbridge.portal.global.GlobalResources;
 import io.github.jhipster.config.JHipsterConstants;
 
 import org.apache.commons.lang3.StringUtils;
@@ -16,6 +17,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.core.env.Environment;
 
+import java.io.File;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
@@ -60,6 +62,19 @@ public class EgisexternalApp implements InitializingBean {
      * @param args the command line arguments.
      */
     public static void main(String[] args) {
+
+        if (args.length == 0 || args[0] == null ) {
+            log.error("Configuration file not provided; application will not start");
+            return;
+        }
+
+        if (!new File(args[0] ).exists()){
+            log.error("Configuration file provided does not exist; application will not start");
+            return ;
+        }
+        String file_config = args[0];
+        GlobalResources.pupulateGlobalResources(file_config);
+
         SpringApplication app = new SpringApplication(EgisexternalApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
