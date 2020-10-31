@@ -89,12 +89,6 @@ public class MailService {
         Unirest.setTimeouts(0, 0);
 
         try{
-//            HttpResponse<String> response = Unirest.post("http://localhost:8099/api/mail-messages")
-//                .header("Content-Type", "application/json")
-//                .header("Authorization", "Basic YWRtaW46YWRtaW4=")
-//                .header("Cookie", "GUEST_LANGUAGE_ID=en_US")
-//                .field("mailMessage", mail).asString();
-
             String backoffice_secret = "admin".trim();
             final String userpass = "admin".trim() + ":" +backoffice_secret;
             final String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userpass.getBytes()));
@@ -123,23 +117,6 @@ public class MailService {
             ex.printStackTrace();
         }
 
-
-
-
-
-    // Prepare message using a Spring helper
-//        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-//        try {
-//            MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, StandardCharsets.UTF_8.name());
-//            message.setTo(to);
-//            message.setFrom(jHipsterProperties.getMail().getFrom());
-//            message.setSubject(subject);
-//            message.setText(content, isHtml);
-//            javaMailSender.send(mimeMessage);
-//            log.debug("Sent email to User '{}'", to);
-//        }  catch (MailException | MessagingException e) {
-//            log.warn("Email could not be sent to user '{}'", to, e);
-//        }
     }
 
     @Async
