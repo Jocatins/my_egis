@@ -5,6 +5,7 @@ import './vendor';
 import { EgisexternalSharedModule } from 'app/shared/shared.module';
 import { EgisexternalCoreModule } from 'app/core/core.module';
 import { EgisexternalAppRoutingModule } from './app-routing.module';
+import { HomeAddonsModule } from './home-addons/home-addons.module';
 import { EgisexternalHomeModule } from './home/home.module';
 import { EgisexternalEntityModule } from './entities/entity.module';
 import { EgisexternalAppApplicationModule } from './application/application.module';
@@ -37,7 +38,8 @@ import { RelatedinformationComponent } from './resources/subs/relatedinformation
     EgisexternalAppCreateAccountModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EgisexternalEntityModule,
-    EgisexternalAppRoutingModule
+    EgisexternalAppRoutingModule,
+    HomeAddonsModule
   ],
   declarations: [
     JhiMainComponent,
