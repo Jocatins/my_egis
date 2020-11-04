@@ -25,6 +25,16 @@ import { YourPropertyComponent } from './your-property/your-property.component';
     UserRegisterationComponent,
     TrackApplicationComponent,
     YourPropertyComponent
+  ],
+  exports: [
+    HomeAddonsComponent,
+    PropertyTaxLookupComponent,
+    PropertyTaxesComponent,
+    OnlineCalculatorComponent,
+    CertifiedTrueCopyComponent,
+    UserRegisterationComponent,
+    TrackApplicationComponent,
+    YourPropertyComponent
   ]
 })
 export class HomeAddonsModule {}
