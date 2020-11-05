@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-// import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
+import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 
 import { HomeAddonsComponent } from './home-addons.component';
 import { PROPERTYTAX } from './property-tax-lookup/property-tax-lookup.route';
@@ -18,6 +18,6 @@ export const HOMEADDONS_ROUTE: Route = {
     authorities: [],
     pageTitle: 'homeaddons.title'
   },
-  canActivate: [],
+  canActivate: [UserRouteAccessService],
   children: [YOURPROPERTY, USERREG, TRACK, TAXES, PROPERTYTAX, TRUECOPY, ONLINECALCULATOR]
 };
