@@ -16,6 +16,16 @@
       "page-one": "Page One",
       "page-two": "Page Two",
       "create-account": "Create Account",
+
+      "home-test": "Home Test",
+      "home-doubletest": "Home Doubletest",
+      "certifiedtruecopy": "Certifiedtruecopy",
+      "onlinecalculator": "Onlinecalculator",
+      "propertytaxlookup": "Propertytaxlookup",
+      "propertytaxes": "Propertytaxes",
+      "trackapplication": "Trackapplication",
+      "user-registeration": "User Registeration",
+      "yourproperty": "Yourproperty",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
