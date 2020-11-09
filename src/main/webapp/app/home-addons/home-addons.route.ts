@@ -18,6 +18,6 @@ export const HOMEADDONS_ROUTE: Route = {
     authorities: [],
     pageTitle: 'homeaddons.title'
   },
-  canActivate: [UserRouteAccessService],
-  children: [YOURPROPERTY, USERREG, TRACK, TAXES, PROPERTYTAX, TRUECOPY, ONLINECALCULATOR]
+  canActivate: [UserRouteAccessService]
+  // children: [YOURPROPERTY, USERREG, TRACK, TAXES, PROPERTYTAX, TRUECOPY, ONLINECALCULATOR]
 };
