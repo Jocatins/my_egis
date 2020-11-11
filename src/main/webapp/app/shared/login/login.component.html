@@ -1,6 +1,10 @@
 <!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   	<div class="modal-dialog" role="document">
     	<div class="modal-content">-->
+            <div class="modal-header">
+                <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="activeModal.dismiss('closed')"><span aria-hidden="true">x</span>
+                </button>
+            </div>
       		<div class="modal-body">
         		<div class="row justify-content-center">
                     <div class="col-md-8">
@@ -10,9 +14,9 @@
                     </div>
                     <div class="col-md-8">
                          <form class="form-signin" role="form" (ngSubmit)="login()" [formGroup]="loginForm">
-					        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+					        <!-- <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
 			      	        <h1 class="h3 mb-3 font-weight-normal"><img src="../../../content/images/custom/main/LG_0005.png" class="img-fluid"> Please sign in</h1>
-
+                              
                             <label class="sr-only username-label" for="username" jhiTranslate="global.form.username.label">Login</label>
 			      	        <input type="text" class="form-control" name="username" id="username" placeholder="{{'global.form.username.placeholder' | translate}}" formControlName="username" required autofocus>
 
