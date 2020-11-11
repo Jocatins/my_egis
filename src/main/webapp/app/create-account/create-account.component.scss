@@ -1,1 +1,26 @@
 /* create-account.component.css */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-bottom: 60px;
+  overflow-x: hidden;
+}
+.form-control {
+  display: block;
+  width: 40%;
+  // // Make inputs at least the height of their button counterpart (base line-height + padding + border-color)
+  // height: $input-height;
+  // padding: $input-padding-y $input-padding-x;
+  font-size: 30px;
+  line-height: 30px;
+  color: red($color: #000000);
+  background-color: blue;
+  // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
+  background-image: none;
+  background-clip: padding-box;
+  border: solid;
+}
