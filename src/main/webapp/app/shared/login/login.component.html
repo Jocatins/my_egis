@@ -29,7 +29,10 @@
                                     <span jhiTranslate="login.form.rememberme">Remember me</span>
                                 </label>
                             </div>
-                            <div class="mt-4 mb-3"><strong>Don't have an account? <a href="register-user.php">Click here to register.</a></strong></div>
+                            <div class="mt-3 alert alert-warning">
+                                <a class="alert-link" (click)="requestResetPassword()"> Forgot Password?</a>
+                            </div>
+                            <div class="mt-4 mb-3"><strong>Don't have an account? <a class="alert-link" (click)="register()">Click here to register.</a></strong></div>
                             <button type="submit" class="btn btn-lg btn-primary btn-block" jhiTranslate="login.form.button">Sign in</button>
 			            </form>
                     </div>
