@@ -1,1 +1,31 @@
 /* user-registeration.component.css */
+/* create-account.component.css */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-bottom: 60px;
+  overflow-x: hidden;
+}
+.form-control {
+  display: block;
+  width: 100%;
+
+  font-size: 30px;
+  line-height: 30px;
+
+  background-color: white;
+  background-image: none;
+  background-clip: padding-box;
+}
+.form-control-lg {
+  padding: 9px 18px;
+  font-size: 14px;
+}
+.form-control,
+.btn {
+  border-radius: 1rem;
+}
