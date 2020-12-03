@@ -63,6 +63,14 @@ import { RouterModule } from '@angular/router';
       {
         path: 'subscription-docs',
         loadChildren: () => import('./subscription-docs/subscription-docs.module').then(m => m.EgisexternalSubscriptionDocsModule)
+      },
+      {
+        path: 'title-select-options',
+        loadChildren: () => import('./title-select-options/title-select-options.module').then(m => m.EgisexternalTitleSelectOptionsModule)
+      },
+      {
+        path: 'document-request',
+        loadChildren: () => import('./document-request/document-request.module').then(m => m.EgisexternalDocumentRequestModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

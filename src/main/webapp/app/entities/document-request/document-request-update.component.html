@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-document-request-heading" jhiTranslate="egisexternalApp.documentRequest.home.createOrEditLabel">Create or edit a Document Request</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.documentRequest.transactionId" for="field_transactionId">Transaction Id</label>
+                    <input type="text" class="form-control" name="transactionId" id="field_transactionId"
+                           formControlName="transactionId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.documentRequest.documentId" for="field_documentId">Document Id</label>
+                    <input type="text" class="form-control" name="documentId" id="field_documentId"
+                           formControlName="documentId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.documentRequest.documentType" for="field_documentType">Document Type</label>
+                    <input type="text" class="form-control" name="documentType" id="field_documentType"
+                           formControlName="documentType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.documentRequest.documentSubType" for="field_documentSubType">Document Sub Type</label>
+                    <input type="text" class="form-control" name="documentSubType" id="field_documentSubType"
+                           formControlName="documentSubType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.documentRequest.documentNumber" for="field_documentNumber">Document Number</label>
+                    <input type="text" class="form-control" name="documentNumber" id="field_documentNumber"
+                           formControlName="documentNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.documentRequest.surveyPlanNumber" for="field_surveyPlanNumber">Survey Plan Number</label>
+                    <input type="text" class="form-control" name="surveyPlanNumber" id="field_surveyPlanNumber"
+                           formControlName="surveyPlanNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.documentRequest.propertyDescription" for="field_propertyDescription">Property Description</label>
+                    <input type="text" class="form-control" name="propertyDescription" id="field_propertyDescription"
+                           formControlName="propertyDescription"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.documentRequest.titleNumber" for="field_titleNumber">Title Number</label>
+                    <input type="text" class="form-control" name="titleNumber" id="field_titleNumber"
+                           formControlName="titleNumber"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

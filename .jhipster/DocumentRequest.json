@@ -1,0 +1,48 @@
+{
+    "name": "DocumentRequest",
+    "fields": [
+        {
+            "fieldName": "transactionId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "documentId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "documentType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "documentSubType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "documentNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "surveyPlanNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "propertyDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "titleNumber",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20201203032941",
+    "entityTableName": "document_request",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

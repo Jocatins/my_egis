@@ -1,0 +1,25 @@
+{
+  "egisexternalApp": {
+    "titleSelectOptions": {
+      "home": {
+        "title": "TitleSelectOptions",
+        "createLabel": "Créer un nouveau Title Select Options",
+        "createOrEditLabel": "Créer ou éditer un Title Select Options",
+        "search": "Recherche pour Title Select Options",
+        "notFound": "Aucun Title Select Options trouvé"
+      },
+      "created": "Un nouveau Title Select Options a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Title Select Options avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Title Select Options avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Title Select Options {{ id }} ?"
+      },
+      "detail": {
+        "title": "Title Select Options"
+      },
+      "transactionId": "Transaction Id",
+      "queryField": "Query Field",
+      "queryValue": "Query Value"
+    }
+  }
+}

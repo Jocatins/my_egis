@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-title-select-options-heading" jhiTranslate="egisexternalApp.titleSelectOptions.home.createOrEditLabel">Create or edit a Title Select Options</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.titleSelectOptions.transactionId" for="field_transactionId">Transaction Id</label>
+                    <input type="text" class="form-control" name="transactionId" id="field_transactionId"
+                           formControlName="transactionId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.titleSelectOptions.queryField" for="field_queryField">Query Field</label>
+                    <input type="text" class="form-control" name="queryField" id="field_queryField"
+                           formControlName="queryField"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="egisexternalApp.titleSelectOptions.queryValue" for="field_queryValue">Query Value</label>
+                    <input type="text" class="form-control" name="queryValue" id="field_queryValue"
+                           formControlName="queryValue"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

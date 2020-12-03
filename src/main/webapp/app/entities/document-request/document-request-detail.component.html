@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="documentRequest">
+            <h2><span jhiTranslate="egisexternalApp.documentRequest.detail.title">Document Request</span> {{documentRequest.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.documentRequest.transactionId">Transaction Id</span></dt>
+                <dd>
+                    <span>{{documentRequest.transactionId}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.documentRequest.documentId">Document Id</span></dt>
+                <dd>
+                    <span>{{documentRequest.documentId}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.documentRequest.documentType">Document Type</span></dt>
+                <dd>
+                    <span>{{documentRequest.documentType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.documentRequest.documentSubType">Document Sub Type</span></dt>
+                <dd>
+                    <span>{{documentRequest.documentSubType}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.documentRequest.documentNumber">Document Number</span></dt>
+                <dd>
+                    <span>{{documentRequest.documentNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.documentRequest.surveyPlanNumber">Survey Plan Number</span></dt>
+                <dd>
+                    <span>{{documentRequest.surveyPlanNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.documentRequest.propertyDescription">Property Description</span></dt>
+                <dd>
+                    <span>{{documentRequest.propertyDescription}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.documentRequest.titleNumber">Title Number</span></dt>
+                <dd>
+                    <span>{{documentRequest.titleNumber}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/document-request', documentRequest.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
