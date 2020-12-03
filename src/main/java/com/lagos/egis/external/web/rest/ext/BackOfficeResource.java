@@ -1,7 +1,9 @@
 package com.lagos.egis.external.web.rest.ext;
 
+import com.google.gson.Gson;
 import com.mashape.unirest.http.JsonNode;
 import com.teqbridge.portal.global.GlobalResources;
+import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,6 +42,8 @@ import com.mashape.unirest.request.HttpRequestWithBody;
 public class BackOfficeResource {
 
     private final Logger log = LoggerFactory.getLogger(BackOfficeResource.class);
+
+
 
 
 
@@ -235,14 +239,20 @@ public class BackOfficeResource {
     public  String pushTransaction(@RequestBody final Long batchId) throws URISyntaxException, Exception {
         log.debug("REST pushing Batch : {}", batchId);
 
+        Batch batch = batchRepository.findById(batchId).get();
+
         Unirest.setTimeouts(0, 0);
-        HttpResponse<String> response = Unirest.get("http://localhost:8077/api/batches/6751")
+        HttpResponse<String> response = Unirest.get("http://localhost:8077/api/batches/"+ batchId)
             .header("Accept", "application/json")
             .header("Authorization", "Basic YWRtaW46YWRtaW4=")
             .header("Content-Type", "application/x-www-form-urlencoded")
             .asString();
 
         String sBatch = response.getBody();
+
+  //      String sBatch = "";
+
+        ResponseEntity<Batch> bBatch = ResponseUtil.wrapOrNotFound(batchRepository.findById(batchId));
 
         if (sBatch == null) {
             throw new BadRequestAlertException("A new batch cannot already have an ID", "", "idexists");
