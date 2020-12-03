@@ -1,11 +1,76 @@
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-    <h6 class="text-right">{{message}}</h6>
-    <h1 class="text-capitalize text-center" jhiTranslate="propertytaxlookup.title">Title</h1>
-    <h5 class="text-center" jhiTranslate="propertytaxlookup.subtitle">Subtitle</h5>
-    <hr/>
-    <p class="text-justify" jhiTranslate="propertytaxlookup.content">Content</p>
+<nav id="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/"><fa-icon icon="home"></fa-icon> Lagos eGIS Project</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Property Tax Looout</li>
+  </ol>
+</nav>
+<div class="container page-header">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="border-bottom" >Search for your Property</h2>
+    </div>
   </div>
-  <div class="col-md-1"></div>
+</div>
+<div class="container main">
+<!-- <div class="container"><br/> -->
+
+  <form novalidate
+        #form="ngForm">
+    <div class="form-group">
+      <strong>Titlenumber</strong>
+      <select class="form-control"
+              name="titlenumber"
+              [(ngModel)]="titlenumber">
+        <option></option>      
+        <option *ngFor="let titlenumber of titlenum"
+                [value]="titlenumber">{{ titlenumber }}</option>
+      </select>
+    </div>  
+
+    <div class="form-group">
+      <strong>Instrumentnumber</strong>
+      <select class="form-control"
+              name="instrumentnumber"
+              [(ngModel)]="instrumentnumber">
+        <option></option>      
+        <option *ngFor="let instrumentnumber of instrunum"
+                [value]="instrumentnumber">{{ instrumentnumber }}</option>
+      </select>
+    </div>  
+
+    <div class="form-group">
+      <strong>Plot Address</strong>
+      <select class="form-control"
+              name="address"
+              [(ngModel)]="address">
+        <option></option>      
+        <option *ngFor="let address of addre"
+                [value]="address">{{ address }}</option>
+      </select>
+    </div>    
+
+    <br/><br/>
+
+    
+    <table class="table table-bordered">
+      <thead>
+        <th>TitleOwner</th>
+        <th>Titlenumber</th>
+        <th>Instrumentnumber</th>
+        <th>Plot Address</th>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let user of users | tableFilter: form.value">
+          <td>{{ user.name }}</td>
+          <td>{{ user.titlenumber }}</td>
+          <td>{{ user.instrumentnumber }}</td>
+          <td>{{ user.address }}</td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </form>
+
 </div>

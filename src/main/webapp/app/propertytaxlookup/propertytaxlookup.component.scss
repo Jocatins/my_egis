@@ -1,1 +1,18 @@
 /* propertytaxlookup.component.css */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-top: 200px;
+  padding-top: 160px;
+
+  padding-bottom: 60px;
+  overflow-x: hidden;
+}
+.form-control {
+  display: block;
+  width: 100%;
+}
