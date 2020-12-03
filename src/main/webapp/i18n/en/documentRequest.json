@@ -1,0 +1,30 @@
+{
+  "egisexternalApp": {
+    "documentRequest": {
+      "home": {
+        "title": "Document Requests",
+        "createLabel": "Create a new Document Request",
+        "createOrEditLabel": "Create or edit a Document Request",
+        "search": "Search for Document Request",
+        "notFound": "No Document Requests found"
+      },
+      "created": "A new Document Request is created with identifier {{ param }}",
+      "updated": "A Document Request is updated with identifier {{ param }}",
+      "deleted": "A Document Request is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Document Request {{ id }}?"
+      },
+      "detail": {
+        "title": "Document Request"
+      },
+      "transactionId": "Transaction Id",
+      "documentId": "Document Id",
+      "documentType": "Document Type",
+      "documentSubType": "Document Sub Type",
+      "documentNumber": "Document Number",
+      "surveyPlanNumber": "Survey Plan Number",
+      "propertyDescription": "Property Description",
+      "titleNumber": "Title Number"
+    }
+  }
+}

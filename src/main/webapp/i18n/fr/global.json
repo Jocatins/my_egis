@@ -50,6 +50,8 @@
         "escalation": "Escalation",
         "yearSubscription": "Year Subscription",
         "subscriptionDocs": "Subscription Docs",
+        "titleSelectOptions": "Title Select Options",
+        "documentRequest": "Document Request",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

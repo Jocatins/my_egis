@@ -1,0 +1,28 @@
+{
+    "name": "TitleSelectOptions",
+    "fields": [
+        {
+            "fieldName": "transactionId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "queryField",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "queryValue",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20201203032940",
+    "entityTableName": "title_select_options",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

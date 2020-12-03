@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="titleSelectOptions">
+            <h2><span jhiTranslate="egisexternalApp.titleSelectOptions.detail.title">Title Select Options</span> {{titleSelectOptions.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="egisexternalApp.titleSelectOptions.transactionId">Transaction Id</span></dt>
+                <dd>
+                    <span>{{titleSelectOptions.transactionId}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.titleSelectOptions.queryField">Query Field</span></dt>
+                <dd>
+                    <span>{{titleSelectOptions.queryField}}</span>
+                </dd>
+                <dt><span jhiTranslate="egisexternalApp.titleSelectOptions.queryValue">Query Value</span></dt>
+                <dd>
+                    <span>{{titleSelectOptions.queryValue}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/title-select-options', titleSelectOptions.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

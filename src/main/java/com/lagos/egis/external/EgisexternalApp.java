@@ -63,6 +63,7 @@ public class EgisexternalApp implements InitializingBean {
      */
     public static void main(String[] args) {
 
+       /*
         if (args.length == 0 || args[0] == null ) {
             log.error("Configuration file not provided; application will not start");
             return;
@@ -74,6 +75,8 @@ public class EgisexternalApp implements InitializingBean {
         }
         String file_config = args[0];
         GlobalResources.pupulateGlobalResources(file_config);
+               */
+
 
         SpringApplication app = new SpringApplication(EgisexternalApp.class);
         DefaultProfileUtil.addDefaultProfile(app);

@@ -203,6 +203,23 @@ entity SubscriptionDocs{
     filename String
 }
 
+entity TitleSelectOptions{
+    transactionId String
+    queryField String
+    queryValue String
+}
+
+entity DocumentRequest{
+    transactionId String
+    documentId String
+    documentType String
+    documentSubType String
+    documentNumber String
+    surveyPlanNumber String
+    propertyDescription String
+    titleNumber String
+}
+
 relationship ManyToOne{
     Batch{user} to User,
 	Batch{batchStatus} to Dictionary,
