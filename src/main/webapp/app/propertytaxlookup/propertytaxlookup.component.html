@@ -1,57 +1,52 @@
 <nav id="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="/"><fa-icon icon="home"></fa-icon> Lagos eGIS Project</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Property Tax Looout</li>
+    <li class="breadcrumb-item">
+      <a routerLink="/"><fa-icon icon="home"></fa-icon> Lagos eGIS Project</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Property Tax Look out</li>
   </ol>
 </nav>
 <div class="container page-header">
   <div class="row">
     <div class="col-lg-12">
-      <h2 class="border-bottom" >Search for your Property</h2>
+      <h2 class="border-bottom">Search for your Property</h2>
     </div>
   </div>
 </div>
 <div class="container main">
-<!-- <div class="container"><br/> -->
+  <!-- <div class="container"><br/> -->
 
-  <form novalidate
-        #form="ngForm">
+  <form #form="ngForm">
     <div class="form-group">
-      <strong>Titlenumber</strong>
-      <select class="form-control"
-              name="titlenumber"
-              [(ngModel)]="titlenumber">
-        <option></option>      
-        <option *ngFor="let titlenumber of titlenum"
-                [value]="titlenumber">{{ titlenumber }}</option>
+      <strong>Enter Search Criteria</strong>
+      <select class="form-control" name="country" ngModel #country="ngModel" (change)="onChange($event.target.value)">
+        <option></option>
+        <option *ngFor="let country of countries" [value]="country.id" ngModel>{{ country.name }}</option>
       </select>
-    </div>  
+      <div *ngIf="country.value">
+        <strong>Enter {{ country.value }}</strong>
+        <input type="text" #text class="form-control" ngModel #text="ngModel" />
+      </div>
+    </div>
 
     <div class="form-group">
-      <strong>Instrumentnumber</strong>
-      <select class="form-control"
-              name="instrumentnumber"
-              [(ngModel)]="instrumentnumber">
-        <option></option>      
-        <option *ngFor="let instrumentnumber of instrunum"
-                [value]="instrumentnumber">{{ instrumentnumber }}</option>
+      <strong>Instrument Number</strong>
+      <select class="form-control" id="1" name="Country">
+        <option></option>
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
       </select>
-    </div>  
+    </div>
 
     <div class="form-group">
       <strong>Plot Address</strong>
-      <select class="form-control"
-              name="address"
-              [(ngModel)]="address">
-        <option></option>      
-        <option *ngFor="let address of addre"
-                [value]="address">{{ address }}</option>
+      <select class="form-control" id="2" name="Country">
+        <option></option>
+        <option *ngFor="let titan of titans" [value]="titan">{{ titan }}</option>
       </select>
-    </div>    
+    </div>
 
-    <br/><br/>
+    <br /><br />
 
-    
     <table class="table table-bordered">
       <thead>
         <th>TitleOwner</th>
@@ -61,16 +56,13 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let user of users | tableFilter: form.value">
-          <td>{{ user.name }}</td>
-          <td>{{ user.titlenumber }}</td>
-          <td>{{ user.instrumentnumber }}</td>
-          <td>{{ user.address }}</td>
+        <tr *ngFor="let country of countries | tableFilter: form.value">
+          <td>{{ country.id }}</td>
+          <td>{{ country.name }}</td>
+          <td>{{ country.cities }}</td>
+          <td>{{ country.titans }}</td>
         </tr>
       </tbody>
-
     </table>
-
   </form>
-
 </div>

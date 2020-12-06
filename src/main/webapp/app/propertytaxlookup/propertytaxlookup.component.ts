@@ -12,27 +12,40 @@ import { TableFilterPipe } from './table-filter.pipe';
 export class PropertytaxlookupComponent implements OnInit {
   message: string;
 
-  instrumentnumber: number;
-  instrunum: number[] = [9328372, 92920283, 938544336, 93735432453, 937382737382];
+  cities = {};
+  titans = {};
 
-  titlenumber: number;
-  titlenum: number[] = [44334, 44334, 544336, 5432453, 2737382];
-
-  address: string;
-
-  addre: string[] = ['Oyingbo, Lagos', 'Ikorodu, Lagos', 'Alausa, ikeja Lagos', 'Mile-12, Lagos', 'Maryland, Anthony way, Lagos'];
-
-  users: any[] = [
-    { name: 'Afolabi Samuel', titlenumber: '44334', instrumentnumber: '9328372', address: 'Oyingbo, Lagos' },
-    { name: 'Emmanuel Matthews', titlenumber: '44334', instrumentnumber: '92920283', address: 'Ikorodu, Lagos' },
-    { name: 'Titilayo Racheal', titlenumber: '544336', instrumentnumber: '938544336', address: 'Alausa, ikeja Lagos' },
-    { name: 'Tolulope Ajayi', titlenumber: '5432453', instrumentnumber: '93735432453', address: 'Mile-12, Lagos' },
-    { name: 'Anawana Stephen', titlenumber: '2737382', instrumentnumber: '937382737382', address: 'Maryland, Anthony way, Lagos' }
+  countries = [
+    {
+      id: 1,
+      name: 'Title Number',
+      cities: ['545454', '676767', '989898'],
+      titans: ['Gypsy', 'Joca', 'Angelo']
+    },
+    {
+      id: 2,
+      name: 'Germany',
+      cities: ['Hamburg', 'Berlin', 'Munich'],
+      titans: ['Philip', 'Joca', 'Angelo']
+    },
+    {
+      id: 3,
+      name: 'Italy',
+      cities: ['Roma', 'Milan', 'Napoli'],
+      titans: ['Gypsy', 'Joca', 'Angelo']
+    }
   ];
 
   constructor() {
     this.message = 'PropertytaxlookupComponent message';
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.cities = this.countries.filter(x => x.id == 1)[0].cities;
+    this.titans = this.countries.filter(x => x.id == 1)[0].titans;
+  }
+  onChange(deviceValue) {
+    this.cities = this.countries.filter(x => x.id == deviceValue)[0].cities;
+    this.titans = this.countries.filter(x => x.id == deviceValue)[0].titans;
+  }
 }
